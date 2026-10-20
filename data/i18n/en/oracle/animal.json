@@ -1,0 +1,434 @@
+{
+  "animal-01": {
+    "animal": "Dachshund",
+    "theme": "Small but Mighty",
+    "keywords": [
+      "determination",
+      "confidence",
+      "big heart"
+    ],
+    "message": "Size has never stopped a dachshund from guarding the whole house. Today, don't wait until you feel big enough. Your effort and your heart count for more than how ready you look.",
+    "reflection": "Where have you been waiting to feel \"enough\" before you act?",
+    "affirmation": "I am exactly big enough for today."
+  },
+  "animal-02": {
+    "animal": "Alpaca",
+    "theme": "Gentle Boundaries",
+    "keywords": [
+      "boundaries",
+      "calm",
+      "self-respect"
+    ],
+    "message": "Alpacas are soft and peaceful, and they still let others know when someone is too close. You can be kind and still say no. A gentle, clear boundary protects your peace and your relationships alike.",
+    "reflection": "What would you say no to today if you weren't worried about seeming unkind?",
+    "affirmation": "My boundaries can be soft and still be firm."
+  },
+  "animal-03": {
+    "animal": "Sloth",
+    "theme": "Rest",
+    "keywords": [
+      "rest",
+      "slowness",
+      "recovery"
+    ],
+    "message": "The sloth survives by moving slowly and saving its energy. Rest is not a reward you earn after everything is done. Today, slow down on purpose and let your body catch up with your life.",
+    "reflection": "What would change if you treated rest as part of the work?",
+    "affirmation": "I am allowed to rest before I am exhausted."
+  },
+  "animal-04": {
+    "animal": "Otter",
+    "theme": "Play",
+    "keywords": [
+      "play",
+      "lightness",
+      "connection"
+    ],
+    "message": "Otters float, tumble, and play even while finding their food. Joy does not have to wait until your tasks are finished. Bring a little play into something ordinary today and notice how it changes your mood.",
+    "reflection": "When did you last do something just because it was fun?",
+    "affirmation": "Play is a way of caring for myself."
+  },
+  "animal-05": {
+    "animal": "Turtle",
+    "theme": "Patience",
+    "keywords": [
+      "patience",
+      "steadiness",
+      "long view"
+    ],
+    "message": "The turtle reaches its destination by never giving up its own pace. What you are growing will take the time it takes. Stay steady today, and trust slow progress to still be progress.",
+    "reflection": "What are you trying to rush that needs more time?",
+    "affirmation": "My pace is the right pace."
+  },
+  "animal-06": {
+    "animal": "Hummingbird",
+    "theme": "Joy in Small Things",
+    "keywords": [
+      "joy",
+      "sweetness",
+      "presence"
+    ],
+    "message": "The hummingbird lives on many tiny sips of sweetness. Today's happiness may come in small moments rather than one big one. Look for them, and let each one count.",
+    "reflection": "What small sweet moment could you notice or create today?",
+    "affirmation": "Small joys are real joys."
+  },
+  "animal-07": {
+    "animal": "Owl",
+    "theme": "Listen Within",
+    "keywords": [
+      "intuition",
+      "quiet",
+      "inner wisdom"
+    ],
+    "message": "The owl sees clearly in the dark by staying still and paying attention. You already know more than you think. Make a quiet moment today and listen to what your inner voice has been trying to say.",
+    "reflection": "What does your gut keep telling you that you keep talking yourself out of?",
+    "affirmation": "I trust my own quiet knowing."
+  },
+  "animal-08": {
+    "animal": "Salmon",
+    "theme": "Persistence",
+    "keywords": [
+      "persistence",
+      "effort",
+      "purpose"
+    ],
+    "message": "The salmon swims upstream, against the current, because it knows where it is going. If today feels like hard going, it does not mean you are on the wrong path. Keep your purpose in mind and take the next stroke.",
+    "reflection": "What makes this effort worth it to you?",
+    "affirmation": "I can keep going when it matters."
+  },
+  "animal-09": {
+    "animal": "Hermit Crab",
+    "theme": "Begin Again",
+    "keywords": [
+      "fresh start",
+      "growth",
+      "courage"
+    ],
+    "message": "When a hermit crab outgrows its shell, it leaves it and looks for a new one. Feeling cramped can be a sign that you have grown. Today is a good day to begin again, even in a small way.",
+    "reflection": "What have you outgrown that you are still carrying?",
+    "affirmation": "I can always begin again."
+  },
+  "animal-10": {
+    "animal": "Snake",
+    "theme": "Let Go",
+    "keywords": [
+      "release",
+      "renewal",
+      "shedding"
+    ],
+    "message": "The snake sheds its whole skin to make room for growth. Something old, whether a habit, a worry, or a story about yourself, is ready to fall away. Let it go today without needing to replace it right away.",
+    "reflection": "What are you holding onto that no longer fits?",
+    "affirmation": "I release what I have outgrown."
+  },
+  "animal-11": {
+    "animal": "Bear",
+    "theme": "Solitude",
+    "keywords": [
+      "solitude",
+      "retreat",
+      "restoration"
+    ],
+    "message": "The bear withdraws to its den and comes out renewed. Time alone is not loneliness; it is how you gather yourself. Give yourself some unhurried time on your own today.",
+    "reflection": "When do you feel most like yourself when you are alone?",
+    "affirmation": "Time with myself restores me."
+  },
+  "animal-12": {
+    "animal": "Wolf",
+    "theme": "Ask for Help",
+    "keywords": [
+      "support",
+      "community",
+      "trust"
+    ],
+    "message": "Wolves thrive because they hunt, rest, and raise their young together. You do not have to carry everything alone. Today, let someone know what you need.",
+    "reflection": "Who would be glad to help if you asked?",
+    "affirmation": "Asking for help is a strength."
+  },
+  "animal-13": {
+    "animal": "Honey Badger",
+    "theme": "Fearless",
+    "keywords": [
+      "courage",
+      "boldness",
+      "resilience"
+    ],
+    "message": "The honey badger faces things much bigger than itself and simply refuses to back down. You do not need to feel fearless to act fearlessly. Pick one thing you have been avoiding and face it head-on today.",
+    "reflection": "What would you do today if fear had no vote?",
+    "affirmation": "I can feel afraid and go anyway."
+  },
+  "animal-14": {
+    "animal": "Dolphin",
+    "theme": "Speak Up",
+    "keywords": [
+      "voice",
+      "expression",
+      "connection"
+    ],
+    "message": "Dolphins stay close to one another by calling out clearly and often. What you have to say matters. Share an idea, a feeling, or a need today, kindly and clearly.",
+    "reflection": "What have you been keeping to yourself that wants to be said?",
+    "affirmation": "My voice deserves to be heard."
+  },
+  "animal-15": {
+    "animal": "Beaver",
+    "theme": "Small Steps",
+    "keywords": [
+      "progress",
+      "diligence",
+      "building"
+    ],
+    "message": "A beaver builds a whole dam one stick at a time. Big changes are made from small, repeated actions. Choose one small step today and take it.",
+    "reflection": "What is the smallest step that would still move you forward?",
+    "affirmation": "Small steps build big things."
+  },
+  "animal-16": {
+    "animal": "Cat",
+    "theme": "Independence",
+    "keywords": [
+      "independence",
+      "self-trust",
+      "choice"
+    ],
+    "message": "A cat chooses where it goes and whom it trusts, without asking permission. You are allowed to follow your own way. Today, make one choice that is fully yours.",
+    "reflection": "Where are you seeking approval you don't actually need?",
+    "affirmation": "I can choose for myself."
+  },
+  "animal-17": {
+    "animal": "Elephant",
+    "theme": "Remember",
+    "keywords": [
+      "memory",
+      "roots",
+      "wisdom"
+    ],
+    "message": "Elephants remember paths, water, and friends for many years. Your past holds strength as well as lessons. Remember a time you got through something hard, and let it steady you today.",
+    "reflection": "What past version of you would be proud of where you are?",
+    "affirmation": "I carry my strength with me."
+  },
+  "animal-18": {
+    "animal": "Magpie",
+    "theme": "Notice What Shines",
+    "keywords": [
+      "curiosity",
+      "attention",
+      "delight"
+    ],
+    "message": "The magpie notices the glint that everyone else walks past. Something bright is in your day if you look for it, maybe an idea, a kindness, or a chance. Stay curious and collect the good things you notice.",
+    "reflection": "What caught your eye recently that deserves a closer look?",
+    "affirmation": "I notice the good around me."
+  },
+  "animal-19": {
+    "animal": "Swan",
+    "theme": "Grace",
+    "keywords": [
+      "grace",
+      "poise",
+      "calm effort"
+    ],
+    "message": "A swan looks calm on the water while it paddles steadily underneath. You can move through today with grace even while you are working hard. Be gentle with yourself about the effort no one sees.",
+    "reflection": "How could you bring a little more ease to how you move through today?",
+    "affirmation": "I move through my day with grace."
+  },
+  "animal-20": {
+    "animal": "Meerkat",
+    "theme": "Teamwork",
+    "keywords": [
+      "cooperation",
+      "care",
+      "shared watch"
+    ],
+    "message": "Meerkats take turns keeping watch so the group can rest and forage safely. Your people are part of your strength, and you are part of theirs. Look for a way to give or receive support today.",
+    "reflection": "Who is on your team, and how can you show up for them?",
+    "affirmation": "We are stronger together."
+  },
+  "animal-21": {
+    "animal": "Penguin",
+    "theme": "Loyalty",
+    "keywords": [
+      "loyalty",
+      "commitment",
+      "devotion"
+    ],
+    "message": "Penguins return to their partners and huddle together through the coldest winters. Loyalty is shown in steady, ordinary acts. Today, honor a commitment to someone you love, or to yourself.",
+    "reflection": "What promise to yourself deserves to be kept today?",
+    "affirmation": "I show up for what I love."
+  },
+  "animal-22": {
+    "animal": "Capybara",
+    "theme": "Calm",
+    "keywords": [
+      "calm",
+      "ease",
+      "acceptance"
+    ],
+    "message": "The capybara sits calmly while the world goes on around it, and others gather near because of it. You do not have to react to everything. Choose calm today, and let it spread to the people around you.",
+    "reflection": "What could you let wash past you instead of reacting?",
+    "affirmation": "I can stay calm and centered."
+  },
+  "animal-23": {
+    "animal": "Fox",
+    "theme": "Adapt",
+    "keywords": [
+      "adaptability",
+      "cleverness",
+      "resourcefulness"
+    ],
+    "message": "The fox thrives in forests and cities alike by adjusting to what it finds. If today does not go to plan, that is a chance to be resourceful. Bend instead of breaking, and look for a clever way through.",
+    "reflection": "Where could flexibility serve you better than sticking to the plan?",
+    "affirmation": "I can adapt and find my way."
+  },
+  "animal-24": {
+    "animal": "Deer",
+    "theme": "Sensitivity",
+    "keywords": [
+      "sensitivity",
+      "gentleness",
+      "awareness"
+    ],
+    "message": "The deer notices the smallest change in the forest around it. Your sensitivity is a gift that helps you read people and situations well. Honor what you feel today, and be gentle with yourself if things feel like a lot.",
+    "reflection": "What are your feelings trying to tell you right now?",
+    "affirmation": "My sensitivity is a strength."
+  },
+  "animal-25": {
+    "animal": "Horse",
+    "theme": "Freedom",
+    "keywords": [
+      "freedom",
+      "movement",
+      "vitality"
+    ],
+    "message": "A horse running in an open field is the picture of freedom. Some part of you wants more room to move. Find a little freedom today, maybe in a walk, a new route, or a choice that is truly yours.",
+    "reflection": "Where do you feel held back, and what would one free step look like?",
+    "affirmation": "I give myself room to run."
+  },
+  "animal-26": {
+    "animal": "Hedgehog",
+    "theme": "Protect Your Energy",
+    "keywords": [
+      "protection",
+      "self-care",
+      "energy"
+    ],
+    "message": "When the hedgehog needs to, it curls up and lets its spines keep it safe. It is okay to protect your energy from people or tasks that drain you. Today, guard your peace without guilt.",
+    "reflection": "What drains you most, and how could you shield yourself from it today?",
+    "affirmation": "I protect my energy with love."
+  },
+  "animal-27": {
+    "animal": "Flying Squirrel",
+    "theme": "Leap of Faith",
+    "keywords": [
+      "trust",
+      "risk",
+      "possibility"
+    ],
+    "message": "The flying squirrel leaps into the open air and trusts itself to glide. You may not see the landing yet, but you are more ready than you feel. Take the leap you have been circling.",
+    "reflection": "What leap keeps calling to you?",
+    "affirmation": "I trust myself to glide."
+  },
+  "animal-28": {
+    "animal": "Frog",
+    "theme": "Transformation",
+    "keywords": [
+      "change",
+      "growth",
+      "new stage"
+    ],
+    "message": "Every frog was once a tadpole that could not imagine having legs. You are in the middle of becoming something new. Be patient with the in-between today; it is part of the change.",
+    "reflection": "How have you already changed in the past year?",
+    "affirmation": "I am becoming who I am meant to be."
+  },
+  "animal-29": {
+    "animal": "Dove",
+    "theme": "Peace",
+    "keywords": [
+      "peace",
+      "forgiveness",
+      "harmony"
+    ],
+    "message": "The dove has long carried a message of peace. Today asks you to soften toward someone, or toward yourself. Choose understanding over being right.",
+    "reflection": "Where could a little peace make the biggest difference today?",
+    "affirmation": "I choose peace."
+  },
+  "animal-30": {
+    "animal": "Bowerbird",
+    "theme": "Create",
+    "keywords": [
+      "creativity",
+      "beauty",
+      "expression"
+    ],
+    "message": "The bowerbird gathers colorful treasures and arranges them into something beautiful. Your creativity wants an outlet today. Make something, however small, simply because it pleases you.",
+    "reflection": "What would you create if no one ever had to see it?",
+    "affirmation": "I am a creative being."
+  },
+  "animal-31": {
+    "animal": "Koala",
+    "theme": "Nourish",
+    "keywords": [
+      "nourishment",
+      "comfort",
+      "care"
+    ],
+    "message": "The koala spends its days eating, resting, and holding on to what supports it. Look after your basic needs today: food, water, sleep, and comfort. You cannot pour from an empty cup.",
+    "reflection": "What does your body need from you today?",
+    "affirmation": "I nourish myself with care."
+  },
+  "animal-32": {
+    "animal": "Golden Retriever",
+    "theme": "Gratitude",
+    "keywords": [
+      "gratitude",
+      "warmth",
+      "joy"
+    ],
+    "message": "A golden retriever greets each day, and each person, as a gift. Gratitude turns what you already have into enough. Notice three good things today, and thank someone out loud.",
+    "reflection": "What are you grateful for that you usually take for granted?",
+    "affirmation": "My life is full of good things."
+  },
+  "animal-33": {
+    "animal": "Seahorse",
+    "theme": "Trust the Timing",
+    "keywords": [
+      "timing",
+      "patience",
+      "flow"
+    ],
+    "message": "The seahorse holds onto seagrass and lets the currents bring what it needs. Not everything can be forced into happening today. Hold steady and trust that what is meant for you is on its way.",
+    "reflection": "What are you trying to force that might come more easily with time?",
+    "affirmation": "Things arrive at the right time."
+  },
+  "animal-34": {
+    "animal": "Goat",
+    "theme": "Climb Steadily",
+    "keywords": [
+      "ambition",
+      "footing",
+      "perseverance"
+    ],
+    "message": "Mountain goats climb steep cliffs by testing each foothold before they take it. Your goal may be high, but you only need the next good step. Climb steadily today and trust your footing.",
+    "reflection": "What is your next sure foothold toward your goal?",
+    "affirmation": "I rise one steady step at a time."
+  },
+  "animal-35": {
+    "animal": "Red Panda",
+    "theme": "Celebrate",
+    "keywords": [
+      "celebration",
+      "delight",
+      "self-appreciation"
+    ],
+    "message": "The red panda seems made of pure delight. You have done more than you give yourself credit for. Celebrate something today, even a small win, before you rush on to the next thing.",
+    "reflection": "What have you accomplished lately that you haven't celebrated?",
+    "affirmation": "I celebrate how far I have come."
+  },
+  "animal-36": {
+    "animal": "Whale",
+    "theme": "Release Control",
+    "keywords": [
+      "surrender",
+      "depth",
+      "trust"
+    ],
+    "message": "The whale moves through vast oceans it could never control, and it is at home there. Some things today are simply out of your hands. Let them be, and put your energy where it can make a difference.",
+    "reflection": "What would you feel if you stopped trying to control this?",
+    "affirmation": "I let go of what I cannot control."
+  }
+}

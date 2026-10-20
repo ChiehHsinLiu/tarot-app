@@ -3,8 +3,8 @@ import os from 'node:os'
 import path from 'node:path'
 import { afterEach, beforeEach, describe, expect, test } from 'vitest'
 import type { Reading } from '../src/lib/draw.ts'
-import { appendJournal, journalDir } from './journal.ts'
-import type { JournalEntry } from './journal.ts'
+import { appendJournal, appendOracleJournal, journalDir } from './journal.ts'
+import type { JournalEntry, OracleJournalEntry } from './journal.ts'
 
 const reading: Reading = {
   spreadId: 'yes-no',
@@ -21,7 +21,7 @@ afterEach(() => {
   fs.rmSync(tmp, { recursive: true, force: true })
 })
 
-const readEntries = (file: string): JournalEntry[] =>
+const readEntries = (file: string): (JournalEntry & OracleJournalEntry)[] =>
   fs.readFileSync(file, 'utf8').trim().split('\n').map((l) => JSON.parse(l))
 
 describe('appendJournal', () => {
@@ -59,6 +59,55 @@ describe('appendJournal', () => {
     const entries = readEntries(file)
     expect(entries).toHaveLength(1)
     expect(entries[0].answer).toBe('Line one.\n\nLine two.')
+  })
+})
+
+describe('appendOracleJournal', () => {
+  test('writes oracle entries with the deck, card, and question', () => {
+    const dir = path.join(tmp, 'journal')
+    const now = new Date(2026, 9, 20, 9, 0)
+    const file = appendOracleJournal(
+      { cardId: 'animal-01', question: 'What should I focus on today?', answer: 'Focus.', status: 'completed' },
+      { dir, now },
+    )
+    appendOracleJournal({ cardId: 'animal-18', question: '', answer: 'Part', status: 'stopped' }, { dir, now })
+
+    const entries = readEntries(file)
+    expect(entries[0]).toEqual({
+      time: now.toISOString(),
+      deck: 'animal',
+      cardId: 'animal-01',
+      question: 'What should I focus on today?',
+      answer: 'Focus.',
+      status: 'completed',
+    })
+    expect(entries[1]).toEqual({
+      time: now.toISOString(),
+      deck: 'animal',
+      cardId: 'animal-18',
+      question: '',
+      answer: 'Part',
+      status: 'stopped',
+    })
+  })
+
+  test('tarot and oracle entries share the day file; tarot entries keep their keys', () => {
+    const previous = process.env.TAROT_JOURNAL_DIR
+    process.env.TAROT_JOURNAL_DIR = path.join(tmp, 'env-journal')
+    try {
+      const now = new Date(2026, 9, 20, 12, 0)
+      const a = appendJournal({ link, reading, answer: 'Tarot.', status: 'completed' }, { now })
+      const b = appendOracleJournal({ cardId: 'animal-02', question: '', answer: 'Oracle.', status: 'completed' }, { now })
+      expect(a).toBe(path.join(tmp, 'env-journal', '2026-10-20.jsonl'))
+      expect(b).toBe(a)
+      const [tarot, oracle] = readEntries(a)
+      expect(Object.keys(tarot)).toEqual(['time', 'link', 'spreadId', 'question', 'cards', 'answer', 'status'])
+      expect(Object.keys(oracle)).toEqual(['time', 'deck', 'cardId', 'question', 'answer', 'status'])
+      expect(fs.statSync(path.join(tmp, 'env-journal')).mode & 0o777).toBe(0o700)
+    } finally {
+      if (previous === undefined) delete process.env.TAROT_JOURNAL_DIR
+      else process.env.TAROT_JOURNAL_DIR = previous
+    }
   })
 })
 

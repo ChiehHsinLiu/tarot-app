@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react'
 import type { FormEvent } from 'react'
+import { OracleCardView } from './components/OracleCardView.tsx'
+import { OracleSection } from './components/OracleSection.tsx'
 import { QuestionBox } from './components/QuestionBox.tsx'
 import { ReadingView } from './components/ReadingView.tsx'
 import { SpreadPicker } from './components/SpreadPicker.tsx'
 import { buildCards, buildSpreads, rawCardText, rawCards, rawSpreadText, rawSpreads } from './lib/deck.ts'
 import { draw } from './lib/draw.ts'
 import type { Reading } from './lib/draw.ts'
+import { buildOracleCards, drawOracle, rawAnimalDeck, rawAnimalText } from './lib/oracle.ts'
 import { cryptoRandomInt } from './lib/random.ts'
 import { decodeReading } from './lib/share.ts'
 
@@ -13,9 +16,16 @@ const cards = buildCards(rawCards, rawCardText)
 const cardsById = new Map(cards.map((c) => [c.id, c]))
 const deckIds = cards.map((c) => c.id)
 const spreads = buildSpreads(rawSpreads, rawSpreadText)
+const oracleCards = buildOracleCards(rawAnimalDeck, rawAnimalText)
+const oracleById = new Map(oracleCards.map((c) => [c.id, c]))
+const oracleIds = oracleCards.map((c) => c.id)
 
 type ComposingState = { kind: 'composing'; spreadId: string | null; question: string; invalidLink?: boolean }
-type State = ComposingState | { kind: 'revealed'; reading: Reading; shared: boolean }
+// The oracle view keeps the tarot composer as it was, so "Back" restores it.
+type State =
+  | ComposingState
+  | { kind: 'revealed'; reading: Reading; shared: boolean }
+  | { kind: 'oracle'; cardId: string; composer: ComposingState }
 
 const EMPTY_COMPOSER: ComposingState = { kind: 'composing', spreadId: null, question: '' }
 
@@ -46,12 +56,31 @@ function App() {
       </header>
       <main>
         {state.kind === 'composing' ? (
-          <Composer
-            spreadId={state.spreadId}
-            question={state.question}
-            invalidLink={state.invalidLink ?? false}
-            onChange={(spreadId, question) => setState({ kind: 'composing', spreadId, question })}
-            onDraw={(reading) => setState({ kind: 'revealed', reading, shared: false })}
+          <>
+            <Composer
+              spreadId={state.spreadId}
+              question={state.question}
+              invalidLink={state.invalidLink ?? false}
+              onChange={(spreadId, question) => setState({ kind: 'composing', spreadId, question })}
+              onDraw={(reading) => setState({ kind: 'revealed', reading, shared: false })}
+            />
+            <OracleSection
+              onDraw={() =>
+                setState({
+                  kind: 'oracle',
+                  cardId: drawOracle(oracleIds, cryptoRandomInt),
+                  composer: { kind: 'composing', spreadId: state.spreadId, question: state.question },
+                })
+              }
+            />
+          </>
+        ) : state.kind === 'oracle' ? (
+          <OracleCardView
+            // Remount on every new card so focus and any Ask Claude state reset.
+            key={state.cardId}
+            card={oracleById.get(state.cardId)!}
+            onDrawAgain={() => setState({ ...state, cardId: drawOracle(oracleIds, cryptoRandomInt, state.cardId) })}
+            onBack={() => setState(state.composer)}
           />
         ) : (
           <ReadingView

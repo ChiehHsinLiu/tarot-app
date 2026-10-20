@@ -10,11 +10,13 @@ import path from 'node:path'
 import readline from 'node:readline'
 import type { Plugin } from 'vite'
 import { buildCards, buildSpreads, rawCardText, rawCards, rawSpreadText, rawSpreads } from '../src/lib/deck.ts'
+import { buildOracleCards, buildOraclePrompt, rawAnimalDeck, rawAnimalText } from '../src/lib/oracle.ts'
 import { buildPrompt } from '../src/lib/prompt.ts'
+import { QUESTION_MAX_CHARS, countChars } from '../src/lib/question.ts'
 import { decodeReading, encodeReading } from '../src/lib/share.ts'
 import type { StreamLine } from './claude-stream.ts'
 import { classifyFailure, parseLine } from './claude-stream.ts'
-import { appendJournal } from './journal.ts'
+import { appendJournal, appendOracleJournal } from './journal.ts'
 
 const MAX_BODY_BYTES = 8 * 1024
 const DEFAULT_TIMEOUT_MS = 2 * 60 * 1000
@@ -33,6 +35,7 @@ const CLAUDE_ARGS = [
 const cardsById = new Map(buildCards(rawCards, rawCardText).map((c) => [c.id, c]))
 const spreads = buildSpreads(rawSpreads, rawSpreadText)
 const cardIds = new Set(rawCards.map((c) => c.id))
+const oracleById = new Map(buildOracleCards(rawAnimalDeck, rawAnimalText).map((c) => [c.id, c]))
 
 export type ErrorCode = 'not-installed' | 'not-logged-in' | 'timeout' | 'failed' | 'invalid'
 type StreamEvent = { type: 'text'; text: string } | { type: 'done' } | { type: 'error'; code: ErrorCode; message: string }
@@ -43,10 +46,13 @@ export function privateReadings(): Plugin {
     apply: 'serve',
     configureServer(server) {
       const route = `${server.config.base}api/reading`
-      const templatePath = path.join(server.config.root, 'prompts', 'reading.md')
+      const templates: Templates = {
+        reading: path.join(server.config.root, 'prompts', 'reading.md'),
+        oracle: path.join(server.config.root, 'prompts', 'oracle.md'),
+      }
       server.middlewares.use(route, (req, res) => {
         const port = (server.httpServer?.address() as AddressInfo | null)?.port
-        void handle(req, res, port, templatePath)
+        void handle(req, res, port, templates)
       })
     },
   }
@@ -88,29 +94,53 @@ function readBody(req: IncomingMessage): Promise<string | null> {
   })
 }
 
-async function handle(req: IncomingMessage, res: ServerResponse, port: number | undefined, templatePath: string) {
+type Templates = { reading: string; oracle: string }
+
+async function handle(req: IncomingMessage, res: ServerResponse, port: number | undefined, templates: Templates) {
   if (req.url !== '/' && req.url !== '') return reject(res, 404, 'Not found.')
   if (req.method !== 'POST') return reject(res, 405, 'Use POST.')
   if (!isAllowedRequest(req.headers, port)) return reject(res, 403, 'Only the local app may use this endpoint.')
 
   const body = await readBody(req)
   if (body === null) return reject(res, 413, 'Request too large.')
-  let fragment: unknown
+  let request: unknown
   try {
-    fragment = JSON.parse(body)?.fragment
+    request = JSON.parse(body)
   } catch {
     return reject(res, 400, 'Request is not valid JSON.')
   }
+  // Exactly one of a tarot reading (share-link fragment) or an oracle card.
+  if (typeof request !== 'object' || request === null || Array.isArray(request)) {
+    return reject(res, 400, 'Missing reading.')
+  }
+  const keys = Object.keys(request)
+  if (keys.length !== 1) return reject(res, 400, 'Send exactly one reading.')
+  if ('oracle' in request) return handleOracle(res, request.oracle, templates.oracle)
+
+  const fragment = 'fragment' in request ? request.fragment : undefined
   if (typeof fragment !== 'string') return reject(res, 400, 'Missing reading.')
   const decoded = decodeReading(fragment, rawSpreads, cardIds)
   if (decoded.kind !== 'reading') return reject(res, 400, 'That reading is not valid.')
 
   const reading = decoded.reading
   const spread = spreads.find((s) => s.id === reading.spreadId)!
-  const prompt = buildPrompt(fs.readFileSync(templatePath, 'utf8'), reading, spread, cardsById)
+  const prompt = buildPrompt(fs.readFileSync(templates.reading, 'utf8'), reading, spread, cardsById)
   streamClaude(res, prompt, (answer, status) =>
     appendJournal({ link: encodeReading(reading, { includeQuestion: true }), reading, answer, status }),
   )
+}
+
+function handleOracle(res: ServerResponse, oracle: unknown, templatePath: string) {
+  if (typeof oracle !== 'object' || oracle === null) return reject(res, 400, 'Missing oracle card.')
+  const { cardId, question } = oracle as Record<string, unknown>
+  const card = typeof cardId === 'string' ? oracleById.get(cardId) : undefined
+  if (!card) return reject(res, 400, 'That oracle card is not valid.')
+  if (typeof question !== 'string' || countChars(question) > QUESTION_MAX_CHARS) {
+    return reject(res, 400, 'That question is not valid.')
+  }
+
+  const prompt = buildOraclePrompt(fs.readFileSync(templatePath, 'utf8'), card, question)
+  streamClaude(res, prompt, (answer, status) => appendOracleJournal({ cardId: card.id, question, answer, status }))
 }
 
 function stop(child: ChildProcess) {

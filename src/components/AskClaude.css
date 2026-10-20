@@ -1,4 +1,4 @@
-/* Ask Claude (dev only). Imported only by AskClaude.tsx so production builds drop it. */
+/* Ask Claude (dev only). Imported only by ClaudeAnswer.tsx so production builds drop it. */
 .claude-answer {
   order: 1;
   flex-basis: 100%;
@@ -59,4 +59,20 @@
 
 .claude-answer-status.error {
   color: var(--no);
+}
+
+.oracle-ask {
+  width: 100%;
+  max-width: 560px;
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+}
+
+.oracle-ask .question-box {
+  width: 100%;
+}
+
+.oracle-ask textarea:disabled {
+  opacity: 0.6;
 }

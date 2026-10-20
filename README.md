@@ -15,6 +15,12 @@ npm run preview   # serve dist/ at http://localhost:4173/tarot-app/
 
 The app is served under `/tarot-app/` because GitHub Pages hosts it as a project site. If the repository is renamed, update `base` in `vite.config.ts` to match.
 
+## Animal oracle
+
+Below the tarot spreads, **Today's animal oracle** draws one card from an original deck of 36 animal cards, such as the Dachshund · Small but Mighty or the Alpaca · Gentle Boundaries. Each card shows a message, a question to reflect on, and an affirmation. There's no question to type and no daily limit: use **Draw again** for a different card and **Back** to return.
+
+The deck lives in `data/oracle/animal.json` (card ids) and `data/i18n/en/oracle/animal.json` (the text).
+
 ## Private readings
 
 When you run the app locally with `npm run dev`, each reading also has an **Ask Claude** button. It sends the reading to your own [Claude Code](https://claude.com/claude-code) on this computer and streams Claude's interpretation into the page. This feature exists only in `npm run dev`; the public site and `npm run build` don't include it.
@@ -27,10 +33,11 @@ Use it:
 
 1. Run `npm run dev` and open http://localhost:5173/tarot-app/.
 2. Draw a reading, or open a share link, then click **Ask Claude**. Use **Stop** to end an answer early and **Ask again** for a new interpretation of the same cards.
+3. For an animal oracle card, you can also type a question in **Ask about this card**, such as "What should I focus on today?", before clicking **Ask Claude**. Leave it empty for a fuller explanation of the card. The box stays editable, so you can change the question and use **Ask again** on the same card.
 
 Claude Code runs with all tools turned off and without saving the session, from a temporary directory.
 
-Each finished or stopped answer is saved to your private journal in `~/.tarot/journal/`, one `YYYY-MM-DD.jsonl` file per day. The journal is outside this repository and readable only by you. Set `TAROT_JOURNAL_DIR` to store it somewhere else.
+Each finished or stopped answer, tarot or oracle, is saved to your private journal in `~/.tarot/journal/`, one `YYYY-MM-DD.jsonl` file per day. The journal is outside this repository and readable only by you. Set `TAROT_JOURNAL_DIR` to store it somewhere else.
 
 Don't start the dev server with `--host`. The Ask Claude endpoint only answers requests from this computer, but there's no reason to expose it on your network.
 
