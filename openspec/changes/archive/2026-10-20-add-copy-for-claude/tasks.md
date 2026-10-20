@@ -17,7 +17,7 @@
 
 - [x] 3.1 Run `npm test && npm run build && npm run preview` and the existing card-draw and share-link browser checks, plus copying a prompt after switching the browser offline; verify everything passes and the console has no errors
 - [x] 3.2 Paste a copied prompt from each spread into Claude and confirm it reads the cards as given, keeps a Yes / No answer consistent with the written verdict, and treats an instruction-like question as the topic; record any template tweaks made
-- [ ] 3.3 After pushing to `main`, verify the deploy succeeds and "Copy for Claude" works on `https://chiehhsinliu.github.io/tarot-app/`
+- [x] 3.3 After pushing to `main`, verify the deploy succeeds and "Copy for Claude" works on `https://chiehhsinliu.github.io/tarot-app/`
 
 ## Workflow follow-up
 
