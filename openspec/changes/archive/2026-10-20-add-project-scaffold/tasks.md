@@ -21,7 +21,7 @@
 ## 4. Integration check
 
 - [x] 4.1 Repo owner sets Settings → Pages → Source = "GitHub Actions" for `ChiehHsinLiu/tarot-app`; verify the setting shows "GitHub Actions"
-- [ ] 4.2 Push to `main` and verify the "Deploy" workflow run succeeds (`gh run list --workflow deploy.yml`), then open `https://chiehhsinliu.github.io/tarot-app/` and confirm the "Tarot" heading, tab title, and no 404s in the network panel
+- [x] 4.2 Push to `main` and verify the "Deploy" workflow run succeeds (`gh run list --workflow deploy.yml`), then open `https://chiehhsinliu.github.io/tarot-app/` and confirm the "Tarot" heading, tab title, and no 404s in the network panel
 
 ## Workflow follow-up
 
