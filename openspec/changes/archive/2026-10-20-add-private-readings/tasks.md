@@ -26,7 +26,7 @@
 
 - [x] 4.1 Add a "Private readings" section to `README.md` (requirements, `npm run dev`, where the journal lives, do not use `--host`); verify the steps work as written
 - [x] 4.2 Run `npm test && npm run build`, the existing card-draw, share-link, and copy-for-claude browser checks against `npm run preview`, and an Ask Claude round trip with Stop and Ask again on `npm run dev`; verify everything passes with no console errors and journal entries for completed and stopped answers
-- [ ] 4.3 After pushing to `main`, verify the deploy succeeds and the live site has no Ask Claude button or `api/reading` reference
+- [x] 4.3 After pushing to `main`, verify the deploy succeeds and the live site has no Ask Claude button or `api/reading` reference
 
 ## Workflow follow-up
 
