@@ -1,0 +1,1172 @@
+{
+  "major-00": {
+    "name": "The Fool",
+    "keywords": [
+      "beginnings",
+      "spontaneity",
+      "faith",
+      "freedom"
+    ],
+    "upright": "You stand at the start of something new. Trust your curiosity and take the first step, even without a full map. Openness and a light heart serve you better than overplanning right now.",
+    "reversed": "A leap may be more reckless than brave. Check what you are overlooking before you jump, or notice whether fear of looking foolish is keeping you from beginning at all.",
+    "yesNoNote": {
+      "upright": "A fresh start favors you. Take the step.",
+      "reversed": "Not yet. Look harder before you leap."
+    }
+  },
+  "major-01": {
+    "name": "The Magician",
+    "keywords": [
+      "willpower",
+      "skill",
+      "manifestation",
+      "focus"
+    ],
+    "upright": "You have the tools, skills, and energy you need. Focus your intention and act. What you put your mind to can take real shape now.",
+    "reversed": "Your talents may be scattered or misdirected. Watch for manipulation, in others or in yourself, and reconnect your actions with your honest aims.",
+    "yesNoNote": {
+      "upright": "You have what it takes to make this happen.",
+      "reversed": "Something in the plan or the people is off. Hold back."
+    }
+  },
+  "major-02": {
+    "name": "The High Priestess",
+    "keywords": [
+      "intuition",
+      "mystery",
+      "inner knowing",
+      "stillness"
+    ],
+    "upright": "The answer is not on the surface. Quiet down and listen to your intuition; some things reveal themselves only when you stop pushing for them.",
+    "reversed": "You may be ignoring your inner voice or hiding things from yourself. Secrets or missing information cloud the picture until you look within.",
+    "yesNoNote": {
+      "upright": "The outcome is still hidden. Trust your gut more than a firm answer.",
+      "reversed": "Hidden facts or unclear motives. Don't commit yet."
+    }
+  },
+  "major-03": {
+    "name": "The Empress",
+    "keywords": [
+      "abundance",
+      "nurturing",
+      "creativity",
+      "growth"
+    ],
+    "upright": "Growth comes naturally when you care for it. This is a time for comfort, creativity, and generosity, toward others and toward yourself.",
+    "reversed": "You may be neglecting your own needs or smothering something that needs space. Creative energy feels blocked until you rest and reconnect with what nourishes you.",
+    "yesNoNote": {
+      "upright": "Conditions are fertile. What you tend will grow.",
+      "reversed": "Possibly, once you give it, and yourself, more care."
+    }
+  },
+  "major-04": {
+    "name": "The Emperor",
+    "keywords": [
+      "structure",
+      "authority",
+      "stability",
+      "leadership"
+    ],
+    "upright": "Order and steady leadership bring results. Set clear boundaries, make a plan, and take responsibility; firm foundations make the rest possible.",
+    "reversed": "Control may have become rigid, or structure is missing altogether. Notice where power is being misused, or where you need to claim more authority over your own life.",
+    "yesNoNote": {
+      "upright": "Yes, with a clear plan and firm commitment.",
+      "reversed": "Too rigid or too chaotic right now. Not as things stand."
+    }
+  },
+  "major-05": {
+    "name": "The Hierophant",
+    "keywords": [
+      "tradition",
+      "guidance",
+      "belief",
+      "learning"
+    ],
+    "upright": "Established paths, mentors, and shared traditions can guide you. Learning the rules, and why they exist, helps you move forward with support.",
+    "reversed": "Conventional wisdom may not fit your situation. You are being asked to question inherited beliefs and find your own way, even if it breaks from expectation.",
+    "yesNoNote": {
+      "upright": "Yes, if you follow the proven path or trusted advice.",
+      "reversed": "Only if you are willing to go your own way."
+    }
+  },
+  "major-06": {
+    "name": "The Lovers",
+    "keywords": [
+      "love",
+      "union",
+      "choice",
+      "values"
+    ],
+    "upright": "A meaningful connection or an important choice is before you. Choose in line with your deepest values; harmony comes from alignment, not from losing yourself.",
+    "reversed": "Imbalance or disconnection in a relationship, or a choice made against your values. Honest conversation, with others or with yourself, helps restore alignment.",
+    "yesNoNote": {
+      "upright": "Yes, if the choice matches what you truly value.",
+      "reversed": "Something is out of alignment. Not right now."
+    }
+  },
+  "major-07": {
+    "name": "The Chariot",
+    "keywords": [
+      "determination",
+      "momentum",
+      "control",
+      "victory"
+    ],
+    "upright": "Drive and discipline carry you forward. Hold opposing forces in check, keep your eyes on the goal, and you can make real progress.",
+    "reversed": "You may feel pulled in different directions or stalled. Regain your direction before pushing harder; force without focus gets you nowhere.",
+    "yesNoNote": {
+      "upright": "Push forward with focus and you will get there.",
+      "reversed": "No clear direction yet. Regroup first."
+    }
+  },
+  "major-08": {
+    "name": "Strength",
+    "keywords": [
+      "courage",
+      "compassion",
+      "patience",
+      "inner strength"
+    ],
+    "upright": "Quiet courage wins here. Meet challenges with patience and gentleness rather than force; your steadiness is more powerful than it looks.",
+    "reversed": "Self-doubt or frayed nerves may be getting the better of you. Be kind to yourself and rebuild your confidence before taking on more.",
+    "yesNoNote": {
+      "upright": "Yes. Patience and courage see you through.",
+      "reversed": "Possibly, once you feel steadier in yourself."
+    }
+  },
+  "major-09": {
+    "name": "The Hermit",
+    "keywords": [
+      "solitude",
+      "reflection",
+      "wisdom",
+      "search"
+    ],
+    "upright": "Step back from the noise. Time alone for reflection will show you what matters; the light you need is the one you already carry.",
+    "reversed": "Withdrawal may have turned into isolation, or you are avoiding the reflection you need. Look for a balance between solitude and reaching out.",
+    "yesNoNote": {
+      "upright": "Not yet clear. Take time to reflect before deciding.",
+      "reversed": "Avoiding the question won't help. Not as things stand."
+    }
+  },
+  "major-10": {
+    "name": "Wheel of Fortune",
+    "keywords": [
+      "cycles",
+      "change",
+      "fortune",
+      "turning points"
+    ],
+    "upright": "Circumstances are shifting, often in your favor. Ride the turn with an open mind; things are moving into a new phase.",
+    "reversed": "A run of bad luck, or resistance to change. What is out of your control is shifting anyway, so focus on how you respond.",
+    "yesNoNote": {
+      "upright": "The wheel is turning your way.",
+      "reversed": "The timing is against you for now."
+    }
+  },
+  "major-11": {
+    "name": "Justice",
+    "keywords": [
+      "fairness",
+      "truth",
+      "cause and effect",
+      "balance"
+    ],
+    "upright": "Fairness and honesty prevail. Decisions made now carry consequences, so weigh the facts clearly and act with integrity.",
+    "reversed": "Something may be unfair or unbalanced, or you are avoiding accountability. Look honestly at your own part and at what is not being said.",
+    "yesNoNote": {
+      "upright": "Yes, if your cause is fair and honest.",
+      "reversed": "Something is unbalanced or untrue. No."
+    }
+  },
+  "major-12": {
+    "name": "The Hanged Man",
+    "keywords": [
+      "pause",
+      "surrender",
+      "new perspective",
+      "waiting"
+    ],
+    "upright": "Progress may be on hold, but the pause has value. Stop forcing an outcome and look at the situation from a different angle.",
+    "reversed": "You may be stalling, or making sacrifices that lead nowhere. Decide whether to wait with purpose or to move on.",
+    "yesNoNote": {
+      "upright": "Not yet. A pause and a new view come first.",
+      "reversed": "Waiting longer won't change things. No."
+    }
+  },
+  "major-13": {
+    "name": "Death",
+    "keywords": [
+      "endings",
+      "transformation",
+      "transition",
+      "release"
+    ],
+    "upright": "Something is coming to a natural end so that something new can begin. Release what is finished; this is transformation, not catastrophe.",
+    "reversed": "You may be holding on to what has already ended. Resisting change prolongs the discomfort, while letting go opens the way forward.",
+    "yesNoNote": {
+      "upright": "Not in its current form. Something must end first.",
+      "reversed": "Holding on blocks the change you need. No."
+    }
+  },
+  "major-14": {
+    "name": "Temperance",
+    "keywords": [
+      "balance",
+      "moderation",
+      "patience",
+      "blending"
+    ],
+    "upright": "Balance and patience bring the best results. Blend different elements thoughtfully and avoid extremes; steady progress is still progress.",
+    "reversed": "Excess or imbalance is throwing things off. Slow down, notice where you are overdoing it, and restore a rhythm you can sustain.",
+    "yesNoNote": {
+      "upright": "Yes, with patience and a balanced approach.",
+      "reversed": "Possibly, once you restore some balance."
+    }
+  },
+  "major-15": {
+    "name": "The Devil",
+    "keywords": [
+      "attachment",
+      "temptation",
+      "restriction",
+      "shadow"
+    ],
+    "upright": "You may feel bound by habits, desires, or situations that don't serve you. Look closely: the chains are often looser than they seem.",
+    "reversed": "You are beginning to see through what has held you back. Breaking free takes honesty, but release is within reach.",
+    "yesNoNote": {
+      "upright": "This may tie you to something unhealthy. No.",
+      "reversed": "Possibly, if you let go of what holds you back."
+    }
+  },
+  "major-16": {
+    "name": "The Tower",
+    "keywords": [
+      "upheaval",
+      "sudden change",
+      "revelation",
+      "awakening"
+    ],
+    "upright": "Unexpected change shakes what you thought was solid. It is unsettling, but what falls was built on weak foundations, and the truth it reveals frees you.",
+    "reversed": "You may be avoiding a necessary upheaval or living in the aftermath of one. Facing the change directly is easier than delaying it.",
+    "yesNoNote": {
+      "upright": "Sudden upheaval. Not as you hope.",
+      "reversed": "Possibly, but only after facing an uncomfortable truth."
+    }
+  },
+  "major-17": {
+    "name": "The Star",
+    "keywords": [
+      "hope",
+      "healing",
+      "renewal",
+      "inspiration"
+    ],
+    "upright": "After difficulty comes calm and renewal. Your hope is justified; trust the path, take care of yourself, and let inspiration guide you.",
+    "reversed": "Discouragement may be dimming your sense of possibility. Reconnect with small sources of hope and with faith in yourself.",
+    "yesNoNote": {
+      "upright": "Yes. There is real reason for hope.",
+      "reversed": "Possibly, if you keep faith a little longer."
+    }
+  },
+  "major-18": {
+    "name": "The Moon",
+    "keywords": [
+      "illusion",
+      "uncertainty",
+      "intuition",
+      "dreams"
+    ],
+    "upright": "Things are not as clear as they seem. Fears and illusions can distort the picture, so move carefully and let intuition guide you through the uncertainty.",
+    "reversed": "Confusion is starting to lift and hidden things are coming to light. Trust what you can now see clearly and release fears that have no basis.",
+    "yesNoNote": {
+      "upright": "Too much is unclear to say yes. Wait.",
+      "reversed": "Clarity is coming. Ask again once you know more."
+    }
+  },
+  "major-19": {
+    "name": "The Sun",
+    "keywords": [
+      "joy",
+      "success",
+      "vitality",
+      "clarity"
+    ],
+    "upright": "Warmth, success, and clarity shine on you. This is a time of confidence and joy, so share it freely.",
+    "reversed": "Happiness may be dimmed by doubt or delays, or you are struggling to see the bright side. The good is still there; it may just take longer.",
+    "yesNoNote": {
+      "upright": "A clear, bright yes.",
+      "reversed": "Likely in time, though not as quickly as you'd like."
+    }
+  },
+  "major-20": {
+    "name": "Judgement",
+    "keywords": [
+      "awakening",
+      "reckoning",
+      "renewal",
+      "calling"
+    ],
+    "upright": "A moment of clarity calls you to rise and answer. Reflect honestly on the past, forgive what you can, and step into a renewed sense of purpose.",
+    "reversed": "Self-doubt or harsh self-judgment may be keeping you from a calling. Listen to the inner summons rather than the inner critic.",
+    "yesNoNote": {
+      "upright": "Yes. It is time to answer the call.",
+      "reversed": "Self-doubt is in the way. Not yet."
+    }
+  },
+  "major-21": {
+    "name": "The World",
+    "keywords": [
+      "completion",
+      "fulfillment",
+      "integration",
+      "wholeness"
+    ],
+    "upright": "A cycle reaches its fulfilling conclusion. Celebrate what you have accomplished; you are ready for the next chapter.",
+    "reversed": "Something feels unfinished, or you are seeking closure that hasn't come. Tie up loose ends before moving on.",
+    "yesNoNote": {
+      "upright": "Yes. Completion and success.",
+      "reversed": "Almost. Finish what is still open first."
+    }
+  },
+  "wands-01": {
+    "name": "Ace of Wands",
+    "keywords": [
+      "inspiration",
+      "new venture",
+      "spark",
+      "potential"
+    ],
+    "upright": "A spark of inspiration or a new opportunity arrives. Energy and enthusiasm are high, so act on the idea while it is fresh.",
+    "reversed": "The spark is there but hard to catch. Delays, low motivation, or false starts suggest waiting until your energy and direction line up.",
+    "yesNoNote": {
+      "upright": "Yes. Seize the new spark.",
+      "reversed": "The energy isn't there yet. Not now."
+    }
+  },
+  "wands-02": {
+    "name": "Two of Wands",
+    "keywords": [
+      "planning",
+      "vision",
+      "decisions",
+      "future"
+    ],
+    "upright": "You are looking beyond where you stand and weighing your options. Plan boldly; the world is larger than your current circumstances.",
+    "reversed": "Fear of the unknown may keep you in familiar territory. Unclear plans or hesitation stall progress until you commit to a direction.",
+    "yesNoNote": {
+      "upright": "Likely, once you commit to a plan.",
+      "reversed": "Hesitation is holding things up. Not yet."
+    }
+  },
+  "wands-03": {
+    "name": "Three of Wands",
+    "keywords": [
+      "expansion",
+      "foresight",
+      "progress",
+      "waiting for results"
+    ],
+    "upright": "Your efforts are underway and early results are on the horizon. Keep looking ahead and be ready to grow beyond your first plans.",
+    "reversed": "Progress is slower than expected, or obstacles you didn't foresee appear. Review your plans and stay patient while things develop.",
+    "yesNoNote": {
+      "upright": "Yes. What you set in motion is coming back to you.",
+      "reversed": "Delays likely. Possibly, but later than hoped."
+    }
+  },
+  "wands-04": {
+    "name": "Four of Wands",
+    "keywords": [
+      "celebration",
+      "home",
+      "harmony",
+      "milestone"
+    ],
+    "upright": "A milestone is worth celebrating. Home, community, and stability come together in a moment of shared joy.",
+    "reversed": "Harmony at home or in a group feels shaky, or a celebration is postponed. The foundation is still there; it just needs attention.",
+    "yesNoNote": {
+      "upright": "Yes. A happy, settled outcome.",
+      "reversed": "Possibly, after some tension is resolved."
+    }
+  },
+  "wands-05": {
+    "name": "Five of Wands",
+    "keywords": [
+      "competition",
+      "conflict",
+      "friction",
+      "rivalry"
+    ],
+    "upright": "Competing ideas or egos create friction. The struggle can sharpen you, but make sure the fight is worth having.",
+    "reversed": "Conflict may be easing, or you are avoiding a necessary disagreement. Look for common ground instead of keeping score.",
+    "yesNoNote": {
+      "upright": "Too much conflict around this. Not easily.",
+      "reversed": "Possibly, if the competing sides find common ground."
+    }
+  },
+  "wands-06": {
+    "name": "Six of Wands",
+    "keywords": [
+      "victory",
+      "recognition",
+      "confidence",
+      "success"
+    ],
+    "upright": "Your efforts are noticed and rewarded. Enjoy the recognition and let success build your confidence.",
+    "reversed": "Recognition is delayed, or you are leaning too much on others' approval. Measure success by your own standards.",
+    "yesNoNote": {
+      "upright": "Yes. Success and recognition.",
+      "reversed": "Not the win you want right now."
+    }
+  },
+  "wands-07": {
+    "name": "Seven of Wands",
+    "keywords": [
+      "defense",
+      "perseverance",
+      "standing firm",
+      "challenge"
+    ],
+    "upright": "You hold an advantage but must defend it. Stand firm in what you believe; persistence keeps you on higher ground.",
+    "reversed": "You may feel overwhelmed or tempted to give up your position. Decide which battles truly matter and let the rest go.",
+    "yesNoNote": {
+      "upright": "Yes, if you hold your ground.",
+      "reversed": "You may be stretched too thin. Not as things stand."
+    }
+  },
+  "wands-08": {
+    "name": "Eight of Wands",
+    "keywords": [
+      "speed",
+      "movement",
+      "news",
+      "momentum"
+    ],
+    "upright": "Things move quickly. News, travel, or sudden progress arrive fast, so keep up and act while momentum is with you.",
+    "reversed": "Delays, crossed wires, or rushing ahead cause frustration. Slow down enough to aim before the next move.",
+    "yesNoNote": {
+      "upright": "Yes, and soon.",
+      "reversed": "Delays or haste get in the way. Not now."
+    }
+  },
+  "wands-09": {
+    "name": "Nine of Wands",
+    "keywords": [
+      "resilience",
+      "persistence",
+      "last stretch",
+      "guardedness"
+    ],
+    "upright": "You are tired but close to the finish. Draw on your resilience for one more push, and protect what you have built.",
+    "reversed": "Exhaustion or suspicion may be wearing you down. Rest, ask for help, and don't treat everyone as a threat.",
+    "yesNoNote": {
+      "upright": "Possibly. Keep going; you are nearly there.",
+      "reversed": "You are running on empty. Not without rest."
+    }
+  },
+  "wands-10": {
+    "name": "Ten of Wands",
+    "keywords": [
+      "burden",
+      "responsibility",
+      "overload",
+      "hard work"
+    ],
+    "upright": "You are carrying too much. Success may have brought extra burdens; see what you can delegate or set down.",
+    "reversed": "The load is starting to lighten, or you are finally letting go of what isn't yours to carry. Ask for help without guilt.",
+    "yesNoNote": {
+      "upright": "Not without taking on too much. No.",
+      "reversed": "Possibly, once you put some of the load down."
+    }
+  },
+  "wands-11": {
+    "name": "Page of Wands",
+    "keywords": [
+      "curiosity",
+      "enthusiasm",
+      "exploration",
+      "free spirit"
+    ],
+    "upright": "A curious, eager energy invites you to explore. Try something new without needing to know where it leads.",
+    "reversed": "Enthusiasm fizzles before it becomes action, or ideas lack direction. Pick one spark and give it some follow-through.",
+    "yesNoNote": {
+      "upright": "Yes. Explore it with an open mind.",
+      "reversed": "Not until the idea has more direction."
+    }
+  },
+  "wands-12": {
+    "name": "Knight of Wands",
+    "keywords": [
+      "action",
+      "adventure",
+      "passion",
+      "boldness"
+    ],
+    "upright": "Bold action and passion drive you forward. Charge ahead with confidence, but keep an eye on where you are going.",
+    "reversed": "Impulsiveness or impatience may lead to rushed mistakes. Channel your energy before it burns out or scatters.",
+    "yesNoNote": {
+      "upright": "Yes. Go for it boldly.",
+      "reversed": "Too hasty right now. Slow down first."
+    }
+  },
+  "wands-13": {
+    "name": "Queen of Wands",
+    "keywords": [
+      "confidence",
+      "warmth",
+      "determination",
+      "charisma"
+    ],
+    "upright": "Confidence and warmth make you a natural leader. Be yourself fully; your energy and determination inspire others.",
+    "reversed": "Self-doubt, jealousy, or burnout may dim your light. Reclaim your confidence by focusing on what you genuinely enjoy.",
+    "yesNoNote": {
+      "upright": "Yes. Step forward with confidence.",
+      "reversed": "Possibly, once you trust yourself again."
+    }
+  },
+  "wands-14": {
+    "name": "King of Wands",
+    "keywords": [
+      "vision",
+      "leadership",
+      "entrepreneurship",
+      "boldness"
+    ],
+    "upright": "You see the bigger picture and can lead others toward it. Act with vision and decisiveness, and take ownership of the result.",
+    "reversed": "Ambition may be turning into impatience or domineering behavior. Lead by example rather than by force.",
+    "yesNoNote": {
+      "upright": "Yes. Lead with vision and it will happen.",
+      "reversed": "Not if pushed through by force alone."
+    }
+  },
+  "cups-01": {
+    "name": "Ace of Cups",
+    "keywords": [
+      "new feelings",
+      "love",
+      "compassion",
+      "openness"
+    ],
+    "upright": "Your heart opens to new love, friendship, or emotional renewal. Let yourself receive as well as give; feelings flow freely now.",
+    "reversed": "Emotions may be blocked or held back, or you are pouring out more than you take in. Make space to feel what you feel.",
+    "yesNoNote": {
+      "upright": "Yes. An open-hearted beginning.",
+      "reversed": "Your heart isn't fully in it yet. Not now."
+    }
+  },
+  "cups-02": {
+    "name": "Two of Cups",
+    "keywords": [
+      "partnership",
+      "connection",
+      "mutual respect",
+      "attraction"
+    ],
+    "upright": "A balanced, mutual connection forms. Whether in love, friendship, or work, this is a meeting of equals built on respect.",
+    "reversed": "A relationship feels out of balance, or communication has broken down. Honest, kind conversation can restore the bond.",
+    "yesNoNote": {
+      "upright": "Yes. The feeling is mutual.",
+      "reversed": "Not while the connection is out of balance."
+    }
+  },
+  "cups-03": {
+    "name": "Three of Cups",
+    "keywords": [
+      "friendship",
+      "celebration",
+      "community",
+      "joy"
+    ],
+    "upright": "Friendship and shared joy lift your spirits. Gather with people who support you and celebrate together.",
+    "reversed": "Social tension, gossip, or overindulgence spoil the mood, or you feel left out. Reconnect with the friends who truly matter.",
+    "yesNoNote": {
+      "upright": "Yes. A reason to celebrate.",
+      "reversed": "Possibly, if group tensions settle."
+    }
+  },
+  "cups-04": {
+    "name": "Four of Cups",
+    "keywords": [
+      "apathy",
+      "contemplation",
+      "discontent",
+      "missed offers"
+    ],
+    "upright": "You may feel bored or withdrawn, focused on what is lacking. Look up: an offer or opportunity may be right in front of you.",
+    "reversed": "You are coming out of a rut and ready to engage again. New interest and motivation return when you let them.",
+    "yesNoNote": {
+      "upright": "Your heart isn't in it right now. Not yet.",
+      "reversed": "Possibly. You are ready to say yes to something new."
+    }
+  },
+  "cups-05": {
+    "name": "Five of Cups",
+    "keywords": [
+      "loss",
+      "regret",
+      "grief",
+      "disappointment"
+    ],
+    "upright": "Disappointment or loss weighs on you. Grieve what is gone, but notice that not everything has spilled; something remains.",
+    "reversed": "You are beginning to accept the past and look toward what is still possible. Healing starts when you turn around.",
+    "yesNoNote": {
+      "upright": "Disappointment around this. No.",
+      "reversed": "Possibly, as you move past what was lost."
+    }
+  },
+  "cups-06": {
+    "name": "Six of Cups",
+    "keywords": [
+      "nostalgia",
+      "memories",
+      "innocence",
+      "kindness"
+    ],
+    "upright": "Memories and simple kindness bring comfort. Someone or something from the past may return, or you rediscover a childlike joy.",
+    "reversed": "Living in the past may keep you from the present. Honor old memories, then turn your attention to what is here now.",
+    "yesNoNote": {
+      "upright": "Yes, especially if it reconnects you with something good.",
+      "reversed": "Not if it means going backward."
+    }
+  },
+  "cups-07": {
+    "name": "Seven of Cups",
+    "keywords": [
+      "choices",
+      "fantasy",
+      "illusion",
+      "daydreams"
+    ],
+    "upright": "Many options shimmer before you, but not all are real. Separate wishful thinking from what is actually achievable before you choose.",
+    "reversed": "Clarity returns and you see which options matter. Commit to one path instead of keeping every door open.",
+    "yesNoNote": {
+      "upright": "Too many illusions to say yes. Look closer.",
+      "reversed": "Possibly, now that you see things more clearly."
+    }
+  },
+  "cups-08": {
+    "name": "Eight of Cups",
+    "keywords": [
+      "walking away",
+      "seeking meaning",
+      "letting go",
+      "change"
+    ],
+    "upright": "Something no longer fulfills you, and it is time to move on. Walking away takes courage, but you are seeking something deeper.",
+    "reversed": "You may be torn between staying and leaving, or drifting without purpose. Be honest about what you truly want.",
+    "yesNoNote": {
+      "upright": "Not here. It is time to move on.",
+      "reversed": "Unclear. Decide what you are really looking for."
+    }
+  },
+  "cups-09": {
+    "name": "Nine of Cups",
+    "keywords": [
+      "contentment",
+      "wishes fulfilled",
+      "satisfaction",
+      "gratitude"
+    ],
+    "upright": "Often called the wish card: what you hoped for is within reach. Enjoy the satisfaction and let yourself feel grateful.",
+    "reversed": "A wish may come true but feel hollow, or smugness creeps in. Ask what would bring you real, lasting contentment.",
+    "yesNoNote": {
+      "upright": "Yes. Your wish is likely granted.",
+      "reversed": "Possibly, but it may not satisfy you as expected."
+    }
+  },
+  "cups-10": {
+    "name": "Ten of Cups",
+    "keywords": [
+      "harmony",
+      "family",
+      "happiness",
+      "belonging"
+    ],
+    "upright": "Emotional fulfillment and harmony with the people you love. This is a picture of lasting happiness and belonging.",
+    "reversed": "Family tensions or unmet ideals disturb the peace. Let go of the picture-perfect version and value the real connections you have.",
+    "yesNoNote": {
+      "upright": "A warm, happy yes.",
+      "reversed": "Possibly, after some repair in your relationships."
+    }
+  },
+  "cups-11": {
+    "name": "Page of Cups",
+    "keywords": [
+      "creativity",
+      "intuition",
+      "tender feelings",
+      "surprise"
+    ],
+    "upright": "A gentle, imaginative message arrives. Stay open to creative ideas, sweet surprises, and your own tender feelings.",
+    "reversed": "Emotional immaturity, moodiness, or creative blocks get in the way. Be patient with yourself and with your feelings.",
+    "yesNoNote": {
+      "upright": "Yes. A pleasant surprise is likely.",
+      "reversed": "Feelings are too unsettled. Not yet."
+    }
+  },
+  "cups-12": {
+    "name": "Knight of Cups",
+    "keywords": [
+      "romance",
+      "charm",
+      "idealism",
+      "following the heart"
+    ],
+    "upright": "A romantic or idealistic offer comes your way. Follow your heart, but keep your feet on the ground.",
+    "reversed": "Moodiness, unrealistic expectations, or empty promises cloud things. Look for actions that match the words.",
+    "yesNoNote": {
+      "upright": "Yes. Follow your heart.",
+      "reversed": "The promise may not be real. Not now."
+    }
+  },
+  "cups-13": {
+    "name": "Queen of Cups",
+    "keywords": [
+      "empathy",
+      "intuition",
+      "emotional depth",
+      "care"
+    ],
+    "upright": "Compassion and emotional wisdom guide you. Trust your intuition and offer care to others, and to yourself.",
+    "reversed": "You may be absorbing too much of others' emotions, or neglecting your own. Set gentle boundaries and refill your cup.",
+    "yesNoNote": {
+      "upright": "Yes, if it feels right in your heart.",
+      "reversed": "Possibly, once you care for your own needs first."
+    }
+  },
+  "cups-14": {
+    "name": "King of Cups",
+    "keywords": [
+      "emotional balance",
+      "diplomacy",
+      "calm",
+      "generosity"
+    ],
+    "upright": "You can stay calm and kind even when emotions run high. Lead with steady compassion and balanced judgment.",
+    "reversed": "Emotions may be suppressed or swinging. Find a healthy outlet instead of bottling things up or lashing out.",
+    "yesNoNote": {
+      "upright": "Yes. Stay calm and it works out.",
+      "reversed": "Not until emotions are steadier."
+    }
+  },
+  "swords-01": {
+    "name": "Ace of Swords",
+    "keywords": [
+      "clarity",
+      "truth",
+      "breakthrough",
+      "new idea"
+    ],
+    "upright": "A breakthrough of clarity cuts through confusion. Speak the truth plainly and act on the insight while it is sharp.",
+    "reversed": "Confused thinking or miscommunication blurs the picture. Gather the facts before deciding, and choose your words with care.",
+    "yesNoNote": {
+      "upright": "Yes. The way forward is clear.",
+      "reversed": "Too much confusion for a clear yes. Not yet."
+    }
+  },
+  "swords-02": {
+    "name": "Two of Swords",
+    "keywords": [
+      "indecision",
+      "stalemate",
+      "avoidance",
+      "difficult choice"
+    ],
+    "upright": "You are stuck between two options and may be avoiding the decision. Remove the blindfold: look honestly at what each choice means.",
+    "reversed": "Pressure builds and the stalemate can't last. Information you were avoiding comes out, and a choice must be made.",
+    "yesNoNote": {
+      "upright": "Undecided. You need to see more clearly first.",
+      "reversed": "A decision is coming soon. It could go either way."
+    }
+  },
+  "swords-03": {
+    "name": "Three of Swords",
+    "keywords": [
+      "heartbreak",
+      "sorrow",
+      "painful truth",
+      "grief"
+    ],
+    "upright": "A painful truth or heartache hurts. Let yourself feel it; acknowledging the hurt is the first step toward healing.",
+    "reversed": "The worst of the pain is passing. You are beginning to recover, forgive, and release what hurt you.",
+    "yesNoNote": {
+      "upright": "This brings hurt. No.",
+      "reversed": "Possibly, as healing begins."
+    }
+  },
+  "swords-04": {
+    "name": "Four of Swords",
+    "keywords": [
+      "rest",
+      "recovery",
+      "pause",
+      "contemplation"
+    ],
+    "upright": "Rest is needed before the next step. Step back, recover your strength, and let your mind quiet down.",
+    "reversed": "You may be pushing on without enough rest, or slowly re-entering the world after a break. Return at a pace you can sustain.",
+    "yesNoNote": {
+      "upright": "Not now. Rest first, then ask again.",
+      "reversed": "Possibly, as you return refreshed."
+    }
+  },
+  "swords-05": {
+    "name": "Five of Swords",
+    "keywords": [
+      "conflict",
+      "hollow victory",
+      "tension",
+      "self-interest"
+    ],
+    "upright": "A conflict may be won at too high a cost. Ask whether being right is worth what it does to your relationships.",
+    "reversed": "The urge to make peace grows after a clash. Let go of resentment, and walk away from fights that can't be won fairly.",
+    "yesNoNote": {
+      "upright": "Any win here may cost too much. No.",
+      "reversed": "Possibly, if you are willing to make peace."
+    }
+  },
+  "swords-06": {
+    "name": "Six of Swords",
+    "keywords": [
+      "transition",
+      "moving on",
+      "calmer waters",
+      "recovery"
+    ],
+    "upright": "You are leaving a difficult time behind for calmer waters. The change may be bittersweet, but it leads somewhere better.",
+    "reversed": "Moving on feels hard, or old troubles follow you. Unfinished business may need attention before you can travel lightly.",
+    "yesNoNote": {
+      "upright": "Yes. Things are improving as you move forward.",
+      "reversed": "Not until you deal with what you're carrying."
+    }
+  },
+  "swords-07": {
+    "name": "Seven of Swords",
+    "keywords": [
+      "deception",
+      "strategy",
+      "secrecy",
+      "getting away with it"
+    ],
+    "upright": "Someone may not be acting openly, possibly you. Be strategic, but be honest with yourself about what you are avoiding.",
+    "reversed": "Secrets come to light, or you feel the weight of not being straight with someone. Coming clean frees you.",
+    "yesNoNote": {
+      "upright": "Something isn't being said openly. No.",
+      "reversed": "Possibly, once the truth comes out."
+    }
+  },
+  "swords-08": {
+    "name": "Eight of Swords",
+    "keywords": [
+      "feeling trapped",
+      "restriction",
+      "self-limiting beliefs",
+      "helplessness"
+    ],
+    "upright": "You feel trapped, but the bonds are looser than they look. Fear and limiting beliefs may be the main thing holding you back.",
+    "reversed": "You are starting to see a way out. Releasing old fears gives you room to move and choose again.",
+    "yesNoNote": {
+      "upright": "Not while you feel stuck like this.",
+      "reversed": "Yes. You are freeing yourself."
+    }
+  },
+  "swords-09": {
+    "name": "Nine of Swords",
+    "keywords": [
+      "anxiety",
+      "worry",
+      "sleepless nights",
+      "fear"
+    ],
+    "upright": "Worry and racing thoughts feel overwhelming, especially at night. The fear is real, but often bigger in your mind than in reality; reach out to someone you trust.",
+    "reversed": "Anxiety begins to ease as you talk it through or see things more clearly. Hope returns when you stop facing it alone.",
+    "yesNoNote": {
+      "upright": "Worry clouds this question. Not now.",
+      "reversed": "Possibly, as your fears ease."
+    }
+  },
+  "swords-10": {
+    "name": "Ten of Swords",
+    "keywords": [
+      "painful ending",
+      "rock bottom",
+      "release",
+      "new dawn"
+    ],
+    "upright": "A painful chapter reaches its end. It may feel like rock bottom, but the only way from here is up, and the dawn is already coming.",
+    "reversed": "You are recovering from a hard ending and slowly getting back on your feet. Don't reopen old wounds; let them heal.",
+    "yesNoNote": {
+      "upright": "This chapter is over. No.",
+      "reversed": "Not yet, but recovery has begun."
+    }
+  },
+  "swords-11": {
+    "name": "Page of Swords",
+    "keywords": [
+      "curiosity",
+      "new ideas",
+      "vigilance",
+      "communication"
+    ],
+    "upright": "A sharp, curious mind looks for answers. Ask questions, learn eagerly, and stay alert to what is really going on.",
+    "reversed": "Words may come out sharper than intended, or gossip and hasty talk cause trouble. Think before you speak.",
+    "yesNoNote": {
+      "upright": "Possibly. Get the facts first.",
+      "reversed": "Careless words could spoil this. Not now."
+    }
+  },
+  "swords-12": {
+    "name": "Knight of Swords",
+    "keywords": [
+      "ambition",
+      "fast action",
+      "drive",
+      "directness"
+    ],
+    "upright": "You charge ahead with ideas and determination. Act decisively, but make sure speed doesn't trample others along the way.",
+    "reversed": "Haste and bluntness lead to mistakes or hurt feelings. Slow down and consider the consequences before rushing in.",
+    "yesNoNote": {
+      "upright": "Yes, and quickly, if you stay focused.",
+      "reversed": "Rushing in will backfire. No."
+    }
+  },
+  "swords-13": {
+    "name": "Queen of Swords",
+    "keywords": [
+      "clear thinking",
+      "independence",
+      "honesty",
+      "boundaries"
+    ],
+    "upright": "Clear judgment and honest words serve you. Set firm boundaries and trust your own perspective, informed by experience.",
+    "reversed": "Coldness or harsh judgment may push others away. Balance honesty with compassion, for others and for yourself.",
+    "yesNoNote": {
+      "upright": "Yes, if you see it clearly and honestly.",
+      "reversed": "Possibly, with a gentler approach."
+    }
+  },
+  "swords-14": {
+    "name": "King of Swords",
+    "keywords": [
+      "authority",
+      "intellect",
+      "truth",
+      "fair judgment"
+    ],
+    "upright": "Reason and fairness lead the way. Make decisions based on facts and principles, and communicate them clearly.",
+    "reversed": "Intellect may be used to control or manipulate, or logic has lost touch with feeling. Question harsh rules and hidden agendas.",
+    "yesNoNote": {
+      "upright": "Yes, if the facts support it.",
+      "reversed": "Something isn't fair or clear. No."
+    }
+  },
+  "pentacles-01": {
+    "name": "Ace of Pentacles",
+    "keywords": [
+      "opportunity",
+      "prosperity",
+      "new beginning",
+      "groundedness"
+    ],
+    "upright": "A practical opportunity appears: a new job, project, or resource with real potential. Plant the seed and tend it with care.",
+    "reversed": "An opportunity may slip by, or plans lack a solid footing. Check the practical details before you commit.",
+    "yesNoNote": {
+      "upright": "Yes. A solid, promising start.",
+      "reversed": "The foundation isn't ready. Not yet."
+    }
+  },
+  "pentacles-02": {
+    "name": "Two of Pentacles",
+    "keywords": [
+      "balance",
+      "juggling",
+      "adaptability",
+      "priorities"
+    ],
+    "upright": "You are juggling several demands at once. Stay flexible and keep things moving, but know your priorities.",
+    "reversed": "You may be overcommitted and starting to drop things. Simplify, say no where you can, and restore some balance.",
+    "yesNoNote": {
+      "upright": "Possibly, if you can keep everything in balance.",
+      "reversed": "Too much on your plate for this right now."
+    }
+  },
+  "pentacles-03": {
+    "name": "Three of Pentacles",
+    "keywords": [
+      "teamwork",
+      "craft",
+      "collaboration",
+      "skill"
+    ],
+    "upright": "Good work comes from collaboration and skill. Share your expertise, listen to others, and build something solid together.",
+    "reversed": "Poor teamwork, unclear roles, or sloppy effort undermine the project. Get everyone aligned before going further.",
+    "yesNoNote": {
+      "upright": "Yes, especially with the right people involved.",
+      "reversed": "Not until the team is working together."
+    }
+  },
+  "pentacles-04": {
+    "name": "Four of Pentacles",
+    "keywords": [
+      "security",
+      "holding on",
+      "control",
+      "caution"
+    ],
+    "upright": "You want to hold tight to what you have. Security matters, but too tight a grip can keep good things from coming in.",
+    "reversed": "You are loosening your grip, for better or worse. Find the middle ground between letting go and losing control.",
+    "yesNoNote": {
+      "upright": "Possibly, if you are willing to loosen your grip.",
+      "reversed": "Unsteady ground. Proceed with care."
+    }
+  },
+  "pentacles-05": {
+    "name": "Five of Pentacles",
+    "keywords": [
+      "hardship",
+      "insecurity",
+      "feeling left out",
+      "struggle"
+    ],
+    "upright": "Hard times or a sense of being left out in the cold. Help may be closer than you think; don't be too proud to accept it.",
+    "reversed": "Things are starting to recover after a difficult stretch. Support and stability return little by little.",
+    "yesNoNote": {
+      "upright": "A difficult time for this. No.",
+      "reversed": "Possibly, as things begin to improve."
+    }
+  },
+  "pentacles-06": {
+    "name": "Six of Pentacles",
+    "keywords": [
+      "generosity",
+      "giving and receiving",
+      "sharing",
+      "fairness"
+    ],
+    "upright": "Giving and receiving flow in balance. Share what you can, and accept help graciously when it is offered.",
+    "reversed": "Generosity may come with strings attached, or the exchange feels one-sided. Look for fairness on both sides.",
+    "yesNoNote": {
+      "upright": "Yes. Support is available.",
+      "reversed": "The exchange isn't fair. Not as it stands."
+    }
+  },
+  "pentacles-07": {
+    "name": "Seven of Pentacles",
+    "keywords": [
+      "patience",
+      "long-term view",
+      "assessment",
+      "slow growth"
+    ],
+    "upright": "Your efforts are growing, though slowly. Pause to assess what is working, and be patient with the harvest.",
+    "reversed": "Frustration with slow results may tempt you to give up, or effort is going into the wrong place. Rethink where you invest your energy.",
+    "yesNoNote": {
+      "upright": "Possibly, in time. Results are still growing.",
+      "reversed": "Not if things stay as they are."
+    }
+  },
+  "pentacles-08": {
+    "name": "Eight of Pentacles",
+    "keywords": [
+      "diligence",
+      "mastery",
+      "practice",
+      "dedication"
+    ],
+    "upright": "Steady, focused work builds real skill. Commit to the details and take pride in improving your craft.",
+    "reversed": "Perfectionism or a lack of focus may stall your progress. Work smarter, and remember why the effort matters to you.",
+    "yesNoNote": {
+      "upright": "Yes, through steady work.",
+      "reversed": "Not without more focused effort."
+    }
+  },
+  "pentacles-09": {
+    "name": "Nine of Pentacles",
+    "keywords": [
+      "independence",
+      "self-sufficiency",
+      "comfort",
+      "reward"
+    ],
+    "upright": "Your hard work pays off in comfort and independence. Enjoy what you have built, and take pride in your self-reliance.",
+    "reversed": "Comfort may be covering a sense of emptiness, or independence feels shaky. Ask what kind of security you really want.",
+    "yesNoNote": {
+      "upright": "Yes. Your efforts are rewarded.",
+      "reversed": "Possibly, but check your footing first."
+    }
+  },
+  "pentacles-10": {
+    "name": "Ten of Pentacles",
+    "keywords": [
+      "legacy",
+      "family",
+      "stability",
+      "long-term success"
+    ],
+    "upright": "Lasting stability and a legacy built over time. Family, community, and long-term foundations support you.",
+    "reversed": "Disagreements over family, home, or shared resources unsettle things. Focus on what truly lasts rather than appearances.",
+    "yesNoNote": {
+      "upright": "Yes. A stable, lasting outcome.",
+      "reversed": "Not while foundations are disputed."
+    }
+  },
+  "pentacles-11": {
+    "name": "Page of Pentacles",
+    "keywords": [
+      "learning",
+      "ambition",
+      "study",
+      "new skills"
+    ],
+    "upright": "A chance to learn or start something practical. Approach it like a student: curious, patient, and willing to put in the work.",
+    "reversed": "Procrastination or a lack of follow-through holds back a good idea. Set a small, concrete step and take it.",
+    "yesNoNote": {
+      "upright": "Yes, if you are willing to learn as you go.",
+      "reversed": "Not without more commitment."
+    }
+  },
+  "pentacles-12": {
+    "name": "Knight of Pentacles",
+    "keywords": [
+      "reliability",
+      "routine",
+      "hard work",
+      "persistence"
+    ],
+    "upright": "Slow and steady wins. Keep showing up and doing the work; reliability will get you where you want to be.",
+    "reversed": "Routine has turned into a rut, or caution has become stubbornness. Shake things up enough to keep moving.",
+    "yesNoNote": {
+      "upright": "Yes, but slowly and steadily.",
+      "reversed": "Possibly, if you get unstuck."
+    }
+  },
+  "pentacles-13": {
+    "name": "Queen of Pentacles",
+    "keywords": [
+      "nurturing",
+      "practicality",
+      "comfort",
+      "security"
+    ],
+    "upright": "Practical care and a warm home create a sense of security. Look after yourself and others in down-to-earth ways.",
+    "reversed": "You may be overextending yourself for others or neglecting your own comfort. Balance caring for others with caring for yourself.",
+    "yesNoNote": {
+      "upright": "Yes. Practical care brings good results.",
+      "reversed": "Possibly, once you tend to your own needs."
+    }
+  },
+  "pentacles-14": {
+    "name": "King of Pentacles",
+    "keywords": [
+      "abundance",
+      "security",
+      "discipline",
+      "achievement"
+    ],
+    "upright": "Discipline and good judgment create lasting abundance. You are in a position to provide, lead, and enjoy the results of your work.",
+    "reversed": "A focus on status or control may crowd out what matters. Success means little if it comes at the cost of your values.",
+    "yesNoNote": {
+      "upright": "Yes. A secure, successful outcome.",
+      "reversed": "Not if it compromises your values."
+    }
+  }
+}

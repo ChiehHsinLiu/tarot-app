@@ -1,0 +1,14 @@
+[
+  {
+    "id": "yes-no",
+    "requiresQuestion": true,
+    "showsVerdict": true,
+    "positions": [{ "id": "answer" }]
+  },
+  {
+    "id": "three-card",
+    "requiresQuestion": false,
+    "showsVerdict": false,
+    "positions": [{ "id": "past" }, { "id": "present" }, { "id": "future" }]
+  }
+]
