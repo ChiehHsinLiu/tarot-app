@@ -43,7 +43,7 @@ Style: second person, present tense, non-fatalistic, no medical/legal/financial 
 ## 6. Integration check
 
 - [x] 6.1 Run `npm test && npm run build && npm run preview`, then at `http://localhost:4173/tarot-app/` do one Yes / No and one Three cards reading, disconnect the network (devtools offline) and draw again; verify both readings work offline and the console has no errors
-- [ ] 6.2 After merge to `main`, verify the deploy workflow passes tests and the live site at `https://chiehhsinliu.github.io/tarot-app/` supports both spreads
+- [x] 6.2 After merge to `main`, verify the deploy workflow passes tests and the live site at `https://chiehhsinliu.github.io/tarot-app/` supports both spreads
 
 ## Workflow follow-up
 
