@@ -1,0 +1,62 @@
+/* Ask Claude (dev only). Imported only by AskClaude.tsx so production builds drop it. */
+.claude-answer {
+  order: 1;
+  flex-basis: 100%;
+  display: grid;
+  gap: 8px;
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.claude-answer-text {
+  overflow-wrap: anywhere;
+  line-height: 1.6;
+}
+
+.claude-answer-text > :first-child {
+  margin-top: 0;
+}
+
+.claude-answer-text p,
+.claude-answer-text ul,
+.claude-answer-text ol {
+  margin: 0 0 12px;
+}
+
+.claude-answer-text ul,
+.claude-answer-text ol {
+  padding-left: 22px;
+}
+
+.claude-answer-text h3,
+.claude-answer-text h4 {
+  margin: 16px 0 8px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.claude-answer-text h3 {
+  font-size: 19px;
+}
+
+.claude-answer-text hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 16px 0;
+}
+
+.claude-answer-text h4 {
+  font-size: 16px;
+}
+
+.claude-answer-status {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.claude-answer-status.error {
+  color: var(--no);
+}

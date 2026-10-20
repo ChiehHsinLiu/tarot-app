@@ -1,9 +1,15 @@
-import { useEffect, useRef } from 'react'
+import { Suspense, lazy, useEffect, useRef } from 'react'
 import type { Card, Spread, Verdict } from '../lib/deck.ts'
 import type { Reading } from '../lib/draw.ts'
 import { CardFace } from './CardFace.tsx'
 import { CopyForClaude } from './CopyForClaude.tsx'
 import { SharePanel } from './SharePanel.tsx'
+
+// Dev-only. Vite replaces DEV with false in production builds, so this import()
+// and the component's code and styles never reach the public bundle.
+const AskClaude = import.meta.env.DEV
+  ? lazy(() => import('./AskClaude.tsx').then((m) => ({ default: m.AskClaude })))
+  : null
 
 const VERDICT_WORDS: Record<Verdict, string> = { yes: 'Yes', no: 'No', maybe: 'Maybe' }
 
@@ -64,6 +70,11 @@ export function ReadingView({ reading, spread, cardsById, shared, onNewReading }
         </button>
         <SharePanel reading={reading} />
         <CopyForClaude reading={reading} spread={spread} cardsById={cardsById} />
+        {AskClaude && (
+          <Suspense fallback={null}>
+            <AskClaude reading={reading} />
+          </Suspense>
+        )}
       </div>
     </section>
   )
