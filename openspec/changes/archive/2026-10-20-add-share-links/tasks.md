@@ -24,7 +24,7 @@
 ## 4. Integration check
 
 - [x] 4.1 Run `npm test && npm run build && npm run preview` and, at `http://localhost:4173/tarot-app/`, draw each spread, share with and without the question, open each link in a fresh tab, and run the add-card-draw browser checks again; verify everything passes and the console has no errors
-- [ ] 4.2 After pushing to `main`, verify the deploy succeeds and a link copied from `https://chiehhsinliu.github.io/tarot-app/` opens the same reading in a fresh browser session
+- [x] 4.2 After pushing to `main`, verify the deploy succeeds and a link copied from `https://chiehhsinliu.github.io/tarot-app/` opens the same reading in a fresh browser session
 
 ## Workflow follow-up
 
