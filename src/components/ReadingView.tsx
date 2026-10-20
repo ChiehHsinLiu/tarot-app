@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import type { Card, Spread, Verdict } from '../lib/deck.ts'
 import type { Reading } from '../lib/draw.ts'
 import { CardFace } from './CardFace.tsx'
+import { SharePanel } from './SharePanel.tsx'
 
 const VERDICT_WORDS: Record<Verdict, string> = { yes: 'Yes', no: 'No', maybe: 'Maybe' }
 
@@ -9,10 +10,12 @@ type Props = {
   reading: Reading
   spread: Spread
   cardsById: Map<string, Card>
+  // True when the reading came from a share link rather than the user's own draw.
+  shared: boolean
   onNewReading: () => void
 }
 
-export function ReadingView({ reading, spread, cardsById, onNewReading }: Props) {
+export function ReadingView({ reading, spread, cardsById, shared, onNewReading }: Props) {
   const headingRef = useRef<HTMLHeadingElement>(null)
   useEffect(() => headingRef.current?.focus(), [])
 
@@ -24,7 +27,7 @@ export function ReadingView({ reading, spread, cardsById, onNewReading }: Props)
   return (
     <section className="reading" aria-labelledby="reading-title">
       <h2 id="reading-title" ref={headingRef} tabIndex={-1}>
-        {spread.name}
+        {shared ? `Shared reading · ${spread.name}` : spread.name}
       </h2>
       {reading.question && <p className="asked">“{reading.question}”</p>}
 
@@ -54,9 +57,12 @@ export function ReadingView({ reading, spread, cardsById, onNewReading }: Props)
         })}
       </ol>
 
-      <button type="button" className="primary" onClick={onNewReading}>
-        New reading
-      </button>
+      <div className="reading-actions">
+        <button type="button" className="primary" onClick={onNewReading}>
+          {shared ? 'Draw your own' : 'New reading'}
+        </button>
+        <SharePanel reading={reading} />
+      </div>
     </section>
   )
 }

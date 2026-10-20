@@ -374,3 +374,105 @@ button.primary:focus-visible {
     grid-template-columns: 1fr;
   }
 }
+
+/* Notices and secondary actions */
+
+.notice {
+  margin: 0;
+  padding: 10px 14px;
+  border: 1px solid var(--no);
+  border-radius: 10px;
+  color: var(--no);
+}
+
+button.secondary {
+  font: inherit;
+  font-weight: 600;
+  padding: 9px 24px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--accent);
+  cursor: pointer;
+}
+
+button.secondary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.reading-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  max-width: 560px;
+}
+
+/* Share */
+
+.share {
+  display: contents;
+}
+
+.share-panel {
+  flex-basis: 100%;
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.share-include {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.share-include input {
+  accent-color: var(--accent);
+  margin: 0;
+}
+
+.share-link-row {
+  display: flex;
+  gap: 8px;
+}
+
+.share-link {
+  flex: 1;
+  min-width: 0;
+  font: inherit;
+  font-size: 14px;
+  color: inherit;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.share-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.share-link-row button {
+  white-space: nowrap;
+}
+
+.share-status {
+  margin: 0;
+  min-height: 1.5em;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+@media (max-width: 480px) {
+  .share-link-row {
+    flex-direction: column;
+  }
+}
