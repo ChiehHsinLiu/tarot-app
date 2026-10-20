@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import type { Card, Spread, Verdict } from '../lib/deck.ts'
 import type { Reading } from '../lib/draw.ts'
 import { CardFace } from './CardFace.tsx'
+import { CopyForClaude } from './CopyForClaude.tsx'
 import { SharePanel } from './SharePanel.tsx'
 
 const VERDICT_WORDS: Record<Verdict, string> = { yes: 'Yes', no: 'No', maybe: 'Maybe' }
@@ -62,6 +63,7 @@ export function ReadingView({ reading, spread, cardsById, shared, onNewReading }
           {shared ? 'Draw your own' : 'New reading'}
         </button>
         <SharePanel reading={reading} />
+        <CopyForClaude reading={reading} spread={spread} cardsById={cardsById} />
       </div>
     </section>
   )
