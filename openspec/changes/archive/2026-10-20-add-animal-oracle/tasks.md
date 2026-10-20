@@ -23,7 +23,7 @@
 ## 4. Integration
 
 - [x] 4.1 Run `npm test && npm run build`, the existing card-draw, share-link, copy-for-claude and Ask Claude browser checks, plus the new oracle checks; verify all pass with no console errors
-- [ ] 4.2 After pushing to `main`, verify the deploy succeeds, the live site shows the animal oracle, and it has no Ask Claude or `api/reading` reference
+- [x] 4.2 After pushing to `main`, verify the deploy succeeds, the live site shows the animal oracle, and it has no Ask Claude or `api/reading` reference
 
 ## Workflow follow-up
 
