@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" focusable="false">
+  <path class="art-fill art-line" d="M24 64 A26 21 0 1 1 76 64 A26 21 0 1 1 24 64 Z M33 64 A17 13 0 1 0 67 64 A17 13 0 1 0 33 64 Z"/>
+  <circle class="art-ink" cx="28.5" cy="64" r="1.4"/>
+  <circle class="art-ink" cx="71.5" cy="64" r="1.4"/>
+  <path class="art-deep art-line" d="M41 45 H59 L56 38 H44 Z"/>
+  <polygon class="art-light art-line" points="39,30 45,21 55,21 61,30 50,40"/>
+  <path class="art-line" d="M39 30 H61 M45 21 L50 30 L55 21 M50 30 V40"/>
+  <path class="art-blush" d="M70 18 l1.5 4 l4 1.5 l-4 1.5 l-1.5 4 l-1.5 -4 l-4 -1.5 l4 -1.5 Z"/>
+  <path class="art-blush" d="M28 22 l1 3 l3 1 l-3 1 l-1 3 l-1 -3 l-3 -1 l3 -1 Z"/>
+</svg>

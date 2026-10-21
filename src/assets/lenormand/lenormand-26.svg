@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" focusable="false">
+  <rect class="art-light art-line" x="29" y="25" width="49" height="61" rx="3"/>
+  <path class="art-line" d="M74 30 V82 M70 30 V82"/>
+  <rect class="art-fill art-line" x="22" y="20" width="50" height="62" rx="4"/>
+  <rect class="art-deep art-line" x="18" y="20" width="10" height="62" rx="3"/>
+  <rect class="art-light art-line" x="34" y="30" width="28" height="42" rx="2"/>
+  <path class="art-blush art-line" d="M48 40 L56 51 L48 62 L40 51 Z"/>
+  <circle class="art-light" cx="48" cy="51" r="2"/>
+  <rect class="art-deep art-line" x="64" y="44" width="16" height="13" rx="3"/>
+  <circle class="art-ink" cx="72" cy="49" r="1.9"/>
+  <rect class="art-ink" x="71.2" y="49" width="1.6" height="4.5" rx="0.6"/>
+</svg>

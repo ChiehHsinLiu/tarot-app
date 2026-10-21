@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" focusable="false">
+  <g transform="rotate(-38 50 52)">
+    <path class="art-fill art-line" d="M11 52 A13 13 0 1 1 37 52 A13 13 0 1 1 11 52 Z M18.5 52 A5.5 5.5 0 1 0 29.5 52 A5.5 5.5 0 1 0 18.5 52 Z"/>
+    <circle class="art-blush" cx="24" cy="41.5" r="2"/>
+    <circle class="art-blush" cx="24" cy="62.5" r="2"/>
+    <rect class="art-fill art-line" x="36" y="49" width="46" height="6" rx="3"/>
+    <rect class="art-deep art-line" x="38" y="45" width="5" height="14" rx="2"/>
+    <path class="art-fill art-line" d="M68 54 H82 V68 H77.5 V62 H73 V68 H68 Z"/>
+    <circle class="art-ink" cx="40.5" cy="52" r="1.5"/>
+  </g>
+</svg>

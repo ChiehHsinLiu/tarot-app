@@ -10,9 +10,11 @@ import spreadTextEn from '../../data/i18n/en/lenormand/spreads.json' with { type
 import type { Spread } from './deck.ts'
 import type { Reading } from './draw.ts'
 import type { ScreenGuideText } from './guides.ts'
+import type { OraclePalette } from './oracle.ts'
 import { escapeQuestion } from './prompt.ts'
 
-export type LenormandCardData = { id: string; number: number }
+// palette: one of the animal oracle's six pastel colour families, chosen per picture.
+export type LenormandCardData = { id: string; number: number; palette: OraclePalette }
 export type LenormandCardText = { name: string; keywords: string[]; meaning: string }
 export type LenormandCard = LenormandCardData & LenormandCardText
 
@@ -32,7 +34,7 @@ export function buildLenormandCards(
   data: LenormandCardData[],
   text: Record<string, LenormandCardText>,
 ): LenormandCard[] {
-  return data.map((card) => ({ ...text[card.id], id: card.id, number: card.number }))
+  return data.map((card) => ({ ...text[card.id], id: card.id, number: card.number, palette: card.palette }))
 }
 
 // A Lenormand reading never shows a written verdict: Claude gives the Yes / No.

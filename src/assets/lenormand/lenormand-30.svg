@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" focusable="false">
+  <path class="art-deep art-line" d="M49 90 C48 70 49 50 52 33 L55 33 C52 50 51 70 53 90 Z"/>
+  <path class="art-fill art-line" d="M50 78 C40 74 33 63 33 52 C42 58 48 66 51 73 Z"/>
+  <path class="art-fill art-line" d="M52 67 C62 63 68 53 68 42 C60 48 54 56 51 62 Z"/>
+  <path class="art-light art-line" d="M52 33 C42 33 33 27 31 18 C40 18 48 24 52 33 Z"/>
+  <path class="art-light art-line" d="M55 33 C65 33 74 27 76 18 C67 18 59 24 55 33 Z"/>
+  <path class="art-light art-line" d="M53.5 34 C46 25 46 14 53.5 7 C61 14 61 25 53.5 34 Z"/>
+  <path class="art-line" d="M53.5 31 L47 19 M53.5 31 L60 19"/>
+  <circle class="art-ink" cx="47" cy="19" r="1.7"/>
+  <circle class="art-ink" cx="60" cy="19" r="1.7"/>
+  <ellipse class="art-blush" cx="53.5" cy="27" rx="2" ry="3"/>
+</svg>

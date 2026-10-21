@@ -62,7 +62,9 @@ In `npm run dev`, the tarot screen also has **Choose a deck**: Tarot or Lenorman
 - **Yes / No** draws two cards ("First card" and "Second card") and needs a question. There's no written verdict: click **Ask Claude**, and Claude answers Yes, No or Maybe from how the two cards combine.
 - **Three cards** draws Past, Present and Future. Lenormand cards are never reversed.
 
-Lenormand readings have **New reading**, **Copy for Claude** and **Ask Claude**, but no **Share**, since the public site doesn't include the deck. The deck lives in `data/lenormand/` (ids, numbers and spread positions) and `data/i18n/en/lenormand/` (card text, position labels and the screen guide), and Claude's instructions are in `prompts/lenormand.md`. None of it is part of `npm run build`. Lenormand answers are saved to the journal with `"deck": "lenormand"`, the spread, the card ids in order and the question.
+Lenormand readings have **New reading**, **Copy for Claude** and **Ask Claude**, but no **Share**, since the public site doesn't include the deck. The deck lives in `data/lenormand/` (ids, numbers and spread positions) and `data/i18n/en/lenormand/` (card text, position labels and the screen guide), and Claude's instructions are in `prompts/lenormand.md`. None of it is part of `npm run build`.
+
+Each Lenormand card has its own original drawing of its traditional picture in `src/assets/lenormand/<card-id>.svg`, for example `lenormand-02.svg` for the Clover. Each card also has one of the animal oracle's six pastel colour families, set as `palette` in `data/lenormand/deck.json`. The drawings follow the same format rules as the animal oracle's, which `src/lib/art-format.ts` defines and the tests check for both decks. Lenormand answers are saved to the journal with `"deck": "lenormand"`, the spread, the card ids in order and the question.
 
 Each finished or stopped answer, tarot or oracle, is saved to your private journal in `~/.tarot/journal/`, one `YYYY-MM-DD.jsonl` file per day. The journal is outside this repository and readable only by you. Set `TAROT_JOURNAL_DIR` to store it somewhere else.
 

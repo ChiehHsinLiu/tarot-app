@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" focusable="false">
+  <g transform="translate(-5 -10) scale(1.12)">
+    <path class="art-line" d="M14 72 C6 70 5 62 11 59"/>
+    <path class="art-fill art-line" d="M14 74 C14 60 28 54 40 62 C44 64 46 68 44 72 C40 76 20 78 14 74 Z"/>
+    <circle class="art-light art-line" cx="30" cy="57" r="6"/>
+    <circle class="art-blush" cx="30" cy="57" r="3"/>
+    <circle class="art-ink" cx="37" cy="64" r="1.7"/>
+    <circle class="art-blush" cx="45" cy="70" r="1.6"/>
+    <path class="art-line" d="M86 74 C93 72 94 64 88 61"/>
+    <path class="art-fill art-line" d="M86 76 C86 65 76 61 67 66 C63 68 61 72 63 74 C67 78 80 79 86 76 Z"/>
+    <circle class="art-light art-line" cx="74" cy="61" r="5"/>
+    <circle class="art-blush" cx="74" cy="61" r="2.5"/>
+    <circle class="art-ink" cx="68" cy="68" r="1.6"/>
+    <circle class="art-blush" cx="62" cy="72" r="1.5"/>
+    <path class="art-light art-line" d="M45 85 L59 85 L59 73 Z"/>
+    <circle class="art-deep" cx="55" cy="81" r="1.6"/>
+    <path class="art-line" d="M6 86 H94"/>
+  </g>
+</svg>

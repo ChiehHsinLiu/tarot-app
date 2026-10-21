@@ -1,13 +1,16 @@
-/* Lenormand (dev only): placeholder faces and the Yes / No note. Imported only by
-   the Lenormand components, so it stays out of the production build. */
+/* Lenormand (dev only): card faces, the Yes / No note and the two-card layout.
+   Imported only by the lazily loaded Lenormand reading view, so it stays out of
+   the production build. */
 
-.lenormand-number {
-  font-family: var(--font-story);
-  font-variation-settings: 'SOFT' 100;
-  font-size: 52px;
-  font-weight: 600;
-  line-height: 1;
-  color: var(--card-ink-soft);
+/* Each card's pastel colour family (set inline from ORACLE_PALETTES) tints the
+   face, frame and drawing; the drawings use the shared art classes. */
+.card-face.lenormand-face {
+  --face-bg: var(--family-face);
+  --face-edge: var(--family-edge);
+}
+
+.lenormand-face .card-name {
+  font-size: 16px;
 }
 
 .lenormand-note {

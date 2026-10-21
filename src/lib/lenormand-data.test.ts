@@ -1,6 +1,7 @@
 // Data-integrity checks for the Lenormand deck requirement.
 import { describe, expect, test } from 'vitest'
 import { buildSpreads, rawSpreads, rawSpreadText } from './deck.ts'
+import { ORACLE_PALETTE_NAMES } from './oracle.ts'
 import {
   buildLenormandSpreads,
   rawLenormandDeck,
@@ -22,6 +23,13 @@ test('36 cards with distinct ids, numbered 1 to 36 in the traditional order', ()
   expect(rawLenormandDeck.map((c) => c.number)).toEqual(Array.from({ length: 36 }, (_, i) => i + 1))
   expect(Object.keys(rawLenormandText).sort()).toEqual(ids)
   expect(ids.map((id) => rawLenormandText[id].name)).toEqual(NAMES)
+})
+
+test('every card has one of the six pastel colour families', () => {
+  for (const card of rawLenormandDeck) expect(ORACLE_PALETTE_NAMES, card.id).toContain(card.palette)
+  // Clover is a plant (sage) and the Ship is at sea (sky), as the spec's scenario expects.
+  expect(rawLenormandDeck.find((c) => c.number === 2)!.palette).toBe('sage')
+  expect(rawLenormandDeck.find((c) => c.number === 3)!.palette).toBe('sky')
 })
 
 test.each(rawLenormandDeck.map((c) => c.id))('%s has complete text', (id) => {

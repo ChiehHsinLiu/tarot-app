@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" focusable="false">
+  <path class="art-line" d="M50 68 L30 45 M50 68 L39 32 M50 68 L50 26 M50 68 L61 32 M50 68 L70 45"/>
+  <path class="art-deep art-line" d="M38 56 q-11 -3 -14 5 q9 3 14 -5 Z"/>
+  <path class="art-deep art-line" d="M62 56 q11 -3 14 5 q-9 3 -14 -5 Z"/>
+  <circle class="art-fill art-line" cx="29" cy="44" r="6.5"/>
+  <circle class="art-light art-line" cx="71" cy="44" r="6.5"/>
+  <circle class="art-light art-line" cx="38" cy="31" r="7.5"/>
+  <circle class="art-fill art-line" cx="62" cy="31" r="7.5"/>
+  <circle class="art-fill art-line" cx="50" cy="24" r="8.5"/>
+  <circle class="art-deep" cx="29" cy="44" r="2.2"/>
+  <circle class="art-deep" cx="71" cy="44" r="2.2"/>
+  <circle class="art-deep" cx="38" cy="31" r="2.4"/>
+  <circle class="art-deep" cx="62" cy="31" r="2.4"/>
+  <circle class="art-light" cx="50" cy="24" r="3"/>
+  <path class="art-light art-line" d="M33 58 L67 58 L57 91 L43 91 Z"/>
+  <path class="art-line" d="M33 58 L50 67 L67 58"/>
+  <path class="art-blush art-line" d="M50 75 C43 69 37 72 40 78 C43 80 47 78 50 75 C53 78 57 80 60 78 C63 72 57 69 50 75 Z"/>
+  <circle class="art-ink" cx="50" cy="75" r="2"/>
+</svg>

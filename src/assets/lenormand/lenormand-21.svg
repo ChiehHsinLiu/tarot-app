@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" focusable="false">
+  <path class="art-deep art-line" d="M44 80 L66 32 L88 80 Z"/>
+  <path class="art-light art-line" d="M61 43 L66 32 L71 43 L68 41 L66 44 L64 41 Z"/>
+  <path class="art-fill art-line" d="M12 80 L40 22 L68 80 Z"/>
+  <path class="art-light art-line" d="M33 37 L40 22 L47 37 L43.5 34 L40 38 L36.5 34 Z"/>
+  <path class="art-line" d="M24 66 l5 -6 M52 70 l-4 -6"/>
+  <path class="art-ink" d="M30 80 a4.5 4.5 0 0 1 9 0 Z"/>
+  <path class="art-line" d="M6 80 H94"/>
+</svg>

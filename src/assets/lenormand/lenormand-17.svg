@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" focusable="false">
+  <path class="art-line" d="M50 64 L48 90 M54 64 L56 76 L48 80"/>
+  <path class="art-light art-line" d="M30 56 C30 44 44 40 56 44 C64 46 70 52 72 58 C60 64 40 66 30 56 Z"/>
+  <path class="art-fill art-line" d="M34 54 C42 46 54 46 64 52 C56 58 42 60 34 54 Z"/>
+  <path class="art-ink" d="M64 52 C70 54 76 58 80 64 C72 62 66 58 64 52 Z"/>
+  <path class="art-light art-line" d="M34 50 C26 42 26 30 32 22 L38 24 C34 30 34 40 40 46 Z"/>
+  <circle class="art-light art-line" cx="36" cy="20" r="7"/>
+  <path class="art-blush art-line" d="M30 19 L12 26 L30 22 Z"/>
+  <circle class="art-ink" cx="36" cy="18" r="1.6"/>
+</svg>

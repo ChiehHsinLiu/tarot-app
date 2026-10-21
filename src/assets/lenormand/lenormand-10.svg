@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" focusable="false">
+  <path class="art-fill art-line" d="M66 88 q-2 -12 2 -22 M74 88 q-1 -10 4 -18"/>
+  <ellipse class="art-fill art-line" cx="68" cy="64" rx="2.6" ry="4.5"/>
+  <ellipse class="art-fill art-line" cx="78" cy="68" rx="2.6" ry="4.5" transform="rotate(20 78 68)"/>
+  <path class="art-deep art-line" d="M30 89 L36 91 L61 23 L55 21 Z"/>
+  <rect class="art-fill art-line" x="34" y="56" width="16" height="6" rx="3" transform="rotate(-20 42 59)"/>
+  <path class="art-light art-line" d="M58 21 C45 11 25 13 14 27 C27 21 42 21 56 28 Z"/>
+  <circle class="art-ink" cx="57" cy="24" r="2.2"/>
+</svg>
