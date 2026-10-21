@@ -1,16 +1,28 @@
+/* Storybook theme: warm paper by day, cozy dusk by night. Cards stay cream or
+   pastel in both, like real cards on a table, so card text uses --card-ink. */
 :root {
-  --text: #1c1a22;
-  --muted: #5f5a6b;
-  --bg: #faf8f5;
-  --surface: #ffffff;
-  --border: #ddd8e2;
-  --accent: #5b3fa8;
+  --text: #2f2630;
+  --muted: #6b5e66;
+  --bg: #f7f0e3;
+  --surface: #fffaf1;
+  --border: #e3d5c1;
+  --accent: #8a4f7d;
   --accent-text: #ffffff;
-  --card-bg: #fffdf8;
-  --card-border: #b9a77a;
-  --yes: #1f7a4d;
-  --no: #b0372e;
-  --maybe: #8a6a12;
+  --card-bg: #fffaf0;
+  --card-border: #c9a96e;
+  --card-ink: #2f2630;
+  --card-ink-soft: #55474f;
+  --flourish: #b9926a;
+  --shadow: rgb(84 58 40 / 0.12);
+  --paper-texture:
+    radial-gradient(circle at 20% 15%, rgb(201 169 110 / 0.10), transparent 40%),
+    radial-gradient(circle at 85% 70%, rgb(138 79 125 / 0.07), transparent 45%);
+  --yes: #2f7a4f;
+  --no: #b03a37;
+  --maybe: #85661a;
+  --font-story: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
+  /* How strongly an oracle card's colour tints the Reflect box. */
+  --family-tint: 35%;
 
   font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.5;
@@ -23,24 +35,31 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --text: #f1eff5;
-    --muted: #aaa4b6;
-    --bg: #16151b;
-    --surface: #1f1d26;
-    --border: #36333f;
-    --accent: #a98bf0;
-    --accent-text: #16151b;
-    --card-bg: #24212c;
-    --card-border: #8c7c53;
-    --yes: #5fcf95;
-    --no: #f08378;
-    --maybe: #e2c25f;
+    --text: #f5ecdf;
+    --muted: #c7b8c3;
+    --bg: #241c2b;
+    --surface: #30263a;
+    --border: #4a3d55;
+    --accent: #e8a6c9;
+    --accent-text: #241c2b;
+    --card-bg: #f6ecdc;
+    --card-border: #c9a96e;
+    --flourish: #c9a96e;
+    --shadow: rgb(0 0 0 / 0.35);
+    --paper-texture:
+      radial-gradient(circle at 20% 15%, rgb(201 169 110 / 0.08), transparent 40%),
+      radial-gradient(circle at 85% 70%, rgb(232 166 201 / 0.07), transparent 45%);
+    --yes: #7fd3a1;
+    --no: #f39a8f;
+    --maybe: #e8c86a;
+    --family-tint: 14%;
   }
 }
 
 body {
   margin: 0;
-  background: var(--bg);
+  min-height: 100vh;
+  background: var(--paper-texture), var(--bg);
 }
 
 #root {
@@ -56,10 +75,54 @@ body {
 }
 
 h1 {
+  font-family: var(--font-story);
+  font-variation-settings: 'SOFT' 100;
   font-size: 56px;
-  font-weight: 500;
-  letter-spacing: -1px;
+  font-weight: 560;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
   margin: 0;
+}
+
+/* Home title: the name between two sprigs, then the subtitle. */
+.site-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.flourish {
+  width: 64px;
+  height: 32px;
+  flex: none;
+  fill: none;
+  stroke: var(--flourish);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.flourish-mirrored {
+  transform: scaleX(-1);
+}
+
+.flourish-leaf {
+  fill: var(--flourish);
+  fill-opacity: 0.35;
+}
+
+.flourish-star {
+  fill: var(--flourish);
+  stroke: none;
+}
+
+.subtitle {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-family: var(--font-story);
+  font-variation-settings: 'SOFT' 100;
+  font-size: 18px;
 }
 
 h1:focus {
@@ -78,6 +141,7 @@ h1:focus {
   grid-column: 2;
   font-size: 24px;
   letter-spacing: 0;
+  white-space: nowrap;
 }
 
 .home-link {
@@ -121,8 +185,9 @@ h1:focus {
   gap: 8px;
   padding: 28px 20px;
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: 22px;
   background: var(--surface);
+  box-shadow: 0 6px 18px var(--shadow);
   color: inherit;
   text-align: center;
   text-decoration: none;
@@ -141,11 +206,14 @@ h1:focus {
 .home-choice .card-symbol {
   width: 48px;
   height: 48px;
+  stroke: var(--flourish);
 }
 
 .home-choice-title {
-  font-size: 22px;
-  font-weight: 600;
+  font-family: var(--font-story);
+  font-variation-settings: 'SOFT' 100;
+  font-size: 24px;
+  font-weight: 560;
 }
 
 .home-choice-description {
@@ -153,8 +221,10 @@ h1:focus {
 }
 
 h2 {
-  font-size: 28px;
-  font-weight: 500;
+  font-family: var(--font-story);
+  font-variation-settings: 'SOFT' 100;
+  font-size: 30px;
+  font-weight: 520;
   margin: 0 0 8px;
   text-align: center;
 }
@@ -193,7 +263,7 @@ h2:focus {
   align-items: center;
   padding: 12px 14px;
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 16px;
   background: var(--surface);
   cursor: pointer;
 }
@@ -237,8 +307,8 @@ h2:focus {
   color: inherit;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 10px 12px;
+  border-radius: 16px;
+  padding: 10px 14px;
   resize: vertical;
 }
 
@@ -307,8 +377,9 @@ button.primary:focus-visible {
 .verdict {
   text-align: center;
   padding: 16px 24px;
-  border-radius: 12px;
-  border: 1px solid currentColor;
+  border-radius: 18px;
+  border: 1.5px solid currentColor;
+  background: var(--surface);
   width: 100%;
   max-width: 320px;
   box-sizing: border-box;
@@ -328,6 +399,8 @@ button.primary:focus-visible {
 
 .verdict-word {
   margin: 0;
+  font-family: var(--font-story);
+  font-variation-settings: 'SOFT' 100;
   font-size: 40px;
   font-weight: 700;
   line-height: 1.1;
@@ -376,7 +449,9 @@ button.primary:focus-visible {
 }
 
 .card-title {
-  font-size: 18px;
+  font-family: var(--font-story);
+  font-variation-settings: 'SOFT' 100;
+  font-size: 19px;
   font-weight: 600;
   margin: 4px 0 0;
 }
@@ -407,7 +482,13 @@ button.primary:focus-visible {
   gap: 6px;
 }
 
+/* --face-bg and --face-edge default to the cream tarot card; oracle cards set
+   them from their colour family. The frame and corner dots are pseudo-elements,
+   so they are never announced or focusable. */
 .card-face {
+  --face-bg: var(--card-bg);
+  --face-edge: var(--card-border);
+  position: relative;
   width: 140px;
   aspect-ratio: 3 / 5;
   box-sizing: border-box;
@@ -415,11 +496,33 @@ button.primary:focus-visible {
   grid-template-rows: auto 1fr auto;
   justify-items: center;
   align-items: center;
-  padding: 12px 10px;
+  padding: 16px 14px;
   border: 2px solid var(--card-border);
-  border-radius: 10px;
-  background: var(--card-bg);
-  box-shadow: 0 6px 16px rgb(0 0 0 / 0.12);
+  border-radius: 14px;
+  background: var(--face-bg);
+  color: var(--card-ink);
+  box-shadow: 0 8px 20px var(--shadow);
+}
+
+.card-face::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px solid var(--face-edge);
+  border-radius: 9px;
+  pointer-events: none;
+}
+
+.card-face::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  pointer-events: none;
+  background:
+    radial-gradient(circle, var(--face-edge) 2.2px, transparent 2.6px) top left / 12px 12px no-repeat,
+    radial-gradient(circle, var(--face-edge) 2.2px, transparent 2.6px) top right / 12px 12px no-repeat,
+    radial-gradient(circle, var(--face-edge) 2.2px, transparent 2.6px) bottom left / 12px 12px no-repeat,
+    radial-gradient(circle, var(--face-edge) 2.2px, transparent 2.6px) bottom right / 12px 12px no-repeat;
 }
 
 .card-face.reversed {
@@ -428,7 +531,7 @@ button.primary:focus-visible {
 
 .card-numeral {
   min-height: 1.5em;
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: var(--font-story);
   font-size: 18px;
   letter-spacing: 0.05em;
 }
@@ -437,14 +540,15 @@ button.primary:focus-visible {
   width: 56px;
   height: 56px;
   fill: none;
-  stroke: var(--card-border);
-  stroke-width: 1.4;
+  stroke: var(--face-edge, var(--card-border));
+  stroke-width: 1.6;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
 .card-name {
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: var(--font-story);
+  font-variation-settings: 'SOFT' 100;
   font-size: 14px;
   line-height: 1.25;
   text-align: center;
@@ -452,7 +556,17 @@ button.primary:focus-visible {
 
 @media (max-width: 480px) {
   h1 {
-    font-size: 40px;
+    font-size: 38px;
+    white-space: nowrap;
+  }
+
+  .site-title {
+    gap: 8px;
+  }
+
+  .flourish {
+    width: 34px;
+    height: 17px;
   }
 
   .spread-picker {
@@ -516,7 +630,7 @@ button.secondary:focus-visible {
   gap: 10px;
   padding: 14px;
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 18px;
   background: var(--surface);
 }
 
@@ -650,7 +764,12 @@ button.secondary:focus-visible {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   text-align: center;
-  color: var(--muted);
+  color: var(--card-ink-soft);
+}
+
+.card-face.oracle-face {
+  --face-bg: var(--family-face);
+  --face-edge: var(--family-edge);
 }
 
 .oracle-face .card-name {
@@ -662,10 +781,14 @@ button.secondary:focus-visible {
   text-align: left;
 }
 
+/* Tinted with the drawn card's colour family (set inline on .oracle-reading). */
 .oracle-reflect {
   display: grid;
   gap: 2px;
   margin-top: 4px;
+  padding: 12px 18px;
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--family-face) var(--family-tint), var(--surface));
 }
 
 .oracle-reflect p {
@@ -674,7 +797,9 @@ button.secondary:focus-visible {
 
 .oracle-affirmation {
   margin: 4px 0 0;
-  font-family: Georgia, 'Times New Roman', serif;
-  font-style: italic;
-  font-size: 18px;
+  padding-top: 14px;
+  border-top: 1.5px solid var(--family-edge);
+  font-family: var(--font-story);
+  font-variation-settings: 'SOFT' 100;
+  font-size: 20px;
 }

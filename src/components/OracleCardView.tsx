@@ -1,5 +1,7 @@
 import { Suspense, lazy, useEffect, useRef } from 'react'
+import type { CSSProperties } from 'react'
 import type { OracleCard } from '../lib/oracle.ts'
+import { ORACLE_PALETTES } from '../lib/palette.ts'
 
 // Dev-only, like Ask Claude on tarot readings: Vite replaces DEV with false in
 // production builds, so this import() and its code and styles never ship.
@@ -19,10 +21,22 @@ export const PAW = (
   </>
 )
 
+// The card's colour family as CSS variables, read by the face and the reading.
+function familyStyle(card: OracleCard): CSSProperties {
+  const { face, edge } = ORACLE_PALETTES[card.palette]
+  return { '--family-face': face, '--family-edge': edge } as CSSProperties
+}
+
 export function OracleCardFace({ card }: { card: OracleCard }) {
   return (
     <div className="card">
-      <div role="img" aria-label={`${card.animal}, ${card.theme}`} className="card-face oracle-face">
+      <div
+        role="img"
+        aria-label={`${card.animal}, ${card.theme}`}
+        className="card-face oracle-face"
+        data-palette={card.palette}
+        style={familyStyle(card)}
+      >
         <span className="oracle-face-theme" aria-hidden="true">
           {card.theme}
         </span>
@@ -47,7 +61,7 @@ export function OracleCardView({ card, onDrawAgain }: Props) {
   useEffect(() => headingRef.current?.focus(), [])
 
   return (
-    <section className="reading oracle-reading" aria-labelledby="oracle-title">
+    <section className="reading oracle-reading" aria-labelledby="oracle-title" style={familyStyle(card)}>
       <h2 id="oracle-title" ref={headingRef} tabIndex={-1}>
         Today's animal oracle
       </h2>

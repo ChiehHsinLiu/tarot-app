@@ -6,7 +6,11 @@ import animalTextEn from '../../data/i18n/en/oracle/animal.json' with { type: 'j
 import { escapeQuestion } from './prompt.ts'
 import type { RandomInt } from './random.ts'
 
-export type OracleCardData = { id: string }
+// The six pastel colour families; each holds six cards of the animal deck.
+export const ORACLE_PALETTE_NAMES = ['peach', 'sage', 'sky', 'lavender', 'butter', 'rose'] as const
+export type OraclePalette = (typeof ORACLE_PALETTE_NAMES)[number]
+
+export type OracleCardData = { id: string; palette: OraclePalette }
 
 export type OracleCardText = {
   animal: string
@@ -23,7 +27,7 @@ export const rawAnimalDeck = animalDeckData as OracleCardData[]
 export const rawAnimalText = animalTextEn as Record<string, OracleCardText>
 
 export function buildOracleCards(data: OracleCardData[], text: Record<string, OracleCardText>): OracleCard[] {
-  return data.map((card) => ({ ...text[card.id], id: card.id }))
+  return data.map((card) => ({ ...text[card.id], id: card.id, palette: card.palette }))
 }
 
 // One card, uniformly from the deck. "Draw again" passes the card on screen as

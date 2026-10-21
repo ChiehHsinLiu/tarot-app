@@ -1,6 +1,6 @@
-# Tarot
+# Little Oracle
 
-A tarot card drawing web app built with React, Vite, and TypeScript.
+Tarot and animal oracle cards for today: a card-drawing web app built with React, Vite, and TypeScript.
 
 Live site: https://chiehhsinliu.github.io/tarot-app/
 

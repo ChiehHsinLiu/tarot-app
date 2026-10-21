@@ -5,10 +5,10 @@ import { cryptoRandomInt, seededRandomInt } from './random.ts'
 const ids = rawAnimalDeck.map((c) => c.id)
 
 describe('buildOracleCards', () => {
-  test('joins ids with their text in deck order', () => {
+  test('joins ids and colour families with their text in deck order', () => {
     const cards = buildOracleCards(rawAnimalDeck, rawAnimalText)
     expect(cards.map((c) => c.id)).toEqual(ids)
-    expect(cards[0]).toEqual({ id: 'animal-01', ...rawAnimalText['animal-01'] })
+    expect(cards[0]).toEqual({ id: 'animal-01', palette: 'peach', ...rawAnimalText['animal-01'] })
     expect(cards[0].animal).toBe('Dachshund')
   })
 })

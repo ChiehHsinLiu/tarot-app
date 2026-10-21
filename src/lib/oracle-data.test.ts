@@ -1,6 +1,6 @@
 // Data-integrity checks for the animal oracle deck requirement.
 import { expect, test } from 'vitest'
-import { rawAnimalDeck, rawAnimalText } from './oracle.ts'
+import { ORACLE_PALETTE_NAMES, rawAnimalDeck, rawAnimalText } from './oracle.ts'
 
 // Lower-case names that would break the "no insects or spiders" rule.
 const BUGS = [
@@ -33,5 +33,12 @@ test('no insects or spiders', () => {
   for (const { animal } of Object.values(rawAnimalText)) {
     const words = animal.toLowerCase().split(/\s+/)
     expect(words.filter((w) => BUGS.includes(w)), animal).toEqual([])
+  }
+})
+
+test('every card has a colour family, six cards each', () => {
+  for (const card of rawAnimalDeck) expect(ORACLE_PALETTE_NAMES, card.id).toContain(card.palette)
+  for (const name of ORACLE_PALETTE_NAMES) {
+    expect(rawAnimalDeck.filter((c) => c.palette === name).length, name).toBe(6)
   }
 })

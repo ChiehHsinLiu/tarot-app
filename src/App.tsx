@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import type { FormEvent } from 'react'
+import { Flourish } from './components/Flourish.tsx'
 import { HomeChoices } from './components/HomeChoices.tsx'
 import { OracleCardView } from './components/OracleCardView.tsx'
 import { OracleIntro } from './components/OracleIntro.tsx'
@@ -132,15 +133,20 @@ function SiteHeader({ home, focus }: { home: boolean; focus: boolean }) {
         <a className="home-link" href={ROUTE_HASH.home}>
           <span aria-hidden="true">← </span>Home
         </a>
-        <h1>Tarot</h1>
+        <h1>Little Oracle</h1>
       </header>
     )
   }
   return (
     <header className="site-header">
-      <h1 ref={headingRef} tabIndex={-1}>
-        Tarot
-      </h1>
+      <div className="site-title">
+        <Flourish />
+        <h1 ref={headingRef} tabIndex={-1}>
+          Little Oracle
+        </h1>
+        <Flourish mirrored />
+      </div>
+      <p className="subtitle">tarot &amp; animal cards for today</p>
     </header>
   )
 }

@@ -2,15 +2,42 @@ import type { ReactNode } from 'react'
 import { toRoman } from '../lib/deck.ts'
 import type { Card, Suit } from '../lib/deck.ts'
 
+// Soft line drawings in a 24x24 box: round caps and joins, drawn as strokes.
 const SYMBOLS: Record<Suit | 'major', ReactNode> = {
-  major: <path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6-4.5-4.2 6.1-.7z" />,
-  wands: <path d="M7 21L17 3M15 7l3-.5M11.5 13l-3.5.5M13 10l2.5 1.5" />,
-  cups: <path d="M6 4h12v3a6 6 0 0 1-12 0zM12 13v5M8 21h8" />,
-  swords: <path d="M12 2l2 3v10h-4V5zM7 15h10M12 15v6" />,
+  // A four-point sparkle with two small companions.
+  major: (
+    <>
+      <path d="M12 3.5c.7 4.6 2.9 6.8 7.5 7.5-4.6.7-6.8 2.9-7.5 7.5-.7-4.6-2.9-6.8-7.5-7.5 4.6-.7 6.8-2.9 7.5-7.5z" />
+      <path d="M19 3.5v3M17.5 5h3M5 17.5v3M3.5 19h3" />
+    </>
+  ),
+  // A budding branch.
+  wands: (
+    <>
+      <path d="M7 21.5L16.5 3" />
+      <path d="M12.6 10.5c1.8-.4 3.3.1 4.4 1.5-1.8.5-3.3 0-4.4-1.5zM10 15.5c-1.8-.2-3.2.5-4 2 1.8.2 3.2-.5 4-2zM15.2 5.5c.9-1.1 2.2-1.6 3.6-1.3-.6 1.4-1.9 2-3.6 1.3z" />
+    </>
+  ),
+  // A rounded goblet.
+  cups: (
+    <>
+      <path d="M6 4.5h12c0 4.8-2.4 8-6 8s-6-3.2-6-8z" />
+      <path d="M12 12.5v5M8.5 20.5c0-1.7 1.6-3 3.5-3s3.5 1.3 3.5 3z" />
+    </>
+  ),
+  // A rounded blade with a curled crossguard.
+  swords: (
+    <>
+      <path d="M12 2.5c1.3 1.6 2 3.2 2 5v7.5h-4V7.5c0-1.8.7-3.4 2-5z" />
+      <path d="M6.5 15c1.5.9 3.3 1.3 5.5 1.3s4-.4 5.5-1.3M12 16.3v3.2" />
+      <circle cx="12" cy="20.8" r="1.3" />
+    </>
+  ),
+  // A circle around a five-point star.
   pentacles: (
     <>
-      <circle cx="12" cy="12" r="9" />
-      <path d="M12 5l4.11 12.66L5.34 9.84h13.32L7.89 17.66z" />
+      <circle cx="12" cy="12" r="8.5" />
+      <path d="M12 5.8l1.7 4.4 4.6.2-3.6 2.9 1.3 4.5L12 15.2l-3.9 2.6 1.2-4.5-3.6-2.9 4.6-.2z" />
     </>
   ),
 }
