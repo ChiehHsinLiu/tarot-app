@@ -1,0 +1,13 @@
+{
+  "howItWorks": [
+    "Choose Lenormand above, then a spread. Yes / No draws two cards for a question. Three cards draws three, for your past, present and future.",
+    "Type your question. Yes / No needs one; for Three cards it's optional.",
+    "Press Draw. Lenormand cards are always upright, and they're read together, like words in a sentence: the first card is the subject and the next one describes it.",
+    "For Yes / No, press Ask Claude. Claude gives the answer from how your two cards combine.",
+    "Copy for Claude copies the reading as a prompt. Lenormand readings can't be shared as links."
+  ],
+  "about": [
+    "Lenormand is a 36-card fortune-telling deck named after Marie Anne Lenormand (1772–1843), a famous Parisian card reader. Each card shows a simple everyday picture, such as the Rider, the Clover or the Ship, and readers put neighbouring cards together like words in a sentence.",
+    "The card meanings were written for this app."
+  ]
+}

@@ -1,0 +1,326 @@
+{
+  "lenormand-01": {
+    "name": "Rider",
+    "keywords": [
+      "news",
+      "arrival",
+      "speed"
+    ],
+    "meaning": "Something is on its way to you: a message, a visitor or a quick turn of events. Things may move faster than you expect, so be ready to respond."
+  },
+  "lenormand-02": {
+    "name": "Clover",
+    "keywords": [
+      "luck",
+      "small joys",
+      "a brief chance"
+    ],
+    "meaning": "A little luck and a lighter mood. The chance is small and won't last long, so take it while it's here and don't overthink it."
+  },
+  "lenormand-03": {
+    "name": "Ship",
+    "keywords": [
+      "travel",
+      "distance",
+      "change"
+    ],
+    "meaning": "Movement towards something new: a trip, a move or a longing for somewhere else. Progress may feel slow, but the direction is clear."
+  },
+  "lenormand-04": {
+    "name": "House",
+    "keywords": [
+      "home",
+      "family",
+      "stability"
+    ],
+    "meaning": "Home, comfort and the people closest to you. Ask what makes you feel safe and steady, and build on it."
+  },
+  "lenormand-05": {
+    "name": "Tree",
+    "keywords": [
+      "growth",
+      "health",
+      "roots"
+    ],
+    "meaning": "Slow, steady growth and deep roots. What you nurture now takes time, so tend it patiently and look after your energy."
+  },
+  "lenormand-06": {
+    "name": "Clouds",
+    "keywords": [
+      "doubt",
+      "confusion",
+      "uncertainty"
+    ],
+    "meaning": "Things are hazy for now. Avoid big decisions while the view is unclear; wait for the clouds to pass and the picture to sharpen."
+  },
+  "lenormand-07": {
+    "name": "Snake",
+    "keywords": [
+      "complication",
+      "detour",
+      "cleverness"
+    ],
+    "meaning": "A winding path, a complication or someone with their own agenda. Stay alert and think a few steps ahead; the direct route may not be the best one."
+  },
+  "lenormand-08": {
+    "name": "Coffin",
+    "keywords": [
+      "ending",
+      "rest",
+      "closure"
+    ],
+    "meaning": "Something is coming to an end so something new can begin. Let it go gently, and give yourself time to rest before you start again."
+  },
+  "lenormand-09": {
+    "name": "Bouquet",
+    "keywords": [
+      "gift",
+      "gratitude",
+      "pleasant surprise"
+    ],
+    "meaning": "A gift, a compliment or a happy surprise. Accept kindness when it comes, and notice the small beautiful things around you."
+  },
+  "lenormand-10": {
+    "name": "Scythe",
+    "keywords": [
+      "sudden change",
+      "decision",
+      "warning"
+    ],
+    "meaning": "A quick decision or a sudden turn. Sometimes cutting something away is necessary; just be careful and deliberate when you do."
+  },
+  "lenormand-11": {
+    "name": "Whip",
+    "keywords": [
+      "conflict",
+      "repetition",
+      "debate"
+    ],
+    "meaning": "Arguments, tension or a pattern that keeps repeating. Ask what keeps coming back, and whether it's time to talk it through or break the cycle."
+  },
+  "lenormand-12": {
+    "name": "Birds",
+    "keywords": [
+      "conversation",
+      "nerves",
+      "chatter"
+    ],
+    "meaning": "Phone calls, chatter and busy thoughts. You may feel a little on edge; share what's on your mind with someone you trust."
+  },
+  "lenormand-13": {
+    "name": "Child",
+    "keywords": [
+      "new beginning",
+      "curiosity",
+      "small steps"
+    ],
+    "meaning": "Something new and small is starting. Approach it with curiosity and a fresh eye, and let yourself be a beginner."
+  },
+  "lenormand-14": {
+    "name": "Fox",
+    "keywords": [
+      "caution",
+      "self-interest",
+      "cleverness"
+    ],
+    "meaning": "Be smart and a little careful. Not everything is as it seems, so check the details and look after your own interests."
+  },
+  "lenormand-15": {
+    "name": "Bear",
+    "keywords": [
+      "strength",
+      "protection",
+      "resources"
+    ],
+    "meaning": "Power, resources and a strong presence, perhaps a protective person or someone in charge. Use your strength wisely and look after what you have."
+  },
+  "lenormand-16": {
+    "name": "Stars",
+    "keywords": [
+      "hope",
+      "guidance",
+      "clarity"
+    ],
+    "meaning": "Clarity and hope after a long night. Your goals are in view, so follow your inner compass and trust that you're on the right path."
+  },
+  "lenormand-17": {
+    "name": "Stork",
+    "keywords": [
+      "change",
+      "improvement",
+      "renewal"
+    ],
+    "meaning": "A welcome change or an improvement is on the way. Something is shifting for the better; let it carry you somewhere new."
+  },
+  "lenormand-18": {
+    "name": "Dog",
+    "keywords": [
+      "friendship",
+      "loyalty",
+      "trust"
+    ],
+    "meaning": "A loyal friend or someone you can count on. Lean on the people who stand by you, and be that friend for someone else."
+  },
+  "lenormand-19": {
+    "name": "Tower",
+    "keywords": [
+      "structure",
+      "authority",
+      "solitude"
+    ],
+    "meaning": "Rules, institutions and a bit of distance. You may need firm boundaries, or time on your own to see your situation from above."
+  },
+  "lenormand-20": {
+    "name": "Garden",
+    "keywords": [
+      "community",
+      "gatherings",
+      "being seen"
+    ],
+    "meaning": "Groups, events and public life. Step out and connect; the answer may come through other people or a social setting."
+  },
+  "lenormand-21": {
+    "name": "Mountain",
+    "keywords": [
+      "obstacle",
+      "delay",
+      "patience"
+    ],
+    "meaning": "Something stands in your way. It won't move quickly, so be patient, find another route, or climb it one step at a time."
+  },
+  "lenormand-22": {
+    "name": "Crossroads",
+    "keywords": [
+      "choice",
+      "options",
+      "decision"
+    ],
+    "meaning": "Several paths lie in front of you. Take time to weigh your options; there's more than one way forward, and the choice is yours."
+  },
+  "lenormand-23": {
+    "name": "Mice",
+    "keywords": [
+      "worry",
+      "loss",
+      "wearing away"
+    ],
+    "meaning": "Small worries or losses that slowly add up. Notice what is draining your time, energy or money, and deal with it before it grows."
+  },
+  "lenormand-24": {
+    "name": "Heart",
+    "keywords": [
+      "love",
+      "affection",
+      "kindness"
+    ],
+    "meaning": "Love, warmth and what matters to your heart. Lead with kindness, and let your feelings guide you."
+  },
+  "lenormand-25": {
+    "name": "Ring",
+    "keywords": [
+      "commitment",
+      "promise",
+      "partnership"
+    ],
+    "meaning": "A promise, a partnership or an agreement. Think about the commitments you've made, and which ones you truly want to keep."
+  },
+  "lenormand-26": {
+    "name": "Book",
+    "keywords": [
+      "secrets",
+      "learning",
+      "the unknown"
+    ],
+    "meaning": "Something isn't known yet, or is being kept private. Keep learning and asking; the answer will show itself in time."
+  },
+  "lenormand-27": {
+    "name": "Letter",
+    "keywords": [
+      "message",
+      "writing",
+      "news"
+    ],
+    "meaning": "A message, a note or something in writing. Pay attention to what is said and written, and say what you need to say clearly."
+  },
+  "lenormand-28": {
+    "name": "Gentleman",
+    "keywords": [
+      "a man",
+      "you",
+      "a key person"
+    ],
+    "meaning": "Often stands for you, the person asking, or for a man in your life. Look at the cards beside him to see what surrounds him."
+  },
+  "lenormand-29": {
+    "name": "Lady",
+    "keywords": [
+      "a woman",
+      "you",
+      "a key person"
+    ],
+    "meaning": "Often stands for you, the person asking, or for a woman in your life. Look at the cards beside her to see what surrounds her."
+  },
+  "lenormand-30": {
+    "name": "Lily",
+    "keywords": [
+      "peace",
+      "maturity",
+      "calm"
+    ],
+    "meaning": "Calm, maturity and quiet contentment. Slow down, act with grace, and trust the wisdom you've gathered over time."
+  },
+  "lenormand-31": {
+    "name": "Sun",
+    "keywords": [
+      "success",
+      "energy",
+      "warmth"
+    ],
+    "meaning": "Warmth, energy and success. Things are going your way; step into the light and let yourself shine."
+  },
+  "lenormand-32": {
+    "name": "Moon",
+    "keywords": [
+      "recognition",
+      "feelings",
+      "intuition"
+    ],
+    "meaning": "Recognition, emotions and your inner world. Your efforts may be noticed; listen to your intuition and your dreams."
+  },
+  "lenormand-33": {
+    "name": "Key",
+    "keywords": [
+      "solution",
+      "certainty",
+      "opening"
+    ],
+    "meaning": "The solution is in your hands. A door, an answer or an opportunity opens, and it matters more than it seems."
+  },
+  "lenormand-34": {
+    "name": "Fish",
+    "keywords": [
+      "money",
+      "abundance",
+      "flow"
+    ],
+    "meaning": "Money, business and the flow of resources. Abundance comes from keeping things moving, so share, trade and spend your energy wisely."
+  },
+  "lenormand-35": {
+    "name": "Anchor",
+    "keywords": [
+      "stability",
+      "persistence",
+      "staying power"
+    ],
+    "meaning": "Stability and commitment to the long haul. Hold steady and keep going; what you build now will last."
+  },
+  "lenormand-36": {
+    "name": "Cross",
+    "keywords": [
+      "burden",
+      "duty",
+      "meaning"
+    ],
+    "meaning": "A burden or responsibility you carry. It may feel heavy, but it has meaning; ask what it is teaching you, and where you can ask for help."
+  }
+}

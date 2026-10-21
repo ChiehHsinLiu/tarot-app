@@ -1,20 +1,12 @@
 import { useState } from 'react'
-import template from '../../prompts/reading.md?raw'
-import type { Card, Spread } from '../lib/deck.ts'
-import type { Reading } from '../lib/draw.ts'
-import { buildPrompt } from '../lib/prompt.ts'
 
-type Props = {
-  reading: Reading
-  spread: Spread
-  cardsById: Map<string, Card>
-}
+// The finished prompt: each deck builds its own from its template.
+type Props = { prompt: string }
 
 type Status = 'idle' | 'copied' | 'manual'
 
-export function CopyForClaude({ reading, spread, cardsById }: Props) {
+export function CopyForClaude({ prompt }: Props) {
   const [status, setStatus] = useState<Status>('idle')
-  const prompt = buildPrompt(template, reading, spread, cardsById)
 
   async function copy() {
     try {

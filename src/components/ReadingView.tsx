@@ -1,6 +1,9 @@
 import { Suspense, lazy, useEffect, useRef } from 'react'
+import template from '../../prompts/reading.md?raw'
 import type { Card, Spread, Verdict } from '../lib/deck.ts'
 import type { Reading } from '../lib/draw.ts'
+import { buildPrompt } from '../lib/prompt.ts'
+import { encodeReading } from '../lib/share.ts'
 import { CardFace } from './CardFace.tsx'
 import { CopyForClaude } from './CopyForClaude.tsx'
 import { SharePanel } from './SharePanel.tsx'
@@ -69,10 +72,10 @@ export function ReadingView({ reading, spread, cardsById, shared, onNewReading }
           {shared ? 'Draw your own' : 'New reading'}
         </button>
         <SharePanel reading={reading} />
-        <CopyForClaude reading={reading} spread={spread} cardsById={cardsById} />
+        <CopyForClaude prompt={buildPrompt(template, reading, spread, cardsById)} />
         {AskClaude && (
           <Suspense fallback={null}>
-            <AskClaude reading={reading} />
+            <AskClaude body={{ fragment: encodeReading(reading, { includeQuestion: true }) }} />
           </Suspense>
         )}
       </div>

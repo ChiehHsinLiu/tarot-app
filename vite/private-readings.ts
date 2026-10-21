@@ -10,13 +10,15 @@ import path from 'node:path'
 import readline from 'node:readline'
 import type { Plugin } from 'vite'
 import { buildCards, buildSpreads, rawCardText, rawCards, rawSpreadText, rawSpreads } from '../src/lib/deck.ts'
+import type { DrawnCard } from '../src/lib/draw.ts'
+import { buildLenormandDeck, buildLenormandPrompt } from '../src/lib/lenormand.ts'
 import { buildOracleCards, buildOraclePrompt, rawAnimalDeck, rawAnimalText } from '../src/lib/oracle.ts'
 import { buildPrompt } from '../src/lib/prompt.ts'
 import { QUESTION_MAX_CHARS, countChars } from '../src/lib/question.ts'
 import { decodeReading, encodeReading } from '../src/lib/share.ts'
 import type { StreamLine } from './claude-stream.ts'
 import { classifyFailure, parseLine } from './claude-stream.ts'
-import { appendJournal, appendOracleJournal } from './journal.ts'
+import { appendJournal, appendLenormandJournal, appendOracleJournal } from './journal.ts'
 
 const MAX_BODY_BYTES = 8 * 1024
 const DEFAULT_TIMEOUT_MS = 2 * 60 * 1000
@@ -36,6 +38,7 @@ const cardsById = new Map(buildCards(rawCards, rawCardText).map((c) => [c.id, c]
 const spreads = buildSpreads(rawSpreads, rawSpreadText)
 const cardIds = new Set(rawCards.map((c) => c.id))
 const oracleById = new Map(buildOracleCards(rawAnimalDeck, rawAnimalText).map((c) => [c.id, c]))
+const lenormand = buildLenormandDeck(spreads)
 
 export type ErrorCode = 'not-installed' | 'not-logged-in' | 'timeout' | 'failed' | 'invalid'
 type StreamEvent = { type: 'text'; text: string } | { type: 'done' } | { type: 'error'; code: ErrorCode; message: string }
@@ -49,6 +52,7 @@ export function privateReadings(): Plugin {
       const templates: Templates = {
         reading: path.join(server.config.root, 'prompts', 'reading.md'),
         oracle: path.join(server.config.root, 'prompts', 'oracle.md'),
+        lenormand: path.join(server.config.root, 'prompts', 'lenormand.md'),
       }
       server.middlewares.use(route, (req, res) => {
         const port = (server.httpServer?.address() as AddressInfo | null)?.port
@@ -94,7 +98,7 @@ function readBody(req: IncomingMessage): Promise<string | null> {
   })
 }
 
-type Templates = { reading: string; oracle: string }
+type Templates = { reading: string; oracle: string; lenormand: string }
 
 async function handle(req: IncomingMessage, res: ServerResponse, port: number | undefined, templates: Templates) {
   if (req.url !== '/' && req.url !== '') return reject(res, 404, 'Not found.')
@@ -109,13 +113,15 @@ async function handle(req: IncomingMessage, res: ServerResponse, port: number | 
   } catch {
     return reject(res, 400, 'Request is not valid JSON.')
   }
-  // Exactly one of a tarot reading (share-link fragment) or an oracle card.
+  // Exactly one of a tarot reading (share-link fragment), an oracle card, or a
+  // Lenormand reading.
   if (typeof request !== 'object' || request === null || Array.isArray(request)) {
     return reject(res, 400, 'Missing reading.')
   }
   const keys = Object.keys(request)
   if (keys.length !== 1) return reject(res, 400, 'Send exactly one reading.')
   if ('oracle' in request) return handleOracle(res, request.oracle, templates.oracle)
+  if ('lenormand' in request) return handleLenormand(res, request.lenormand, templates.lenormand)
 
   const fragment = 'fragment' in request ? request.fragment : undefined
   if (typeof fragment !== 'string') return reject(res, 400, 'Missing reading.')
@@ -141,6 +147,36 @@ function handleOracle(res: ServerResponse, oracle: unknown, templatePath: string
 
   const prompt = buildOraclePrompt(fs.readFileSync(templatePath, 'utf8'), card, question)
   streamClaude(res, prompt, (answer, status) => appendOracleJournal({ cardId: card.id, question, answer, status }))
+}
+
+// Rebuilds the reading server-side: known spread, distinct known cards, one per
+// Lenormand position, and a question within the limit (required for Yes / No).
+function handleLenormand(res: ServerResponse, body: unknown, templatePath: string) {
+  if (typeof body !== 'object' || body === null) return reject(res, 400, 'Missing Lenormand reading.')
+  const { spreadId, cards, question } = body as Record<string, unknown>
+  const spread = lenormand.spreads.find((s) => s.id === spreadId)
+  if (!spread) return reject(res, 400, 'That Lenormand spread is not valid.')
+  if (
+    !Array.isArray(cards) ||
+    cards.length !== spread.positions.length ||
+    !cards.every((id) => typeof id === 'string' && lenormand.cardsById.has(id)) ||
+    new Set(cards).size !== cards.length
+  ) {
+    return reject(res, 400, 'Those Lenormand cards are not valid.')
+  }
+  if (typeof question !== 'string' || countChars(question) > QUESTION_MAX_CHARS) {
+    return reject(res, 400, 'That question is not valid.')
+  }
+  if (spread.requiresQuestion && !question.trim()) return reject(res, 400, 'A yes / no reading needs a question.')
+
+  const drawn: DrawnCard[] = (cards as string[]).map((cardId, i) => ({
+    cardId,
+    positionId: spread.positions[i].id,
+    reversed: false,
+  }))
+  const reading = { spreadId: spread.id, question, cards: drawn }
+  const prompt = buildLenormandPrompt(fs.readFileSync(templatePath, 'utf8'), reading, spread, lenormand.cardsById)
+  streamClaude(res, prompt, (answer, status) => appendLenormandJournal({ reading, answer, status }))
 }
 
 function stop(child: ChildProcess) {

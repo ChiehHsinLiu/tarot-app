@@ -1,12 +1,14 @@
 import { guides } from '../lib/guides.ts'
-import type { GuideScreen } from '../lib/guides.ts'
+import type { ScreenGuideText } from '../lib/guides.ts'
 
-type Props = { screen: GuideScreen }
+// The screen's own text; the closing note is shared by every screen.
+type Props = { guide: ScreenGuideText }
 
 // Native <details> handle keyboard toggling and announce expanded or collapsed.
-// They are uncontrolled, so they start closed each time the screen mounts.
-export function ScreenGuide({ screen }: Props) {
-  const { howItWorks, about } = guides.screens[screen]
+// They are uncontrolled, so they start closed each time the screen mounts, and
+// new text (another deck) keeps them as they are.
+export function ScreenGuide({ guide }: Props) {
+  const { howItWorks, about } = guide
   return (
     <div className="screen-guides">
       <details className="screen-guide">

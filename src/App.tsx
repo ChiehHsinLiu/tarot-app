@@ -1,5 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
+import { Suspense, lazy, useEffect, useRef, useState } from 'react'
 import type { FormEvent } from 'react'
+import { DeckPicker } from './components/DeckPicker.tsx'
+import type { DeckId } from './components/DeckPicker.tsx'
 import { Flourish } from './components/Flourish.tsx'
 import { HomeChoices } from './components/HomeChoices.tsx'
 import { OracleCardView } from './components/OracleCardView.tsx'
@@ -10,6 +12,8 @@ import { ScreenGuide } from './components/ScreenGuide.tsx'
 import { SpreadPicker } from './components/SpreadPicker.tsx'
 import { buildCards, buildSpreads, rawCardText, rawCards, rawSpreadText, rawSpreads } from './lib/deck.ts'
 import { draw } from './lib/draw.ts'
+import { guides } from './lib/guides.ts'
+import { buildLenormandDeck } from './lib/lenormand.ts'
 import type { Reading } from './lib/draw.ts'
 import { buildOracleCards, drawOracle, rawAnimalDeck, rawAnimalText } from './lib/oracle.ts'
 import { cryptoRandomInt } from './lib/random.ts'
@@ -24,12 +28,29 @@ const spreads = buildSpreads(rawSpreads, rawSpreadText)
 const oracleCards = buildOracleCards(rawAnimalDeck, rawAnimalText)
 const oracleById = new Map(oracleCards.map((c) => [c.id, c]))
 const oracleIds = oracleCards.map((c) => c.id)
+// Dev-only. Vite replaces DEV with false in production builds, so this folds to
+// null and every Lenormand module, component and text drops out of the bundle.
+const lenormand = import.meta.env.DEV ? buildLenormandDeck(spreads) : null
+// Lazy as well, so its stylesheet lands in a dev-only chunk: Vite keeps the CSS of
+// statically imported modules even when their code is dropped.
+const LenormandReadingView = import.meta.env.DEV
+  ? lazy(() => import('./components/LenormandReadingView.tsx').then((m) => ({ default: m.LenormandReadingView })))
+  : null
 
-type ComposingState = { kind: 'composing'; spreadId: string | null; question: string; invalidLink?: boolean }
+type ComposingState = {
+  kind: 'composing'
+  deck: DeckId
+  spreadId: string | null
+  question: string
+  invalidLink?: boolean
+}
 // What the tarot screen shows. It lives apart from the route, so going Home keeps it.
-type TarotState = ComposingState | { kind: 'revealed'; reading: Reading }
+type TarotState =
+  | ComposingState
+  | { kind: 'revealed'; reading: Reading }
+  | { kind: 'lenormand-revealed'; reading: Reading }
 
-const EMPTY_COMPOSER: ComposingState = { kind: 'composing', spreadId: null, question: '' }
+const EMPTY_COMPOSER: ComposingState = { kind: 'composing', deck: 'tarot', spreadId: null, question: '' }
 
 const decodeHash = (hash: string) => decodeReading(hash, rawSpreads, deckIdSet)
 
@@ -99,17 +120,32 @@ function App() {
         spread={spreads.find((s) => s.id === tarot.reading.spreadId)!}
         cardsById={cardsById}
         shared={false}
-        onNewReading={() => setTarot({ kind: 'composing', spreadId: tarot.reading.spreadId, question: '' })}
+        onNewReading={() => setTarot({ kind: 'composing', deck: 'tarot', spreadId: tarot.reading.spreadId, question: '' })}
       />
     )
-  } else {
+  } else if (lenormand && LenormandReadingView && tarot.kind === 'lenormand-revealed') {
+    screen = (
+      <Suspense fallback={null}>
+        <LenormandReadingView
+          key={JSON.stringify(tarot.reading)}
+          reading={tarot.reading}
+          spread={lenormand.spreads.find((s) => s.id === tarot.reading.spreadId)!}
+          cardsById={lenormand.cardsById}
+          onNewReading={() =>
+            setTarot({ kind: 'composing', deck: 'lenormand', spreadId: tarot.reading.spreadId, question: '' })
+          }
+        />
+      </Suspense>
+    )
+  } else if (tarot.kind === 'composing') {
     screen = (
       <Composer
+        deck={tarot.deck}
         spreadId={tarot.spreadId}
         question={tarot.question}
         invalidLink={tarot.invalidLink ?? false}
-        onChange={(spreadId, question) => setTarot({ kind: 'composing', spreadId, question })}
-        onDraw={(reading) => setTarot({ kind: 'revealed', reading })}
+        onChange={(next) => setTarot({ kind: 'composing', ...next })}
+        onDraw={setTarot}
       />
     )
   }
@@ -152,16 +188,20 @@ function SiteHeader({ home, focus }: { home: boolean; focus: boolean }) {
   )
 }
 
-type ComposerProps = {
-  spreadId: string | null
-  question: string
+type ComposerChoice = { deck: DeckId; spreadId: string | null; question: string }
+
+type ComposerProps = ComposerChoice & {
   invalidLink: boolean
-  onChange: (spreadId: string | null, question: string) => void
-  onDraw: (reading: Reading) => void
+  onChange: (next: ComposerChoice) => void
+  onDraw: (next: TarotState) => void
 }
 
-function Composer({ spreadId, question, invalidLink, onChange, onDraw }: ComposerProps) {
-  const spread = spreads.find((s) => s.id === spreadId) ?? null
+function Composer({ deck, spreadId, question, invalidLink, onChange, onDraw }: ComposerProps) {
+  // Lenormand exists only in the dev build; everywhere else the deck is tarot.
+  // The null check comes first so the production build folds this to false.
+  const useLenormand = lenormand !== null && deck === 'lenormand'
+  const deckSpreads = useLenormand ? lenormand.spreads : spreads
+  const spread = deckSpreads.find((s) => s.id === spreadId) ?? null
   const blocker = !spread
     ? 'Choose a spread to begin.'
     : spread.requiresQuestion && !question.trim()
@@ -174,7 +214,12 @@ function Composer({ spreadId, question, invalidLink, onChange, onDraw }: Compose
   function handleSubmit(e: FormEvent) {
     e.preventDefault()
     if (!spread || blocker) return
-    onDraw(draw(spread, deckIds, question.trim(), cryptoRandomInt))
+    if (useLenormand) {
+      const reading = draw(spread, lenormand.ids, question.trim(), cryptoRandomInt, { reversals: false })
+      onDraw({ kind: 'lenormand-revealed', reading })
+    } else {
+      onDraw({ kind: 'revealed', reading: draw(spread, deckIds, question.trim(), cryptoRandomInt) })
+    }
   }
 
   return (
@@ -187,12 +232,17 @@ function Composer({ spreadId, question, invalidLink, onChange, onDraw }: Compose
           This reading link isn't valid.
         </p>
       )}
-      <ScreenGuide screen="tarot" />
-      <SpreadPicker spreads={spreads} selectedId={spreadId} onSelect={(id) => onChange(id, question)} />
+      {lenormand && <DeckPicker selected={deck} onSelect={(d) => onChange({ deck: d, spreadId, question })} />}
+      <ScreenGuide guide={useLenormand ? lenormand.guide : guides.screens.tarot} />
+      <SpreadPicker
+        spreads={deckSpreads}
+        selectedId={spreadId}
+        onSelect={(id) => onChange({ deck, spreadId: id, question })}
+      />
       <QuestionBox
         value={question}
         required={spread?.requiresQuestion ?? false}
-        onChange={(q) => onChange(spreadId, q)}
+        onChange={(q) => onChange({ deck, spreadId, question: q })}
       />
       <div className="draw-row">
         <button type="submit" className="primary" disabled={blocker !== null} aria-describedby="draw-hint">

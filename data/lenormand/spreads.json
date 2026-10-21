@@ -1,0 +1,4 @@
+{
+  "yes-no": { "positions": [{ "id": "first" }, { "id": "second" }] },
+  "three-card": { "positions": [{ "id": "past" }, { "id": "present" }, { "id": "future" }] }
+}

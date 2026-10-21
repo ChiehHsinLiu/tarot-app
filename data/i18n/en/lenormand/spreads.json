@@ -1,0 +1,4 @@
+{
+  "yes-no": { "positions": { "first": "First card", "second": "Second card" } },
+  "three-card": { "positions": { "past": "Past", "present": "Present", "future": "Future" } }
+}

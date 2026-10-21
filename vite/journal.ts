@@ -26,6 +26,18 @@ export type OracleJournalEntry = {
   status: JournalEntry['status']
 }
 
+// Lenormand answers (dev-only deck) also carry a deck key; cards are ids in
+// position order, since Lenormand cards are never reversed.
+export type LenormandJournalEntry = {
+  time: string
+  deck: 'lenormand'
+  spreadId: string
+  cards: string[]
+  question: string
+  answer: string
+  status: JournalEntry['status']
+}
+
 type Options = { dir?: string; now?: Date }
 
 export function journalDir(env: Record<string, string | undefined> = process.env): string {
@@ -38,7 +50,10 @@ function localDate(date: Date): string {
 }
 
 // Appends one JSON line to the day's file and returns the file's path.
-function writeLine(build: (time: string) => JournalEntry | OracleJournalEntry, options: Options): string {
+function writeLine(
+  build: (time: string) => JournalEntry | OracleJournalEntry | LenormandJournalEntry,
+  options: Options,
+): string {
   const dir = options.dir ?? journalDir()
   const now = options.now ?? new Date()
   fs.mkdirSync(dir, { recursive: true, mode: 0o700 })
@@ -77,6 +92,25 @@ export function appendOracleJournal(
       deck: 'animal',
       cardId: entry.cardId,
       question: entry.question,
+      answer: entry.answer,
+      status: entry.status,
+    }),
+    options,
+  )
+}
+
+// Returns the file the entry was written to.
+export function appendLenormandJournal(
+  entry: { reading: Reading; answer: string; status: JournalEntry['status'] },
+  options: Options = {},
+): string {
+  return writeLine(
+    (time) => ({
+      time,
+      deck: 'lenormand',
+      spreadId: entry.reading.spreadId,
+      cards: entry.reading.cards.map((c) => c.cardId),
+      question: entry.reading.question,
       answer: entry.answer,
       status: entry.status,
     }),

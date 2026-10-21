@@ -1,0 +1,34 @@
+/* Lenormand (dev only): placeholder faces and the Yes / No note. Imported only by
+   the Lenormand components, so it stays out of the production build. */
+
+.lenormand-number {
+  font-family: var(--font-story);
+  font-variation-settings: 'SOFT' 100;
+  font-size: 52px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--card-ink-soft);
+}
+
+.lenormand-note {
+  margin: 0;
+  width: 100%;
+  max-width: 420px;
+  box-sizing: border-box;
+  padding: 14px 20px;
+  border: 1.5px dashed var(--accent);
+  border-radius: 18px;
+  background: var(--surface);
+  text-align: center;
+}
+
+/* Lenormand Yes / No draws a pair: one column on phones, side by side from 720px. */
+.spread-2 {
+  grid-template-columns: minmax(0, 320px);
+}
+
+@media (min-width: 720px) {
+  .spread-2 {
+    grid-template-columns: repeat(2, minmax(0, 320px));
+  }
+}

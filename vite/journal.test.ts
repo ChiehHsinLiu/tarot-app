@@ -3,8 +3,10 @@ import os from 'node:os'
 import path from 'node:path'
 import { afterEach, beforeEach, describe, expect, test } from 'vitest'
 import type { Reading } from '../src/lib/draw.ts'
-import { appendJournal, appendOracleJournal, journalDir } from './journal.ts'
-import type { JournalEntry, OracleJournalEntry } from './journal.ts'
+import { appendJournal, appendLenormandJournal, appendOracleJournal, journalDir } from './journal.ts'
+import type { JournalEntry, LenormandJournalEntry, OracleJournalEntry } from './journal.ts'
+
+type AnyEntry = JournalEntry | OracleJournalEntry | LenormandJournalEntry
 
 const reading: Reading = {
   spreadId: 'yes-no',
@@ -21,7 +23,7 @@ afterEach(() => {
   fs.rmSync(tmp, { recursive: true, force: true })
 })
 
-const readEntries = (file: string): (JournalEntry & OracleJournalEntry)[] =>
+const readEntries = (file: string): AnyEntry[] =>
   fs.readFileSync(file, 'utf8').trim().split('\n').map((l) => JSON.parse(l))
 
 describe('appendJournal', () => {
@@ -121,5 +123,34 @@ describe('journalDir', () => {
 
   test('TAROT_JOURNAL_DIR overrides the default', () => {
     expect(journalDir({ TAROT_JOURNAL_DIR: '/tmp/x' })).toBe('/tmp/x')
+  })
+})
+
+describe('appendLenormandJournal', () => {
+  test('writes Lenormand entries with the deck, spread, card ids in order, and question', () => {
+    const dir = path.join(tmp, 'journal')
+    const now = new Date(2026, 9, 21, 20, 0)
+    const lenormandReading: Reading = {
+      spreadId: 'yes-no',
+      question: 'Will the trip go well?',
+      cards: [
+        { cardId: 'lenormand-03', positionId: 'first', reversed: false },
+        { cardId: 'lenormand-31', positionId: 'second', reversed: false },
+      ],
+    }
+    const file = appendLenormandJournal({ reading: lenormandReading, answer: 'Yes.', status: 'completed' }, { dir, now })
+    appendLenormandJournal({ reading: { ...lenormandReading, question: '' }, answer: 'Pa', status: 'stopped' }, { dir, now })
+
+    const entries = readEntries(file)
+    expect(entries[0]).toEqual({
+      time: now.toISOString(),
+      deck: 'lenormand',
+      spreadId: 'yes-no',
+      cards: ['lenormand-03', 'lenormand-31'],
+      question: 'Will the trip go well?',
+      answer: 'Yes.',
+      status: 'completed',
+    })
+    expect(entries[1]).toMatchObject({ deck: 'lenormand', question: '', answer: 'Pa', status: 'stopped' })
   })
 })
