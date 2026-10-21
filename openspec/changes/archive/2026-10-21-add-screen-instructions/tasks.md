@@ -27,7 +27,7 @@
   - everything passes, adjusting any check that counted the screens' elements
   - no request goes to another origin
   - `dist/` still has no dev-only strings
-- [ ] 3.3 After pushing to `main` (with approval), verify the deploy succeeds and the live site passes `guide-check --public`, the navigation check and the oracle check.
+- [x] 3.3 After pushing to `main` (with approval), verify the deploy succeeds and the live site passes `guide-check --public`, the navigation check and the oracle check.
 
 ## Workflow follow-up
 
