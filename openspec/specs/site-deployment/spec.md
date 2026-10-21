@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Defines how the Tarot web app is built and published to GitHub Pages so that the public site always reflects the latest `main` branch.
+Defines how the Little Oracle web app is built and published to GitHub Pages so that the public site always reflects the latest `main` branch.
 
 ## Requirements
 

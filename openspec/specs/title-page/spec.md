@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Defines the landing page users see when they open the Tarot web app, including its visible heading and document title.
+Defines the landing page users see when they open the Little Oracle web app, including its visible heading and document title.
 
 ## Requirements
 
