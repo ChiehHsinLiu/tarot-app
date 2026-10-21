@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" focusable="false">
+  <ellipse class="art-fill art-line" cx="42" cy="63" rx="29" ry="19"/>
+  <rect class="art-fill art-line" x="22" y="70" width="10" height="13" rx="5"/>
+  <rect class="art-fill art-line" x="56" y="68" width="10" height="15" rx="5"/>
+  <rect class="art-fill art-line" x="50" y="32" width="38" height="28" rx="12"/>
+  <ellipse class="art-deep art-line" cx="57" cy="32" rx="4.5" ry="3.5"/>
+  <circle class="art-blush art-line" cx="66" cy="24" r="6.5"/>
+  <path class="art-deep" d="M66 17.5 q3 -5 8 -3 q-3 4 -8 3 Z"/>
+  <circle class="art-ink" cx="64" cy="41" r="2.3"/>
+  <ellipse class="art-ink" cx="84" cy="42" rx="1.6" ry="2.2"/>
+  <ellipse class="art-blush" cx="69" cy="50" rx="3.6" ry="2.2"/>
+  <path class="art-line" d="M78 53 q3 2 6 0"/>
+</svg>

@@ -1,6 +1,7 @@
 import { Suspense, lazy, useEffect, useRef } from 'react'
 import type { CSSProperties } from 'react'
 import type { OracleCard } from '../lib/oracle.ts'
+import { ORACLE_ART } from '../lib/oracle-art.ts'
 import { ORACLE_PALETTES } from '../lib/palette.ts'
 
 // Dev-only, like Ask Claude on tarot readings: Vite replaces DEV with false in
@@ -9,8 +10,7 @@ const AskClaudeOracle = import.meta.env.DEV
   ? lazy(() => import('./AskClaudeOracle.tsx').then((m) => ({ default: m.AskClaudeOracle })))
   : null
 
-// A simple paw print stands in for card art on every oracle card, and marks the
-// oracle choice on the home page.
+// A simple paw print that marks the oracle choice on the home page.
 export const PAW = (
   <>
     <path d="M12 12.5c-2.6 0-5.5 3.3-5.5 5.6 0 1.6 1.3 2.4 2.8 2.4 1.1 0 1.8-.5 2.7-.5s1.6.5 2.7.5c1.5 0 2.8-.8 2.8-2.4 0-2.3-2.9-5.6-5.5-5.6z" />
@@ -40,9 +40,8 @@ export function OracleCardFace({ card }: { card: OracleCard }) {
         <span className="oracle-face-theme" aria-hidden="true">
           {card.theme}
         </span>
-        <svg className="card-symbol" viewBox="0 0 24 24" aria-hidden="true">
-          {PAW}
-        </svg>
+        {/* Trusted build-time files; oracle-art.test.ts limits what they may contain. */}
+        <span className="oracle-art" aria-hidden="true" dangerouslySetInnerHTML={{ __html: ORACLE_ART[card.id] }} />
         <span className="card-name" aria-hidden="true">
           {card.animal}
         </span>

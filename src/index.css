@@ -756,13 +756,15 @@ button.secondary:focus-visible {
   text-align: center;
 }
 
+/* Small enough that the longest single-word theme (TRANSFORMATION) fits inside
+   the card's inner frame. */
 .oracle-face-theme {
   min-height: 1.5em;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 600;
   line-height: 1.3;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.06em;
   text-align: center;
   color: var(--card-ink-soft);
 }
@@ -770,6 +772,53 @@ button.secondary:focus-visible {
 .card-face.oracle-face {
   --face-bg: var(--family-face);
   --face-edge: var(--family-edge);
+}
+
+/* The card's animal drawing. Drawings use only these classes, so every colour
+   comes from the card's family and the card ink (see oracle-art.test.ts). */
+.oracle-art {
+  display: block;
+  width: 96px;
+  height: 96px;
+}
+
+.oracle-art svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.oracle-art .art-fill {
+  fill: color-mix(in srgb, var(--family-edge) 45%, var(--family-face));
+}
+
+.oracle-art .art-deep {
+  fill: color-mix(in srgb, var(--family-edge) 80%, var(--card-ink));
+}
+
+.oracle-art .art-light {
+  fill: #fffaf0;
+}
+
+.oracle-art .art-ink {
+  fill: var(--card-ink);
+}
+
+.oracle-art .art-blush {
+  fill: #f0a39b;
+  fill-opacity: 0.6;
+}
+
+.oracle-art .art-line {
+  stroke: color-mix(in srgb, var(--family-edge) 45%, var(--card-ink));
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* A line-only shape (no fill class) is just a stroke. */
+.oracle-art .art-line:not(.art-fill, .art-deep, .art-light, .art-ink, .art-blush) {
+  fill: none;
 }
 
 .oracle-face .card-name {

@@ -26,9 +26,16 @@ Each screen has a **Home** link, and the browser's Back button works too. While 
 
 ## Animal oracle
 
-The animal oracle draws one card from an original deck of 36 animal cards, such as the Dachshund · Small but Mighty or the Alpaca · Gentle Boundaries. Each card shows a message, a question to reflect on, and an affirmation. There's no question to type and no daily limit: use **Draw again** for a different card and **Home** to return.
+The animal oracle draws one card from an original deck of 36 animal cards, such as the Dachshund · Small but Mighty or the Alpaca · Gentle Boundaries. Each card has its own drawing of its animal and shows a message, a question to reflect on, and an affirmation. There's no question to type and no daily limit: use **Draw again** for a different card and **Home** to return.
 
-The deck lives in `data/oracle/animal.json` (card ids) and `data/i18n/en/oracle/animal.json` (the text).
+The deck lives in `data/oracle/animal.json` (card ids and colour families) and `data/i18n/en/oracle/animal.json` (the text).
+
+Each card's drawing is a hand-written SVG in `src/assets/oracle/animal/<card-id>.svg`, for example `animal-01.svg` for the Dachshund. To redraw a card, edit or replace its file, keeping to the format that `src/lib/oracle-art.test.ts` checks:
+
+- The root is `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" focusable="false">`.
+- Only simple shapes are allowed (`g`, `path`, `circle`, `ellipse`, `rect`, `line`, `polyline`, `polygon`). There's no text, and no scripts, links or styles.
+- Colours come only from the classes `art-fill`, `art-deep`, `art-light`, `art-ink` (eyes and noses, required), `art-blush` and `art-line` (outlines). These follow the card's colour family, so never write a colour into the file.
+- Each file is at most 3 KB, and every card needs exactly one drawing.
 
 ## Private readings
 
