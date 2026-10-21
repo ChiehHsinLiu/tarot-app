@@ -15,9 +15,18 @@ npm run preview   # serve dist/ at http://localhost:4173/tarot-app/
 
 The app is served under `/tarot-app/` because GitHub Pages hosts it as a project site. If the repository is renamed, update `base` in `vite.config.ts` to match.
 
+## Using the app
+
+The home page offers two choices, each with its own screen and address:
+
+- **Tarot reading** (`#/tarot`): choose the Yes / No or Three cards spread, optionally ask a question, and draw. **Share** turns a reading into a link (`#/r/v1/...`) that anyone can open.
+- **Animal oracle** (`#/oracle`): draw one card for a little guidance today.
+
+Each screen has a **Home** link, and the browser's Back button works too. While the page stays open, each screen keeps what it last showed, so you can switch between them without losing your spread, question, reading, or card. Reloading starts fresh.
+
 ## Animal oracle
 
-Below the tarot spreads, **Today's animal oracle** draws one card from an original deck of 36 animal cards, such as the Dachshund · Small but Mighty or the Alpaca · Gentle Boundaries. Each card shows a message, a question to reflect on, and an affirmation. There's no question to type and no daily limit: use **Draw again** for a different card and **Back** to return.
+The animal oracle draws one card from an original deck of 36 animal cards, such as the Dachshund · Small but Mighty or the Alpaca · Gentle Boundaries. Each card shows a message, a question to reflect on, and an affirmation. There's no question to type and no daily limit: use **Draw again** for a different card and **Home** to return.
 
 The deck lives in `data/oracle/animal.json` (card ids) and `data/i18n/en/oracle/animal.json` (the text).
 
@@ -32,8 +41,8 @@ Requirements:
 Use it:
 
 1. Run `npm run dev` and open http://localhost:5173/tarot-app/.
-2. Draw a reading, or open a share link, then click **Ask Claude**. Use **Stop** to end an answer early and **Ask again** for a new interpretation of the same cards.
-3. For an animal oracle card, you can also type a question in **Ask about this card**, such as "What should I focus on today?", before clicking **Ask Claude**. Leave it empty for a fuller explanation of the card. The box stays editable, so you can change the question and use **Ask again** on the same card.
+2. Choose **Tarot reading** and draw, or open a share link, then click **Ask Claude**. Use **Stop** to end an answer early and **Ask again** for a new interpretation of the same cards.
+3. On the **Animal oracle** screen, draw a card. You can also type a question in **Ask about this card**, such as "What should I focus on today?", before clicking **Ask Claude**. Leave it empty for a fuller explanation of the card. The box stays editable, so you can change the question and use **Ask again** on the same card.
 
 Claude Code runs with all tools turned off and without saving the session, from a temporary directory.
 

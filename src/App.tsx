@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type { FormEvent } from 'react'
+import { HomeChoices } from './components/HomeChoices.tsx'
 import { OracleCardView } from './components/OracleCardView.tsx'
-import { OracleSection } from './components/OracleSection.tsx'
+import { OracleIntro } from './components/OracleIntro.tsx'
 import { QuestionBox } from './components/QuestionBox.tsx'
 import { ReadingView } from './components/ReadingView.tsx'
 import { SpreadPicker } from './components/SpreadPicker.tsx'
@@ -10,99 +11,137 @@ import { draw } from './lib/draw.ts'
 import type { Reading } from './lib/draw.ts'
 import { buildOracleCards, drawOracle, rawAnimalDeck, rawAnimalText } from './lib/oracle.ts'
 import { cryptoRandomInt } from './lib/random.ts'
+import { ROUTE_HASH, parseRoute } from './lib/route.ts'
 import { decodeReading } from './lib/share.ts'
 
 const cards = buildCards(rawCards, rawCardText)
 const cardsById = new Map(cards.map((c) => [c.id, c]))
 const deckIds = cards.map((c) => c.id)
+const deckIdSet = new Set(deckIds)
 const spreads = buildSpreads(rawSpreads, rawSpreadText)
 const oracleCards = buildOracleCards(rawAnimalDeck, rawAnimalText)
 const oracleById = new Map(oracleCards.map((c) => [c.id, c]))
 const oracleIds = oracleCards.map((c) => c.id)
 
 type ComposingState = { kind: 'composing'; spreadId: string | null; question: string; invalidLink?: boolean }
-// The oracle view keeps the tarot composer as it was, so "Back" restores it.
-type State =
-  | ComposingState
-  | { kind: 'revealed'; reading: Reading; shared: boolean }
-  | { kind: 'oracle'; cardId: string; composer: ComposingState }
+// What the tarot screen shows. It lives apart from the route, so going Home keeps it.
+type TarotState = ComposingState | { kind: 'revealed'; reading: Reading }
 
 const EMPTY_COMPOSER: ComposingState = { kind: 'composing', spreadId: null, question: '' }
 
-// Maps the current URL fragment to a state, or null when it is not a reading link.
-function stateFromHash(): State | null {
-  const result = decodeReading(window.location.hash, rawSpreads, new Set(deckIds))
-  if (result.kind === 'reading') return { kind: 'revealed', reading: result.reading, shared: true }
-  if (result.kind === 'invalid') return { ...EMPTY_COMPOSER, invalidLink: true }
-  return null
-}
+const decodeHash = (hash: string) => decodeReading(hash, rawSpreads, deckIdSet)
 
 function App() {
-  const [state, setState] = useState<State>(() => stateFromHash() ?? EMPTY_COMPOSER)
+  const [hash, setHash] = useState(() => window.location.hash)
+  const [tarot, setTarot] = useState<TarotState>(() =>
+    decodeHash(window.location.hash).kind === 'invalid' ? { ...EMPTY_COMPOSER, invalidLink: true } : EMPTY_COMPOSER,
+  )
+  const [oracleCardId, setOracleCardId] = useState<string | null>(null)
+  // Home focuses its heading only when reached from another screen, not on first load.
+  const [navigated, setNavigated] = useState(false)
 
   useEffect(() => {
     const onHashChange = () => {
-      const next = stateFromHash()
-      if (next) setState(next)
+      const next = window.location.hash
+      setHash(next)
+      setNavigated(true)
+      if (decodeHash(next).kind === 'invalid') setTarot({ ...EMPTY_COMPOSER, invalidLink: true })
+      // The invalid-link notice belongs to the link; drop it once the user moves on.
+      else setTarot((t) => (t.kind === 'composing' && t.invalidLink ? { ...t, invalidLink: false } : t))
     }
     window.addEventListener('hashchange', onHashChange)
     return () => window.removeEventListener('hashchange', onHashChange)
   }, [])
 
+  const route = parseRoute(hash)
+  const shared = route === 'share' ? decodeHash(hash) : null
+
+  let screen
+  if (route === 'home') {
+    screen = <HomeChoices />
+  } else if (shared?.kind === 'reading') {
+    screen = (
+      <ReadingView
+        // Remount when a different link is opened so focus and the share panel reset.
+        key={JSON.stringify(shared.reading)}
+        reading={shared.reading}
+        spread={spreads.find((s) => s.id === shared.reading.spreadId)!}
+        cardsById={cardsById}
+        shared
+        onNewReading={() => {
+          // Swap the share fragment for the tarot screen without adding a history entry,
+          // so Back does not reopen the shared reading. replaceState fires no hashchange.
+          history.replaceState(null, '', location.pathname + location.search + ROUTE_HASH.tarot)
+          setTarot(EMPTY_COMPOSER)
+          setHash(ROUTE_HASH.tarot)
+        }}
+      />
+    )
+  } else if (route === 'oracle') {
+    screen = oracleCardId ? (
+      <OracleCardView
+        // Remount on every new card so focus and any Ask Claude state reset.
+        key={oracleCardId}
+        card={oracleById.get(oracleCardId)!}
+        onDrawAgain={() => setOracleCardId(drawOracle(oracleIds, cryptoRandomInt, oracleCardId))}
+      />
+    ) : (
+      <OracleIntro onDraw={() => setOracleCardId(drawOracle(oracleIds, cryptoRandomInt))} />
+    )
+  } else if (tarot.kind === 'revealed') {
+    // The tarot screen, or an invalid share link, which shows the composer with a notice.
+    screen = (
+      <ReadingView
+        key={JSON.stringify(tarot.reading)}
+        reading={tarot.reading}
+        spread={spreads.find((s) => s.id === tarot.reading.spreadId)!}
+        cardsById={cardsById}
+        shared={false}
+        onNewReading={() => setTarot({ kind: 'composing', spreadId: tarot.reading.spreadId, question: '' })}
+      />
+    )
+  } else {
+    screen = (
+      <Composer
+        spreadId={tarot.spreadId}
+        question={tarot.question}
+        invalidLink={tarot.invalidLink ?? false}
+        onChange={(spreadId, question) => setTarot({ kind: 'composing', spreadId, question })}
+        onDraw={(reading) => setTarot({ kind: 'revealed', reading })}
+      />
+    )
+  }
+
   return (
     <>
-      <header className="site-header">
+      <SiteHeader home={route === 'home'} focus={route === 'home' && navigated} />
+      <main>{screen}</main>
+    </>
+  )
+}
+
+function SiteHeader({ home, focus }: { home: boolean; focus: boolean }) {
+  const headingRef = useRef<HTMLHeadingElement>(null)
+  useEffect(() => {
+    if (focus) headingRef.current?.focus()
+  }, [focus])
+
+  if (!home) {
+    return (
+      <header className="site-header compact">
+        <a className="home-link" href={ROUTE_HASH.home}>
+          <span aria-hidden="true">← </span>Home
+        </a>
         <h1>Tarot</h1>
       </header>
-      <main>
-        {state.kind === 'composing' ? (
-          <>
-            <Composer
-              spreadId={state.spreadId}
-              question={state.question}
-              invalidLink={state.invalidLink ?? false}
-              onChange={(spreadId, question) => setState({ kind: 'composing', spreadId, question })}
-              onDraw={(reading) => setState({ kind: 'revealed', reading, shared: false })}
-            />
-            <OracleSection
-              onDraw={() =>
-                setState({
-                  kind: 'oracle',
-                  cardId: drawOracle(oracleIds, cryptoRandomInt),
-                  composer: { kind: 'composing', spreadId: state.spreadId, question: state.question },
-                })
-              }
-            />
-          </>
-        ) : state.kind === 'oracle' ? (
-          <OracleCardView
-            // Remount on every new card so focus and any Ask Claude state reset.
-            key={state.cardId}
-            card={oracleById.get(state.cardId)!}
-            onDrawAgain={() => setState({ ...state, cardId: drawOracle(oracleIds, cryptoRandomInt, state.cardId) })}
-            onBack={() => setState(state.composer)}
-          />
-        ) : (
-          <ReadingView
-            // Remount when a different link is opened so focus and the share panel reset.
-            key={JSON.stringify(state.reading)}
-            reading={state.reading}
-            spread={spreads.find((s) => s.id === state.reading.spreadId)!}
-            cardsById={cardsById}
-            shared={state.shared}
-            onNewReading={() => {
-              if (state.shared) {
-                // Drop the share fragment without adding a history entry.
-                history.replaceState(null, '', location.pathname + location.search)
-                setState(EMPTY_COMPOSER)
-              } else {
-                setState({ kind: 'composing', spreadId: state.reading.spreadId, question: '' })
-              }
-            }}
-          />
-        )}
-      </main>
-    </>
+    )
+  }
+  return (
+    <header className="site-header">
+      <h1 ref={headingRef} tabIndex={-1}>
+        Tarot
+      </h1>
+    </header>
   )
 }
 
@@ -122,6 +161,9 @@ function Composer({ spreadId, question, invalidLink, onChange, onDraw }: Compose
       ? 'A yes / no reading needs a question.'
       : null
 
+  const headingRef = useRef<HTMLHeadingElement>(null)
+  useEffect(() => headingRef.current?.focus(), [])
+
   function handleSubmit(e: FormEvent) {
     e.preventDefault()
     if (!spread || blocker) return
@@ -129,7 +171,10 @@ function Composer({ spreadId, question, invalidLink, onChange, onDraw }: Compose
   }
 
   return (
-    <form className="composer" onSubmit={handleSubmit}>
+    <form className="composer" onSubmit={handleSubmit} aria-labelledby="tarot-title">
+      <h2 id="tarot-title" ref={headingRef} tabIndex={-1}>
+        Tarot reading
+      </h2>
       {invalidLink && (
         <p className="notice" role="alert">
           This reading link isn't valid.

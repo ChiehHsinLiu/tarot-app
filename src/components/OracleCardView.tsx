@@ -7,8 +7,9 @@ const AskClaudeOracle = import.meta.env.DEV
   ? lazy(() => import('./AskClaudeOracle.tsx').then((m) => ({ default: m.AskClaudeOracle })))
   : null
 
-// A simple paw print stands in for card art on every oracle card.
-const PAW = (
+// A simple paw print stands in for card art on every oracle card, and marks the
+// oracle choice on the home page.
+export const PAW = (
   <>
     <path d="M12 12.5c-2.6 0-5.5 3.3-5.5 5.6 0 1.6 1.3 2.4 2.8 2.4 1.1 0 1.8-.5 2.7-.5s1.6.5 2.7.5c1.5 0 2.8-.8 2.8-2.4 0-2.3-2.9-5.6-5.5-5.6z" />
     <ellipse cx="8.6" cy="7.2" rx="1.7" ry="2.3" />
@@ -39,10 +40,9 @@ export function OracleCardFace({ card }: { card: OracleCard }) {
 type Props = {
   card: OracleCard
   onDrawAgain: () => void
-  onBack: () => void
 }
 
-export function OracleCardView({ card, onDrawAgain, onBack }: Props) {
+export function OracleCardView({ card, onDrawAgain }: Props) {
   const headingRef = useRef<HTMLHeadingElement>(null)
   useEffect(() => headingRef.current?.focus(), [])
 
@@ -70,9 +70,6 @@ export function OracleCardView({ card, onDrawAgain, onBack }: Props) {
       <div className="reading-actions">
         <button type="button" className="primary" onClick={onDrawAgain}>
           Draw again
-        </button>
-        <button type="button" className="secondary" onClick={onBack}>
-          Back
         </button>
       </div>
 
