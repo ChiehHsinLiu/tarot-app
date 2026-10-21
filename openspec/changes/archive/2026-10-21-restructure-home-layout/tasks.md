@@ -42,7 +42,7 @@
 ## 4. Integration
 
 - [x] 4.1 Update the scratchpad browser checks to start from `#/tarot` or `#/oracle` and drop the oracle "Back" step, and add a navigation check covering the app-navigation scenarios. Then run `npm test && npm run build`, every check against `npm run dev`, and the `--public` checks against `npm run preview`. Verify all pass with no console errors, and that `dist/` contains no "Ask Claude", `oracle-question` or `api/reading`.
-- [ ] 4.2 After pushing to `main` (with approval), verify the deploy succeeds and that the live site passes the navigation and oracle `--public` checks and the share-link check.
+- [x] 4.2 After pushing to `main` (with approval), verify the deploy succeeds and that the live site passes the navigation and oracle `--public` checks and the share-link check.
 
 ## Workflow follow-up
 

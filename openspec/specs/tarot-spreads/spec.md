@@ -7,10 +7,10 @@ Defines the spreads a user can choose for a reading, the positions each spread h
 ## Requirements
 
 ### Requirement: Available spreads
-The app SHALL offer exactly two spreads: "Yes / No" and "Three cards". No spread SHALL be selected when the page opens, and at most one spread SHALL be selected at a time.
+The app SHALL offer exactly two spreads: "Yes / No" and "Three cards". No spread SHALL be selected when the tarot screen is first opened after the page loads, and at most one spread SHALL be selected at a time.
 
 #### Scenario: Spread choice on load
-- **WHEN** a user opens the app
+- **WHEN** a user opens the tarot screen for the first time after the page loads
 - **THEN** both spreads are offered and neither is selected
 
 #### Scenario: Switching spread before drawing
