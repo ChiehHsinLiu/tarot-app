@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { ScreenGuide } from './ScreenGuide.tsx'
 
 type Props = { onDraw: () => void }
 
@@ -12,6 +13,7 @@ export function OracleIntro({ onDraw }: Props) {
         Today's animal oracle
       </h2>
       <p className="oracle-intro">Draw one animal card for a little guidance today. No question needed.</p>
+      <ScreenGuide screen="oracle" />
       <button type="button" className="primary" onClick={onDraw}>
         Draw
       </button>

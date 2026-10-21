@@ -22,6 +22,8 @@ The home page offers two choices, each with its own screen and address:
 - **Tarot reading** (`#/tarot`): choose the Yes / No or Three cards spread, optionally ask a question, and draw. **Share** turns a reading into a link (`#/r/v1/...`) that anyone can open.
 - **Animal oracle** (`#/oracle`): draw one card for a little guidance today.
 
+Each screen starts with two sections you can open: **How it works**, with steps for that screen, and **About this deck**. Their text lives in `data/i18n/en/guides.json`, one entry per screen.
+
 Each screen has a **Home** link, and the browser's Back button works too. While the page stays open, each screen keeps what it last showed, so you can switch between them without losing your spread, question, reading, or card. Reloading starts fresh.
 
 ## Animal oracle

@@ -1,0 +1,28 @@
+{
+  "note": "Readings are for reflection and fun, not professional advice.",
+  "screens": {
+    "tarot": {
+      "howItWorks": [
+        "Choose a spread. Yes / No draws one card to answer a question. Three cards draws three, for your past, present and future.",
+        "Type your question. Yes / No needs one; for Three cards it's optional.",
+        "Press Draw. Each card comes out upright or reversed. A reversed card is shown upside down and read with its reversed meaning.",
+        "In Yes / No, the answer (Yes, No or Maybe) comes from the card you drew and whether it's upright or reversed.",
+        "Press Share to turn your reading into a link anyone can open. You choose whether the link includes your question."
+      ],
+      "about": [
+        "This is a full 78-card tarot deck. The 22 Major Arcana, from The Fool to The World, speak to life's big themes. The 56 Minor Arcana cover everyday matters in four suits: Wands for energy and drive, Cups for feelings and relationships, Swords for thoughts and challenges, and Pentacles for work, money and home.",
+        "The card meanings were written for this app."
+      ]
+    },
+    "oracle": {
+      "howItWorks": [
+        "Press Draw for one animal card. There's no question to ask.",
+        "Read its message, then take a moment with its reflection question and affirmation.",
+        "Want another? Press Draw again for a different card, as often as you like."
+      ],
+      "about": [
+        "The animal oracle is an original deck made for this app: 36 animals, each paired with a theme, such as the Dachshund · Small but Mighty. The cards come in six colour families, from peach to rose, and each animal has its own drawing."
+      ]
+    }
+  }
+}

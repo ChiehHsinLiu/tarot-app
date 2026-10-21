@@ -6,6 +6,7 @@ import { OracleCardView } from './components/OracleCardView.tsx'
 import { OracleIntro } from './components/OracleIntro.tsx'
 import { QuestionBox } from './components/QuestionBox.tsx'
 import { ReadingView } from './components/ReadingView.tsx'
+import { ScreenGuide } from './components/ScreenGuide.tsx'
 import { SpreadPicker } from './components/SpreadPicker.tsx'
 import { buildCards, buildSpreads, rawCardText, rawCards, rawSpreadText, rawSpreads } from './lib/deck.ts'
 import { draw } from './lib/draw.ts'
@@ -186,6 +187,7 @@ function Composer({ spreadId, question, invalidLink, onChange, onDraw }: Compose
           This reading link isn't valid.
         </p>
       )}
+      <ScreenGuide screen="tarot" />
       <SpreadPicker spreads={spreads} selectedId={spreadId} onSelect={(id) => onChange(id, question)} />
       <QuestionBox
         value={question}
