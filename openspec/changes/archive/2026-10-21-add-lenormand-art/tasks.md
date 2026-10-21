@@ -53,7 +53,7 @@ Each task is verified when the format test passes for its files and the contact 
   - `dist/` has no "lenormand" in any form
   - the bundle's `viewBox="0 0 100 100"` count is still 36
   - the real `~/.tarot/journal` is untouched
-- [ ] 4.3 After pushing to `main` (with approval), verify:
+- [x] 4.3 After pushing to `main` (with approval), verify:
   - the deploy succeeds
   - the live bundle has no "lenormand" and still exactly 36 drawings
   - the live site passes the guide, navigation, share-link and oracle `--public` checks
