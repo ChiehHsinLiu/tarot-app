@@ -51,7 +51,7 @@ Each task is verified when the format test passes for its files and the contact 
   - everything passes with no console errors
   - no request goes to another origin
   - `dist/` contains no dev-only strings
-- [ ] 4.3 After pushing to `main` (with approval), verify the deploy succeeds and the live site passes the oracle and theme `--public` checks, the navigation check and the share-link check.
+- [x] 4.3 After pushing to `main` (with approval), verify the deploy succeeds and the live site passes the oracle and theme `--public` checks, the navigation check and the share-link check.
 
 ## Workflow follow-up
 
