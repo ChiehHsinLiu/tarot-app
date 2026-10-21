@@ -18,7 +18,7 @@ A share link SHALL encode a reading in the URL fragment as `#/r/v1/<spread-id>/<
 - **THEN** the link fragment ends with `?q=Will%20it%20work%3F`
 
 ### Requirement: Share action on a reading
-Every shown reading SHALL offer a Share action that displays the reading's link and copies it to the clipboard on request, confirming when the copy succeeded.
+Every shown tarot reading SHALL offer a Share action that displays the reading's link and copies it to the clipboard on request, confirming when the copy succeeded. Readings with other decks SHALL NOT offer Share, and share links SHALL only ever describe tarot readings.
 
 #### Scenario: Copying a link
 - **WHEN** a user activates Share and then Copy link
@@ -27,6 +27,10 @@ Every shown reading SHALL offer a Share action that displays the reading's link 
 #### Scenario: Clipboard unavailable
 - **WHEN** copying to the clipboard fails
 - **THEN** the link remains visible and selected so the user can copy it manually
+
+#### Scenario: No Share for Lenormand
+- **WHEN** a Lenormand reading is shown in the local dev app
+- **THEN** no Share action is offered
 
 ### Requirement: Question excluded by default
 The Share action SHALL include the question in the link only when the user ticks "Include my question". The checkbox SHALL be unticked each time Share is opened, and SHALL NOT be shown when the reading has no question.

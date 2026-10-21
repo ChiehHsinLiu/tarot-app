@@ -60,7 +60,7 @@
   - the preview's tarot screen has no deck choice
   - `dist/` has no dev-only or Lenormand strings
   - the real `~/.tarot/journal` is untouched
-- [ ] 4.3 After pushing to `main` (with approval), verify:
+- [x] 4.3 After pushing to `main` (with approval), verify:
   - the deploy succeeds
   - the live bundle contains no Lenormand strings
   - the live site passes the guide, navigation, share-link and oracle checks with `--public`

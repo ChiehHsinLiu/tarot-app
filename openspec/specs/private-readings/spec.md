@@ -69,7 +69,12 @@ While an answer is streaming, a "Stop" action SHALL end the request and the Clau
 - **THEN** a new answer streams for the same reading and the cards on the page do not change
 
 ### Requirement: The endpoint accepts only valid readings
-The endpoint SHALL accept only either a reading in share-link form that decodes successfully under the share-link rules (known spread and cards, correct card count, question at most 300 user-visible characters), or an oracle request naming a known oracle card with an optional question of at most 300 user-visible characters. It SHALL reject anything else, including raw prompt text, without running Claude Code.
+The endpoint SHALL accept only one of:
+- a tarot reading in share-link form that decodes successfully under the share-link rules (known spread and cards, correct card count, question at most 300 user-visible characters)
+- an oracle request naming a known oracle card, with an optional question of at most 300 user-visible characters
+- a Lenormand request naming a known spread and distinct known Lenormand cards, exactly as many as that spread's Lenormand positions, with a question of at most 300 user-visible characters that is non-empty for Yes / No
+
+It SHALL reject anything else, including raw prompt text, without running Claude Code.
 
 #### Scenario: Over-long question
 - **WHEN** a request carries a question longer than 300 characters
@@ -81,6 +86,10 @@ The endpoint SHALL accept only either a reading in share-link form that decodes 
 
 #### Scenario: Unknown oracle card
 - **WHEN** an oracle request names a card id that is not in the oracle deck
+- **THEN** the endpoint rejects it and Claude Code is not run
+
+#### Scenario: Invalid Lenormand request
+- **WHEN** a Lenormand request names an unknown card, repeats a card, has the wrong number of cards for its spread, or is a Yes / No with an empty question
 - **THEN** the endpoint rejects it and Claude Code is not run
 
 ### Requirement: The endpoint answers only the local app
@@ -110,7 +119,7 @@ The page SHALL show a specific message when Claude Code is not installed, when i
 - **THEN** the Claude Code process is ended and the page says the request timed out
 
 ### Requirement: Private journal
-Each completed or stopped answer SHALL be appended to a journal under `~/.tarot/journal/` with the time, the reading (or, for an oracle answer, the oracle card and the question asked), the answer text, and whether it completed or was stopped. The journal SHALL NOT be written inside the repository.
+Each completed or stopped answer SHALL be appended to a journal under `~/.tarot/journal/` with the time, the reading (or, for an oracle answer, the oracle card and the question asked; for a Lenormand answer, the deck, spread, cards, and question), the answer text, and whether it completed or was stopped. The journal SHALL NOT be written inside the repository.
 
 #### Scenario: Completed answer saved
 - **WHEN** an answer completes
@@ -123,3 +132,7 @@ Each completed or stopped answer SHALL be appended to a journal under `~/.tarot/
 #### Scenario: Oracle answer saved
 - **WHEN** an answer about an oracle card completes
 - **THEN** a journal entry with the oracle card id, the question (possibly empty), the answer, and status "completed" is added
+
+#### Scenario: Lenormand answer saved
+- **WHEN** an answer about a Lenormand reading completes
+- **THEN** a journal entry marked as the Lenormand deck, with the spread, card ids in order, question, answer, and status "completed" is added

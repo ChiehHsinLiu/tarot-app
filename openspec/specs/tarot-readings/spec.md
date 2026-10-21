@@ -43,21 +43,21 @@ A "New reading" action SHALL clear the current reading and question and return t
 - **THEN** the cards are cleared, the question box is empty and editable, and the previously selected spread remains selected
 
 ### Requirement: Fair draw
-Each draw SHALL select cards uniformly at random without replacement from the full 78-card deck, using a cryptographically secure random source, so that every ordered combination of distinct cards is equally likely.
+Each tarot draw SHALL select cards uniformly at random without replacement from the full 78-card deck, using a cryptographically secure random source, so that every ordered combination of distinct cards is equally likely.
 
 #### Scenario: No repeated cards
-- **WHEN** a three-card reading is drawn
+- **WHEN** a tarot three-card reading is drawn
 - **THEN** the three cards are all different
 
 #### Scenario: Statistical uniformity
-- **WHEN** a large number of single-card draws are simulated in tests
+- **WHEN** a large number of single-card tarot draws are simulated in tests
 - **THEN** each of the 78 cards appears with a frequency consistent with 1/78 within statistical tolerance
 
 ### Requirement: Independent 50/50 reversals
-Each drawn card SHALL be independently reversed with probability 1/2, using the same cryptographically secure random source.
+Each drawn tarot card SHALL be independently reversed with probability 1/2, using the same cryptographically secure random source.
 
 #### Scenario: Reversal frequency
-- **WHEN** a large number of draws are simulated in tests
+- **WHEN** a large number of tarot draws are simulated in tests
 - **THEN** the share of reversed cards is consistent with 1/2 within statistical tolerance
 
 ### Requirement: Readings work without a network after load
