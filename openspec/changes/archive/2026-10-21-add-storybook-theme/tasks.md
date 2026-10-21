@@ -44,7 +44,7 @@
   - everything passes with no console errors
   - no request goes to another origin
   - `dist/` contains no dev-only strings
-- [ ] 4.2 After pushing to `main` (with approval), verify the deploy succeeds and that the live site passes the navigation, oracle `--public`, share-link and theme checks, with the tab title "Little Oracle".
+- [x] 4.2 After pushing to `main` (with approval), verify the deploy succeeds and that the live site passes the navigation, oracle `--public`, share-link and theme checks, with the tab title "Little Oracle".
 
 ## Workflow follow-up
 

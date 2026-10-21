@@ -36,7 +36,7 @@ The deployed site SHALL be served at `https://chiehhsinliu.github.io/tarot-app/`
 
 #### Scenario: Visiting the published URL
 - **WHEN** a user opens `https://chiehhsinliu.github.io/tarot-app/` after a successful deployment
-- **THEN** the Tarot title page is displayed and no asset request returns a 404
+- **THEN** the Little Oracle home page is displayed and no asset request returns a 404
 
 ### Requirement: Concurrent deployments do not conflict
 When multiple deployments are triggered in quick succession, only one SHALL publish at a time, and the latest commit SHALL end up deployed.

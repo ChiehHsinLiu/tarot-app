@@ -11,7 +11,7 @@ The home page SHALL show two choices of equal prominence, "Tarot reading" and "A
 
 #### Scenario: Opening the root URL
 - **WHEN** a user loads the app's root URL with no fragment
-- **THEN** the page shows the heading "Tarot" and the "Tarot reading" and "Animal oracle" choices, and no spread choice, question box, draw button, or card
+- **THEN** the page shows the heading "Little Oracle" and the "Tarot reading" and "Animal oracle" choices, and no spread choice, question box, draw button, or card
 
 #### Scenario: Choosing tarot
 - **WHEN** a user activates "Tarot reading" on the home page
