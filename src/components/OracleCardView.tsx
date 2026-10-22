@@ -3,6 +3,7 @@ import type { CSSProperties } from 'react'
 import type { OracleCard } from '../lib/oracle.ts'
 import { ORACLE_ART } from '../lib/oracle-art.ts'
 import { ORACLE_PALETTES } from '../lib/palette.ts'
+import { CardFlip } from './CardFlip.tsx'
 
 // Dev-only, like Ask Claude on tarot readings: Vite replaces DEV with false in
 // production builds, so this import() and its code and styles never ship.
@@ -54,8 +55,12 @@ export function OracleCardView({ card, onDrawAgain }: Props) {
         Today's animal oracle
       </h2>
 
-      <div className="oracle-slot">
-        <OracleCardFace card={card} />
+      {/* The card turns over as it opens, and on every Draw again, since the view
+          remounts for each card; its reading fades in as it lands. */}
+      <div className="oracle-slot reveal">
+        <CardFlip index={0}>
+          <OracleCardFace card={card} />
+        </CardFlip>
         <h3 className="card-title">
           {card.animal}
           <span className="card-title-orientation"> · {card.theme}</span>

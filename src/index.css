@@ -12,6 +12,9 @@
   --card-border: #c9a96e;
   --card-ink: #2f2630;
   --card-ink-soft: #55474f;
+  /* The card back is the same night sky in both palettes, as faces stay cream. */
+  --back-bg: #3b2a4a;
+  --back-gold: var(--card-border);
   --flourish: #b9926a;
   --shadow: rgb(84 58 40 / 0.12);
   --paper-texture:
@@ -610,6 +613,96 @@ button.primary:focus-visible {
   font-size: 14px;
   line-height: 1.25;
   text-align: center;
+}
+
+/* Card back and flip. The back and the face share one grid cell inside a 3D
+   box; the box rests face up, and the card-flip animation starts it turned
+   over, so with no animation (reduced motion) the card is simply face up. */
+
+.card-flip {
+  --flip-delay: calc(var(--flip-index, 0) * 0.3s);
+  perspective: 900px;
+}
+
+.card-flip-inner {
+  display: grid;
+  justify-items: center;
+  transform-style: preserve-3d;
+  animation: card-flip 0.6s ease-in-out var(--flip-delay) both;
+}
+
+.card-flip-inner > * {
+  grid-area: 1 / 1;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.card-back {
+  width: 140px;
+  aspect-ratio: 3 / 5;
+  box-sizing: border-box;
+  border: 2px solid var(--back-gold);
+  border-radius: 14px;
+  background: var(--back-bg);
+  box-shadow: 0 8px 20px var(--shadow);
+  transform: rotateY(180deg);
+}
+
+.card-back svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.card-back .back-line {
+  fill: none;
+  stroke: var(--back-gold);
+  stroke-width: 1.2;
+}
+
+.card-back .back-gold {
+  fill: var(--back-gold);
+}
+
+/* A revealed card's text, and the Yes / No verdict with the first card, fade
+   in as the card lands. Opacity only, so screen readers can read it at once. */
+.reveal .card-title,
+.reveal .card-keywords,
+.reveal .card-meaning,
+.reveal .oracle-message,
+.reveal .oracle-reflect,
+.reveal .oracle-affirmation,
+.verdict.reveal {
+  animation: reveal-fade 0.3s ease-out calc(var(--flip-index, 0) * 0.3s + 0.45s) both;
+}
+
+@keyframes reveal-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes card-flip {
+  from {
+    transform: rotateY(180deg);
+  }
+  to {
+    transform: rotateY(0deg);
+  }
+}
+
+/* With reduced motion the cards rest face up, and their text shows, at once. */
+@media (prefers-reduced-motion: reduce) {
+  .card-flip-inner,
+  .reveal .card-title,
+  .reveal .card-keywords,
+  .reveal .card-meaning,
+  .reveal .oracle-message,
+  .reveal .oracle-reflect,
+  .reveal .oracle-affirmation,
+  .verdict.reveal {
+    animation: none;
+  }
 }
 
 @media (max-width: 480px) {

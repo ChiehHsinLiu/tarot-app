@@ -1,10 +1,12 @@
 import { Suspense, lazy, useEffect, useRef } from 'react'
+import type { CSSProperties } from 'react'
 import template from '../../prompts/reading.md?raw'
 import type { Card, Spread, Verdict } from '../lib/deck.ts'
 import type { Reading } from '../lib/draw.ts'
 import { buildPrompt } from '../lib/prompt.ts'
 import { encodeReading } from '../lib/share.ts'
 import { CardFace } from './CardFace.tsx'
+import { CardFlip } from './CardFlip.tsx'
 import { CopyForClaude } from './CopyForClaude.tsx'
 import { SharePanel } from './SharePanel.tsx'
 
@@ -47,20 +49,33 @@ export function ReadingView({ reading, spread, cardsById, shared, onNewReading }
       {reading.question && <p className="asked">“{reading.question}”</p>}
 
       {verdict && (
-        <div className={`verdict verdict-${verdict.verdict}`}>
+        // Fades in with the first card; a shared reading shows it at once.
+        <div className={`verdict verdict-${verdict.verdict}${shared ? '' : ' reveal'}`}>
           <p className="verdict-word">{VERDICT_WORDS[verdict.verdict]}</p>
           <p className="verdict-note">{verdict.note}</p>
         </div>
       )}
 
       <ol className={`spread spread-${reading.cards.length}`}>
-        {reading.cards.map((drawn) => {
+        {reading.cards.map((drawn, index) => {
           const card = cardsById.get(drawn.cardId)!
           const position = spread.positions.find((p) => p.id === drawn.positionId)!
           return (
-            <li key={drawn.positionId} className="spread-slot">
+            // A drawn reading turns its cards over in order, each card's text
+            // fading in as it lands; a shared reading opens face up.
+            <li
+              key={drawn.positionId}
+              className={shared ? 'spread-slot' : 'spread-slot reveal'}
+              style={shared ? undefined : ({ '--flip-index': index } as CSSProperties)}
+            >
               <p className="position-label">{position.label}</p>
-              <CardFace card={card} reversed={drawn.reversed} />
+              {shared ? (
+                <CardFace card={card} reversed={drawn.reversed} />
+              ) : (
+                <CardFlip index={index}>
+                  <CardFace card={card} reversed={drawn.reversed} />
+                </CardFlip>
+              )}
               <h3 className="card-title">
                 {card.name}
                 {drawn.reversed && <span className="card-title-orientation"> (reversed)</span>}

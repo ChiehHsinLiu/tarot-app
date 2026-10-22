@@ -22,6 +22,8 @@ The home page offers two choices, each drawn as an arched window (a fanned tarot
 - **Tarot reading** (`#/tarot`): choose the Yes / No or Three cards spread, optionally ask a question, and draw. **Share** turns a reading into a link (`#/r/v1/...`) that anyone can open.
 - **Animal oracle** (`#/oracle`): draw one card for a little guidance today.
 
+Drawn cards land face down, showing a night-sky back, and turn over one after another, each card's meaning appearing as it lands. A shared link opens with its cards already face up, and if your system asks for reduced motion, cards appear face up at once.
+
 The **How it works** link under each screen's heading opens **How it works**, with steps for that screen, and **About this deck**. Close it with **Close** or Escape. The text lives in `data/i18n/en/guides.json`, one entry per screen.
 
 A tarot reading or a shared one has its start-over button both under the heading and at the bottom: **New reading** for a tarot reading and **Draw your own** for a shared one. **New reading** keeps your spread. An oracle card is short, so it has one **Draw again**, at the bottom.

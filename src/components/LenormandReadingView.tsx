@@ -1,11 +1,13 @@
 // Dev-only: a Lenormand reading. App.tsx lazy-loads it behind import.meta.env.DEV,
 // so neither its code nor Lenormand.css reaches the public build.
 import { Suspense, lazy, useEffect, useRef } from 'react'
+import type { CSSProperties } from 'react'
 import template from '../../prompts/lenormand.md?raw'
 import type { Spread } from '../lib/deck.ts'
 import type { Reading } from '../lib/draw.ts'
 import { buildLenormandPrompt } from '../lib/lenormand.ts'
 import type { LenormandCard } from '../lib/lenormand.ts'
+import { CardFlip } from './CardFlip.tsx'
 import { CopyForClaude } from './CopyForClaude.tsx'
 import { LenormandCardFace } from './LenormandCardFace.tsx'
 import './Lenormand.css'
@@ -50,13 +52,20 @@ export function LenormandReadingView({ reading, spread, cardsById, onNewReading 
       )}
 
       <ol className={`spread spread-${reading.cards.length}`}>
-        {reading.cards.map((drawn) => {
+        {reading.cards.map((drawn, index) => {
           const card = cardsById.get(drawn.cardId)!
           const position = spread.positions.find((p) => p.id === drawn.positionId)!
           return (
-            <li key={drawn.positionId} className="spread-slot">
+            // Turns over in order like a tarot reading, its text fading in as it lands.
+            <li
+              key={drawn.positionId}
+              className="spread-slot reveal"
+              style={{ '--flip-index': index } as CSSProperties}
+            >
               <p className="position-label">{position.label}</p>
-              <LenormandCardFace card={card} />
+              <CardFlip index={index}>
+                <LenormandCardFace card={card} />
+              </CardFlip>
               <h3 className="card-title">
                 {card.number} · {card.name}
               </h3>
