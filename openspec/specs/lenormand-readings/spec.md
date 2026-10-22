@@ -24,8 +24,8 @@ The Lenormand deck SHALL contain exactly 36 cards numbered 1 to 36 in the tradit
 - **WHEN** the Lenormand deck data is loaded
 - **THEN** it has 36 cards with distinct ids, numbered 1 to 36 in the traditional order, each with a name, keywords, and a meaning of at most 400 characters
 
-### Requirement: Choosing a deck
-The deck choice SHALL appear on the tarot screen above the "How it works" and "About this deck" sections, with "Tarot" selected when the screen is first opened after the page loads, and exactly one deck selected at a time. Changing the deck SHALL keep the selected spread and the question. The selected deck SHALL be kept, like the spread and question, when the owner goes Home and returns to the tarot screen, and after "New reading".
+### Requirement: Choosing a deck on the tarot screen
+The deck choice SHALL appear on the tarot screen below its heading and before the spread choice, with "Tarot" selected whenever the screen is entered from a different screen or the page loads, and exactly one deck selected at a time. Changing the deck SHALL keep the selected spread and the question. "New reading" SHALL keep the selected deck, like the spread.
 
 #### Scenario: Default deck
 - **WHEN** the owner opens the tarot screen for the first time after loading the dev app
@@ -35,8 +35,12 @@ The deck choice SHALL appear on the tarot screen above the "How it works" and "A
 - **WHEN** the owner selects "Three cards", types a question, and then selects "Lenormand"
 - **THEN** "Three cards" is still selected and the question is unchanged
 
-#### Scenario: Deck kept across Home
+#### Scenario: Deck resets after Home
 - **WHEN** the owner selects "Lenormand", goes Home, and opens "Tarot reading" again
+- **THEN** "Tarot" is selected
+
+#### Scenario: Deck kept by New reading
+- **WHEN** the owner draws a Lenormand reading and activates "New reading"
 - **THEN** "Lenormand" is still selected
 
 ### Requirement: Lenormand spreads

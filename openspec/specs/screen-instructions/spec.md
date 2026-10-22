@@ -7,23 +7,23 @@ Gives each reading screen its own built-in guide: "How it works" instructions fo
 ## Requirements
 
 ### Requirement: Guides on each reading screen
-The tarot screen's spread choice and the animal oracle screen's intro SHALL each show two expandable sections, "How it works" and "About this deck", below the screen's heading and before its "Draw" button. Both sections SHALL start closed whenever the screen is shown. Opening or closing a section SHALL NOT change the selected spread, the question, or what "Draw" does. The sections SHALL NOT appear on a drawn reading, a drawn oracle card, an opened share link, or the home page.
+The tarot screen's spread choice and the animal oracle screen's intro SHALL each show a small "?" button next to the screen's heading that opens a panel containing "How it works" and "About this deck". The panel SHALL be closed whenever the screen is shown, and SHALL offer a "Close" button. Opening or closing it SHALL NOT change the selected deck, spread, question, or what "Draw" does. Neither the button nor the panel SHALL appear on a drawn reading, a drawn oracle card, an opened share link, or the home page.
 
 #### Scenario: Tarot screen opened
 - **WHEN** a user opens the tarot screen
-- **THEN** "How it works" and "About this deck" are shown closed, between the "Tarot reading" heading and the "Draw" button
+- **THEN** a "?" button is shown beside the "Tarot reading" heading, no guide text is shown, and the spread choice follows the heading directly (after the deck choice in the dev app)
 
 #### Scenario: Oracle screen opened
 - **WHEN** a user opens the animal oracle screen before drawing
-- **THEN** "How it works" and "About this deck" are shown closed, between the "Today's animal oracle" heading and the "Draw" button
+- **THEN** a "?" button is shown beside the "Today's animal oracle" heading and no guide text is shown
 
 #### Scenario: Opening a section
-- **WHEN** the user activates "How it works" on the tarot screen
-- **THEN** its instructions are shown, and the spread choice, question, and Draw button are unchanged
+- **WHEN** the user activates the "?" button on the tarot screen
+- **THEN** a panel with "How it works" and "About this deck" is shown, and the spread choice, question, and Draw button are unchanged
 
 #### Scenario: Not on readings
 - **WHEN** a tarot reading is drawn, an oracle card is drawn, or a share link is opened
-- **THEN** no "How it works" or "About this deck" section is shown
+- **THEN** no "?" button or guide panel is shown
 
 ### Requirement: Tarot instructions
 The tarot screen's "How it works" SHALL explain choosing a spread and what each spread draws, when a question is needed, upright and reversed cards, where the Yes / No answer comes from, and sharing a reading as a link.
@@ -59,26 +59,26 @@ Every screen's "About this deck" SHALL end with the same short note that reading
 - **THEN** it ends with the reflection-and-fun note
 
 ### Requirement: Accessible and offline guides
-Each section SHALL be operable with the keyboard alone, SHALL convey whether it is open or closed to assistive technology, and SHALL be readable in both colour schemes and at phone width without horizontal scrolling. The guide text SHALL be plain text, SHALL contain nothing available only in development, and SHALL be shown without any network request once the page has loaded.
+The "?" button SHALL have the accessible name "How it works and about this deck", SHALL be operable with the keyboard alone, and SHALL convey whether its panel is open. Escape or "Close" SHALL close the panel and return focus to the "?" button. The panel SHALL be readable in both colour schemes and at phone width without horizontal scrolling. The guide text SHALL be plain text, contain nothing development-only, and need no network request once the page has loaded.
 
 #### Scenario: Keyboard
-- **WHEN** a keyboard user tabs to "About this deck" and presses Enter or Space
-- **THEN** the section opens, and pressing it again closes it
+- **WHEN** a keyboard user tabs to the "?" button and presses Enter or Space
+- **THEN** the panel opens, and pressing Escape closes it and returns focus to the "?" button
 
 #### Scenario: Screen reader
-- **WHEN** a screen reader reaches a closed "How it works"
-- **THEN** it announces it as collapsed, and as expanded once opened
+- **WHEN** a screen reader reaches the "?" button with the panel closed
+- **THEN** it announces "How it works and about this deck" as a collapsed button, and as expanded once the panel is open
 
 #### Scenario: Phone width
-- **WHEN** the tarot screen is shown 320 pixels wide with both sections open
+- **WHEN** the tarot screen is shown 320 pixels wide with the panel open
 - **THEN** all guide text is readable without horizontal scrolling
 
 ### Requirement: Guides follow the selected deck
-When the tarot screen offers a deck choice, its "How it works" and "About this deck" SHALL show the selected deck's guide. Changing the deck SHALL replace the text in place, without closing an open section or moving focus. Guide text for a dev-only deck SHALL NOT be part of the production build.
+When the tarot screen offers a deck choice, its guide panel SHALL show the selected deck's "How it works" and "About this deck". Changing the deck SHALL replace the text in place, without closing an open panel or moving focus. Guide text for a dev-only deck SHALL NOT be part of the production build.
 
 #### Scenario: Switching to Lenormand
-- **WHEN** the owner opens "About this deck" on the tarot screen and then selects "Lenormand"
-- **THEN** "About this deck" stays open and now describes the Lenormand deck
+- **WHEN** the owner opens the guide panel on the tarot screen and then selects "Lenormand"
+- **THEN** the panel stays open and its "About this deck" now describes the Lenormand deck
 
 #### Scenario: Public build
 - **WHEN** the production bundle is inspected

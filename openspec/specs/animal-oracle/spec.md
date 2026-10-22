@@ -69,8 +69,8 @@ Each of the 36 oracle cards SHALL have its own illustration of its named animal,
 - **WHEN** the network is disconnected after the page has loaded and the user draws an oracle card
 - **THEN** the card's illustration is shown
 
-### Requirement: Draw again and back
-An oracle reading SHALL offer a "Draw again" action that replaces the shown card with a different card chosen uniformly at random from the other 35. The oracle screen's "Home" link SHALL return to the home page, and the tarot spread choice and question SHALL be unchanged when the user next opens the tarot screen.
+### Requirement: Draw again and going home
+An oracle reading SHALL offer a "Draw again" action that replaces the shown card with a different card chosen uniformly at random from the other 35. The oracle screen's "Home" link SHALL return to the home page. Opening the tarot screen afterwards SHALL start it fresh, as for any screen entered from elsewhere.
 
 #### Scenario: Draw again
 - **WHEN** the user activates "Draw again"
@@ -80,6 +80,6 @@ An oracle reading SHALL offer a "Draw again" action that replaces the shown card
 - **WHEN** the user activates "Home" while an oracle card is shown
 - **THEN** the home page is shown with the "Tarot reading" and "Animal oracle" choices
 
-#### Scenario: Tarot choice unchanged
+#### Scenario: Tarot starts fresh after the oracle
 - **WHEN** a user selects "Three cards" on the tarot screen, goes Home, draws an oracle card, goes Home, and opens "Tarot reading"
-- **THEN** "Three cards" is still selected
+- **THEN** no spread is selected and the question box is empty

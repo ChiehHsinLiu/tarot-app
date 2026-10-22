@@ -25,7 +25,7 @@
   - no request goes to another origin
   - `dist/` has no dev-only or Lenormand strings
   - the real `~/.tarot/journal` is untouched
-- [ ] 3.4 After pushing to `main` (with approval), verify the deploy succeeds and the live site passes `guide-check --public`, `reset-check --public`, the navigation, share-link and oracle checks.
+- [x] 3.4 After pushing to `main` (with approval), verify the deploy succeeds and the live site passes `guide-check --public`, `reset-check --public`, the navigation, share-link and oracle checks.
 
 ## Workflow follow-up
 
