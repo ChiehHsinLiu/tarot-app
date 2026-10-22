@@ -24,7 +24,7 @@ The home page offers two choices, each drawn as an arched window (a fanned tarot
 
 The **How it works** link under each screen's heading opens **How it works**, with steps for that screen, and **About this deck**. Close it with **Close** or Escape. The text lives in `data/i18n/en/guides.json`, one entry per screen.
 
-A drawn reading has its start-over button both under the heading and at the bottom: **New reading** for a tarot reading, **Draw your own** for a shared one, and **Draw again** for an oracle card. **New reading** keeps your spread.
+A tarot reading or a shared one has its start-over button both under the heading and at the bottom: **New reading** for a tarot reading and **Draw your own** for a shared one. **New reading** keeps your spread. An oracle card is short, so it has one **Draw again**, at the bottom.
 
 Each screen has a **Home** link, and the browser's Back button works too. Opening a screen from elsewhere always starts it fresh, with no reading or card, no spread selected and an empty question. That includes Home, a home choice, Back or Forward, and a typed address.
 

@@ -53,11 +53,6 @@ export function OracleCardView({ card, onDrawAgain }: Props) {
       <h2 id="oracle-title" ref={headingRef} tabIndex={-1}>
         Today's animal oracle
       </h2>
-      <div className="reading-top-actions">
-        <button type="button" className="secondary" onClick={onDrawAgain}>
-          Draw again
-        </button>
-      </div>
 
       <div className="oracle-slot">
         <OracleCardFace card={card} />
