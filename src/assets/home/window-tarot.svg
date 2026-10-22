@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" focusable="false">
+  <path class="win-sky" d="M24 160 V82 A56 56 0 0 1 136 82 V160 Z"/>
+  <g class="win-day">
+    <circle class="win-glow" cx="111" cy="54" r="10"/>
+    <path class="win-cloud" d="M36 72 C34 66 40 62 45 64 C47 57 58 57 60 64 C65 62 70 66 68 72 Z"/>
+    <path class="win-cloud" d="M92 98 C91 94 95 91 99 93 C101 88 109 88 111 93 C115 92 118 95 117 98 Z"/>
+  </g>
+  <g class="win-night">
+    <circle class="win-glow" cx="108" cy="55" r="11"/>
+    <circle class="win-sky" cx="114" cy="50" r="9.5"/>
+    <path class="win-glow" d="M48 51 L49.8 54.2 L53 56 L49.8 57.8 L48 61 L46.2 57.8 L43 56 L46.2 54.2 Z"/>
+    <path class="win-glow" d="M62 36.5 L63.2 38.8 L65.5 40 L63.2 41.2 L62 43.5 L60.8 41.2 L58.5 40 L60.8 38.8 Z"/>
+    <path class="win-glow" d="M118 86.5 L119.2 88.8 L121.5 90 L119.2 91.2 L118 93.5 L116.8 91.2 L114.5 90 L116.8 88.8 Z"/>
+    <circle class="win-glow" cx="40" cy="88" r="1.4"/>
+    <circle class="win-glow" cx="92" cy="38" r="1.4"/>
+    <circle class="win-glow" cx="70" cy="70" r="1.2"/>
+  </g>
+  <path class="win-frame" d="M80 26 V160 M24 98 H136"/>
+  <path class="win-frame" d="M24 160 V82 A56 56 0 0 1 136 82 V160"/>
+  <rect class="win-sill" x="12" y="158" width="136" height="10" rx="3"/>
+  <g transform="rotate(-36 80 157)">
+    <rect class="art-fill art-line" x="66" y="108" width="28" height="46" rx="3.5"/>
+    <rect class="art-line" x="70" y="112" width="20" height="38" rx="2"/>
+    <path class="art-light art-line" d="M80 122 L85.5 131 L80 140 L74.5 131 Z"/>
+  </g>
+  <g transform="rotate(36 80 157)">
+    <rect class="art-fill art-line" x="66" y="108" width="28" height="46" rx="3.5"/>
+    <rect class="art-line" x="70" y="112" width="20" height="38" rx="2"/>
+    <path class="art-light art-line" d="M80 122 L85.5 131 L80 140 L74.5 131 Z"/>
+  </g>
+  <g transform="rotate(-18 80 157)">
+    <rect class="art-fill art-line" x="66" y="108" width="28" height="46" rx="3.5"/>
+    <rect class="art-line" x="70" y="112" width="20" height="38" rx="2"/>
+    <path class="art-light art-line" d="M80 122 L85.5 131 L80 140 L74.5 131 Z"/>
+  </g>
+  <g transform="rotate(18 80 157)">
+    <rect class="art-fill art-line" x="66" y="108" width="28" height="46" rx="3.5"/>
+    <rect class="art-line" x="70" y="112" width="20" height="38" rx="2"/>
+    <path class="art-light art-line" d="M80 122 L85.5 131 L80 140 L74.5 131 Z"/>
+  </g>
+  <g transform="rotate(0 80 157)">
+    <rect class="art-fill art-line" x="66" y="108" width="28" height="46" rx="3.5"/>
+    <rect class="art-line" x="70" y="112" width="20" height="38" rx="2"/>
+    <path class="art-light art-line" d="M80 122 L85.5 131 L80 140 L74.5 131 Z"/>
+    <circle class="art-ink" cx="80" cy="131" r="1.6"/>
+  </g>
+</svg>

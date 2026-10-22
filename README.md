@@ -17,7 +17,7 @@ The app is served under `/tarot-app/` because GitHub Pages hosts it as a project
 
 ## Using the app
 
-The home page offers two choices, each with its own screen and address:
+The home page offers two choices, each drawn as an arched window (a fanned tarot deck on one sill, a cat on the other) with its own screen and address. The windows show a day sky in light mode and a night sky in dark mode; the drawings are in `src/assets/home/`.
 
 - **Tarot reading** (`#/tarot`): choose the Yes / No or Three cards spread, optionally ask a question, and draw. **Share** turns a reading into a link (`#/r/v1/...`) that anyone can open.
 - **Animal oracle** (`#/oracle`): draw one card for a little guidance today.

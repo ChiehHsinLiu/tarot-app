@@ -42,9 +42,6 @@ const SYMBOLS: Record<Suit | 'major', ReactNode> = {
   ),
 }
 
-// The major arcana star also marks the tarot choice on the home page.
-export const TAROT_SYMBOL = SYMBOLS.major
-
 type Props = { card: Card; reversed: boolean }
 
 export function CardFace({ card, reversed }: Props) {

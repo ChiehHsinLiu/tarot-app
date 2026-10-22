@@ -10,17 +10,6 @@ const AskClaudeOracle = import.meta.env.DEV
   ? lazy(() => import('./AskClaudeOracle.tsx').then((m) => ({ default: m.AskClaudeOracle })))
   : null
 
-// A simple paw print that marks the oracle choice on the home page.
-export const PAW = (
-  <>
-    <path d="M12 12.5c-2.6 0-5.5 3.3-5.5 5.6 0 1.6 1.3 2.4 2.8 2.4 1.1 0 1.8-.5 2.7-.5s1.6.5 2.7.5c1.5 0 2.8-.8 2.8-2.4 0-2.3-2.9-5.6-5.5-5.6z" />
-    <ellipse cx="8.6" cy="7.2" rx="1.7" ry="2.3" />
-    <ellipse cx="15.4" cy="7.2" rx="1.7" ry="2.3" />
-    <ellipse cx="4.9" cy="11.4" rx="1.6" ry="2.1" />
-    <ellipse cx="19.1" cy="11.4" rx="1.6" ry="2.1" />
-  </>
-)
-
 // The card's colour family as CSS variables, read by the face and the reading.
 function familyStyle(card: OracleCard): CSSProperties {
   const { face, edge } = ORACLE_PALETTES[card.palette]

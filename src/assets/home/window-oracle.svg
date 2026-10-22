@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" focusable="false">
+  <path class="win-sky" d="M24 160 V82 A56 56 0 0 1 136 82 V160 Z"/>
+  <g class="win-day">
+    <circle class="win-glow" cx="111" cy="54" r="10"/>
+    <path class="win-cloud" d="M36 72 C34 66 40 62 45 64 C47 57 58 57 60 64 C65 62 70 66 68 72 Z"/>
+    <path class="win-cloud" d="M92 98 C91 94 95 91 99 93 C101 88 109 88 111 93 C115 92 118 95 117 98 Z"/>
+  </g>
+  <g class="win-night">
+    <circle class="win-glow" cx="108" cy="55" r="11"/>
+    <circle class="win-sky" cx="114" cy="50" r="9.5"/>
+    <path class="win-glow" d="M48 51 L49.8 54.2 L53 56 L49.8 57.8 L48 61 L46.2 57.8 L43 56 L46.2 54.2 Z"/>
+    <path class="win-glow" d="M62 36.5 L63.2 38.8 L65.5 40 L63.2 41.2 L62 43.5 L60.8 41.2 L58.5 40 L60.8 38.8 Z"/>
+    <path class="win-glow" d="M118 86.5 L119.2 88.8 L121.5 90 L119.2 91.2 L118 93.5 L116.8 91.2 L114.5 90 L116.8 88.8 Z"/>
+    <circle class="win-glow" cx="40" cy="88" r="1.4"/>
+    <circle class="win-glow" cx="92" cy="38" r="1.4"/>
+    <circle class="win-glow" cx="70" cy="70" r="1.2"/>
+  </g>
+  <path class="win-frame" d="M80 26 V160 M24 98 H136"/>
+  <path class="win-frame" d="M24 160 V82 A56 56 0 0 1 136 82 V160"/>
+  <rect class="win-sill" x="12" y="158" width="136" height="10" rx="3"/>
+  <path class="art-fill art-line" d="M96 148 C110 149 116 158 113 173 C112 178 105 178 106 173 C108 162 104 157 94 156 Z"/>
+  <g transform="translate(20 55.6) scale(1.2)">
+    <path class="art-fill art-line" d="M32 87 C30 70 38 58 50 58 C62 58 70 70 68 87 Z"/>
+    <ellipse class="art-light" cx="50" cy="74" rx="9" ry="11"/>
+    <ellipse class="art-light art-line" cx="43" cy="86" rx="6" ry="3.5"/>
+    <ellipse class="art-light art-line" cx="57" cy="86" rx="6" ry="3.5"/>
+    <path class="art-fill art-line" d="M31 37 L31 17 L46 28 Z"/>
+    <path class="art-fill art-line" d="M69 37 L69 17 L54 28 Z"/>
+    <ellipse class="art-fill art-line" cx="50" cy="42" rx="21" ry="17"/>
+    <path class="art-blush" d="M34 31 L34.5 23 L41 28 Z M66 31 L65.5 23 L59 28 Z"/>
+    <path class="art-line" d="M46 27 l1 5 M50 26 v6 M54 27 l-1 5"/>
+    <circle class="art-ink" cx="42" cy="42" r="2.4"/>
+    <circle class="art-ink" cx="58" cy="42" r="2.4"/>
+    <path class="art-blush art-line" d="M48 47 h4 l-2 2.5 Z"/>
+    <path class="art-line" d="M46 51 q2 2 4 0 q2 2 4 0 M27 45 l9 2 M27 50 l9 0 M73 45 l-9 2 M73 50 l-9 0"/>
+  </g>
+</svg>
