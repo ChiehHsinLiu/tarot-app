@@ -8,4 +8,4 @@
 
 - [x] 2.1 Update `README.md`'s "Using the app" to describe the **How it works** link under each heading instead of the "?".
 - [x] 2.2 Update the scratchpad `guide-check` for the link (under the heading, nothing beside it) and run it against `npm run dev` and, with `--public`, against `npm run preview`, plus `reset-check`, `nav-check` and `lenormand-check` in dev. Verify everything passes with no console errors.
-- [ ] 2.3 After pushing to `main` (with approval), verify the deploy succeeds and the live site passes `guide-check --public`.
+- [x] 2.3 After pushing to `main` (with approval), verify the deploy succeeds and the live site passes `guide-check --public`.
