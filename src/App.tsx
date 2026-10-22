@@ -10,6 +10,7 @@ import { OracleIntro } from './components/OracleIntro.tsx'
 import { QuestionBox } from './components/QuestionBox.tsx'
 import { ReadingView } from './components/ReadingView.tsx'
 import { SpreadPicker } from './components/SpreadPicker.tsx'
+import { SpreadPreview } from './components/SpreadPreview.tsx'
 import { buildCards, buildSpreads, rawCardText, rawCards, rawSpreadText, rawSpreads } from './lib/deck.ts'
 import { draw } from './lib/draw.ts'
 import { guides } from './lib/guides.ts'
@@ -256,6 +257,7 @@ function Composer({ deck, spreadId, question, invalidLink, onChange, onDraw }: C
         required={spread?.requiresQuestion ?? false}
         onChange={(q) => onChange({ deck, spreadId, question: q })}
       />
+      <SpreadPreview spread={spread} />
       <div className="draw-row">
         <button type="submit" className="primary" disabled={blocker !== null} aria-describedby="draw-hint">
           Draw
