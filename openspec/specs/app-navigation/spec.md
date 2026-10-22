@@ -74,20 +74,20 @@ Whenever the tarot screen or the oracle screen is entered from a different scree
 - **WHEN** a user has drawn an oracle card and reloads the page at `#/oracle`
 - **THEN** the oracle intro with its "Draw" button is shown and no card
 
-### Requirement: Start over from the top of a reading
-Every drawn reading SHALL show its start-over action directly below its heading, in addition to the one at the bottom: "New reading" on a user's own tarot or Lenormand reading, "Draw your own" on a shared reading, and "Draw again" on an oracle card. Both copies SHALL do the same thing, and the top one SHALL use the secondary button style.
+### Requirement: Start over from the top of a longer reading
+A drawn tarot or Lenormand reading, and an opened share link, SHALL show its start-over action directly below its heading, in addition to the one at the bottom: "New reading" on a user's own tarot or Lenormand reading, and "Draw your own" on a shared reading. Both copies SHALL do the same thing, and the top one SHALL use the secondary button style. A drawn oracle card SHALL show "Draw again" only once, below the reading.
 
 #### Scenario: New reading at the top
 - **WHEN** a user draws a tarot reading
 - **THEN** a "New reading" button is shown right under the reading's heading, and activating it returns to the spread choice as the bottom one does
 
-#### Scenario: Draw again at the top
-- **WHEN** a user draws an oracle card
-- **THEN** a "Draw again" button is shown right under the heading, and activating it shows a different card
-
 #### Scenario: Shared reading
 - **WHEN** a user opens a valid share link
 - **THEN** a "Draw your own" button is shown right under the heading
+
+#### Scenario: One Draw again on an oracle card
+- **WHEN** a user draws an oracle card
+- **THEN** exactly one "Draw again" button is shown, below the card's message, reflection and affirmation, and nothing is shown between the heading and the card
 
 ### Requirement: Focus moves to the new screen
 When a screen opens from within the app, keyboard focus SHALL move to that screen's main heading.

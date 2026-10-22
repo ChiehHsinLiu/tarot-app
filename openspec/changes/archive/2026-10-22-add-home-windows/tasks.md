@@ -24,7 +24,7 @@
   - no request to another origin
 
   Run it against `npm run dev` and, with `--public`, against `npm run preview`, together with `nav-check`, `theme-check`, `theme-fit-check` and `polish-check`. Fix any home assertions that expected the old tiles. Verify everything passes with no console errors.
-- [ ] 2.3 After pushing to `main` (with approval), verify the deploy succeeds and the live site passes `home-window-check --public`, `nav-check --public` and `theme-check --public`.
+- [x] 2.3 After pushing to `main` (with approval), verify the deploy succeeds and the live site passes `home-window-check --public`, `nav-check --public` and `theme-check --public`.
 
 ## Workflow follow-up
 
