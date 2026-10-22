@@ -35,7 +35,7 @@
 
   Run it against `npm run dev` and, with `--public`, against `npm run preview` (skipping Lenormand). Also re-run `flip-check`, `polish-check`, `theme-check`, `theme-fit-check`, `nav-check`, `oracle-check`, `share-check` and `lenormand-check`. Update `theme-check`'s `.position-label` contrast check to measure against the mat. Verify that everything passes with no console errors, and that `npm test` passes.
 - [x] 3.2 Check by hand in Safari that the mats line up (subgrid), and that the flipping cards stay above the mat mid-flip.
-- [ ] 3.3 After pushing to `main` (with approval), verify the deploy succeeds and the live site passes `table-check --public`, `flip-check --public` and `theme-check --public`.
+- [x] 3.3 After pushing to `main` (with approval), verify the deploy succeeds and the live site passes `table-check --public`, `flip-check --public` and `theme-check --public`.
 
 ## Workflow follow-up
 
