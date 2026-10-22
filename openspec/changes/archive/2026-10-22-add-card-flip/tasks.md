@@ -52,8 +52,8 @@
   - no request to another origin
 
   Run it against `npm run dev` and, with `--public`, against `npm run preview` (skipping Lenormand). Also re-run `oracle-check`, `share-check`, `nav-check`, `theme-check`, `polish-check` and `lenormand-check`. Fix any checks that read card text before it fades in. Verify that everything passes with no console errors, and that `npm test` passes.
-- [ ] 3.2 Check by hand in Safari that the flip shows only one side at a time, and that a reversed card lands upside down.
-- [ ] 3.3 After pushing to `main` (with approval), verify the deploy succeeds and the live site passes `flip-check --public`, `share-check --public` and `oracle-check --public`.
+- [x] 3.2 Check by hand in Safari that the flip shows only one side at a time, and that a reversed card lands upside down.
+- [x] 3.3 After pushing to `main` (with approval), verify the deploy succeeds and the live site passes `flip-check --public`, `share-check --public` and `oracle-check --public`.
 
 ## Workflow follow-up
 
