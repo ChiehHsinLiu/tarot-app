@@ -3,12 +3,12 @@ import type { FormEvent } from 'react'
 import { DeckPicker } from './components/DeckPicker.tsx'
 import type { DeckId } from './components/DeckPicker.tsx'
 import { Flourish } from './components/Flourish.tsx'
+import { GuidedHeading } from './components/GuidedHeading.tsx'
 import { HomeChoices } from './components/HomeChoices.tsx'
 import { OracleCardView } from './components/OracleCardView.tsx'
 import { OracleIntro } from './components/OracleIntro.tsx'
 import { QuestionBox } from './components/QuestionBox.tsx'
 import { ReadingView } from './components/ReadingView.tsx'
-import { ScreenGuide } from './components/ScreenGuide.tsx'
 import { SpreadPicker } from './components/SpreadPicker.tsx'
 import { buildCards, buildSpreads, rawCardText, rawCards, rawSpreadText, rawSpreads } from './lib/deck.ts'
 import { draw } from './lib/draw.ts'
@@ -44,7 +44,8 @@ type ComposingState = {
   question: string
   invalidLink?: boolean
 }
-// What the tarot screen shows. It lives apart from the route, so going Home keeps it.
+// What the tarot screen shows. It lives apart from the route so drawing and New reading
+// can swap views; entering the screen from elsewhere resets it (see onHashChange).
 type TarotState =
   | ComposingState
   | { kind: 'revealed'; reading: Reading }
@@ -62,21 +63,31 @@ function App() {
   const [oracleCardId, setOracleCardId] = useState<string | null>(null)
   // Home focuses its heading only when reached from another screen, not on first load.
   const [navigated, setNavigated] = useState(false)
+  const route = parseRoute(hash)
+  // The route last rendered, so a hashchange can tell entering a screen from staying on it.
+  const routeRef = useRef(route)
+  useEffect(() => {
+    routeRef.current = route
+  }, [route])
 
   useEffect(() => {
     const onHashChange = () => {
       const next = window.location.hash
+      const nextRoute = parseRoute(next)
+      // Home link, home choice, Back/Forward or a typed address: the screen starts fresh.
+      const entered = nextRoute !== routeRef.current
       setHash(next)
       setNavigated(true)
       if (decodeHash(next).kind === 'invalid') setTarot({ ...EMPTY_COMPOSER, invalidLink: true })
+      else if (entered && nextRoute === 'tarot') setTarot(EMPTY_COMPOSER)
       // The invalid-link notice belongs to the link; drop it once the user moves on.
       else setTarot((t) => (t.kind === 'composing' && t.invalidLink ? { ...t, invalidLink: false } : t))
+      if (entered && nextRoute === 'oracle') setOracleCardId(null)
     }
     window.addEventListener('hashchange', onHashChange)
     return () => window.removeEventListener('hashchange', onHashChange)
   }, [])
 
-  const route = parseRoute(hash)
   const shared = route === 'share' ? decodeHash(hash) : null
 
   let screen
@@ -224,16 +235,17 @@ function Composer({ deck, spreadId, question, invalidLink, onChange, onDraw }: C
 
   return (
     <form className="composer" onSubmit={handleSubmit} aria-labelledby="tarot-title">
-      <h2 id="tarot-title" ref={headingRef} tabIndex={-1}>
-        Tarot reading
-      </h2>
+      <GuidedHeading guide={useLenormand ? lenormand.guide : guides.screens.tarot}>
+        <h2 id="tarot-title" ref={headingRef} tabIndex={-1}>
+          Tarot reading
+        </h2>
+      </GuidedHeading>
       {invalidLink && (
         <p className="notice" role="alert">
           This reading link isn't valid.
         </p>
       )}
       {lenormand && <DeckPicker selected={deck} onSelect={(d) => onChange({ deck: d, spreadId, question })} />}
-      <ScreenGuide guide={useLenormand ? lenormand.guide : guides.screens.tarot} />
       <SpreadPicker
         spreads={deckSpreads}
         selectedId={spreadId}

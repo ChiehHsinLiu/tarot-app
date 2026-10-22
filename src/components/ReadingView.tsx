@@ -39,6 +39,11 @@ export function ReadingView({ reading, spread, cardsById, shared, onNewReading }
       <h2 id="reading-title" ref={headingRef} tabIndex={-1}>
         {shared ? `Shared reading · ${spread.name}` : spread.name}
       </h2>
+      <div className="reading-top-actions">
+        <button type="button" className="secondary" onClick={onNewReading}>
+          {shared ? 'Draw your own' : 'New reading'}
+        </button>
+      </div>
       {reading.question && <p className="asked">“{reading.question}”</p>}
 
       {verdict && (

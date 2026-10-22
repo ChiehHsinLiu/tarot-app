@@ -36,6 +36,11 @@ export function LenormandReadingView({ reading, spread, cardsById, onNewReading 
       <h2 id="reading-title" ref={headingRef} tabIndex={-1}>
         Lenormand · {spread.name}
       </h2>
+      <div className="reading-top-actions">
+        <button type="button" className="secondary" onClick={onNewReading}>
+          New reading
+        </button>
+      </div>
       {reading.question && <p className="asked">“{reading.question}”</p>}
 
       {spread.id === 'yes-no' && (

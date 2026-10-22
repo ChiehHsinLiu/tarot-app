@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { guides } from '../lib/guides.ts'
-import { ScreenGuide } from './ScreenGuide.tsx'
+import { GuidedHeading } from './GuidedHeading.tsx'
 
 type Props = { onDraw: () => void }
 
@@ -10,11 +10,12 @@ export function OracleIntro({ onDraw }: Props) {
 
   return (
     <section className="oracle-intro-screen" aria-labelledby="oracle-intro-title">
-      <h2 id="oracle-intro-title" ref={headingRef} tabIndex={-1}>
-        Today's animal oracle
-      </h2>
+      <GuidedHeading guide={guides.screens.oracle}>
+        <h2 id="oracle-intro-title" ref={headingRef} tabIndex={-1}>
+          Today's animal oracle
+        </h2>
+      </GuidedHeading>
       <p className="oracle-intro">Draw one animal card for a little guidance today. No question needed.</p>
-      <ScreenGuide guide={guides.screens.oracle} />
       <button type="button" className="primary" onClick={onDraw}>
         Draw
       </button>

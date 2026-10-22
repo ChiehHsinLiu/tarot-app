@@ -600,6 +600,13 @@ button.secondary:focus-visible {
   outline-offset: 3px;
 }
 
+/* The start-over action repeated right under a reading's heading. */
+.reading-top-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: -12px;
+}
+
 .reading-actions {
   display: flex;
   flex-wrap: wrap;
@@ -853,66 +860,82 @@ button.secondary:focus-visible {
   font-size: 20px;
 }
 
-/* Screen guides: "How it works" and "About this deck" */
+/* Screen guides: a "?" button beside the heading opens "How it works" and
+   "About this deck" in a panel below it. */
 
-.screen-guides {
+.guided-heading {
   width: 100%;
   display: grid;
-  gap: 8px;
-  text-align: left;
+  justify-items: center;
+  gap: 12px;
 }
 
-.screen-guide {
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  background: var(--surface);
-}
-
-.screen-guide summary {
+.heading-row {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 14px;
-  font-weight: 600;
-  cursor: pointer;
-  list-style: none;
-  border-radius: 14px;
+  justify-content: center;
+  gap: 10px;
 }
 
-.screen-guide summary::-webkit-details-marker {
-  display: none;
+.heading-row h2 {
+  margin: 0;
 }
 
-/* A small chevron that points right when closed and down when open. */
-.screen-guide summary::before {
-  content: '';
+.guide-toggle {
   flex: none;
-  width: 7px;
-  height: 7px;
-  border-right: 2px solid var(--accent);
-  border-bottom: 2px solid var(--accent);
-  transform: rotate(-45deg);
-  transition: transform 0.15s ease;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 1.5px solid var(--accent);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--accent);
+  font-family: var(--font-story);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
 }
 
-.screen-guide[open] summary::before {
-  transform: rotate(45deg);
+.guide-toggle[aria-expanded='true'] {
+  background: var(--accent);
+  color: var(--accent-text);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .screen-guide summary::before {
-    transition: none;
-  }
-}
-
-.screen-guide summary:focus-visible {
+.guide-toggle:focus-visible,
+.guide-close:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
-.screen-guide > :not(summary) {
-  margin: 0 14px 12px;
+.guide-panel {
+  width: 100%;
+  max-width: 560px;
+  box-sizing: border-box;
+  padding: 14px 18px 16px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  text-align: left;
   overflow-wrap: anywhere;
+}
+
+.guide-panel h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.guide-panel h3 + * {
+  margin-top: 0;
+}
+
+.guide-panel ol + h3 {
+  margin-top: 16px;
+}
+
+.guide-close {
+  display: block;
+  margin: 14px auto 0;
 }
 
 .guide-steps {
