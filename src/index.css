@@ -467,11 +467,10 @@ button.primary:focus-visible {
   color: var(--muted);
 }
 
-/* Long meanings read better left-aligned; labels and titles stay centred. */
+/* Centred like the card, title and keywords above it. */
 .card-meaning {
   margin: 0;
   max-width: 320px;
-  text-align: left;
 }
 
 /* Card face */
