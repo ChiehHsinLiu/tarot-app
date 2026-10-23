@@ -13,7 +13,7 @@
 ## 2. Checks
 
 - [x] 2.1 In the scratchpad `table-check`, change the expected cloth from `rgb(46, 74, 59)` to `rgb(31, 74, 76)`, and add the "Draw centred" scenario: at 1280 and 320, the centre of Draw is within 2px of the mat's centre, and the hint is below the button and centred. Run `table-check` against `npm run dev` and, with `--public`, against a fresh `npm run build` on `npm run preview`. Also re-run `theme-check`, `polish-check`, `nav-check`, `flip-check` and `lenormand-check`. Verify that everything passes with no console errors.
-- [ ] 2.2 After pushing to `main` (with approval), verify the deploy succeeds and the live site passes `table-check --public` and `theme-check --public`.
+- [x] 2.2 After pushing to `main` (with approval), verify the deploy succeeds and the live site passes `table-check --public` and `theme-check --public`.
 
 ## Workflow follow-up
 

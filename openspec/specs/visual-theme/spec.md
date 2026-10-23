@@ -169,7 +169,7 @@ When the system asks for reduced motion, cards SHALL appear face up at once, wit
 - **THEN** every card is face up and every meaning is visible as soon as the reading opens, and no back is shown
 
 ### Requirement: Drawn cards lie on a reading mat
-The cards of a tarot reading, a shared reading, a Lenormand reading and a drawn oracle card SHALL lie on a forest-green cloth mat with a gold edge, the same in both palettes. Each card's position label SHALL be on the mat with it. Card names, keywords, meanings, the verdict and the buttons SHALL stay off the mat, on the page background.
+The cards of a tarot reading, a shared reading, a Lenormand reading and a drawn oracle card SHALL lie on a teal cloth mat with a gold edge, the same in both palettes. Each card's position label SHALL be on the mat with it. Card names, keywords, meanings, the verdict and the buttons SHALL stay off the mat, on the page background.
 
 #### Scenario: Three-card reading on a wide screen
 - **WHEN** a three-card reading is shown 1280 pixels wide
@@ -182,6 +182,10 @@ The cards of a tarot reading, a shared reading, a Lenormand reading and a drawn 
 #### Scenario: Shared reading
 - **WHEN** a user opens a valid share link
 - **THEN** the face-up cards lie on the mat as in a drawn reading
+
+#### Scenario: Teal cloth
+- **WHEN** a reading or the tarot screen's preview is shown in either palette
+- **THEN** the mat's cloth is teal, not green or purple
 
 ### Requirement: Each stacked card has its own mat on a phone
 When a reading's cards are stacked in one column, each card and its position label SHALL lie on its own mat, with that card's name and meaning below its mat. At 320 pixels wide the mats SHALL fit without horizontal scrolling.
@@ -209,7 +213,7 @@ The mat SHALL be hidden from assistive technology, SHALL NOT be focusable, and S
 - **THEN** it announces each position, card and meaning in the same order as before, and nothing for the mat
 
 ### Requirement: Face-down spread preview on the tarot screen
-The tarot screen SHALL show a mat just above the Draw button. With no spread chosen, the mat SHALL be empty. With a spread chosen, it SHALL show one card back per position of that spread, in order, each with its position label. Changing the spread or the deck SHALL update the preview at once, without animation.
+The tarot screen SHALL show a mat just above the Draw button. With no spread chosen, the mat SHALL be empty. With a spread chosen, it SHALL show one card back per position of that spread, in order, each with its position label. Changing the spread or the deck SHALL update the preview at once, without animation. The Draw button SHALL be centred under the mat, and its hint SHALL be shown centred on its own line under the button.
 
 #### Scenario: No spread chosen
 - **WHEN** the tarot screen opens fresh
@@ -226,6 +230,10 @@ The tarot screen SHALL show a mat just above the Draw button. With no spread cho
 #### Scenario: Lenormand deck
 - **WHEN** a user of the local dev app chooses the Lenormand deck and its "Yes / No" spread
 - **THEN** the mat shows two card backs labelled with Lenormand's two positions
+
+#### Scenario: Draw centred
+- **WHEN** the tarot screen is shown 1280 or 320 pixels wide
+- **THEN** the Draw button is horizontally centred under the mat, and the hint "Choose a spread to begin." is centred on the line below the button
 
 ### Requirement: The preview is decorative
 The spread preview SHALL be hidden from assistive technology and SHALL NOT be focusable, since the spread choice already states the same information. At 320 pixels wide, the preview of the largest spread SHALL fit without horizontal scrolling.
