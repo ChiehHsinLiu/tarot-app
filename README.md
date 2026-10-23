@@ -80,4 +80,6 @@ Don't start the dev server with `--host`. The Ask Claude endpoint only answers r
 
 Every push to `main` runs `.github/workflows/deploy.yml`, which builds the app and publishes `dist/` to GitHub Pages. It can also be run manually from the Actions tab.
 
+The built page carries a Content Security Policy that lets it load only its own files (added by `vite/csp.ts`, on `npm run build` only), and the workflow's actions are pinned to commit SHAs, with their versions in comments.
+
 One-time setup: in the repository's **Settings → Pages**, set **Source** to **GitHub Actions**.
