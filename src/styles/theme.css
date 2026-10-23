@@ -1,0 +1,94 @@
+/* Storybook theme: warm paper by day, cozy dusk by night. Cards stay cream or
+   pastel in both, like real cards on a table, so card text uses --card-ink. */
+:root {
+  --text: #2f2630;
+  --muted: #6b5e66;
+  --bg: #f7f0e3;
+  --surface: #fffaf1;
+  --border: #e3d5c1;
+  --accent: #8a4f7d;
+  --accent-text: #ffffff;
+  --card-bg: #fffaf0;
+  --card-border: #c9a96e;
+  --card-ink: #2f2630;
+  --card-ink-soft: #55474f;
+  /* The card back is the same night sky in both palettes, as faces stay cream. */
+  --back-bg: #3b2a4a;
+  --back-gold: var(--card-border);
+  /* The reading mat: teal cloth, also the same in both palettes. Its
+     position labels are checked against both cloth colours (mat-colors.test.ts). */
+  --mat-bg: #1f4a4c;
+  --mat-sheen: #2b5e60;
+  --mat-edge: var(--card-border);
+  --mat-label: #e9d9b6;
+  --flourish: #b9926a;
+  --shadow: rgb(84 58 40 / 0.12);
+  --paper-texture:
+    radial-gradient(circle at 20% 15%, rgb(201 169 110 / 0.10), transparent 40%),
+    radial-gradient(circle at 85% 70%, rgb(138 79 125 / 0.07), transparent 45%);
+  --yes: #2f7a4f;
+  --no: #b03a37;
+  --maybe: #85661a;
+  --font-story: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
+  /* How strongly an oracle card's colour tints the Reflect box. */
+  --family-tint: 35%;
+
+  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.5;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #f5ecdf;
+    --muted: #c7b8c3;
+    --bg: #241c2b;
+    --surface: #30263a;
+    --border: #4a3d55;
+    --accent: #e8a6c9;
+    --accent-text: #241c2b;
+    --card-bg: #f6ecdc;
+    --card-border: #c9a96e;
+    --flourish: #c9a96e;
+    --shadow: rgb(0 0 0 / 0.35);
+    --paper-texture:
+      radial-gradient(circle at 20% 15%, rgb(201 169 110 / 0.08), transparent 40%),
+      radial-gradient(circle at 85% 70%, rgb(232 166 201 / 0.07), transparent 45%);
+    --yes: #7fd3a1;
+    --no: #f39a8f;
+    --maybe: #e8c86a;
+    --family-tint: 14%;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--paper-texture), var(--bg);
+}
+
+#root {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 16px 48px;
+  box-sizing: border-box;
+}
+
+.site-header {
+  text-align: center;
+  padding: 32px 0 16px;
+}
+
+h1 {
+  font-family: var(--font-story);
+  font-variation-settings: 'SOFT' 100;
+  font-size: 56px;
+  font-weight: 560;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+  margin: 0;
+}

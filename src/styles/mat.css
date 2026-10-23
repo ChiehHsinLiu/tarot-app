@@ -1,0 +1,126 @@
+/* The reading mat: teal cloth under the cards and their position
+   labels only. It is a ::before grid item behind them, so the reading's markup
+   and reading order are unchanged; the label and card are placed in the mat's
+   cells explicitly, or auto-placement would flow them around it.
+   Stacked cards each get their own mat; side-by-side cards share one (below). */
+
+.spread-slot::before,
+.spread::before,
+.oracle-slot::before,
+.spread-preview {
+  box-sizing: border-box;
+  border: 2px solid var(--mat-edge);
+  border-radius: 22px;
+  background:
+    radial-gradient(ellipse at 30% 20%, var(--mat-sheen), transparent 60%),
+    radial-gradient(ellipse at 75% 85%, var(--mat-sheen), transparent 55%),
+    var(--mat-bg);
+  box-shadow:
+    inset 0 0 0 6px var(--mat-bg),
+    inset 0 0 0 7px rgb(201 169 110 / 0.55),
+    0 10px 24px var(--shadow);
+}
+
+.spread-slot::before {
+  content: '';
+  grid-area: 1 / 1 / 3 / 2;
+  justify-self: stretch;
+}
+
+.spread-slot > .position-label {
+  grid-area: 1 / 1;
+  margin-top: 18px;
+  color: var(--mat-label);
+}
+
+.spread-slot > :nth-child(2) {
+  grid-area: 2 / 1;
+  margin-bottom: 20px;
+}
+
+.oracle-slot::before {
+  content: '';
+  grid-area: 1 / 1;
+  justify-self: stretch;
+}
+
+.oracle-slot > .card-flip {
+  grid-area: 1 / 1;
+  margin: 22px 0;
+}
+
+/* Side by side, the slots share rows (subgrid) so one mat can span every label
+   and card. Without subgrid, each card keeps its own mat. */
+@supports (grid-template-rows: subgrid) {
+  @media (min-width: 720px) {
+    .spread-3,
+    .spread-2 {
+      row-gap: 8px;
+    }
+
+    .spread-3 > .spread-slot,
+    .spread-2 > .spread-slot {
+      grid-row: 1 / span 5;
+      grid-template-rows: subgrid;
+    }
+
+    .spread-3 > .spread-slot:nth-child(1),
+    .spread-2 > .spread-slot:nth-child(1) {
+      grid-column: 1;
+    }
+
+    .spread-3 > .spread-slot:nth-child(2),
+    .spread-2 > .spread-slot:nth-child(2) {
+      grid-column: 2;
+    }
+
+    .spread-3 > .spread-slot:nth-child(3) {
+      grid-column: 3;
+    }
+
+    .spread-3 > .spread-slot::before,
+    .spread-2 > .spread-slot::before {
+      content: none;
+    }
+
+    .spread-3::before,
+    .spread-2::before {
+      content: '';
+      grid-area: 1 / 1 / 3 / -1;
+    }
+  }
+}
+
+.position-label {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.card-title {
+  font-family: var(--font-story);
+  font-variation-settings: 'SOFT' 100;
+  font-size: 19px;
+  font-weight: 600;
+  margin: 4px 0 0;
+}
+
+.card-title-orientation {
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.card-keywords {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* Centred like the card, title and keywords above it. */
+.card-meaning {
+  margin: 0;
+  max-width: 320px;
+}

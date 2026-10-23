@@ -2,6 +2,7 @@
 // optional question. Never rendered in the production build.
 import { useState } from 'react'
 import { QUESTION_MAX_CHARS, countChars, truncateToLimit } from '../lib/question.ts'
+import { AskButtons } from './AskButtons.tsx'
 import { ClaudeAnswer } from './ClaudeAnswer.tsx'
 import { useClaudeStream } from './useClaudeStream.ts'
 
@@ -30,15 +31,7 @@ export function AskClaudeOracle({ cardId }: { cardId: string }) {
         </p>
       </div>
       <div className="reading-actions">
-        {streaming ? (
-          <button type="button" className="secondary" onClick={claude.stop}>
-            Stop
-          </button>
-        ) : (
-          <button type="button" className="secondary" onClick={() => claude.ask({ oracle: { cardId, question } })}>
-            {claude.status === 'idle' ? 'Ask Claude' : 'Ask again'}
-          </button>
-        )}
+        <AskButtons claude={claude} body={{ oracle: { cardId, question } }} />
         <ClaudeAnswer status={claude.status} answer={claude.answer} statusText={claude.statusText} />
       </div>
     </div>

@@ -1,0 +1,50 @@
+/* Notices and secondary actions */
+
+.notice {
+  margin: 0;
+  padding: 10px 14px;
+  border: 1px solid var(--no);
+  border-radius: 10px;
+  color: var(--no);
+}
+
+button.secondary {
+  font: inherit;
+  font-weight: 600;
+  padding: 9px 24px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--accent);
+  cursor: pointer;
+}
+
+button.secondary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* The start-over action repeated right under a reading's heading. */
+.reading-top-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: -12px;
+}
+
+.reading-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  max-width: 720px;
+}
+
+/* On phones the actions stack as full-width buttons, primary first. */
+@media (max-width: 480px) {
+  .reading-actions > button,
+  .reading-actions > .share > button {
+    flex-basis: 100%;
+  }
+}

@@ -56,7 +56,7 @@ type Props = { index: number; children: ReactNode }
 
 // Shows the back, then turns the card face up after index * 0.3s. The flip is
 // a CSS animation, so it plays whenever a new card mounts, and its resting
-// state is the plain face-up card (see .card-flip in index.css).
+// state is the plain face-up card (see .card-flip in styles/flip.css).
 export function CardFlip({ index, children }: Props) {
   return (
     <div className="card-flip" style={{ '--flip-index': index } as CSSProperties}>

@@ -1,0 +1,129 @@
+/* Home */
+
+.home-choices {
+  max-width: 640px;
+  margin: 16px auto 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 560px) {
+  .home-choices {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.home-choice {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 8px;
+  padding: 8px 12px 12px;
+  border-radius: 22px;
+  color: inherit;
+  text-align: center;
+  text-decoration: none;
+}
+
+.home-choice:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+/* The arched window drawings (home-art.ts). Static: hover and focus only
+   recolour the frame and sill. */
+.home-choice .home-window {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  aspect-ratio: 160 / 180;
+}
+
+@media (min-width: 560px) {
+  .home-choice .home-window {
+    max-width: 240px;
+  }
+}
+
+.home-window .win-sky {
+  fill: #dcebf2;
+}
+
+.home-window .win-glow {
+  fill: #f4c55f;
+}
+
+.home-window .win-cloud {
+  fill: #ffffff;
+}
+
+.home-window .win-night {
+  display: none;
+}
+
+.home-window .win-frame {
+  fill: none;
+  stroke: var(--flourish);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.home-window .win-sill {
+  fill: var(--card-border);
+  stroke: var(--flourish);
+  stroke-width: 1.5;
+}
+
+.home-choice:hover .win-frame,
+.home-choice:focus-visible .win-frame {
+  stroke: var(--accent);
+}
+
+.home-choice:hover .win-sill,
+.home-choice:focus-visible .win-sill {
+  fill: var(--accent);
+  stroke: var(--accent);
+}
+
+@media (prefers-color-scheme: dark) {
+  .home-window .win-sky {
+    fill: #34406a;
+  }
+
+  .home-window .win-glow {
+    fill: #f6e7bf;
+  }
+
+  .home-window .win-day {
+    display: none;
+  }
+
+  .home-window .win-night {
+    display: inline;
+  }
+}
+
+.home-choice-title {
+  font-family: var(--font-story);
+  font-variation-settings: 'SOFT' 100;
+  font-size: 24px;
+  font-weight: 560;
+}
+
+.home-choice-description {
+  color: var(--muted);
+}
+
+h2 {
+  font-family: var(--font-story);
+  font-variation-settings: 'SOFT' 100;
+  font-size: 30px;
+  font-weight: 520;
+  margin: 0 0 8px;
+  text-align: center;
+}
+
+h2:focus {
+  outline: none;
+}

@@ -1,0 +1,154 @@
+/* Composer */
+
+.composer {
+  max-width: 560px;
+  margin: 0 auto;
+  display: grid;
+  gap: 24px;
+}
+
+.spread-picker {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.spread-picker legend {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.spread-option {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 8px;
+  align-items: center;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+  cursor: pointer;
+}
+
+.spread-option:has(input:checked) {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.spread-option input {
+  accent-color: var(--accent);
+  margin: 0;
+}
+
+.spread-name {
+  font-weight: 600;
+}
+
+.spread-detail {
+  grid-column: 2;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.question-box {
+  display: grid;
+  gap: 6px;
+}
+
+.question-box label {
+  font-weight: 600;
+}
+
+.question-hint {
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.question-box textarea {
+  font: inherit;
+  color: inherit;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 10px 14px;
+  resize: vertical;
+}
+
+.question-box textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.question-count {
+  margin: 0;
+  text-align: right;
+  font-size: 14px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.draw-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+/* The face-down preview on the reading mat (the cloth comes from the mat rules).
+   It never animates: changing the spread just swaps the backs. The min-height
+   keeps the empty mat the size of a filled one, so choosing a spread doesn't
+   move Draw. */
+.spread-preview {
+  display: flex;
+  justify-content: center;
+  gap: clamp(10px, 4vw, 28px);
+  min-height: calc(clamp(64px, 22vw, 110px) * 5 / 3 + 72px);
+  padding: 16px 12px 20px;
+}
+
+.preview-slot {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 8px;
+}
+
+.preview-slot .position-label {
+  color: var(--mat-label);
+}
+
+.spread-preview .card-back {
+  width: clamp(64px, 22vw, 110px);
+  border-radius: 10px;
+  transform: none;
+}
+
+.draw-hint {
+  margin: 0;
+  color: var(--muted);
+  text-align: center;
+}
+
+button.primary {
+  font: inherit;
+  font-weight: 600;
+  padding: 10px 28px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--accent-text);
+  cursor: pointer;
+}
+
+button.primary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+button.primary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}

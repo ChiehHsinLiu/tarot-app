@@ -1,0 +1,124 @@
+/* Animal oracle */
+
+.oracle-intro-screen {
+  max-width: 560px;
+  margin: 0 auto;
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.oracle-intro-screen h2 {
+  margin: 0;
+}
+
+.oracle-intro {
+  margin: 0;
+  color: var(--muted);
+}
+
+.oracle-slot {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  max-width: 420px;
+  text-align: center;
+}
+
+/* Small enough that the longest single-word theme (TRANSFORMATION) fits inside
+   the card's inner frame. */
+.oracle-face-theme {
+  min-height: 1.5em;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.3;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-align: center;
+  color: var(--card-ink-soft);
+}
+
+.card-face.oracle-face {
+  --face-bg: var(--family-face);
+  --face-edge: var(--family-edge);
+}
+
+/* The card's animal drawing. Drawings use only these classes, so every colour
+   comes from the card's family and the card ink (see oracle-art.test.ts). */
+.oracle-art {
+  display: block;
+  width: 96px;
+  height: 96px;
+}
+
+.oracle-art svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.oracle-art .art-fill {
+  fill: color-mix(in srgb, var(--family-edge) 45%, var(--family-face));
+}
+
+.oracle-art .art-deep {
+  fill: color-mix(in srgb, var(--family-edge) 80%, var(--card-ink));
+}
+
+.oracle-art .art-light {
+  fill: #fffaf0;
+}
+
+.oracle-art .art-ink {
+  fill: var(--card-ink);
+}
+
+.oracle-art .art-blush {
+  fill: #f0a39b;
+  fill-opacity: 0.6;
+}
+
+.oracle-art .art-line {
+  stroke: color-mix(in srgb, var(--family-edge) 45%, var(--card-ink));
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* A line-only shape (no fill class) is just a stroke. */
+.oracle-art .art-line:not(.art-fill, .art-deep, .art-light, .art-ink, .art-blush) {
+  fill: none;
+}
+
+.oracle-face .card-name {
+  font-size: 16px;
+}
+
+.oracle-message {
+  margin: 4px 0 0;
+  text-align: left;
+}
+
+/* Tinted with the drawn card's colour family (set inline on .oracle-reading). */
+.oracle-reflect {
+  display: grid;
+  gap: 2px;
+  margin-top: 4px;
+  padding: 12px 18px;
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--family-face) var(--family-tint), var(--surface));
+}
+
+.oracle-reflect p {
+  margin: 0;
+}
+
+.oracle-affirmation {
+  margin: 4px 0 0;
+  padding-top: 14px;
+  border-top: 1.5px solid var(--family-edge);
+  font-family: var(--font-story);
+  font-variation-settings: 'SOFT' 100;
+  font-size: 20px;
+}

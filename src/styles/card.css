@@ -1,0 +1,79 @@
+/* Card face */
+
+.card {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+}
+
+/* --face-bg and --face-edge default to the cream tarot card; oracle cards set
+   them from their colour family. The frame and corner dots are pseudo-elements,
+   so they are never announced or focusable. */
+.card-face {
+  --face-bg: var(--card-bg);
+  --face-edge: var(--card-border);
+  position: relative;
+  width: 140px;
+  aspect-ratio: 3 / 5;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  justify-items: center;
+  align-items: center;
+  padding: 16px 14px;
+  border: 2px solid var(--card-border);
+  border-radius: 14px;
+  background: var(--face-bg);
+  color: var(--card-ink);
+  box-shadow: 0 8px 20px var(--shadow);
+}
+
+.card-face::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px solid var(--face-edge);
+  border-radius: 9px;
+  pointer-events: none;
+}
+
+.card-face::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  pointer-events: none;
+  background:
+    radial-gradient(circle, var(--face-edge) 2.2px, transparent 2.6px) top left / 12px 12px no-repeat,
+    radial-gradient(circle, var(--face-edge) 2.2px, transparent 2.6px) top right / 12px 12px no-repeat,
+    radial-gradient(circle, var(--face-edge) 2.2px, transparent 2.6px) bottom left / 12px 12px no-repeat,
+    radial-gradient(circle, var(--face-edge) 2.2px, transparent 2.6px) bottom right / 12px 12px no-repeat;
+}
+
+.card-face.reversed {
+  transform: rotate(180deg);
+}
+
+.card-numeral {
+  min-height: 1.5em;
+  font-family: var(--font-story);
+  font-size: 18px;
+  letter-spacing: 0.05em;
+}
+
+.card-symbol {
+  width: 56px;
+  height: 56px;
+  fill: none;
+  stroke: var(--face-edge, var(--card-border));
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.card-name {
+  font-family: var(--font-story);
+  font-variation-settings: 'SOFT' 100;
+  font-size: 14px;
+  line-height: 1.25;
+  text-align: center;
+}

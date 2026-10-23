@@ -1,7 +1,7 @@
 // The home page windows: one hand-written SVG per home choice, bundled at build
-// time and coloured only through the art and window classes in index.css (see
-// home-art.test.ts). Each holds a day and a night sky; CSS shows the one that
-// matches the palette.
+// time and coloured only through the art classes in styles/oracle.css and the
+// window classes in styles/home.css (see home-art.test.ts). Each holds a day
+// and a night sky; CSS shows the one that matches the palette.
 
 const files = import.meta.glob('../assets/home/*.svg', {
   query: '?raw',

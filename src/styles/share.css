@@ -1,0 +1,109 @@
+/* Share */
+
+.share {
+  display: contents;
+}
+
+.share-panel {
+  flex-basis: 100%;
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface);
+}
+
+.share-include {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.share-include input {
+  accent-color: var(--accent);
+  margin: 0;
+}
+
+.share-link-row {
+  display: flex;
+  gap: 8px;
+}
+
+.share-link {
+  flex: 1;
+  min-width: 0;
+  font: inherit;
+  font-size: 14px;
+  color: inherit;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.share-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.share-link-row button {
+  white-space: nowrap;
+}
+
+.share-status {
+  margin: 0;
+  min-height: 1.5em;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+@media (max-width: 480px) {
+  .share-link-row {
+    flex-direction: column;
+  }
+}
+
+/* Copy for Claude */
+
+/* Panels and status lines sit below the row of action buttons. */
+.share-panel,
+.claude-copy {
+  order: 1;
+}
+
+.claude-copy {
+  flex-basis: 100%;
+  display: grid;
+  gap: 8px;
+}
+
+.claude-copy:empty {
+  display: none;
+}
+
+.claude-status {
+  margin: 0;
+  text-align: center;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.claude-fallback {
+  width: 100%;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 13px;
+  line-height: 1.45;
+  color: inherit;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  resize: vertical;
+}
+
+.claude-fallback:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}

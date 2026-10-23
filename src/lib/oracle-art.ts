@@ -1,6 +1,7 @@
 // The animal oracle drawings: one hand-written SVG per card, bundled at build
 // time so draws never need the network. Each file is named by its card id and
-// coloured only through the art classes in index.css (see oracle-art.test.ts).
+// coloured only through the art classes in styles/oracle.css (see
+// oracle-art.test.ts).
 
 const files = import.meta.glob('../assets/oracle/animal/*.svg', {
   query: '?raw',

@@ -9,10 +9,11 @@ import os from 'node:os'
 import path from 'node:path'
 import readline from 'node:readline'
 import type { Plugin } from 'vite'
-import { buildCards, buildSpreads, rawCardText, rawCards, rawSpreadText, rawSpreads } from '../src/lib/deck.ts'
+import { rawSpreads } from '../src/lib/deck.ts'
+import { cardsById, deckIdSet, oracleById, spreads } from '../src/lib/decks.ts'
 import type { DrawnCard } from '../src/lib/draw.ts'
 import { buildLenormandDeck, buildLenormandPrompt } from '../src/lib/lenormand.ts'
-import { buildOracleCards, buildOraclePrompt, rawAnimalDeck, rawAnimalText } from '../src/lib/oracle.ts'
+import { buildOraclePrompt } from '../src/lib/oracle.ts'
 import { buildPrompt } from '../src/lib/prompt.ts'
 import { QUESTION_MAX_CHARS, countChars } from '../src/lib/question.ts'
 import { decodeReading, encodeReading } from '../src/lib/share.ts'
@@ -34,10 +35,6 @@ const CLAUDE_ARGS = [
   '--no-session-persistence',
 ]
 
-const cardsById = new Map(buildCards(rawCards, rawCardText).map((c) => [c.id, c]))
-const spreads = buildSpreads(rawSpreads, rawSpreadText)
-const cardIds = new Set(rawCards.map((c) => c.id))
-const oracleById = new Map(buildOracleCards(rawAnimalDeck, rawAnimalText).map((c) => [c.id, c]))
 const lenormand = buildLenormandDeck(spreads)
 
 export type ErrorCode = 'not-installed' | 'not-logged-in' | 'timeout' | 'failed' | 'invalid'
@@ -125,7 +122,7 @@ async function handle(req: IncomingMessage, res: ServerResponse, port: number | 
 
   const fragment = 'fragment' in request ? request.fragment : undefined
   if (typeof fragment !== 'string') return reject(res, 400, 'Missing reading.')
-  const decoded = decodeReading(fragment, rawSpreads, cardIds)
+  const decoded = decodeReading(fragment, rawSpreads, deckIdSet)
   if (decoded.kind !== 'reading') return reject(res, 400, 'That reading is not valid.')
 
   const reading = decoded.reading

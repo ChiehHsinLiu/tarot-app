@@ -1,0 +1,19 @@
+@media (max-width: 480px) {
+  h1 {
+    font-size: 38px;
+    white-space: nowrap;
+  }
+
+  .site-title {
+    gap: 8px;
+  }
+
+  .flourish {
+    width: 34px;
+    height: 17px;
+  }
+
+  .spread-picker {
+    grid-template-columns: 1fr;
+  }
+}
