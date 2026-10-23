@@ -15,10 +15,10 @@
   /* The card back is the same night sky in both palettes, as faces stay cream. */
   --back-bg: #3b2a4a;
   --back-gold: var(--card-border);
-  /* The reading mat: forest-green cloth, also the same in both palettes. Its
+  /* The reading mat: teal cloth, also the same in both palettes. Its
      position labels are checked against both cloth colours (mat-colors.test.ts). */
-  --mat-bg: #2e4a3b;
-  --mat-sheen: #3b5c4a;
+  --mat-bg: #1f4a4c;
+  --mat-sheen: #2b5e60;
   --mat-edge: var(--card-border);
   --mat-label: #e9d9b6;
   --flourish: #b9926a;
@@ -395,8 +395,9 @@ h2:focus {
 
 .draw-row {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 8px;
 }
 
 /* The face-down preview on the reading mat (the cloth comes from the mat rules).
@@ -431,6 +432,7 @@ h2:focus {
 .draw-hint {
   margin: 0;
   color: var(--muted);
+  text-align: center;
 }
 
 button.primary {
@@ -536,7 +538,7 @@ button.primary:focus-visible {
   text-align: center;
 }
 
-/* The reading mat: forest-green cloth under the cards and their position
+/* The reading mat: teal cloth under the cards and their position
    labels only. It is a ::before grid item behind them, so the reading's markup
    and reading order are unchanged; the label and card are placed in the mat's
    cells explicitly, or auto-placement would flow them around it.
