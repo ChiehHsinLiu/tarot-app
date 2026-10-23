@@ -27,7 +27,7 @@
 
 ## 3. Live
 
-- [ ] 3.1 After pushing to `main` (with approval), verify:
+- [x] 3.1 After pushing to `main` (with approval), verify:
   - the deploy succeeds with the pinned actions
   - the live `index.html` has the CSP tag
   - `csp-check --public`, `theme-check --public` and `table-check --public` pass against https://chiehhsinliu.github.io/tarot-app/
