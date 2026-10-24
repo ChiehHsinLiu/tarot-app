@@ -1,7 +1,5 @@
 // Deck and spread data joined with their English text. No React imports, so
 // Node scripts and Vite plugins can reuse this module.
-import cardData from '../../data/cards.json' with { type: 'json' }
-import spreadData from '../../data/spreads.json' with { type: 'json' }
 import cardTextEn from '../../data/i18n/en/cards.json' with { type: 'json' }
 import spreadTextEn from '../../data/i18n/en/spreads.json' with { type: 'json' }
 
@@ -56,8 +54,7 @@ export type Spread = {
   positions: { id: string; label: string }[]
 }
 
-export const rawCards = cardData as CardData[]
-export const rawSpreads = spreadData as SpreadData[]
+export { rawCards, rawSpreads } from './deck-ids.ts'
 export const rawCardText = cardTextEn as Record<string, CardText>
 export const rawSpreadText = spreadTextEn as Record<string, SpreadText>
 

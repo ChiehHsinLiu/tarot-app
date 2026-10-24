@@ -1,30 +1,57 @@
-import { Suspense, lazy, useEffect, useRef, useState } from 'react'
-import { Composer, EMPTY_COMPOSER } from './components/Composer.tsx'
-import type { TarotState } from './components/Composer.tsx'
+import { Suspense, use, useEffect, useRef, useState } from 'react'
+import type { ComponentType } from 'react'
 import { HomeChoices } from './components/HomeChoices.tsx'
-import { OracleCardView } from './components/OracleCardView.tsx'
-import { OracleIntro } from './components/OracleIntro.tsx'
-import { ReadingView } from './components/ReadingView.tsx'
 import { SiteHeader } from './components/SiteHeader.tsx'
-import { rawSpreads } from './lib/deck.ts'
-import { cardsById, deckIdSet, oracleById, oracleIds, spreads } from './lib/decks.ts'
-import { buildLenormandDeck } from './lib/lenormand.ts'
-import { drawOracle } from './lib/oracle.ts'
-import { cryptoRandomInt } from './lib/random.ts'
+import { rawCards, rawSpreads } from './lib/deck-ids.ts'
 import { ROUTE_HASH, parseRoute } from './lib/route.ts'
 import { decodeReading } from './lib/share.ts'
+import { EMPTY_COMPOSER } from './screens/tarot-state.ts'
+import type { TarotState } from './screens/tarot-state.ts'
 
-// Dev-only. Vite replaces DEV with false in production builds, so this folds to
-// null and every Lenormand module, component and text drops out of the bundle.
-// Composer.tsx builds its own the same way; a null imported from another module
-// is not folded.
-const lenormand = import.meta.env.DEV ? buildLenormandDeck(spreads) : null
-// Lazy as well, so its stylesheet lands in a dev-only chunk: Vite keeps the CSS of
-// statically imported modules even when their code is dropped.
-const LenormandReadingView = import.meta.env.DEV
-  ? lazy(() => import('./components/LenormandReadingView.tsx').then((m) => ({ default: m.LenormandReadingView })))
-  : null
+// A screen in its own file, fetched on first use or by preload(). Unlike
+// React.lazy, a screen whose file has already arrived renders at once instead
+// of suspending for a beat: use() reads a fulfilled promise synchronously.
+function onDemand<P extends object>(load: () => Promise<{ default: ComponentType<P> }>) {
+  let loading: Promise<{ default: ComponentType<P> }> | null = null
+  const preload = () => {
+    if (!loading) {
+      const p = load()
+      // The fields use() looks for to read a settled promise without waiting.
+      p.then((value) => Object.assign(p, { status: 'fulfilled', value }), () => {})
+      loading = p
+    }
+    return loading
+  }
+  function Screen(props: P) {
+    const { default: Loaded } = use(preload())
+    return <Loaded {...props} />
+  }
+  return { Screen, preload }
+}
 
+// The card text and drawings stay out of the first download.
+const tarotScreens = onDemand(() => import('./screens/TarotScreens.tsx'))
+const oracle = onDemand(() => import('./screens/OracleScreen.tsx'))
+const TarotScreens = tarotScreens.Screen
+const OracleScreen = oracle.Screen
+
+// Fetches both screen files in the background. Rendered inside the same
+// Suspense boundary as the screen, so its effect runs only once something has
+// shown: on a direct link, the screen's own file isn't kept waiting.
+function PreloadScreens() {
+  useEffect(() => {
+    const preload = () => {
+      void tarotScreens.preload()
+      void oracle.preload()
+    }
+    if ('requestIdleCallback' in window) requestIdleCallback(preload)
+    else setTimeout(preload, 200)
+  }, [])
+  return null
+}
+
+// Ids only: enough to tell a valid share link from a broken one.
+const deckIdSet = new Set(rawCards.map((c) => c.id))
 const decodeHash = (hash: string) => decodeReading(hash, rawSpreads, deckIdSet)
 
 function App() {
@@ -65,16 +92,17 @@ function App() {
   let screen
   if (route === 'home') {
     screen = <HomeChoices />
-  } else if (shared?.kind === 'reading') {
+  } else if (route === 'oracle') {
+    screen = <OracleScreen cardId={oracleCardId} onDraw={setOracleCardId} />
+  } else {
+    // The tarot screen, a shared reading, or an invalid share link, which shows
+    // the composer with a notice.
     screen = (
-      <ReadingView
-        // Remount when a different link is opened so focus and the share panel reset.
-        key={JSON.stringify(shared.reading)}
-        reading={shared.reading}
-        spread={spreads.find((s) => s.id === shared.reading.spreadId)!}
-        cardsById={cardsById}
-        shared
-        onNewReading={() => {
+      <TarotScreens
+        tarot={tarot}
+        shared={shared?.kind === 'reading' ? shared.reading : null}
+        onChange={setTarot}
+        onLeaveShared={() => {
           // Swap the share fragment for the tarot screen without adding a history entry,
           // so Back does not reopen the shared reading. replaceState fires no hashchange.
           history.replaceState(null, '', location.pathname + location.search + ROUTE_HASH.tarot)
@@ -83,60 +111,18 @@ function App() {
         }}
       />
     )
-  } else if (route === 'oracle') {
-    screen = oracleCardId ? (
-      <OracleCardView
-        // Remount on every new card so focus and any Ask Claude state reset.
-        key={oracleCardId}
-        card={oracleById.get(oracleCardId)!}
-        onDrawAgain={() => setOracleCardId(drawOracle(oracleIds, cryptoRandomInt, oracleCardId))}
-      />
-    ) : (
-      <OracleIntro onDraw={() => setOracleCardId(drawOracle(oracleIds, cryptoRandomInt))} />
-    )
-  } else if (tarot.kind === 'revealed') {
-    // The tarot screen, or an invalid share link, which shows the composer with a notice.
-    screen = (
-      <ReadingView
-        key={JSON.stringify(tarot.reading)}
-        reading={tarot.reading}
-        spread={spreads.find((s) => s.id === tarot.reading.spreadId)!}
-        cardsById={cardsById}
-        shared={false}
-        onNewReading={() => setTarot({ kind: 'composing', deck: 'tarot', spreadId: tarot.reading.spreadId, question: '' })}
-      />
-    )
-  } else if (lenormand && LenormandReadingView && tarot.kind === 'lenormand-revealed') {
-    screen = (
-      <Suspense fallback={null}>
-        <LenormandReadingView
-          key={JSON.stringify(tarot.reading)}
-          reading={tarot.reading}
-          spread={lenormand.spreads.find((s) => s.id === tarot.reading.spreadId)!}
-          cardsById={lenormand.cardsById}
-          onNewReading={() =>
-            setTarot({ kind: 'composing', deck: 'lenormand', spreadId: tarot.reading.spreadId, question: '' })
-          }
-        />
-      </Suspense>
-    )
-  } else if (tarot.kind === 'composing') {
-    screen = (
-      <Composer
-        deck={tarot.deck}
-        spreadId={tarot.spreadId}
-        question={tarot.question}
-        invalidLink={tarot.invalidLink ?? false}
-        onChange={(next) => setTarot({ kind: 'composing', ...next })}
-        onDraw={setTarot}
-      />
-    )
   }
 
   return (
     <>
       <SiteHeader home={route === 'home'} focus={route === 'home' && navigated} />
-      <main>{screen}</main>
+      <main>
+        {/* The header shows at once; a screen whose file is still loading shows when it arrives. */}
+        <Suspense fallback={null}>
+          {screen}
+          <PreloadScreens />
+        </Suspense>
+      </main>
     </>
   )
 }

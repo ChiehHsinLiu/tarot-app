@@ -1,8 +1,7 @@
 import { useEffect, useRef } from 'react'
 import type { FormEvent } from 'react'
-import { deckIds, spreads } from '../lib/decks.ts'
+import { deckIds, spreads } from '../lib/tarot-deck.ts'
 import { draw } from '../lib/draw.ts'
-import type { Reading } from '../lib/draw.ts'
 import { guides } from '../lib/guides.ts'
 import { buildLenormandDeck } from '../lib/lenormand.ts'
 import { cryptoRandomInt } from '../lib/random.ts'
@@ -12,28 +11,13 @@ import { GuidedHeading } from './GuidedHeading.tsx'
 import { QuestionBox } from './QuestionBox.tsx'
 import { SpreadPicker } from './SpreadPicker.tsx'
 import { SpreadPreview } from './SpreadPreview.tsx'
+import type { TarotState } from '../screens/tarot-state.ts'
 
 // Dev-only. Vite replaces DEV with false in production builds, so this folds to
 // null and the deck picker and every Lenormand text drop out of the bundle. It
 // must stay inline here (as in App.tsx): a null imported from another module is
 // not folded.
 const lenormand = import.meta.env.DEV ? buildLenormandDeck(spreads) : null
-
-export type ComposingState = {
-  kind: 'composing'
-  deck: DeckId
-  spreadId: string | null
-  question: string
-  invalidLink?: boolean
-}
-// What the tarot screen shows. It lives apart from the route so drawing and New reading
-// can swap views; entering the screen from elsewhere resets it (see onHashChange in App.tsx).
-export type TarotState =
-  | ComposingState
-  | { kind: 'revealed'; reading: Reading }
-  | { kind: 'lenormand-revealed'; reading: Reading }
-
-export const EMPTY_COMPOSER: ComposingState = { kind: 'composing', deck: 'tarot', spreadId: null, question: '' }
 
 type ComposerChoice = { deck: DeckId; spreadId: string | null; question: string }
 

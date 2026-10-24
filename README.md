@@ -94,6 +94,8 @@ npm run e2e:same -- main     # compare screenshots with a build of main, for ref
 
 Every push to `main` runs `.github/workflows/deploy.yml`, which builds the app, runs the unit tests and the browser checks (`npm run e2e`), and publishes `dist/` to GitHub Pages. If a check fails, nothing is published, and the run keeps a `playwright-report` artifact showing what failed. It can also be run manually from the Actions tab; on a branch other than `main` it only builds and checks.
 
+The first page load fetches only home and the app shell (239 kB, 74 kB gzipped, down from 349 kB and 104 kB when everything was one file); the tarot screens with their card text (49 kB) and the oracle screen with its card text and drawings (60 kB) each load as their own file, fetched in the background once home has shown, and `e2e/split.spec.ts` checks that no card text or drawing creeps back into the first file.
+
 The built page carries a Content Security Policy that lets it load only its own files (added by `vite/csp.ts`, on `npm run build` only), and the workflow's actions are pinned to commit SHAs, with their versions in comments.
 
 One-time setup: in the repository's **Settings → Pages**, set **Source** to **GitHub Actions**.

@@ -1,16 +1,8 @@
 // The tarot deck, its spreads and the animal oracle, built once from data/ for
 // both the app and the dev-only Ask Claude endpoint. No React imports, so Node
-// can load it too. Lenormand is not here on purpose: App.tsx builds it behind
-// import.meta.env.DEV, which keeps it out of the public bundle.
-import { buildCards, buildSpreads, rawCardText, rawCards, rawSpreadText, rawSpreads } from './deck.ts'
-import { buildOracleCards, rawAnimalDeck, rawAnimalText } from './oracle.ts'
-
-export const cards = buildCards(rawCards, rawCardText)
-export const cardsById = new Map(cards.map((c) => [c.id, c]))
-export const deckIds = cards.map((c) => c.id)
-export const deckIdSet = new Set(deckIds)
-export const spreads = buildSpreads(rawSpreads, rawSpreadText)
-
-export const oracleCards = buildOracleCards(rawAnimalDeck, rawAnimalText)
-export const oracleById = new Map(oracleCards.map((c) => [c.id, c]))
-export const oracleIds = oracleCards.map((c) => c.id)
+// can load it too. The app's screens import tarot-deck.ts or oracle-deck.ts
+// directly, so each screen's file holds only its own deck. Lenormand is not
+// here on purpose: TarotScreens.tsx builds it behind import.meta.env.DEV, which
+// keeps it out of the public bundle.
+export * from './tarot-deck.ts'
+export * from './oracle-deck.ts'
