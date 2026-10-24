@@ -33,4 +33,4 @@ Each spec file starts with a comment listing the spec scenarios it covers. For e
 
 ## 5. Live
 
-- [ ] 5.1 After pushing to `main` (with approval), verify that the deploy run shows the e2e step passing and the site deploys.
+- [x] 5.1 After pushing to `main` (with approval), verify that the deploy run shows the e2e step passing and the site deploys.
