@@ -28,19 +28,21 @@
 - **Playwright Test, not Puppeteer.** It brings its own Chromium (`npx playwright install chromium`), so neither CI nor a fresh clone needs Chrome. It also has a test runner with retries, traces and an HTML report.
   - Alternative: keep `puppeteer-core` and write a small runner. That means a Chrome install in CI and the runner to maintain.
 - **Layout:**
-  - `e2e/*.spec.ts`, one file per area, matching the current checks: `theme`, `polish`, `nav`, `flip`, `table`, `guide`, `share`, `reset`, `csp`, `oracle`, plus `dev/lenormand`, `dev/csp-dev`, `dev/ask` and `dev/oracle-ask`.
+  - `e2e/*.spec.ts`, one file per area, matching the current checks: `theme`, `polish`, `nav`, `flip`, `table`, `guide`, `share`, `reset`, `csp`, `oracle`, plus `dev/lenormand`, `dev/ask` and `dev/oracle-ask`.
+  - Each file is one test that records its named checks as soft assertions. A failure lists every failing check by name, and each run prints how many checks it made.
   - `e2e/helpers.ts` holds the shared helpers: fixed randomness, finishing or pausing animations, mat geometry, and listening for CSP violations.
   - Vitest's `include` stays on `src/**` and `vite/**`, so the two runners never pick up each other's files.
+  - The checks are untyped JavaScript ported from the scratch scripts, so `tsconfig.e2e.json` type-checks them with `strict` off.
 - **Projects in `playwright.config.ts`:**
 
   | Project | Server | Contents | Who runs it |
   |---|---|---|---|
   | `public` | `npm run build && npm run preview` on 4173 | every check except `dev/` | `npm run e2e`, CI |
-  | `dev` | `npm run dev` on 5173 | `dev/`, except Ask Claude | `npm run e2e:dev` |
-  | `ask` | `npm run dev` | `dev/ask`, `dev/oracle-ask` | `ASK_CLAUDE=1 npm run e2e:dev` |
+  | `dev` | `npm run dev` on 5173 | every check in its dev mode, plus `dev/lenormand` | `npm run e2e:dev` |
+  | `ask` | `npm run dev` | `dev/ask`, `dev/oracle-ask` (one test at a time, since they count Claude processes and journal entries) | `ASK_CLAUDE=1 npm run e2e:dev` |
 
   - `public` runs each test in both palettes at 1280 and 320 wide, where the current check did. `colorScheme` and `viewport` come from the project or the test.
-  - `reuseExistingServer` stays on locally, so an already running preview or dev server is used.
+  - `npm run e2e` builds first, and Playwright then starts its own preview. A running preview is never reused, since it may serve an older build. A running dev server is reused.
 - **`e2e:same` is a script, not a test project.** `e2e/same.ts <ref>`:
   1. builds `<ref>` in a temporary `git worktree` and previews it on 4174
   2. builds and previews the working tree on 4173

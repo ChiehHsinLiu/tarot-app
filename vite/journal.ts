@@ -44,7 +44,7 @@ export function journalDir(env: Record<string, string | undefined> = process.env
   return env.TAROT_JOURNAL_DIR || path.join(os.homedir(), '.tarot', 'journal')
 }
 
-function localDate(date: Date): string {
+export function localDate(date: Date): string {
   const pad = (n: number) => String(n).padStart(2, '0')
   return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`
 }

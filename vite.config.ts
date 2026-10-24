@@ -1,5 +1,5 @@
 import react from '@vitejs/plugin-react'
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vitest/config'
 import { contentSecurityPolicy } from './vite/csp.ts'
 import { privateReadings } from './vite/private-readings.ts'
 
@@ -10,4 +10,6 @@ export default defineConfig({
   // privateReadings only runs under `npm run dev` (apply: 'serve');
   // contentSecurityPolicy only under `npm run build` (apply: 'build').
   plugins: [react(), privateReadings(), contentSecurityPolicy()],
+  // Unit tests only; the browser checks in e2e/ run under Playwright.
+  test: { include: ['src/**/*.test.{ts,tsx}', 'vite/**/*.test.ts'] },
 })

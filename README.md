@@ -76,9 +76,23 @@ Each finished or stopped answer, tarot or oracle, is saved to your private journ
 
 Don't start the dev server with `--host`. The Ask Claude endpoint only answers requests from this computer, but there's no reason to expose it on your network.
 
+## Browser checks
+
+The checks in `e2e/` drive the app in Chromium with [Playwright](https://playwright.dev) and check each spec screen by screen, in light and dark and at desktop and phone widths. Each file is one test that reports every failing check by name. Install the browser once with `npx playwright install chromium`.
+
+```sh
+npm run e2e                  # build, then check the public site on npm run preview
+npm run e2e:dev              # check the dev server, with Lenormand and the other dev-only parts
+ASK_CLAUDE=1 npm run e2e:dev # also ask Claude for real answers (uses your Claude plan)
+npm run e2e:same -- main     # compare screenshots with a build of main, for refactors
+```
+
+- **`npm run e2e`** is what the deploy workflow runs before publishing.
+- **`npm run e2e:same -- <git-ref>`** builds that commit in a temporary worktree and reports every screen that isn't pixel-identical. It keeps the pairs in `test-results/same/`. It isn't run in CI, because intended visual changes would fail it.
+
 ## Deployment
 
-Every push to `main` runs `.github/workflows/deploy.yml`, which builds the app and publishes `dist/` to GitHub Pages. It can also be run manually from the Actions tab.
+Every push to `main` runs `.github/workflows/deploy.yml`, which builds the app, runs the unit tests and the browser checks (`npm run e2e`), and publishes `dist/` to GitHub Pages. If a check fails, nothing is published, and the run keeps a `playwright-report` artifact showing what failed. It can also be run manually from the Actions tab; on a branch other than `main` it only builds and checks.
 
 The built page carries a Content Security Policy that lets it load only its own files (added by `vite/csp.ts`, on `npm run build` only), and the workflow's actions are pinned to commit SHAs, with their versions in comments.
 
