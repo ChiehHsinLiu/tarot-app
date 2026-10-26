@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" focusable="false">
+  <path class="art-light art-line" d="M4 78 L12 44 Q15 37 18 44 L30 78 Z"/>
+  <path class="art-light art-line" d="M70 78 L82 40 Q85 33 88 40 L96 78 Z"/>
+  <path class="art-line" d="M10 52 L15 49 L20 52 M80 48 L85 45 L90 48"/>
+  <rect class="art-fill art-line" x="24" y="30" width="52" height="60" rx="5"/>
+  <circle class="art-light art-line" cx="28" cy="30" r="5.5"/>
+  <path class="art-line" d="M24 29 C20 24 26 20 28 25 M32 29 C36 24 30 20 28 25"/>
+  <circle class="art-light art-line" cx="72" cy="30" r="5.5"/>
+  <path class="art-line" d="M68 29 C64 24 70 20 72 25 M76 29 C80 24 74 20 72 25"/>
+  <rect class="art-deep art-line" x="20" y="68" width="60" height="8" rx="4"/>
+  <path class="art-deep art-line" d="M33 90 C33 60 40.7 48 50 48 C59.4 48 67 60 67 90 Z"/>
+  <path class="art-fill art-line" d="M44 50 C47 53 53 53 56 50 L57 90 H43 Z"/>
+  <rect class="art-deep art-line" x="54.5" y="54" width="7" height="14" rx="3.5" transform="rotate(-150 58 54)"/>
+  <circle class="art-light art-line" cx="65" cy="41.9" r="3.2"/>
+  <rect class="art-light art-line" x="63.5" y="22" width="4" height="22" rx="2"/>
+  <circle class="art-light art-line" cx="65.5" cy="19" r="4"/>
+  <path class="art-line" d="M60 27 H71"/>
+  <rect class="art-deep art-line" x="38.5" y="54" width="7" height="12" rx="3.5" transform="rotate(60 42 54)"/>
+  <circle class="art-light art-line" cx="31.6" cy="60" r="3.2"/>
+  <circle class="art-fill art-line" cx="30" cy="54" r="4.5"/>
+  <path class="art-line" d="M30 49.5 V46 M28 47.5 H32"/>
+  <circle class="art-light art-line" cx="50" cy="37" r="10"/>
+  <circle class="art-ink" cx="46.5" cy="38" r="1.4"/>
+  <circle class="art-ink" cx="53.5" cy="38" r="1.4"/>
+  <ellipse class="art-blush" cx="44" cy="41.5" rx="2.4" ry="1.5"/>
+  <ellipse class="art-blush" cx="56" cy="41.5" rx="2.4" ry="1.5"/>
+  <path class="art-line" d="M48.4 42 q1.6 1.4 3.2 0"/>
+  <path class="art-light art-line" d="M40.5 40 C40 56 60 56 59.5 40 C55 45 45 45 40.5 40 Z"/>
+  <path class="art-fill art-line" d="M41 29 L41 20 L45.5 25 L50 18 L54.5 25 L59 20 L59 29 Q50 31.5 41 29 Z"/>
+</svg>

@@ -188,9 +188,9 @@ test('visual theme: palettes, font, decoration, contrast', async ({ browser }, t
       const f = document.querySelector('.card-face')
       return getComputedStyle(f, '::before').content === '""' && getComputedStyle(f, '::after').content === '""' && f.children.length === 3
     }))
-    check('tower face: XVI, name, symbol', await page.evaluate(() => {
+    check('tower face: XVI, name, drawing', await page.evaluate(() => {
       const f = document.querySelector('.card-face')
-      return f.querySelector('.card-numeral').textContent === 'XVI' && f.querySelector('.card-name').textContent === 'The Tower' && !!f.querySelector('svg.card-symbol')
+      return f.querySelector('.card-numeral').textContent === 'XVI' && f.querySelector('.card-name').textContent === 'The Tower' && !!f.querySelector('.tarot-art svg')
     }))
     check('reversed: face rotated, "(reversed)" upright after the name, label unchanged', await page.evaluate(() => {
       const slot = document.querySelectorAll('.spread-slot')[1]

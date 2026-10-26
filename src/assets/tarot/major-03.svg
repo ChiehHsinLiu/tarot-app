@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" focusable="false">
+  <polygon class="art-fill art-line" points="38,8 39.1,10.5 41.8,10.8 39.7,12.6 40.4,15.2 38,13.8 35.6,15.2 36.3,12.6 34.2,10.8 36.9,10.5"/>
+  <polygon class="art-fill art-line" points="50,5 51.1,7.5 53.8,7.8 51.7,9.6 52.4,12.2 50,10.8 47.6,12.2 48.3,9.6 46.2,7.8 48.9,7.5"/>
+  <polygon class="art-fill art-line" points="62,8 63.1,10.5 65.8,10.8 63.7,12.6 64.4,15.2 62,13.8 59.6,15.2 60.3,12.6 58.2,10.8 60.9,10.5"/>
+  <ellipse class="art-deep art-line" cx="50" cy="80" rx="30" ry="10"/>
+  <path class="art-fill art-line" d="M32 82 C32 56 40.1 44 50 44 C59.9 44 68 56 68 82 Z"/>
+  <circle class="art-light" cx="44" cy="60" r="2"/>
+  <circle class="art-light" cx="56" cy="60" r="2"/>
+  <circle class="art-light" cx="50" cy="70" r="2"/>
+  <circle class="art-light" cx="42" cy="76" r="2"/>
+  <circle class="art-light" cx="58" cy="76" r="2"/>
+  <path class="art-fill art-line" d="M76 56 C76 50 84 50 84 56 C84 50 92 50 92 56 C92 64 84 68 84 72 C84 68 76 64 76 56 Z"/>
+  <rect class="art-fill art-line" x="54.5" y="48" width="7" height="13" rx="3.5" transform="rotate(-50 58 48)"/>
+  <circle class="art-light art-line" cx="68" cy="56.4" r="3.2"/>
+  <rect class="art-light art-line" x="25" y="34" width="3.5" height="26" rx="1.75"/>
+  <circle class="art-fill art-line" cx="26.75" cy="33" r="3.6"/>
+  <rect class="art-fill art-line" x="38.5" y="48" width="7" height="14" rx="3.5" transform="rotate(75 42 48)"/>
+  <circle class="art-light art-line" cx="28.5" cy="51.6" r="3.2"/>
+  <circle class="art-light art-line" cx="50" cy="35" r="9.5"/>
+  <circle class="art-ink" cx="46.5" cy="36" r="1.4"/>
+  <circle class="art-ink" cx="53.5" cy="36" r="1.4"/>
+  <ellipse class="art-blush" cx="44" cy="39.5" rx="2.4" ry="1.5"/>
+  <ellipse class="art-blush" cx="56" cy="39.5" rx="2.4" ry="1.5"/>
+  <path class="art-line" d="M48.4 40 q1.6 1.4 3.2 0"/>
+  <path class="art-deep art-line" d="M40 38 C37 22 63 22 60 38 C62 44 61 49 58 52 C58 44 57 36 50 32 C43 36 42 44 42 52 C39 49 38 44 40 38 Z"/>
+  <path class="art-line" d="M10 96 V76"/>
+  <ellipse class="art-fill art-line" cx="10" cy="74" rx="2.4" ry="4.5"/>
+  <ellipse class="art-fill art-line" cx="7" cy="81" rx="2" ry="3.6" transform="rotate(-30 7 81)"/>
+  <path class="art-line" d="M18 96 V76"/>
+  <ellipse class="art-fill art-line" cx="18" cy="74" rx="2.4" ry="4.5"/>
+  <ellipse class="art-fill art-line" cx="15" cy="81" rx="2" ry="3.6" transform="rotate(-30 15 81)"/>
+  <path class="art-line" d="M84 96 V76"/>
+  <ellipse class="art-fill art-line" cx="84" cy="74" rx="2.4" ry="4.5"/>
+  <ellipse class="art-fill art-line" cx="81" cy="81" rx="2" ry="3.6" transform="rotate(-30 81 81)"/>
+  <path class="art-line" d="M92 96 V76"/>
+  <ellipse class="art-fill art-line" cx="92" cy="74" rx="2.4" ry="4.5"/>
+  <ellipse class="art-fill art-line" cx="89" cy="81" rx="2" ry="3.6" transform="rotate(-30 89 81)"/>
+</svg>

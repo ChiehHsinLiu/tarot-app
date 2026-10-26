@@ -1,5 +1,6 @@
 // Storybook colours that components set as CSS variables. No React imports, so
 // contrast can be unit-tested in Node.
+import type { Suit } from './deck.ts'
 import type { OraclePalette } from './oracle.ts'
 
 // Text on every card face, in both light and dark mode: cards stay cream or pastel.
@@ -16,6 +17,19 @@ export const ORACLE_PALETTES: Record<OraclePalette, { face: string; edge: string
   butter: { face: '#f7ecc2', edge: '#c4a13f' },
   rose: { face: '#f6d9e1', edge: '#c97a8f' },
 }
+
+// Tarot faces stay cream (--card-bg); edge is the inner frame, corner dots and
+// picture of each suit's cards and of the major arcana.
+export const TAROT_PALETTES: Record<'major' | Suit, { edge: string }> = {
+  major: { edge: '#a07a2c' },
+  wands: { edge: '#b05a35' },
+  cups: { edge: '#4a7aa3' },
+  swords: { edge: '#76679f' },
+  pentacles: { edge: '#5a8448' },
+}
+
+// The cream tarot face in light and dark mode (--card-bg in styles/theme.css).
+export const TAROT_FACES = ['#fffaf0', '#f6ecdc']
 
 // WCAG 2 contrast ratio between two #rrggbb colours.
 export function contrastRatio(a: string, b: string): number {

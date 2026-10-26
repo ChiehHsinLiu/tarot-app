@@ -6,8 +6,9 @@
   gap: 6px;
 }
 
-/* --face-bg and --face-edge default to the cream tarot card; oracle cards set
-   them from their colour family. The frame and corner dots are pseudo-elements,
+/* --face-bg and --face-edge default to the cream card with a gold frame; tarot
+   cards set --face-edge from their suit, and oracle cards set both from their
+   colour family. The frame and corner dots are pseudo-elements,
    so they are never announced or focusable. */
 .card-face {
   --face-bg: var(--card-bg);
@@ -60,14 +61,63 @@
   letter-spacing: 0.05em;
 }
 
-.card-symbol {
-  width: 56px;
-  height: 56px;
+/* The Ace to Ten: the suit's symbols laid out by src/lib/pips.ts. 135px still
+   fits the middle row when the name wraps to two lines. */
+.card-pips {
+  width: 104px;
+  height: 135px;
   fill: none;
-  stroke: var(--face-edge, var(--card-border));
-  stroke-width: 1.6;
+  stroke: var(--face-edge);
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+/* A major or court card's drawing. Drawings use only these classes, so every
+   colour comes from the card's family and the card ink (see tarot-art.test.ts),
+   as the oracle's do with --family-edge and --family-face. */
+.tarot-art {
+  display: block;
+  width: 112px;
+  height: 112px;
+}
+
+.tarot-art svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.tarot-art .art-fill {
+  fill: color-mix(in srgb, var(--face-edge) 45%, var(--card-bg));
+}
+
+.tarot-art .art-deep {
+  fill: color-mix(in srgb, var(--face-edge) 80%, var(--card-ink));
+}
+
+.tarot-art .art-light {
+  fill: #fffaf0;
+}
+
+.tarot-art .art-ink {
+  fill: var(--card-ink);
+}
+
+.tarot-art .art-blush {
+  fill: #f0a39b;
+  fill-opacity: 0.6;
+}
+
+.tarot-art .art-line {
+  stroke: color-mix(in srgb, var(--face-edge) 45%, var(--card-ink));
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* A line-only shape (no fill class) is just a stroke. */
+.tarot-art .art-line:not(.art-fill, .art-deep, .art-light, .art-ink, .art-blush) {
+  fill: none;
 }
 
 .card-name {

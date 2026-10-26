@@ -73,3 +73,10 @@
 - **[Risk] Tarot art grows the home download.**
   → Mitigation: `e2e/split.spec.ts` from `load-screens-on-demand` already fails if the entry chunk gains card drawings. Add a tarot drawing marker to it.
 - **[Trade-off] About 45 kB more in the tarot screens' chunk** (38 × ~1.2 kB). It loads in the background after home has shown.
+  - Actual, as built: the drawings average about 2.2 kB, so the chunk went from 49 kB to 131 kB (17 kB to 30 kB gzipped). The entry chunk is unchanged at 239 kB.
+
+## As built
+
+- **Bigger pictures, at the owner's request:** the pip box shows at 104×135px (not 96×125) and the drawings at 112×112px (not 96×96), the most the middle row holds when the name wraps to two lines. Pip sizes in `PIP_LAYOUTS` were raised to match: the Ten's pips are 28 units, about 16–21px on screen.
+- **Rounder figures, at the owner's request:** large heads, bell-shaped bodies and rounded limbs, closer to the oracle animals.
+- **The offline check** in `e2e/tarot-art.spec.ts` runs on the public build only, like `split.spec.ts`: the dev server fetches each module as it is first used.

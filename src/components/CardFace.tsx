@@ -1,16 +1,13 @@
-import type { ReactNode } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 import { toRoman } from '../lib/deck.ts'
 import type { Card, Suit } from '../lib/deck.ts'
+import { TAROT_PALETTES } from '../lib/palette.ts'
+import { PIP_LAYOUTS } from '../lib/pips.ts'
+import { TAROT_ART } from '../lib/tarot-art.ts'
 
-// Soft line drawings in a 24x24 box: round caps and joins, drawn as strokes.
-const SYMBOLS: Record<Suit | 'major', ReactNode> = {
-  // A four-point sparkle with two small companions.
-  major: (
-    <>
-      <path d="M12 3.5c.7 4.6 2.9 6.8 7.5 7.5-4.6.7-6.8 2.9-7.5 7.5-.7-4.6-2.9-6.8-7.5-7.5 4.6-.7 6.8-2.9 7.5-7.5z" />
-      <path d="M19 3.5v3M17.5 5h3M5 17.5v3M3.5 19h3" />
-    </>
-  ),
+// The suit symbols the Ace to Ten repeat: soft line drawings in a 24x24 box,
+// with round caps and joins, drawn as strokes.
+const SYMBOLS: Record<Suit, ReactNode> = {
   // A budding branch.
   wands: (
     <>
@@ -42,19 +39,45 @@ const SYMBOLS: Record<Suit | 'major', ReactNode> = {
   ),
 }
 
+// The Ace to Ten: the suit's symbol once per pip, each 24x24 symbol scaled
+// into its place in the 100x130 pip box. Lines come out about 2px on screen,
+// a little bolder on the Ace's one large symbol.
+function Pips({ suit, rank }: { suit: Suit; rank: number }) {
+  return (
+    <svg className="card-pips" viewBox="0 0 100 130" aria-hidden="true">
+      {PIP_LAYOUTS[rank].map(({ x, y, size }) => (
+        <g
+          key={`${x},${y}`}
+          className="card-pip"
+          transform={`translate(${x - size / 2} ${y - size / 2}) scale(${size / 24})`}
+          strokeWidth={(23 * (1.6 + 0.028 * size)) / size}
+        >
+          {SYMBOLS[suit]}
+        </g>
+      ))}
+    </svg>
+  )
+}
+
 type Props = { card: Card; reversed: boolean }
 
 export function CardFace({ card, reversed }: Props) {
   const label = reversed ? `${card.name}, reversed` : card.name
+  // The frame, corner dots and picture take the suit's colour; the outer border stays gold.
+  const edge = { '--face-edge': TAROT_PALETTES[card.suit ?? 'major'].edge } as CSSProperties
   return (
     <div className="card">
-      <div role="img" aria-label={label} className={reversed ? 'card-face reversed' : 'card-face'}>
+      <div role="img" aria-label={label} className={reversed ? 'card-face reversed' : 'card-face'} style={edge}>
         <span className="card-numeral" aria-hidden="true">
           {card.arcana === 'major' ? toRoman(card.rank) : ''}
         </span>
-        <svg className="card-symbol" viewBox="0 0 24 24" aria-hidden="true">
-          {SYMBOLS[card.suit ?? 'major']}
-        </svg>
+        {card.suit && card.rank <= 10 ? (
+          <Pips suit={card.suit} rank={card.rank} />
+        ) : (
+          // The major and court cards' drawings: trusted build-time files;
+          // art-format.ts limits what they may contain.
+          <span className="tarot-art" aria-hidden="true" dangerouslySetInnerHTML={{ __html: TAROT_ART[card.id] }} />
+        )}
         <span className="card-name" aria-hidden="true">
           {card.name}
         </span>

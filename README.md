@@ -24,6 +24,8 @@ The home page offers two choices, each drawn as an arched window (a fanned tarot
 
 Drawn cards land face down, showing a night-sky back, and turn over one after another, each card's meaning appearing as it lands. A shared link opens with its cards already face up, and if your system asks for reduced motion, cards appear face up at once.
 
+Each tarot face is a cream card with its name, a Roman numeral on the major arcana, and a picture: its own drawing for the 22 major arcana and the 16 court cards, or, from Ace to Ten, its count of suit symbols. The inner frame and picture take the card's colour (gold for the major arcana, terracotta for wands, blue for cups, lavender for swords and green for pentacles), so a spread can be read at a glance.
+
 Cards lie on a teal reading mat, one mat across the row on wider screens and one per card on a phone, with their names and meanings below it. Above **Draw**, the tarot screen shows the mat with your chosen spread laid out face down, one back for each position.
 
 The **How it works** link under each screen's heading opens **How it works**, with steps for that screen, and **About this deck**. Close it with **Close** or Escape. The text lives in `data/i18n/en/guides.json`, one entry per screen.
@@ -44,6 +46,14 @@ Each card's drawing is a hand-written SVG in `src/assets/oracle/animal/<card-id>
 - Only simple shapes are allowed (`g`, `path`, `circle`, `ellipse`, `rect`, `line`, `polyline`, `polygon`). There's no text, and no scripts, links or styles.
 - Colours come only from the classes `art-fill`, `art-deep`, `art-light`, `art-ink` (eyes and noses, required), `art-blush` and `art-line` (outlines). These follow the card's colour family, so never write a colour into the file.
 - Each file is at most 3 KB, and every card needs exactly one drawing.
+
+## Tarot art
+
+The 22 major arcana and the 16 court cards each have an original drawing in `src/assets/tarot/<card-id>.svg`, for example `major-16.svg` for The Tower or `cups-13.svg` for the Queen of Cups. They use each card's traditional symbols in compositions of their own, and the courts follow one pose per rank so they read as a set: the Page stands holding the suit's symbol up, the Knight rides, and the Queen and King sit enthroned. Each suit has a small scene behind its courts: a hill for wands, waves for cups, clouds for swords and a garden for pentacles.
+
+The drawings follow the same format as the animal oracle's (see above), which `src/lib/tarot-art.test.ts` checks, along with exactly one drawing per major and court card and none for any other card. Their colours come from the card's colour family, set in `TAROT_PALETTES` in `src/lib/palette.ts`: one edge colour each for the major arcana and the four suits, all at least 3:1 against the cream face in both palettes (`palette.test.ts`). The face itself stays cream, and the outer border stays gold on every card.
+
+The Ace to Ten have no files. Their suit symbols are laid out by code in `src/lib/pips.ts`, one fixed arrangement per number that is the same in every suit, after the Marseille decks: one large symbol for the Ace, one column for the Two and Three, and two columns from the Four, with any odd symbol between them. `pips.test.ts` checks each number's count, spacing and symmetry, and `e2e/tarot-art.spec.ts` checks that every pip is at least 9px wide on a phone.
 
 ## Private readings
 
@@ -94,7 +104,7 @@ npm run e2e:same -- main     # compare screenshots with a build of main, for ref
 
 Every push to `main` runs `.github/workflows/deploy.yml`, which builds the app, runs the unit tests and the browser checks (`npm run e2e`), and publishes `dist/` to GitHub Pages. If a check fails, nothing is published, and the run keeps a `playwright-report` artifact showing what failed. It can also be run manually from the Actions tab; on a branch other than `main` it only builds and checks.
 
-The first page load fetches only home and the app shell (239 kB, 74 kB gzipped, down from 349 kB and 104 kB when everything was one file); the tarot screens with their card text (49 kB) and the oracle screen with its card text and drawings (60 kB) each load as their own file, fetched in the background once home has shown, and `e2e/split.spec.ts` checks that no card text or drawing creeps back into the first file.
+The first page load fetches only home and the app shell (239 kB, 74 kB gzipped, down from 349 kB and 104 kB when everything was one file); the tarot screens with their card text and drawings (131 kB, 30 kB gzipped; 49 kB and 17 kB before the tarot art) and the oracle screen with its card text and drawings (60 kB) each load as their own file, fetched in the background once home has shown, and `e2e/split.spec.ts` checks that no card text or drawing creeps back into the first file.
 
 The built page carries a Content Security Policy that lets it load only its own files (added by `vite/csp.ts`, on `npm run build` only), and the workflow's actions are pinned to commit SHAs, with their versions in comments.
 

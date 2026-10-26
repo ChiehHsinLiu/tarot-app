@@ -1,8 +1,8 @@
 // Covers site-deployment: Each screen loads its own content. On the public
-// build: the entry script holds no tarot meanings, oracle messages or oracle
-// drawings and each screen's file holds its own; home shows before any screen
-// file is fetched (Home loads alone); both screen files start loading once home
-// has shown (Screens are ready by the time they're chosen); #/tarot, #/oracle
+// build: the entry script holds no tarot meanings or drawings, oracle messages
+// or oracle drawings and each screen's file holds its own; home shows before
+// any screen file is fetched (Home loads alone); both screen files start
+// loading once home has shown (Screens are ready by the time they're chosen); #/tarot, #/oracle
 // and a share link open straight from an empty cache (Opening a screen
 // directly); and drawing works offline once a screen shows (Drawing needs no
 // network). The dev server serves modules unbundled, so this is public only.
@@ -29,6 +29,10 @@ test('each screen loads its own content', async ({ browser }, testInfo) => {
       .map((m) => m[1])
       .find((d) => !homeArt.includes(d))
     check('oracle drawing marker found', !!oracleArt)
+    const tarotArt = [...read('src/assets/tarot/major-16.svg').matchAll(/ (?:d|points)="([^"]{12,})"/g)]
+      .map((m) => m[1])
+      .find((d) => !homeArt.includes(d) && !oracleArt!.includes(d))
+    check('tarot drawing marker found', !!tarotArt)
 
     const html = read('dist/index.html')
     const entryName = html.match(/<script[^>]+src="[^"]*\/assets\/([^"]+\.js)"/)?.[1]
@@ -45,8 +49,11 @@ test('each screen loads its own content', async ({ browser }, testInfo) => {
     check('entry has no tarot meaning', !entry.includes(tarotText), tarotText)
     check('entry has no oracle message', !entry.includes(oracleText), oracleText)
     check('entry has no oracle drawing', !entry.includes(oracleArt!), oracleArt)
+    check('entry has no tarot drawing', !entry.includes(tarotArt!), tarotArt)
     check('tarot file has the tarot meanings', tarot.includes(tarotText))
     check('tarot file has no oracle message', !tarot.includes(oracleText))
+    check('tarot file has the tarot drawings', tarot.includes(tarotArt!))
+    check('oracle file has no tarot drawing', !oracle.includes(tarotArt!))
     check('oracle file has the oracle messages', oracle.includes(oracleText))
     check('oracle file has the oracle drawings', oracle.includes(oracleArt!))
     check('oracle file has no tarot meaning', !oracle.includes(tarotText))

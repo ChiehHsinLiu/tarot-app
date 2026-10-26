@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" focusable="false">
+  <polygon class="art-fill" points="16,11 16.8,12.9 18.9,13.1 17.3,14.4 17.8,16.4 16,15.4 14.2,16.4 14.7,14.4 13.1,13.1 15.2,12.9"/>
+  <polygon class="art-fill" points="30,21 30.8,22.9 32.9,23.1 31.3,24.4 31.8,26.4 30,25.4 28.2,26.4 28.7,24.4 27.1,23.1 29.2,22.9"/>
+  <polygon class="art-fill" points="84,9 84.8,10.9 86.9,11.1 85.3,12.4 85.8,14.4 84,13.4 82.2,14.4 82.7,12.4 81.1,11.1 83.2,10.9"/>
+  <polygon class="art-fill" points="78,27 78.8,28.9 80.9,29.1 79.3,30.4 79.8,32.4 78,31.4 76.2,32.4 76.7,30.4 75.1,29.1 77.2,28.9"/>
+  <polygon class="art-fill art-line" points="4,96 24,78 38,84 58,72 96,92 96,96"/>
+  <rect class="art-light art-line" x="28" y="36" width="4" height="54" rx="2"/>
+  <path class="art-deep art-line" d="M29 86 C29 42 36.7 30 46 30 C55.4 30 63 42 63 86 Z"/>
+  <path class="art-deep art-line" d="M34 50 C30 26 62 26 58 50 Z"/>
+  <circle class="art-light art-line" cx="46" cy="41" r="8.5"/>
+  <path class="art-light art-line" d="M39 45 C39 60 53 60 53 45 C50 48 42 48 39 45 Z"/>
+  <circle class="art-ink" cx="42.5" cy="40" r="1.4"/>
+  <circle class="art-ink" cx="49.5" cy="40" r="1.4"/>
+  <ellipse class="art-blush" cx="40" cy="43.5" rx="2.4" ry="1.5"/>
+  <ellipse class="art-blush" cx="52" cy="43.5" rx="2.4" ry="1.5"/>
+  <path class="art-line" d="M44.4 44 q1.6 1.4 3.2 0"/>
+  <circle class="art-light art-line" cx="30" cy="56" r="3.2"/>
+  <rect class="art-deep art-line" x="54.5" y="52" width="7" height="14" rx="3.5" transform="rotate(-140 58 52)"/>
+  <circle class="art-light art-line" cx="67" cy="41.3" r="3.2"/>
+  <path class="art-line" d="M67 41 V45"/>
+  <rect class="art-light art-line" x="62" y="45" width="10" height="13" rx="3"/>
+  <polygon class="art-fill" points="67,47.5 68.1,50 70.8,50.3 68.7,52.1 69.4,54.7 67,53.3 64.6,54.7 65.3,52.1 63.2,50.3 65.9,50"/>
+</svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" focusable="false">
+  <rect class="art-fill art-line" x="10" y="16" width="12" height="72" rx="3"/>
+  <rect class="art-fill art-line" x="78" y="16" width="12" height="72" rx="3"/>
+  <path class="art-deep art-line" d="M31 84 C31 58 39.6 46 50 46 C60.5 46 69 58 69 84 Z"/>
+  <path class="art-light art-line" d="M45 48 L44 84 H56 L55 48 Z"/>
+  <path class="art-line" d="M47 60 H53 M50 57 V63"/>
+  <rect class="art-light art-line" x="29" y="14" width="3.5" height="60" rx="1.75"/>
+  <path class="art-line" d="M24 22 H38 M25.5 28 H36.5 M27 34 H35"/>
+  <rect class="art-deep art-line" x="37.5" y="52" width="7" height="12" rx="3.5" transform="rotate(55 41 52)"/>
+  <circle class="art-light art-line" cx="31.2" cy="58.9" r="3.2"/>
+  <rect class="art-deep art-line" x="55.5" y="52" width="7" height="14" rx="3.5" transform="rotate(-150 59 52)"/>
+  <circle class="art-light art-line" cx="66" cy="39.9" r="3.2"/>
+  <circle class="art-light art-line" cx="50" cy="38" r="10"/>
+  <circle class="art-ink" cx="46.5" cy="39" r="1.4"/>
+  <circle class="art-ink" cx="53.5" cy="39" r="1.4"/>
+  <ellipse class="art-blush" cx="44" cy="42.5" rx="2.4" ry="1.5"/>
+  <ellipse class="art-blush" cx="56" cy="42.5" rx="2.4" ry="1.5"/>
+  <path class="art-line" d="M48.4 43 q1.6 1.4 3.2 0"/>
+  <rect class="art-fill art-line" x="42" y="25" width="16" height="6" rx="3"/>
+  <rect class="art-fill art-line" x="43.5" y="19" width="13" height="6" rx="3"/>
+  <rect class="art-fill art-line" x="45" y="13" width="10" height="6" rx="3"/>
+  <circle class="art-fill art-line" cx="50" cy="10" r="2.4"/>
+  <g transform="rotate(-35 50 90)">
+  <rect class="art-fill art-line" x="48.5" y="80" width="3" height="16" rx="1.5"/>
+  <circle class="art-light art-line" cx="50" cy="80" r="3.5"/>
+  <path class="art-line" d="M51.5 92 H55 M51.5 95 H54"/>
+  </g>
+  <g transform="rotate(35 50 90)">
+  <rect class="art-fill art-line" x="48.5" y="80" width="3" height="16" rx="1.5"/>
+  <circle class="art-light art-line" cx="50" cy="80" r="3.5"/>
+  <path class="art-line" d="M51.5 92 H55 M51.5 95 H54"/>
+  </g>
+</svg>

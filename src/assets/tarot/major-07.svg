@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" focusable="false">
+  <path class="art-deep art-line" d="M24 26 C34 14 66 14 76 26 Z"/>
+  <polygon class="art-light" points="40,18.4 40.7,20.1 42.5,20.2 41.1,21.4 41.5,23.1 40,22.2 38.5,23.1 38.9,21.4 37.5,20.2 39.3,20.1"/>
+  <polygon class="art-light" points="50,16.4 50.7,18.1 52.5,18.2 51.1,19.4 51.5,21.1 50,20.2 48.5,21.1 48.9,19.4 47.5,18.2 49.3,18.1"/>
+  <polygon class="art-light" points="60,18.4 60.7,20.1 62.5,20.2 61.1,21.4 61.5,23.1 60,22.2 58.5,23.1 58.9,21.4 57.5,20.2 59.3,20.1"/>
+  <path class="art-line" d="M27 26 V52 M73 26 V52"/>
+  <path class="art-fill art-line" d="M38 60 C38 58 43.4 46 50 46 C56.6 46 62 58 62 60 Z"/>
+  <circle class="art-light art-line" cx="50" cy="38" r="9"/>
+  <circle class="art-ink" cx="46.5" cy="39" r="1.4"/>
+  <circle class="art-ink" cx="53.5" cy="39" r="1.4"/>
+  <ellipse class="art-blush" cx="44" cy="42.5" rx="2.4" ry="1.5"/>
+  <ellipse class="art-blush" cx="56" cy="42.5" rx="2.4" ry="1.5"/>
+  <path class="art-line" d="M48.4 43 q1.6 1.4 3.2 0"/>
+  <path class="art-fill art-line" d="M41 30 L41 21 L45.5 26 L50 19 L54.5 26 L59 21 L59 30 Q50 32.5 41 30 Z"/>
+  <rect class="art-fill art-line" x="24" y="52" width="52" height="22" rx="4"/>
+  <polygon class="art-light art-line" points="50,57 51.6,60.8 55.7,61.1 52.6,63.8 53.5,67.9 50,65.7 46.5,67.9 47.4,63.8 44.3,61.1 48.4,60.8"/>
+  <circle class="art-light art-line" cx="22" cy="74" r="6"/>
+  <circle class="art-light art-line" cx="78" cy="74" r="6"/>
+  <ellipse class="art-light art-line" cx="28" cy="88" rx="12" ry="6"/>
+  <circle class="art-light art-line" cx="28" cy="80" r="6.5"/>
+  <circle class="art-ink" cx="25.6" cy="80" r="1.1"/>
+  <circle class="art-ink" cx="30.4" cy="80" r="1.1"/>
+  <path class="art-line" d="M22 77 L21 72 M34 77 L35 72"/>
+  <ellipse class="art-deep art-line" cx="72" cy="88" rx="12" ry="6"/>
+  <circle class="art-deep art-line" cx="72" cy="80" r="6.5"/>
+  <circle class="art-ink" cx="69.6" cy="80" r="1.1"/>
+  <circle class="art-ink" cx="74.4" cy="80" r="1.1"/>
+  <path class="art-line" d="M66 77 L65 72 M78 77 L79 72"/>
+</svg>
