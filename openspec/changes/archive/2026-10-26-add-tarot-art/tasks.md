@@ -51,4 +51,4 @@ Requires `add-browser-checks` and `load-screens-on-demand` to be applied first. 
 
 ## 5. Live
 
-- [ ] 5.1 After pushing to `main` (with approval), verify that the deploy's checks pass, then check a Yes / No and a three-card reading on the live site in both palettes at desktop and phone width. The owner checks in Safari.
+- [x] 5.1 After pushing to `main` (with approval), verify that the deploy's checks pass, then check a Yes / No and a three-card reading on the live site in both palettes at desktop and phone width. The owner checks in Safari.
