@@ -108,6 +108,6 @@ Every push to `main` runs `.github/workflows/deploy.yml`, which builds the app, 
 
 The first page load fetches only home and the app shell (239 kB, 74 kB gzipped, down from 349 kB and 104 kB when everything was one file); the tarot screens with their card text and drawings (131 kB, 30 kB gzipped; 49 kB and 17 kB before the tarot art) and the oracle screen with its card text and drawings (60 kB) each load as their own file, fetched in the background once home has shown, and `e2e/split.spec.ts` checks that no card text or drawing creeps back into the first file.
 
-The built page carries a Content Security Policy that lets it load only its own files (added by `vite/csp.ts`, on `npm run build` only), and the workflow's actions are pinned to commit SHAs, with their versions in comments.
+The built page carries a Content Security Policy that lets it load only its own files (added by `vite/csp.ts`, on `npm run build` only), and the workflow's actions are pinned to commit SHAs, with their versions in comments. The build runs in Playwright's own image (`mcr.microsoft.com/playwright`), which already has Chromium and its system libraries; it is pinned by digest, and its version must match `@playwright/test` in `package.json`, so bump both together.
 
 One-time setup: in the repository's **Settings → Pages**, set **Source** to **GitHub Actions**.
