@@ -1,5 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" focusable="false">
-  <ellipse class="art-light art-line" cx="15" cy="15" rx="9" ry="4.5"/><ellipse class="art-light art-line" cx="22" cy="12" rx="6" ry="4.5"/><path class="art-line" d="M6 26 H16 M10 31 H22 M82 14 H92 M78 19 H88"/>
+  <ellipse class="art-light art-line" cx="15" cy="15" rx="9" ry="4.5"/>
+  <ellipse class="art-light art-line" cx="22" cy="12" rx="6" ry="4.5"/>
+  <path class="art-line" d="M6 26 H16 M10 31 H22 M82 14 H92 M78 19 H88"/>
   <rect class="art-fill art-line" x="27" y="22" width="46" height="66" rx="9"/>
   <circle class="art-fill art-line" cx="28" cy="22" r="4"/>
   <circle class="art-fill art-line" cx="72" cy="22" r="4"/>

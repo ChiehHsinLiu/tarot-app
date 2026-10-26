@@ -10,7 +10,8 @@
     "test": "vitest run",
     "e2e": "npm run build && playwright test --project=public",
     "e2e:dev": "E2E_PROJECT=dev playwright test --project=dev ${ASK_CLAUDE:+--project=ask}",
-    "e2e:same": "node e2e/same.ts"
+    "e2e:same": "node e2e/same.ts",
+    "draw:tarot": "node scripts/tarot-art/draw.ts"
   },
   "dependencies": {
     "@fontsource-variable/fraunces": "5.3.0",

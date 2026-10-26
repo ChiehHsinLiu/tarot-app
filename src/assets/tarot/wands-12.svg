@@ -1,5 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" focusable="false">
-  <path class="art-fill" d="M4 96 C20 84 38 86 52 90 C68 84 86 84 96 92 V96 Z"/><path class="art-line" d="M12 90 V82 M12 85 Q8 84 7 80 M12 85 Q16 84 17 80 M88 89 V82 M88 85 Q84 84 83 80"/>
+  <path class="art-fill" d="M4 96 C20 84 38 86 52 90 C68 84 86 84 96 92 V96 Z"/>
+  <path class="art-line" d="M12 90 V82 M12 85 Q8 84 7 80 M12 85 Q16 84 17 80 M88 89 V82 M88 85 Q84 84 83 80"/>
   <path class="art-deep art-line" d="M26 60 C16 60 13 72 16 81 C20 74 24 70 28 69 Z"/>
   <rect class="art-light art-line" x="29" y="71" width="7" height="15" rx="3.5"/>
   <rect class="art-light art-line" x="37" y="71" width="7" height="15" rx="3.5"/>
