@@ -5,7 +5,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { test } from '@playwright/test'
-import { repo, setup } from './helpers.ts'
+import { fixRandomness, repo, setup } from './helpers.ts'
 
 test('animal oracle', async ({ browser }, testInfo) => {
   test.setTimeout(180_000)
@@ -16,6 +16,9 @@ test('animal oracle', async ({ browser }, testInfo) => {
 
 
     const page = await open()
+    // Fixed draws, so "reaches all 36 cards" sees the same sequence every run
+    // (all 36 by the 171st Draw again) instead of failing now and then by chance.
+    await fixRandomness(page)
     const consoleErrors = []
     const badResponses = []
     page.on('console', (m) => m.type() === 'error' && consoleErrors.push(m.text()))
