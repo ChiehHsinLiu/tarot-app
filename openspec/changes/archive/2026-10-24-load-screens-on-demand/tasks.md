@@ -33,4 +33,4 @@ Requires `add-browser-checks` to be applied first: every task is verified with `
 
 ## 4. Live
 
-- [ ] 4.1 After pushing to `main` (with approval), verify that the deploy passes its checks and that the live home page requests the entry chunk first and the two screen chunks after it has shown.
+- [x] 4.1 After pushing to `main` (with approval), verify that the deploy passes its checks and that the live home page requests the entry chunk first and the two screen chunks after it has shown.
