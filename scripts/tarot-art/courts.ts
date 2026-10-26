@@ -40,7 +40,7 @@ const RANK: Record<number, (suit: string) => string> = {
     `<path class="art-fill art-line" d="M38 62 C38 49 42 42 48 42 C54 42 58 49 58 62 Z"/><rect class="art-deep art-line" x="44.5" y="58" width="7" height="15" rx="3.5"/>` +
     limb('art-fill', 55.5, 46, 16, -130) + hand(67.8, 35.7) +
     `<circle class="art-light art-line" cx="48" cy="32" r="9"/><path class="art-deep art-line" d="M39 31 C38 19 58 19 57 31 C52 27.5 44 27.5 39 31 Z"/><ellipse class="art-fill art-line" cx="50" cy="17" rx="2.6" ry="6" transform="rotate(25 50 17)"/>` +
-    face(48, 32) + symbol(suit, 72, 23, 0.7) + hand(67.8, 35.7),
+    face(48, 32) + symbol(suit, 72, 25, 0.7) + hand(67.8, 35.7),
   // Queen: sits on a rounded throne, long hair, the symbol held at her side.
   13: (suit) =>
     `<path class="art-fill art-line" d="M28 88 V36 C28 13 72 13 72 36 V88 Z"/><rect class="art-deep art-line" x="24" y="66" width="52" height="8" rx="4"/>` +

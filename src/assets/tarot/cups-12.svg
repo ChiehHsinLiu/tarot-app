@@ -22,7 +22,7 @@
   <ellipse class="art-blush" cx="42" cy="36.5" rx="2.4" ry="1.5"/>
   <ellipse class="art-blush" cx="54" cy="36.5" rx="2.4" ry="1.5"/>
   <path class="art-line" d="M46.4 37 q1.6 1.4 3.2 0"/>
-  <g transform="translate(72 23) scale(0.7)">
+  <g transform="translate(72 25) scale(0.7)">
   <path class="art-fill art-line" d="M-8 -11 H8 C8 -2 4 2 0 2 C-4 2 -8 -2 -8 -11 Z"/>
   <ellipse class="art-light art-line" cx="0" cy="-11" rx="8" ry="2"/>
   <rect class="art-deep art-line" x="-1.5" y="2" width="3" height="6"/>
