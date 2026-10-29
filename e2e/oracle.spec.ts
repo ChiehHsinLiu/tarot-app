@@ -13,11 +13,12 @@ test('animal oracle', async ({ browser }, testInfo) => {
   try {
     const text: Record<string, any> = JSON.parse(fs.readFileSync(path.join(repo, 'data/i18n/en/oracle/animal.json'), 'utf8'))
     const byLabel = new Map<string, any>(Object.entries(text).map(([id, t]) => [`${t.animal}, ${t.theme}`, { id, ...t }]))
+    const deckSize = byLabel.size
 
 
     const page = await open()
-    // Fixed draws, so "reaches all 36 cards" sees the same sequence every run
-    // (all 36 by the 171st Draw again) instead of failing now and then by chance.
+    // Fixed draws, so "reaches all 48 cards" sees the same sequence every run
+    // (all 48 by the 320th Draw again) instead of failing now and then by chance.
     await fixRandomness(page)
     const consoleErrors = []
     const badResponses = []
@@ -120,18 +121,20 @@ test('animal oracle', async ({ browser }, testInfo) => {
       artByCard.set(f.label, f.art)
     }
     await checkArt()
-    for (let i = 0; i < 300 && (i < 60 || seen.size < 36); i++) {
+    let reachedAt = null
+    for (let i = 0; i < 400 && (i < 60 || seen.size < deckSize); i++) {
       await clickButton('Draw again')
       const now = await shownCard()
       if (now === previous || !byLabel.has(now)) allDifferent = false
       seen.add(now)
+      if (reachedAt === null && seen.size === deckSize) reachedAt = i + 1
       previous = now
       await checkArt()
     }
     check('"Draw again" always shows a different card', allDifferent)
-    check('"Draw again" reaches all 36 cards', seen.size === 36, `${seen.size} distinct`)
+    check(`"Draw again" reaches all ${deckSize} cards`, seen.size === deckSize, `${seen.size} distinct, all by Draw again ${reachedAt}`)
     check('every card shows its own drawing, no paw, hidden from assistive tech, label unchanged', artProblems.length === 0, artProblems.slice(0, 5).join(' | '))
-    check('all 36 drawings are different', new Set(artByCard.values()).size === 36, `${new Set(artByCard.values()).size}`)
+    check(`all ${deckSize} drawings are different`, new Set(artByCard.values()).size === deckSize, `${new Set(artByCard.values()).size}`)
 
     // --- Home, then Tarot, starts the composer fresh ---
     check('no "Back" button on the oracle card', !(await buttonTexts()).includes('Back'))

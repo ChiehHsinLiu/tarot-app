@@ -6,7 +6,7 @@ import animalTextEn from '../../data/i18n/en/oracle/animal.json' with { type: 'j
 import { escapeQuestion } from './prompt.ts'
 import type { RandomInt } from './random.ts'
 
-// The six pastel colour families; each holds six cards of the animal deck.
+// The six pastel colour families; each holds eight cards of the animal deck.
 export const ORACLE_PALETTE_NAMES = ['peach', 'sage', 'sky', 'lavender', 'butter', 'rose'] as const
 export type OraclePalette = (typeof ORACLE_PALETTE_NAMES)[number]
 

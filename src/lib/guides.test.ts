@@ -42,7 +42,7 @@ describe('guides', () => {
       expect(steps).toContain(phrase)
     }
     const about = guides.screens.oracle.about.join(' ')
-    for (const phrase of ['36', 'original', 'theme', 'six colour families']) {
+    for (const phrase of ['48', 'original', 'theme', 'six colour families']) {
       expect(about).toContain(phrase)
     }
   })

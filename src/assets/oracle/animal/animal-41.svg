@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" focusable="false">
+  <path class="art-line" d="M4 84 C22 80 50 80 74 84 L80 94 M14 84 l-2 -5 M18 84 l1 -5 M62 83 l-1 -5 M66 83 l2 -5"/>
+  <ellipse class="art-blush art-line" cx="44" cy="80" rx="6" ry="2.6"/>
+  <ellipse class="art-blush art-line" cx="57" cy="80" rx="6" ry="2.6"/>
+  <ellipse class="art-deep art-line" cx="50" cy="58" rx="18" ry="22"/>
+  <ellipse class="art-light" cx="54" cy="62" rx="11" ry="16"/>
+  <path class="art-deep art-line" d="M36 52 C30 60 32 72 40 76 C42 68 42 60 38 52 Z"/>
+  <circle class="art-deep art-line" cx="50" cy="32" r="13"/>
+  <ellipse class="art-light" cx="53" cy="33" rx="8.5" ry="8.5"/>
+  <circle class="art-ink" cx="54" cy="30" r="2.2"/>
+  <path class="art-line" d="M51 27 l-3 -2 M57 33 l3 2"/>
+  <path class="art-blush art-line" d="M60 27 C70 27 75 33 72 40 C68 40 62 38 60 36 Z"/>
+  <path class="art-line" d="M65 28 C66.5 31 66.5 36 65.5 38.5"/>
+  <ellipse class="art-blush" cx="52" cy="38" rx="2.6" ry="1.6"/>
+</svg>

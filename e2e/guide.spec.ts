@@ -25,7 +25,7 @@ test('How it works guides', async ({ browser }, testInfo) => {
     const LABEL = 'How it works and about this deck'
     const NOTE = 'Readings are for reflection and fun, not professional advice.'
     const TAROT_PHRASES = ['Yes / No', 'Three cards', 'reversed', 'upside down', 'Share', '78', '22 Major Arcana', '56 Minor Arcana', 'Wands', 'Cups', 'Swords', 'Pentacles', 'written for this app']
-    const ORACLE_PHRASES = ['no question', 'message', 'reflection question', 'affirmation', 'Draw again', '36', 'six colour families']
+    const ORACLE_PHRASES = ['no question', 'message', 'reflection question', 'affirmation', 'Draw again', '48', 'six colour families']
 
     const settle = (ms = 150) => new Promise((r) => setTimeout(r, ms))
     const go = async (hash = '') => {

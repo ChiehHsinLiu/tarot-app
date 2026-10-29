@@ -45,7 +45,7 @@ describe('drawOracle', () => {
 })
 
 // Chi-square critical values at p = 0.001.
-const CHI_SQUARE_CRITICAL = { 35: 66.6, 34: 65.2 }
+const CHI_SQUARE_CRITICAL = { 47: 82.7, 46: 81.4 }
 
 function chiSquare(draws: string[], pool: string[]): number {
   const counts = new Map(pool.map((id) => [id, 0]))
@@ -57,15 +57,15 @@ function chiSquare(draws: string[], pool: string[]): number {
 }
 
 describe('drawOracle fairness', () => {
-  test('uniform across all 36 cards', () => {
-    const draws = Array.from({ length: 36_000 }, () => drawOracle(ids, cryptoRandomInt))
-    expect(chiSquare(draws, ids)).toBeLessThan(CHI_SQUARE_CRITICAL[35])
+  test('uniform across all 48 cards', () => {
+    const draws = Array.from({ length: 48_000 }, () => drawOracle(ids, cryptoRandomInt))
+    expect(chiSquare(draws, ids)).toBeLessThan(CHI_SQUARE_CRITICAL[47])
   })
 
-  test('uniform across the other 35 when one is excluded', () => {
+  test('uniform across the other 47 when one is excluded', () => {
     const excluded = 'animal-18'
-    const draws = Array.from({ length: 35_000 }, () => drawOracle(ids, cryptoRandomInt, excluded))
+    const draws = Array.from({ length: 47_000 }, () => drawOracle(ids, cryptoRandomInt, excluded))
     expect(draws).not.toContain(excluded)
-    expect(chiSquare(draws, ids.filter((id) => id !== excluded))).toBeLessThan(CHI_SQUARE_CRITICAL[34])
+    expect(chiSquare(draws, ids.filter((id) => id !== excluded))).toBeLessThan(CHI_SQUARE_CRITICAL[46])
   })
 })

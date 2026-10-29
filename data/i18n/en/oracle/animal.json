@@ -430,5 +430,149 @@
     "message": "The whale moves through vast oceans it could never control, and it is at home there. Some things today are simply out of your hands. Let them be, and put your energy where it can make a difference.",
     "reflection": "What would you feel if you stopped trying to control this?",
     "affirmation": "I let go of what I cannot control."
+  },
+  "animal-37": {
+    "animal": "Quokka",
+    "theme": "Look on the Bright Side",
+    "keywords": [
+      "optimism",
+      "cheer",
+      "lightness"
+    ],
+    "message": "The quokka's face seems to wear a smile wherever it goes. Things may not be perfect today, but there is something good in it if you look. Notice what is going right, and let it lift you.",
+    "reflection": "What small good thing have you been too busy to notice?",
+    "affirmation": "I can find the bright side of today."
+  },
+  "animal-38": {
+    "animal": "Hamster",
+    "theme": "Prepare",
+    "keywords": [
+      "readiness",
+      "planning",
+      "care"
+    ],
+    "message": "The hamster fills its cheeks and carries food home to save for later. A little preparation now is a kindness to your future self. Today, do one small thing that will make tomorrow easier.",
+    "reflection": "What could you set aside now that you will be glad of later?",
+    "affirmation": "I take care of tomorrow by acting today."
+  },
+  "animal-39": {
+    "animal": "Pangolin",
+    "theme": "Soft Inside",
+    "keywords": [
+      "vulnerability",
+      "gentleness",
+      "trust"
+    ],
+    "message": "The pangolin is covered in tough scales, but its belly is soft. You can protect yourself and still be tender underneath. Today, let someone you trust see a little of the softer side of you.",
+    "reflection": "Who is safe enough to see the gentle side of you?",
+    "affirmation": "My softness is safe with the right people."
+  },
+  "animal-40": {
+    "animal": "Chameleon",
+    "theme": "See Both Sides",
+    "keywords": [
+      "perspective",
+      "understanding",
+      "openness"
+    ],
+    "message": "A chameleon can move each eye on its own and look two ways at once. There is more than one side to what is in front of you. Before you decide, look again from where someone else stands.",
+    "reflection": "How might this look to the other person?",
+    "affirmation": "I can hold more than one point of view."
+  },
+  "animal-41": {
+    "animal": "Puffin",
+    "theme": "Belonging",
+    "keywords": [
+      "belonging",
+      "home",
+      "connection"
+    ],
+    "message": "Puffins return year after year to the same cliffs, often to the same burrow and the same mate. You do not have to earn a place to belong. Today, go where you feel at home, and let the people there hold you.",
+    "reflection": "Where, or with whom, do you feel most like yourself?",
+    "affirmation": "I belong, just as I am."
+  },
+  "animal-42": {
+    "animal": "Narwhal",
+    "theme": "Be Unusual",
+    "keywords": [
+      "uniqueness",
+      "individuality",
+      "wonder"
+    ],
+    "message": "The narwhal swims with one long spiral tusk, and no other whale looks quite like it. The thing that makes you different may be what makes you wonderful. Today, stop sanding down the parts of you that stand out.",
+    "reflection": "What part of you have you been trying to make more ordinary?",
+    "affirmation": "My differences are part of my magic."
+  },
+  "animal-43": {
+    "animal": "Octopus",
+    "theme": "Curiosity",
+    "keywords": [
+      "curiosity",
+      "exploration",
+      "learning"
+    ],
+    "message": "The octopus explores with all eight arms and can learn to open a jar. Curiosity is how new doors open. Today, poke at something you do not understand yet, just to see what it does.",
+    "reflection": "What have you been curious about but never looked into?",
+    "affirmation": "I follow my curiosity with joy."
+  },
+  "animal-44": {
+    "animal": "Hippo",
+    "theme": "Take Up Space",
+    "keywords": [
+      "presence",
+      "confidence",
+      "ease"
+    ],
+    "message": "The hippo settles into the river without apologizing for its size. You do not have to make yourself small to make others comfortable. Today, take up the room you need, in the conversation and in your day.",
+    "reflection": "Where have you been shrinking yourself to fit in?",
+    "affirmation": "I am allowed to take up space."
+  },
+  "animal-45": {
+    "animal": "Lion",
+    "theme": "Lead with Heart",
+    "keywords": [
+      "courage",
+      "care",
+      "leadership"
+    ],
+    "message": "Lions live in prides that rest together, raise their cubs together, and look out for one another. Real courage is often about caring for others. Today, be brave on behalf of someone or something you love.",
+    "reflection": "Who could use your courage right now?",
+    "affirmation": "My courage comes from my heart."
+  },
+  "animal-46": {
+    "animal": "Giraffe",
+    "theme": "Look Ahead",
+    "keywords": [
+      "vision",
+      "foresight",
+      "hope"
+    ],
+    "message": "The giraffe sees over the treetops, far beyond what is right in front of it. Today's worries look smaller from higher up. Lift your gaze and remember where you are heading.",
+    "reflection": "Where do you hope to be a year from now?",
+    "affirmation": "I can see beyond today."
+  },
+  "animal-47": {
+    "animal": "Flamingo",
+    "theme": "Balance",
+    "keywords": [
+      "balance",
+      "steadiness",
+      "poise"
+    ],
+    "message": "The flamingo rests on one leg for hours and stays perfectly steady. Balance is not about doing everything at once. Today, notice what is tipping you over, and give a little weight back to rest.",
+    "reflection": "What part of your life needs a little more of your weight?",
+    "affirmation": "I find my balance, one moment at a time."
+  },
+  "animal-48": {
+    "animal": "Axolotl",
+    "theme": "Healing",
+    "keywords": [
+      "healing",
+      "renewal",
+      "resilience"
+    ],
+    "message": "The axolotl can regrow a lost leg, and even parts of its heart. Healing takes time, but you are always mending. Today, be gentle with whatever is still growing back.",
+    "reflection": "What in you is quietly healing right now?",
+    "affirmation": "I am healing, a little more each day."
   }
 }
