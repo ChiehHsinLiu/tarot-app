@@ -39,7 +39,7 @@ The new drawings and texts are drafted in the scratchpad first. They land in the
 
 ## 5. Ship
 
-- [ ] 5.1 After the owner approves the push to `main`, verify:
+- [x] 5.1 After the owner approves the push to `main`, verify:
   - the deploy run succeeds, with unit tests and e2e passing
   - on the live site, drawing on the oracle screen in light and dark, at 1280px and 320px, shows new animals with their drawings and no console errors
 

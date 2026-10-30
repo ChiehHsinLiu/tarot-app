@@ -41,7 +41,7 @@ The tarot screen's "About this deck" SHALL describe the 78-card deck, with 22 Ma
 - **THEN** it describes 78 cards, 22 Major and 56 Minor Arcana, and the four suits
 
 ### Requirement: Animal oracle guide content
-The animal oracle screen's "How it works" SHALL explain drawing one card with no question, reading its message, reflection question, and affirmation, and using "Draw again" for a different card. Its "About this deck" SHALL describe the 36 original animal cards, each pairing an animal with a theme, in six colour families.
+The animal oracle screen's "How it works" SHALL explain drawing one card with no question, reading its message, reflection question, and affirmation, and using "Draw again" for a different card. Its "About this deck" SHALL describe the 48 original animal cards, each pairing an animal with a theme, in six colour families.
 
 #### Scenario: Oracle instructions
 - **WHEN** the user opens "How it works" on the animal oracle screen
@@ -49,7 +49,7 @@ The animal oracle screen's "How it works" SHALL explain drawing one card with no
 
 #### Scenario: Oracle deck explanation
 - **WHEN** the user opens "About this deck" on the animal oracle screen
-- **THEN** it describes 36 original animal cards, each with a theme, in six colour families
+- **THEN** it describes 48 original animal cards, each with a theme, in six colour families
 
 ### Requirement: Reflection note
 Every screen's "About this deck" SHALL end with the same short note that readings are for reflection and fun, and are not professional advice.
