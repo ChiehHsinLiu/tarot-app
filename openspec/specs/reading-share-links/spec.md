@@ -7,7 +7,7 @@ Lets a visitor turn a reading into a link and lets anyone with that link see the
 ## Requirements
 
 ### Requirement: Share link format
-A share link SHALL encode a reading in the URL fragment as `#/r/v1/<spread-id>/<cards>`, optionally followed by `?q=<percent-encoded question>`. `<cards>` SHALL list the drawn card ids in position order separated by `.`, each followed by `r` when that card is reversed.
+A share link SHALL encode a reading in the URL fragment as `#/r/v1/<spread-id>/<cards>`, optionally followed by a query. `<cards>` SHALL list the drawn card ids in position order separated by `.`, each followed by `r` when that card is reversed. The query SHALL hold `d=dachshund` when the reading used the Dachshund deck, then `q=<percent-encoded question>` when the question is included, joined by `&` after one `?`. A Classic reading's link SHALL have no `d` parameter.
 
 #### Scenario: Three-card link
 - **WHEN** a three-card reading of Three of Swords (upright), Death (reversed), and Ace of Cups (upright) is shared without its question
@@ -16,6 +16,10 @@ A share link SHALL encode a reading in the URL fragment as `#/r/v1/<spread-id>/<
 #### Scenario: Link with question
 - **WHEN** a reading with the question "Will it work?" is shared with the question included
 - **THEN** the link fragment ends with `?q=Will%20it%20work%3F`
+
+#### Scenario: Dachshund link
+- **WHEN** a Dachshund three-card reading of Three of Swords (upright), Death (reversed), and Ace of Cups (upright) is shared with the question "Will it work?" included
+- **THEN** the link ends with `#/r/v1/three-card/swords-03.major-13r.cups-01?d=dachshund&q=Will%20it%20work%3F`
 
 ### Requirement: Share action on a reading
 Every shown tarot reading SHALL offer a Share action that displays the reading's link and copies it to the clipboard on request, confirming when the copy succeeded. Readings with other decks SHALL NOT offer Share, and share links SHALL only ever describe tarot readings.
@@ -78,7 +82,7 @@ A shared reading SHALL NOT be editable or redrawable, and SHALL offer a "Draw yo
 - **THEN** the shared reading is not shown again
 
 ### Requirement: Invalid links are handled gracefully
-A link fragment starting with `#/r/` that does not decode to a valid reading SHALL show the notice "This reading link isn't valid." above an empty composer. A link is invalid when its version is not `v1`, its spread is unknown, its card count differs from the spread's positions, any card id is unknown or repeated, or its question exceeds 300 user-visible characters.
+A link fragment starting with `#/r/` that does not decode to a valid reading SHALL show the notice "This reading link isn't valid." above an empty composer. A link is invalid when its version is not `v1`, its spread is unknown, its card count differs from the spread's positions, any card id is unknown or repeated, its question exceeds 300 user-visible characters, or it has a `d` parameter whose value is not `dachshund`.
 
 #### Scenario: Unknown card
 - **WHEN** a user opens `#/r/v1/yes-no/major-99`
@@ -86,6 +90,10 @@ A link fragment starting with `#/r/` that does not decode to a valid reading SHA
 
 #### Scenario: Unsupported version
 - **WHEN** a user opens `#/r/v2/yes-no/major-01`
+- **THEN** the notice is shown with an empty composer
+
+#### Scenario: Unknown deck
+- **WHEN** a user opens `#/r/v1/yes-no/major-01?d=poodle`
 - **THEN** the notice is shown with an empty composer
 
 ### Requirement: Drawing does not change the address

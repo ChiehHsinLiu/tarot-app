@@ -7,15 +7,15 @@ Lets the owner read with a 36-card Lenormand deck on the tarot screen of the loc
 ## Requirements
 
 ### Requirement: Lenormand is available only in the local dev app
-When the app is served by `npm run dev`, the tarot screen SHALL offer a deck choice. The production build SHALL contain no deck choice, no Lenormand card text, and no Lenormand code, and the public tarot screen SHALL behave exactly as without this capability.
+When the app is served by `npm run dev`, the tarot screen's deck choice SHALL also offer Lenormand. The production build SHALL contain no Lenormand option, no Lenormand card text, and no Lenormand code, and the public tarot screen SHALL behave exactly as without this capability.
 
 #### Scenario: Local dev app
 - **WHEN** the owner opens the tarot screen at the local dev server
-- **THEN** a "Choose a deck" choice with "Tarot" and "Lenormand" is shown
+- **THEN** a "Choose a deck" choice with "Classic", "Dachshund" and "Lenormand" is shown
 
 #### Scenario: Public site
 - **WHEN** anyone opens the tarot screen on the deployed site or in `npm run preview`
-- **THEN** no deck choice is shown and the production bundle contains no Lenormand text
+- **THEN** the deck choice shows only "Classic" and "Dachshund", and the production bundle contains no Lenormand text
 
 ### Requirement: Lenormand deck
 The Lenormand deck SHALL contain exactly 36 cards numbered 1 to 36 in the traditional order: Rider, Clover, Ship, House, Tree, Clouds, Snake, Coffin, Bouquet, Scythe, Whip, Birds, Child, Fox, Bear, Stars, Stork, Dog, Tower, Garden, Mountain, Crossroads, Mice, Heart, Ring, Book, Letter, Gentleman, Lady, Lily, Sun, Moon, Key, Fish, Anchor, Cross. Each card SHALL have its name, at least one keyword, and a meaning of at most 400 characters written for this project.
