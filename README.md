@@ -19,7 +19,7 @@ The app is served under `/tarot-app/` because GitHub Pages hosts it as a project
 
 The home page offers two choices, each drawn as an arched window (a fanned tarot deck on one sill, a cat on the other) with its own screen and address. The windows show a day sky in light mode and a night sky in dark mode; the drawings are in `src/assets/home/`.
 
-- **Tarot reading** (`#/tarot`): choose a spread, ask a question if it needs one, and draw. **Yes / No** draws one card and gives a written answer. **Three cards** draws Past, Present and Future. **Situation, Action, Outcome** draws where you stand, what to do and where it leads. **Choice** draws one card for each of two options plus one for advice, and needs a question naming both. Spreads are data: ids, question rules and positions are in `data/spreads.json`, and names, labels, question hints and the line that tells Claude how to read each themed spread are in `data/i18n/en/spreads.json`. **Share** turns a reading into a link (`#/r/v1/...`) that anyone can open.
+- **Tarot reading** (`#/tarot`): choose a spread, ask a question if it needs one, and draw. **Yes / No** draws one card and gives a written answer. **Past, Present, Future** draws one card for each (its spread id is still `three-card`, so old links work). **Situation, Action, Outcome** draws where you stand, what to do and where it leads. **Choice** draws one card for each of two options plus one for advice, and needs a question naming both. Under each name, the spread choice shows a short description of what the spread is for, plus "question required" when it needs one. Spreads are data: ids, question rules and positions are in `data/spreads.json`, and names, descriptions, labels, question hints and the line that tells Claude how to read each themed spread are in `data/i18n/en/spreads.json`. **Share** turns a reading into a link (`#/r/v1/...`) that anyone can open.
 - **Animal oracle** (`#/oracle`): draw one card for a little guidance today.
 
 Drawn cards land face down, showing a night-sky back, and turn over one after another, each card's meaning appearing as it lands. A shared link opens with its cards already face up, and if your system asks for reduced motion, cards appear face up at once.
@@ -75,10 +75,10 @@ Claude Code runs with all tools turned off and without saving the session, from 
 
 ### Lenormand (dev only)
 
-In `npm run dev`, the tarot screen also has **Choose a deck**: Tarot or Lenormand. Lenormand is a 36-card deck read by combining neighbouring cards. It offers Yes / No and Three cards only; Situation, Action, Outcome and Choice are tarot only, and switching to Lenormand with one of them selected clears the spread choice:
+In `npm run dev`, the tarot screen also has **Choose a deck**: Tarot or Lenormand. Lenormand is a 36-card deck read by combining neighbouring cards. It offers Yes / No and Past, Present, Future only; Situation, Action, Outcome and Choice are tarot only, and switching to Lenormand with one of them selected clears the spread choice:
 
 - **Yes / No** draws two cards ("First card" and "Second card") and needs a question. There's no written verdict: click **Ask Claude**, and Claude answers Yes, No or Maybe from how the two cards combine.
-- **Three cards** draws Past, Present and Future. Lenormand cards are never reversed.
+- **Past, Present, Future** draws one card for each. Lenormand cards are never reversed.
 
 Lenormand readings have **New reading**, **Copy for Claude** and **Ask Claude**, but no **Share**, since the public site doesn't include the deck. The deck lives in `data/lenormand/` (ids, numbers and spread positions) and `data/i18n/en/lenormand/` (card text, position labels and the screen guide), and Claude's instructions are in `prompts/lenormand.md`. None of it is part of `npm run build`.
 

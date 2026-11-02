@@ -20,10 +20,8 @@ export function SpreadPicker({ spreads, selectedId, onSelect }: Props) {
             onChange={() => onSelect(spread.id)}
           />
           <span className="spread-name">{spread.name}</span>
-          <span className="spread-detail">
-            {spread.positions.length === 1 ? '1 card' : `${spread.positions.length} cards`}
-            {spread.requiresQuestion ? ', question required' : ''}
-          </span>
+          <span className="spread-detail">{spread.description}</span>
+          {spread.requiresQuestion && <span className="spread-detail spread-required">Question required</span>}
         </label>
       ))}
     </fieldset>

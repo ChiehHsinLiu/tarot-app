@@ -45,17 +45,23 @@ describe('Lenormand spreads', () => {
   const tarot = buildSpreads(rawSpreads, rawSpreadText)
   const spreads = buildLenormandSpreads(tarot, rawLenormandSpreads, rawLenormandSpreadText)
 
-  test('offer only Yes / No and Three cards; the other tarot spreads are tarot only', () => {
+  test('offer only Yes / No and Past, Present, Future; the other tarot spreads are tarot only', () => {
     expect(spreads.map((s) => s.id)).toEqual(['yes-no', 'three-card'])
     expect(Object.keys(rawLenormandSpreadText).sort()).toEqual(Object.keys(rawLenormandSpreads).sort())
     const tarotIds = new Set(rawSpreads.map((s) => s.id))
     for (const id of Object.keys(rawLenormandSpreads)) expect(tarotIds.has(id), id).toBe(true)
   })
 
-  test('Yes / No draws a first and a second card; Three cards draws Past, Present and Future', () => {
+  test('Yes / No draws a first and a second card; Past, Present, Future draws Past, Present and Future', () => {
     const labels = (id: string) => spreads.find((s) => s.id === id)!.positions.map((p) => p.label)
     expect(labels('yes-no')).toEqual(['First card', 'Second card'])
     expect(labels('three-card')).toEqual(['Past', 'Present', 'Future'])
+  })
+
+  test('Yes / No has its own description; Past, Present, Future uses the tarot one', () => {
+    const desc = (id: string) => spreads.find((s) => s.id === id)!.description
+    expect(desc('yes-no')).toBe('Two cards read together for a yes or no')
+    expect(desc('three-card')).toBe(tarot.find((s) => s.id === 'three-card')!.description)
   })
 
   test('names and question rules come from tarot, and no spread shows a verdict', () => {

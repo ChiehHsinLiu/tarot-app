@@ -1,19 +1,23 @@
 {
   "yes-no": {
     "name": "Yes / No",
+    "description": "One card for a clear yes or no",
     "positions": { "answer": "Answer" }
   },
   "three-card": {
-    "name": "Three cards",
+    "name": "Past, Present, Future",
+    "description": "How things are unfolding",
     "positions": { "past": "Past", "present": "Present", "future": "Future" }
   },
   "situation-action-outcome": {
     "name": "Situation, Action, Outcome",
+    "description": "What to do, and where it leads",
     "positions": { "situation": "Situation", "action": "Action", "outcome": "Outcome" },
     "guide": "Read the Situation card as where the querent stands now, the Action card as the approach the cards advise, and the Outcome card as where that approach is likely to lead."
   },
   "choice": {
     "name": "Choice",
+    "description": "Choose between A and B, with advice",
     "positions": { "option-a": "Option A", "option-b": "Option B", "advice": "Advice" },
     "questionHint": "Name your two options, e.g. Stay or move?",
     "missingQuestion": "A choice reading needs a question naming your two options.",

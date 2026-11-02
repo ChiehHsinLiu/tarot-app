@@ -133,7 +133,7 @@ test('navigation', async ({ browser }, testInfo) => {
     await page.click('button[type=submit]'); await settle()
     check('drawing keeps address #/tarot', (await hashNow()) === '#/tarot')
     const readingCards = await page.evaluate(() => [...document.querySelectorAll('.spread-slot .card-face')].map((e) => e.getAttribute('aria-label')).join('|'))
-    check('focus on reading heading after draw', (await active()) === 'H2:Three cards', await active())
+    check('focus on reading heading after draw', (await active()) === 'H2:Past, Present, Future', await active())
     await clickLink('Home')
     await clickLink('Tarot reading')
     s = await screen()

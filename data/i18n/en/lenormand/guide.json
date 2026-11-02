@@ -1,7 +1,7 @@
 {
   "howItWorks": [
-    "Choose Lenormand above, then a spread. Yes / No draws two cards for a question. Three cards draws three, for your past, present and future.",
-    "Type your question. Yes / No needs one; for Three cards it's optional.",
+    "Choose Lenormand above, then a spread. Yes / No draws two cards for a question. Past, Present, Future draws three cards, one each for your past, present and future.",
+    "Type your question. Yes / No needs one; for Past, Present, Future it's optional.",
     "Press Draw. Lenormand cards are always upright, and they're read together, like words in a sentence: the first card is the subject and the next one describes it.",
     "For Yes / No, press Ask Claude. Claude gives the answer from how your two cards combine.",
     "Copy for Claude copies the reading as a prompt. Lenormand readings can't be shared as links."

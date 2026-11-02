@@ -33,7 +33,7 @@ test('themed three-card spreads', async ({ browser }, testInfo) => {
       page.evaluate(() => ({
         options: [...document.querySelectorAll('.spread-option')]
           .filter((l) => l.querySelector('input[name=spread]'))
-          .map((l) => [l.querySelector('.spread-name').textContent, l.querySelector('.spread-detail').textContent]),
+          .map((l) => [l.querySelector('.spread-name').textContent, l.querySelector('.spread-detail').textContent, l.querySelector('.spread-required')?.textContent ?? '']),
         placeholder: document.querySelector<HTMLTextAreaElement>('#question').placeholder,
         required: document.querySelector<HTMLTextAreaElement>('#question').required,
         hint: document.querySelector('#draw-hint').textContent,
@@ -52,11 +52,11 @@ test('themed three-card spreads', async ({ browser }, testInfo) => {
 
     // --- The spread choice ---
     let c = await composer()
-    check('four spreads in order with their counts', JSON.stringify(c.options) === JSON.stringify([
-      ['Yes / No', '1 card, question required'],
-      ['Three cards', '3 cards'],
-      ['Situation, Action, Outcome', '3 cards'],
-      ['Choice', '3 cards, question required'],
+    check('four spreads in order with their descriptions, no card counts', JSON.stringify(c.options) === JSON.stringify([
+      ['Yes / No', 'One card for a clear yes or no', 'Question required'],
+      ['Past, Present, Future', 'How things are unfolding', ''],
+      ['Situation, Action, Outcome', 'What to do, and where it leads', ''],
+      ['Choice', 'Choose between A and B, with advice', 'Question required'],
     ]), JSON.stringify(c.options))
 
     // --- Situation, Action, Outcome: question optional, no verdict ---

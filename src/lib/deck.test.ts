@@ -47,10 +47,20 @@ describe('buildCards', () => {
 describe('buildSpreads', () => {
   test('labels positions in order', () => {
     const spreads = buildSpreads(rawSpreads, rawSpreadText)
-    expect(spreads.map((s) => s.name)).toEqual(['Yes / No', 'Three cards', 'Situation, Action, Outcome', 'Choice'])
+    expect(spreads.map((s) => s.name)).toEqual(['Yes / No', 'Past, Present, Future', 'Situation, Action, Outcome', 'Choice'])
     expect(spreads[1].positions.map((p) => p.label)).toEqual(['Past', 'Present', 'Future'])
     expect(spreads[2].positions.map((p) => p.label)).toEqual(['Situation', 'Action', 'Outcome'])
     expect(spreads[3].positions.map((p) => p.label)).toEqual(['Option A', 'Option B', 'Advice'])
+  })
+
+  test('every spread has a description', () => {
+    const spreads = buildSpreads(rawSpreads, rawSpreadText)
+    expect(spreads.map((s) => s.description)).toEqual([
+      'One card for a clear yes or no',
+      'How things are unfolding',
+      'What to do, and where it leads',
+      'Choose between A and B, with advice',
+    ])
   })
 
   test('question and verdict rules', () => {

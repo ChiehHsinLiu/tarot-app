@@ -14,7 +14,7 @@ test('Lenormand guide is complete plain text', () => {
 
 test('Lenormand instructions cover the two-card Yes / No, upright cards read together, Ask Claude and no share link', () => {
   const steps = lenormandGuide.howItWorks.join(' ')
-  for (const phrase of ['Yes / No draws two cards', 'needs one', 'Three cards', 'always upright', 'read together', 'Ask Claude', "can't be shared"]) {
+  for (const phrase of ['Yes / No draws two cards', 'needs one', 'Past, Present, Future', 'always upright', 'read together', 'Ask Claude', "can't be shared"]) {
     expect(steps).toContain(phrase)
   }
 })

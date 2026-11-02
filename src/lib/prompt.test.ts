@@ -51,7 +51,7 @@ const prompt = (reading: Reading) =>
 describe('buildPrompt', () => {
   test('states the spread and lists cards in position order', () => {
     const text = prompt(threeCardReading)
-    expect(text).toContain('Spread: Three cards')
+    expect(text).toContain('Spread: Past, Present, Future')
     const past = text.indexOf('Past: Three of Swords (upright)')
     const present = text.indexOf('Present: Death (reversed)')
     const future = text.indexOf('Future: Ace of Cups (upright)')

@@ -32,6 +32,8 @@ export type SpreadData = {
 
 export type SpreadText = {
   name: string
+  // What the spread is for, shown under its name in the spread choice.
+  description: string
   positions: Record<string, string>
   // Optional: the question box hint, the note shown when a required question
   // is missing, and a line telling Claude how to read the positions.
@@ -54,6 +56,7 @@ export type Card = {
 export type Spread = {
   id: string
   name: string
+  description: string
   requiresQuestion: boolean
   showsVerdict: boolean
   positions: { id: string; label: string }[]
@@ -89,6 +92,7 @@ export function buildSpreads(data: SpreadData[], text: Record<string, SpreadText
   return data.map((spread) => ({
     id: spread.id,
     name: text[spread.id].name,
+    description: text[spread.id].description,
     requiresQuestion: spread.requiresQuestion,
     showsVerdict: spread.showsVerdict,
     positions: spread.positions.map((p) => ({ id: p.id, label: text[spread.id].positions[p.id] })),
