@@ -48,7 +48,7 @@
 
 ## 5. Ship
 
-- [ ] 5.1 After the owner approves the push to `main`, verify:
+- [x] 5.1 After the owner approves the push to `main`, verify:
   - the deploy run succeeds, with unit tests and e2e passing
   - on the live site, both new spreads draw, show and share correctly in light and dark, at 1280 px and 320 px, with no console errors
 
