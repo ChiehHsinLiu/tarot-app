@@ -2,6 +2,7 @@
 // without loading the composer or any card text.
 import type { DeckId } from '../components/DeckPicker.tsx'
 import type { Reading } from '../lib/draw.ts'
+import type { TarotStyle } from '../lib/tarot-style.ts'
 
 export type ComposingState = {
   kind: 'composing'
@@ -14,7 +15,7 @@ export type ComposingState = {
 // can swap views; entering the screen from elsewhere resets it (see onHashChange in App.tsx).
 export type TarotState =
   | ComposingState
-  | { kind: 'revealed'; reading: Reading }
+  | { kind: 'revealed'; reading: Reading; style: TarotStyle }
   | { kind: 'lenormand-revealed'; reading: Reading }
 
-export const EMPTY_COMPOSER: ComposingState = { kind: 'composing', deck: 'tarot', spreadId: null, question: '' }
+export const EMPTY_COMPOSER: ComposingState = { kind: 'composing', deck: 'classic', spreadId: null, question: '' }

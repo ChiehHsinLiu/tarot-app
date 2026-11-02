@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" focusable="false">
+  <rect class="art-plum art-line" x="2" y="2" width="96" height="62"/>
+  <path class="art-leaf art-line" d="M2 98V86Q50 82 98 86V98Z"/>
+  <rect class="art-light art-line" x="56" y="22" width="22" height="66"/>
+  <rect class="art-ink" x="63" y="40" width="8" height="10" rx="4"/>
+  <rect class="art-ink" x="63" y="62" width="8" height="10" rx="4"/>
+  <path class="art-sun art-line" d="M60 14L69 6L76 12L72 18Z"/>
+  <path class="art-sun art-line" d="M90 2L74 22H84L70 40L92 16H82Z"/>
+  <path class="art-rose art-line" d="M54 30q-6-6 0-12q2 6 4 4ZM80 34q6-6 2-12q-2 6-4 4Z"/>
+  <g transform="translate(34 86) scale(-0.6 0.6)">
+  <rect class="art-coat art-line" x="-15" y="-11" width="6" height="11" rx="3" transform="rotate(40 -12 -11)"/>
+  <rect class="art-coat art-line" x="-22" y="-11" width="6" height="11" rx="3" transform="rotate(60 -19 -11)"/>
+  <path class="art-line" d="M-21 -16 Q-30 -17 -35 -14"/>
+  <rect class="art-coat art-line" x="-24" y="-22" width="46" height="15" rx="7.5"/>
+  <path class="art-light" d="M8 -9.5 Q15 -8.5 20 -12 L20 -16 Q14 -12 8 -12.5 Z"/>
+  <circle class="art-coat art-line" cx="24" cy="-24" r="9"/>
+  <ellipse class="art-coat art-line" cx="32" cy="-19.5" rx="5.8" ry="4.4"/>
+  <circle class="art-ink" cx="37" cy="-21" r="2.1"/>
+  <path class="art-line" d="M31 -16.5q2 1.8 4 0"/>
+  <circle class="art-ink" cx="26.8" cy="-26.3" r="2.4"/>
+  <circle class="art-light" cx="27.6" cy="-27.2" r="0.9"/>
+  <ellipse class="art-blush" cx="25.5" cy="-20.5" rx="2.6" ry="1.6"/>
+  <path class="art-ear art-line" d="M21 -29 C14 -34 6 -32 3 -29 C8 -27 15 -25 21 -25 Z"/>
+  <rect class="art-coat art-line" x="13" y="-11" width="6" height="11" rx="3" transform="rotate(-45 16 -11)"/>
+  <rect class="art-coat art-line" x="6" y="-11" width="6" height="11" rx="3" transform="rotate(-65 9 -11)"/>
+  </g>
+</svg>

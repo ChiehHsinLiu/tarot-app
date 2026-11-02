@@ -11,13 +11,23 @@ const ATTRIBUTES = new Set([
   'width', 'height', 'x1', 'y1', 'x2', 'y2', 'points', 'transform',
 ])
 const CLASSES = new Set(['art-fill', 'art-deep', 'art-light', 'art-ink', 'art-blush', 'art-line'])
+// The Dachshund deck's fixed scene colours, on top of the family classes.
+const DACHSHUND_CLASSES = new Set([...CLASSES, 'art-coat', 'art-ear', 'art-sun', 'art-sky', 'art-leaf', 'art-water', 'art-rose', 'art-plum'])
 const WINDOW_CLASSES = new Set([...CLASSES, 'win-sky', 'win-glow', 'win-cloud', 'win-frame', 'win-sill', 'win-day', 'win-night'])
 export const MAX_BYTES = 3072
+// The Dachshund deck's scenes hold up to three dogs, or a dog and ten suit symbols.
+export const DACHSHUND_MAX_BYTES = 5120
 export const WINDOW_MAX_BYTES = 6144
 
 // Returns every way the drawing breaks the format; empty when it is valid.
 export function formatProblems(svg: string): string[] {
   return problemsFor(svg, ROOT, CLASSES, MAX_BYTES, true)
+}
+
+// The Dachshund deck: the same format plus its scene colours, with room for
+// denser scenes. Eyes are required.
+export function dachshundProblems(svg: string): string[] {
+  return problemsFor(svg, ROOT, DACHSHUND_CLASSES, DACHSHUND_MAX_BYTES, true)
 }
 
 // The home windows: a wider scene with its own classes, and both a day and a

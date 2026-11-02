@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" focusable="false">
+  <circle class="art-sun art-line" cx="17" cy="17" r="7"/>
+  <path class="art-line" d="M17 4V7M17 27V30M4 17H7M27 17H30M8 8L10 10M24 24L26 26M26 8L24 10M8 26L10 24"/>
+  <path class="art-sky art-line" d="M58 22q2-6 8-5q3-5 9-2q6-1 7 5q4 3 0 6H59q-4-1-1-4Z"/>
+  <path class="art-leaf art-line" d="M2 98V82Q36 77 72 80L78 98Z"/>
+  <path class="art-line" d="M78 98L84 88"/>
+  <path class="art-line" d="M10 81V72"/>
+  <circle class="art-rose" cx="10" cy="70" r="3.4"/>
+  <circle class="art-light art-line" cx="10" cy="70" r="1.4"/>
+  <g transform="translate(34 80) scale(0.9 0.9)">
+  <rect class="art-coat art-line" x="-15" y="-11" width="6" height="11" rx="3" transform="rotate(40 -12 -11)"/>
+  <rect class="art-coat art-line" x="-22" y="-11" width="6" height="11" rx="3" transform="rotate(60 -19 -11)"/>
+  <path class="art-line" d="M-21 -16 Q-30 -17 -35 -14"/>
+  <rect class="art-coat art-line" x="-24" y="-22" width="46" height="15" rx="7.5"/>
+  <path class="art-light" d="M8 -9.5 Q15 -8.5 20 -12 L20 -16 Q14 -12 8 -12.5 Z"/>
+  <circle class="art-coat art-line" cx="24" cy="-24" r="9"/>
+  <ellipse class="art-coat art-line" cx="32" cy="-19.5" rx="5.8" ry="4.4"/>
+  <circle class="art-ink" cx="37" cy="-21" r="2.1"/>
+  <path class="art-line" d="M31 -16.5q2 1.8 4 0"/>
+  <circle class="art-ink" cx="26.8" cy="-26.3" r="2.4"/>
+  <circle class="art-light" cx="27.6" cy="-27.2" r="0.9"/>
+  <ellipse class="art-blush" cx="25.5" cy="-20.5" rx="2.6" ry="1.6"/>
+  <path class="art-ear art-line" d="M21 -29 C14 -34 6 -32 3 -29 C8 -27 15 -25 21 -25 Z"/>
+  <path class="art-line" d="M38 -19L50 -42"/>
+  <circle class="art-rose art-line" cx="52" cy="-46" r="7"/>
+  <path class="art-line" d="M49 -51l3 -4 3 4"/>
+  <rect class="art-coat art-line" x="13" y="-11" width="6" height="11" rx="3" transform="rotate(-45 16 -11)"/>
+  <rect class="art-coat art-line" x="6" y="-11" width="6" height="11" rx="3" transform="rotate(-65 9 -11)"/>
+  </g>
+  <path class="art-line" d="M86 52q3-4 6 0M80 60q2-3 4 0"/>
+</svg>

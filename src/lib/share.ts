@@ -1,8 +1,9 @@
-// Share-link encoding: #/r/v1/<spread-id>/<card-id>[r].<card-id>[r]...[?q=<question>]
+// Share-link encoding: #/r/v1/<spread-id>/<card-id>[r].<card-id>[r]...[?d=dachshund][&q=<question>]
 // No React imports, so Node scripts can decode links too.
 import type { SpreadData } from './deck.ts'
 import type { DrawnCard, Reading } from './draw.ts'
 import { QUESTION_MAX_CHARS, countChars } from './question.ts'
+import type { TarotStyle } from './tarot-style.ts'
 
 const PREFIX = '#/r/'
 const VERSION = 'v1'
@@ -10,12 +11,17 @@ const CARD_TOKEN = /^([a-z]+-\d{2})(r?)$/
 
 export type DecodeResult =
   | { kind: 'none' }
-  | { kind: 'reading'; reading: Reading }
+  | { kind: 'reading'; reading: Reading; style: TarotStyle }
   | { kind: 'invalid' }
 
-export function encodeReading(reading: Reading, opts: { includeQuestion: boolean }): string {
+// A Classic reading's link has no d parameter, so links made before the
+// Dachshund deck existed still read as Classic.
+export function encodeReading(reading: Reading, opts: { includeQuestion: boolean; style?: TarotStyle }): string {
   const cards = reading.cards.map((c) => c.cardId + (c.reversed ? 'r' : '')).join('.')
-  const query = opts.includeQuestion && reading.question ? `?q=${encodeURIComponent(reading.question)}` : ''
+  const params: string[] = []
+  if (opts.style === 'dachshund') params.push('d=dachshund')
+  if (opts.includeQuestion && reading.question) params.push(`q=${encodeURIComponent(reading.question)}`)
+  const query = params.length ? `?${params.join('&')}` : ''
   return `${PREFIX}${VERSION}/${reading.spreadId}/${cards}${query}`
 }
 
@@ -53,8 +59,12 @@ export function decodeReading(fragment: string, spreads: SpreadData[], cardIds: 
     cards.push({ cardId, positionId: spread.positions[i].id, reversed: reversed === 'r' })
   }
 
-  const question = new URLSearchParams(query).get('q') ?? ''
+  const params = new URLSearchParams(query)
+  const question = params.get('q') ?? ''
   if (countChars(question) > QUESTION_MAX_CHARS) return invalid
+  const deck = params.get('d')
+  if (deck !== null && deck !== 'dachshund') return invalid
+  const style: TarotStyle = deck === 'dachshund' ? 'dachshund' : 'classic'
 
-  return { kind: 'reading', reading: { spreadId, question, cards } }
+  return { kind: 'reading', reading: { spreadId, question, cards }, style }
 }

@@ -49,7 +49,8 @@ export function Composer({ deck, spreadId, question, invalidLink, onChange, onDr
       const reading = draw(spread, lenormand.ids, question.trim(), cryptoRandomInt, { reversals: false })
       onDraw({ kind: 'lenormand-revealed', reading })
     } else {
-      onDraw({ kind: 'revealed', reading: draw(spread, deckIds, question.trim(), cryptoRandomInt) })
+      const style = deck === 'dachshund' ? 'dachshund' : 'classic'
+      onDraw({ kind: 'revealed', reading: draw(spread, deckIds, question.trim(), cryptoRandomInt), style })
     }
   }
 
@@ -65,7 +66,7 @@ export function Composer({ deck, spreadId, question, invalidLink, onChange, onDr
           This reading link isn't valid.
         </p>
       )}
-      {lenormand && <DeckPicker selected={deck} onSelect={(d) => onChange({ deck: d, spreadId, question })} />}
+      <DeckPicker selected={deck} onSelect={(d) => onChange({ deck: d, spreadId, question })} />
       <SpreadPicker
         spreads={deckSpreads}
         selectedId={spreadId}

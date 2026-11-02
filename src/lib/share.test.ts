@@ -39,6 +39,36 @@ describe('encodeReading', () => {
   test('omits q for an empty question even when included', () => {
     expect(encodeReading(threeCard, { includeQuestion: true })).not.toContain('?')
   })
+
+  test('a Classic reading has no deck marker', () => {
+    expect(encodeReading(threeCard, { includeQuestion: false, style: 'classic' })).toBe(
+      '#/r/v1/three-card/swords-03.major-13r.cups-01',
+    )
+  })
+
+  test('a Dachshund reading adds d=dachshund before the question', () => {
+    const reading = { ...threeCard, question: 'Will it work?' }
+    expect(encodeReading(reading, { includeQuestion: true, style: 'dachshund' })).toBe(
+      '#/r/v1/three-card/swords-03.major-13r.cups-01?d=dachshund&q=Will%20it%20work%3F',
+    )
+    expect(encodeReading(reading, { includeQuestion: false, style: 'dachshund' })).toBe(
+      '#/r/v1/three-card/swords-03.major-13r.cups-01?d=dachshund',
+    )
+  })
+})
+
+describe('deck marker', () => {
+  test('d=dachshund decodes as the Dachshund style', () => {
+    expect(decode('#/r/v1/three-card/swords-03.major-13r.cups-01?d=dachshund&q=Will%20it%20work%3F')).toEqual({
+      kind: 'reading',
+      reading: { ...threeCard, question: 'Will it work?' },
+      style: 'dachshund',
+    })
+  })
+
+  test('a link without d is Classic', () => {
+    expect(decode('#/r/v1/three-card/swords-03.major-13r.cups-01')).toMatchObject({ style: 'classic' })
+  })
 })
 
 describe('round trip', () => {
@@ -49,11 +79,14 @@ describe('round trip', () => {
     for (const question of questions) {
       for (let i = 0; i < 50; i++) {
         const reading = draw(spread, deckIds, question, cryptoRandomInt)
-        expect(decode(encodeReading(reading, { includeQuestion: true }))).toEqual({ kind: 'reading', reading })
-        expect(decode(encodeReading(reading, { includeQuestion: false }))).toEqual({
-          kind: 'reading',
-          reading: { ...reading, question: '' },
-        })
+        for (const style of ['classic', 'dachshund'] as const) {
+          expect(decode(encodeReading(reading, { includeQuestion: true, style }))).toEqual({ kind: 'reading', reading, style })
+          expect(decode(encodeReading(reading, { includeQuestion: false, style }))).toEqual({
+            kind: 'reading',
+            reading: { ...reading, question: '' },
+            style,
+          })
+        }
       }
     }
   })
@@ -94,6 +127,10 @@ describe('decodeReading rejections', () => {
     ['#/r/v1/yes-no/major-01/extra', 'extra path segment'],
     ['#/r/v1/yes-no/major-01?q=' + 'a'.repeat(301), 'question over 300 characters'],
     ['#/r/v1/yes-no/major-01?q=' + encodeURIComponent('🇹🇼'.repeat(301)), 'question over 300 emoji'],
+    ['#/r/v1/yes-no/major-01?d=poodle', 'unknown deck'],
+    ['#/r/v1/yes-no/major-01?d=', 'empty deck'],
+    ['#/r/v1/yes-no/major-01?d=Dachshund', 'deck is case-sensitive'],
+    ['#/r/v1/yes-no/major-01?d=classic', 'Classic is never written as d'],
   ])('%j is invalid (%s)', (fragment) => {
     expect(decode(fragment)).toEqual({ kind: 'invalid' })
   })
@@ -134,6 +171,6 @@ describe('pinned v1 links', () => {
       },
     ],
   ])('%s', (fragment, reading) => {
-    expect(decode(fragment)).toEqual({ kind: 'reading', reading })
+    expect(decode(fragment)).toEqual({ kind: 'reading', reading, style: 'classic' })
   })
 })

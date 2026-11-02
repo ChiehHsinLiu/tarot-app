@@ -153,7 +153,7 @@ test('screens start fresh', async ({ browser }, testInfo) => {
       await clickLink('Home')
       await clickLink('Tarot reading')
       s = await state()
-      check('Lenormand resets to Tarot after Home', s.deck === 'tarot', JSON.stringify(s))
+      check('Lenormand resets to Classic after Home', s.deck === 'classic', JSON.stringify(s))
       await page.click('input[name=deck][value=lenormand]')
       await page.click('input[value=yes-no]')
       await typeQuestion('Will it work?')

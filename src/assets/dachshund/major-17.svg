@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" focusable="false">
+  <rect class="art-plum art-line" x="2" y="2" width="96" height="64"/>
+  <polygon class="art-sun art-line" points="50,9 52.9,16 60.5,16.6 54.7,21.5 56.5,28.9 50,25 43.5,28.9 45.3,21.5 39.5,16.6 47.1,16"/>
+  <polygon class="art-light" points="16,8.8 16.8,10.8 19,11 17.4,12.4 17.9,14.6 16,13.4 14.1,14.6 14.6,12.4 13,11 15.2,10.8"/>
+  <polygon class="art-light" points="84,8.8 84.8,10.8 87,11 85.4,12.4 85.9,14.6 84,13.4 82.1,14.6 82.6,12.4 81,11 83.2,10.8"/>
+  <polygon class="art-light" points="12,30.8 12.8,32.8 15,33 13.4,34.4 13.9,36.6 12,35.4 10.1,36.6 10.6,34.4 9,33 11.2,32.8"/>
+  <polygon class="art-light" points="88,30.8 88.8,32.8 91,33 89.4,34.4 89.9,36.6 88,35.4 86.1,36.6 86.6,34.4 85,33 87.2,32.8"/>
+  <polygon class="art-light" points="30,40.8 30.8,42.8 33,43 31.4,44.4 31.9,46.6 30,45.4 28.1,46.6 28.6,44.4 27,43 29.2,42.8"/>
+  <polygon class="art-light" points="70,40.8 70.8,42.8 73,43 71.4,44.4 71.9,46.6 70,45.4 68.1,46.6 68.6,44.4 67,43 69.2,42.8"/>
+  <polygon class="art-light" points="50,48.8 50.8,50.8 53,51 51.4,52.4 51.9,54.6 50,53.4 48.1,54.6 48.6,52.4 47,51 49.2,50.8"/>
+  <path class="art-leaf art-line" d="M2 98V72Q50 68 98 72V98Z"/>
+  <path class="art-water art-line" d="M50 84Q74 76 98 82V98H50Z"/>
+  <g transform="translate(26 84) scale(0.6 0.6)">
+  <ellipse class="art-coat art-line" cx="-13" cy="-5" rx="9" ry="5.5"/>
+  <g transform="rotate(-22 -16 -10)">
+  <path class="art-line" d="M-21 -16 Q-28 -19 -30 -27"/>
+  <rect class="art-coat art-line" x="-24" y="-22" width="46" height="15" rx="7.5"/>
+  <path class="art-light" d="M8 -9.5 Q15 -8.5 20 -12 L20 -16 Q14 -12 8 -12.5 Z"/>
+  <circle class="art-coat art-line" cx="24" cy="-24" r="9"/>
+  <ellipse class="art-coat art-line" cx="32" cy="-19.5" rx="5.8" ry="4.4"/>
+  <circle class="art-ink" cx="37" cy="-21" r="2.1"/>
+  <path class="art-line" d="M31 -16.5q2 1.8 4 0"/>
+  <circle class="art-ink" cx="26.8" cy="-26.3" r="2.4"/>
+  <circle class="art-light" cx="27.6" cy="-27.2" r="0.9"/>
+  <ellipse class="art-blush" cx="25.5" cy="-20.5" rx="2.6" ry="1.6"/>
+  <path class="art-ear art-line" d="M20 -30 C14 -29 13 -18 17 -14 C21 -16 23 -22 20 -30 Z"/>
+  <path class="art-sun art-line" d="M38 -24l6 4l-4 4Z"/>
+  </g>
+  <rect class="art-coat art-line" x="9.9" y="-20.9" width="6" height="20.9" rx="3"/>
+  <rect class="art-coat art-line" x="5.9" y="-20.9" width="6" height="20.9" rx="3"/>
+  </g>
+  <path class="art-light art-line" d="M56 82q2-8 6-4"/>
+</svg>

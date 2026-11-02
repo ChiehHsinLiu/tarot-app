@@ -4,6 +4,9 @@ import type { Card, Suit } from '../lib/deck.ts'
 import { TAROT_PALETTES } from '../lib/palette.ts'
 import { PIP_LAYOUTS } from '../lib/pips.ts'
 import { TAROT_ART } from '../lib/tarot-art.ts'
+import { cardPicture } from '../lib/card-picture.ts'
+import { DACHSHUND_ART } from '../lib/dachshund-art.ts'
+import type { TarotStyle } from '../lib/tarot-style.ts'
 
 // The suit symbols the Ace to Ten repeat: soft line drawings in a 24x24 box,
 // with round caps and joins, drawn as strokes.
@@ -59,24 +62,27 @@ function Pips({ suit, rank }: { suit: Suit; rank: number }) {
   )
 }
 
-type Props = { card: Card; reversed: boolean }
+const ART = { classic: TAROT_ART, dachshund: DACHSHUND_ART }
 
-export function CardFace({ card, reversed }: Props) {
+type Props = { card: Card; reversed: boolean; style?: TarotStyle }
+
+export function CardFace({ card, reversed, style = 'classic' }: Props) {
+  const picture = cardPicture(card, style, ART)
   const label = reversed ? `${card.name}, reversed` : card.name
   // The frame, corner dots and picture take the suit's colour; the outer border stays gold.
   const edge = { '--face-edge': TAROT_PALETTES[card.suit ?? 'major'].edge } as CSSProperties
   return (
-    <div className="card">
+    <div className="card" data-deck={style}>
       <div role="img" aria-label={label} className={reversed ? 'card-face reversed' : 'card-face'} style={edge}>
         <span className="card-numeral" aria-hidden="true">
           {card.arcana === 'major' ? toRoman(card.rank) : ''}
         </span>
-        {card.suit && card.rank <= 10 ? (
-          <Pips suit={card.suit} rank={card.rank} />
+        {picture.kind === 'pips' ? (
+          <Pips suit={card.suit!} rank={card.rank} />
         ) : (
-          // The major and court cards' drawings: trusted build-time files;
-          // art-format.ts limits what they may contain.
-          <span className="tarot-art" aria-hidden="true" dangerouslySetInnerHTML={{ __html: TAROT_ART[card.id] }} />
+          // The drawings: trusted build-time files; art-format.ts limits what
+          // they may contain.
+          <span className="tarot-art" aria-hidden="true" dangerouslySetInnerHTML={{ __html: picture.svg }} />
         )}
         <span className="card-name" aria-hidden="true">
           {card.name}

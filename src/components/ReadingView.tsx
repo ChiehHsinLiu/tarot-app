@@ -5,6 +5,7 @@ import type { Card, Spread, Verdict } from '../lib/deck.ts'
 import type { Reading } from '../lib/draw.ts'
 import { buildPrompt } from '../lib/prompt.ts'
 import { encodeReading } from '../lib/share.ts'
+import type { TarotStyle } from '../lib/tarot-style.ts'
 import { CardFace } from './CardFace.tsx'
 import { CardFlip } from './CardFlip.tsx'
 import { CopyForClaude } from './CopyForClaude.tsx'
@@ -20,6 +21,8 @@ const VERDICT_WORDS: Record<Verdict, string> = { yes: 'Yes', no: 'No', maybe: 'M
 
 type Props = {
   reading: Reading
+  // Which pictures the cards show; the text is the same either way.
+  style: TarotStyle
   spread: Spread
   cardsById: Map<string, Card>
   // True when the reading came from a share link rather than the user's own draw.
@@ -27,7 +30,7 @@ type Props = {
   onNewReading: () => void
 }
 
-export function ReadingView({ reading, spread, cardsById, shared, onNewReading }: Props) {
+export function ReadingView({ reading, style, spread, cardsById, shared, onNewReading }: Props) {
   const headingRef = useRef<HTMLHeadingElement>(null)
   useEffect(() => headingRef.current?.focus(), [])
 
@@ -70,10 +73,10 @@ export function ReadingView({ reading, spread, cardsById, shared, onNewReading }
             >
               <p className="position-label">{position.label}</p>
               {shared ? (
-                <CardFace card={card} reversed={drawn.reversed} />
+                <CardFace card={card} reversed={drawn.reversed} style={style} />
               ) : (
                 <CardFlip index={index}>
-                  <CardFace card={card} reversed={drawn.reversed} />
+                  <CardFace card={card} reversed={drawn.reversed} style={style} />
                 </CardFlip>
               )}
               <h3 className="card-title">
@@ -91,7 +94,7 @@ export function ReadingView({ reading, spread, cardsById, shared, onNewReading }
         <button type="button" className="primary" onClick={onNewReading}>
           {shared ? 'Draw your own' : 'New reading'}
         </button>
-        <SharePanel reading={reading} />
+        <SharePanel reading={reading} style={style} />
         <CopyForClaude prompt={buildPrompt(template, reading, spread, cardsById)} />
         {AskClaude && (
           <Suspense fallback={null}>

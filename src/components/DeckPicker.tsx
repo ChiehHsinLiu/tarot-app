@@ -1,11 +1,15 @@
-// Dev-only: the tarot screen's deck choice. The app renders it only when the
-// Lenormand deck was built under import.meta.env.DEV, so the public build drops it.
-export type DeckId = 'tarot' | 'lenormand'
+import type { TarotStyle } from '../lib/tarot-style.ts'
 
-// Add an entry here (and its data) to offer another deck.
+// The tarot screen's deck choice: the two tarot styles everywhere, and the
+// dev-only Lenormand deck in the local dev app.
+export type DeckId = TarotStyle | 'lenormand'
+
+// Add an entry here (and its data) to offer another deck. The DEV check stays
+// inline so the production build folds it away, Lenormand name and all.
 export const DECK_OPTIONS: { id: DeckId; name: string }[] = [
-  { id: 'tarot', name: 'Tarot' },
-  { id: 'lenormand', name: 'Lenormand' },
+  { id: 'classic', name: 'Classic' },
+  { id: 'dachshund', name: 'Dachshund' },
+  ...(import.meta.env.DEV ? [{ id: 'lenormand' as const, name: 'Lenormand' }] : []),
 ]
 
 type Props = { selected: DeckId; onSelect: (deck: DeckId) => void }

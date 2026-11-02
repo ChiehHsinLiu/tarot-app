@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" focusable="false">
+  <path class="art-sky art-line" d="M38 34q-4-6 3-8q1-6 8-5q4-5 10 0q7 0 6 6q4 4-1 7Z"/>
+  <g transform="translate(18 14) scale(0.7) translate(-12 -12)">
+  <path class="art-fill art-line" d="M6 4.5h12c0 4.8-2.4 8-6 8s-6-3.2-6-8zM12 12.5v5M8.5 20.5c0-1.7 1.6-3 3.5-3s3.5 1.3 3.5 3z"/>
+  </g>
+  <g transform="translate(34 10) scale(0.7) translate(-12 -12)">
+  <path class="art-fill art-line" d="M6 4.5h12c0 4.8-2.4 8-6 8s-6-3.2-6-8zM12 12.5v5M8.5 20.5c0-1.7 1.6-3 3.5-3s3.5 1.3 3.5 3z"/>
+  </g>
+  <g transform="translate(50 8) scale(0.7) translate(-12 -12)">
+  <path class="art-fill art-line" d="M6 4.5h12c0 4.8-2.4 8-6 8s-6-3.2-6-8zM12 12.5v5M8.5 20.5c0-1.7 1.6-3 3.5-3s3.5 1.3 3.5 3z"/>
+  </g>
+  <g transform="translate(66 10) scale(0.7) translate(-12 -12)">
+  <path class="art-fill art-line" d="M6 4.5h12c0 4.8-2.4 8-6 8s-6-3.2-6-8zM12 12.5v5M8.5 20.5c0-1.7 1.6-3 3.5-3s3.5 1.3 3.5 3z"/>
+  </g>
+  <g transform="translate(82 14) scale(0.7) translate(-12 -12)">
+  <path class="art-fill art-line" d="M6 4.5h12c0 4.8-2.4 8-6 8s-6-3.2-6-8zM12 12.5v5M8.5 20.5c0-1.7 1.6-3 3.5-3s3.5 1.3 3.5 3z"/>
+  </g>
+  <g transform="translate(26 30) scale(0.7) translate(-12 -12)">
+  <path class="art-fill art-line" d="M6 4.5h12c0 4.8-2.4 8-6 8s-6-3.2-6-8zM12 12.5v5M8.5 20.5c0-1.7 1.6-3 3.5-3s3.5 1.3 3.5 3z"/>
+  </g>
+  <g transform="translate(74 30) scale(0.7) translate(-12 -12)">
+  <path class="art-fill art-line" d="M6 4.5h12c0 4.8-2.4 8-6 8s-6-3.2-6-8zM12 12.5v5M8.5 20.5c0-1.7 1.6-3 3.5-3s3.5 1.3 3.5 3z"/>
+  </g>
+  <polygon class="art-sun" points="34,2 34.5,3.3 35.9,3.4 34.9,4.3 35.2,5.6 34,4.9 32.8,5.6 33.1,4.3 32.1,3.4 33.5,3.3"/>
+  <path class="art-rose art-line" d="M66 6.4C62.2 3.5 64.3 0.9 66 3C67.7 0.9 69.8 3.5 66 6.4Z"/>
+  <path class="art-leaf art-line" d="M2 98V84Q50 80 98 84V98Z"/>
+  <g transform="translate(38 82) scale(0.7 0.7)">
+  <path class="art-line" d="M-20 -6 Q-28 -4 -26 2"/>
+  <ellipse class="art-coat art-line" cx="0" cy="-8" rx="24" ry="8.5"/>
+  <ellipse class="art-coat art-line" cx="22" cy="-6" rx="9" ry="6"/>
+  <circle class="art-ink" cx="31" cy="-6" r="1.7"/>
+  <path class="art-line" d="M19 -8 q2.5 1.6 5 0"/>
+  <path class="art-ear art-line" d="M17 -11 C12 -11 10 -4 13 -1 C17 -3 19 -7 17 -11 Z"/>
+  <path class="art-line" d="M30 -18 h4 l-4 4 h4 M37 -24 h3 l-3 3 h3"/>
+  </g>
+</svg>

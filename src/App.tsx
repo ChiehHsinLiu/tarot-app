@@ -100,7 +100,7 @@ function App() {
     screen = (
       <TarotScreens
         tarot={tarot}
-        shared={shared?.kind === 'reading' ? shared.reading : null}
+        shared={shared?.kind === 'reading' ? { reading: shared.reading, style: shared.style } : null}
         onChange={setTarot}
         onLeaveShared={() => {
           // Swap the share fragment for the tarot screen without adding a history entry,

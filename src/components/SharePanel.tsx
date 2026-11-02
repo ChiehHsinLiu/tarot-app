@@ -1,6 +1,7 @@
 import { useId, useRef, useState } from 'react'
 import type { Reading } from '../lib/draw.ts'
 import { encodeReading, shareUrl } from '../lib/share.ts'
+import type { TarotStyle } from '../lib/tarot-style.ts'
 
 type Status = 'idle' | 'copied' | 'manual'
 
@@ -10,14 +11,14 @@ const STATUS_TEXT: Record<Status, string> = {
   manual: 'Press Ctrl+C (⌘C on Mac) to copy the selected link.',
 }
 
-export function SharePanel({ reading }: { reading: Reading }) {
+export function SharePanel({ reading, style }: { reading: Reading; style: TarotStyle }) {
   const panelId = useId()
   const linkRef = useRef<HTMLInputElement>(null)
   const [open, setOpen] = useState(false)
   const [includeQuestion, setIncludeQuestion] = useState(false)
   const [status, setStatus] = useState<Status>('idle')
 
-  const url = shareUrl(encodeReading(reading, { includeQuestion }), window.location)
+  const url = shareUrl(encodeReading(reading, { includeQuestion, style }), window.location)
 
   function toggle() {
     // The question is opt-in every time the panel opens.

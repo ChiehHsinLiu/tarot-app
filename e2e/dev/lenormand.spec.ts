@@ -95,8 +95,8 @@ test('Lenormand (dev only)', async ({ browser }, testInfo) => {
     // --- Deck choice on the tarot screen ---
     await go('#/tarot')
     let c = await composer()
-    check('picker: "Tarot" and "Lenormand"', c.decks.join('|') === 'Tarot|Lenormand', c.decks.join('|'))
-    check('picker: Tarot selected by default', c.deck === 'tarot')
+    check('picker: "Classic", "Dachshund" and "Lenormand"', c.decks.join('|') === 'Classic|Dachshund|Lenormand', c.decks.join('|'))
+    check('picker: Classic selected by default', c.deck === 'classic')
     check('picker: under the heading, before the spreads', c.pickerUnderHeading)
     check('tarot counts unchanged', c.details['yes-no'] === '1 card, question required' && c.details['three-card'] === '3 cards', JSON.stringify(c.details))
 
@@ -122,11 +122,11 @@ test('Lenormand (dev only)', async ({ browser }, testInfo) => {
     c = await composer()
     check('Lenormand Yes / No needs a question', c.drawDisabled && c.hint === 'A yes / no reading needs a question.', JSON.stringify({ d: c.drawDisabled, h: c.hint }))
 
-    // Deck resets to Tarot after Home; choose Lenormand and Yes / No again.
+    // Deck resets to Classic after Home; choose Lenormand and Yes / No again.
     await clickLink('Home')
     await clickLink('Tarot reading')
     c = await composer()
-    check('deck resets to Tarot after Home', c.deck === 'tarot' && c.spread === null && !c.guide.open, JSON.stringify({ deck: c.deck, spread: c.spread }))
+    check('deck resets to Classic after Home', c.deck === 'classic' && c.spread === null && !c.guide.open, JSON.stringify({ deck: c.deck, spread: c.spread }))
     await pick('deck', 'lenormand')
     await pick('spread', 'yes-no')
 
@@ -223,9 +223,9 @@ test('Lenormand (dev only)', async ({ browser }, testInfo) => {
     }
     check('15 more draws: always distinct, upright and drawn', allGood)
 
-    // Back to Tarot: tarot readings unchanged.
+    // Back to Classic: tarot readings unchanged.
     await clickButton('New reading')
-    await pick('deck', 'tarot')
+    await pick('deck', 'classic')
     await pick('spread', 'yes-no')
     await typeQuestion('Is it a good day?')
     await clickButton('Draw')

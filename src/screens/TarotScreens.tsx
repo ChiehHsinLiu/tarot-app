@@ -7,6 +7,7 @@ import { ReadingView } from '../components/ReadingView.tsx'
 import type { Reading } from '../lib/draw.ts'
 import { buildLenormandDeck } from '../lib/lenormand.ts'
 import { cardsById, spreads } from '../lib/tarot-deck.ts'
+import type { TarotStyle } from '../lib/tarot-style.ts'
 import type { TarotState } from './tarot-state.ts'
 
 // Dev-only. Vite replaces DEV with false in production builds, so this folds to
@@ -23,7 +24,7 @@ const LenormandReadingView = import.meta.env.DEV
 type Props = {
   tarot: TarotState
   // A reading opened from a share link, shown instead of the tarot screen.
-  shared: Reading | null
+  shared: { reading: Reading; style: TarotStyle } | null
   onChange: (next: TarotState) => void
   onLeaveShared: () => void
 }
@@ -34,8 +35,9 @@ export default function TarotScreens({ tarot, shared, onChange, onLeaveShared }:
       <ReadingView
         // Remount when a different link is opened so focus and the share panel reset.
         key={JSON.stringify(shared)}
-        reading={shared}
-        spread={spreads.find((s) => s.id === shared.spreadId)!}
+        reading={shared.reading}
+        style={shared.style}
+        spread={spreads.find((s) => s.id === shared.reading.spreadId)!}
         cardsById={cardsById}
         shared
         onNewReading={onLeaveShared}
@@ -47,10 +49,13 @@ export default function TarotScreens({ tarot, shared, onChange, onLeaveShared }:
       <ReadingView
         key={JSON.stringify(tarot.reading)}
         reading={tarot.reading}
+        style={tarot.style}
         spread={spreads.find((s) => s.id === tarot.reading.spreadId)!}
         cardsById={cardsById}
         shared={false}
-        onNewReading={() => onChange({ kind: 'composing', deck: 'tarot', spreadId: tarot.reading.spreadId, question: '' })}
+        onNewReading={() =>
+          onChange({ kind: 'composing', deck: tarot.style, spreadId: tarot.reading.spreadId, question: '' })
+        }
       />
     )
   }

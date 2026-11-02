@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" focusable="false">
+  <rect class="art-plum art-line" x="2" y="2" width="96" height="96"/>
+  <polygon class="art-sun" points="14,13.6 14.6,15.1 16.3,15.3 15,16.3 15.4,17.9 14,17.1 12.6,17.9 13,16.3 11.7,15.3 13.4,15.1"/>
+  <polygon class="art-sun" points="30,8.2 30.5,9.3 31.7,9.4 30.8,10.3 31.1,11.5 30,10.8 28.9,11.5 29.2,10.3 28.3,9.4 29.5,9.3"/>
+  <polygon class="art-sun" points="84,20 84.5,21.3 85.9,21.4 84.9,22.3 85.2,23.6 84,22.9 82.8,23.6 83.1,22.3 82.1,21.4 83.5,21.3"/>
+  <path class="art-sun art-line" d="M86 6A4 4 0 1 0 86 14A0.8 4 0 1 1 86 6Z"/>
+  <path class="art-light art-line" d="M2 98L48 46L98 98Z"/>
+  <path class="art-sky art-line" d="M38 58L48 46L58 58L53 55L48 60L43 55Z"/>
+  <g transform="translate(64 62) scale(-0.8 0.8)">
+  <rect class="art-coat art-line" x="-15" y="-10" width="6" height="10" rx="3"/>
+  <rect class="art-coat art-line" x="-22" y="-10" width="6" height="10" rx="3"/>
+  <path class="art-line" d="M-21 -16 Q-28 -19 -30 -27"/>
+  <rect class="art-coat art-line" x="-24" y="-22" width="46" height="15" rx="7.5"/>
+  <path class="art-light" d="M8 -9.5 Q15 -8.5 20 -12 L20 -16 Q14 -12 8 -12.5 Z"/>
+  <circle class="art-coat art-line" cx="24" cy="-24" r="9"/>
+  <ellipse class="art-coat art-line" cx="32" cy="-19.5" rx="5.8" ry="4.4"/>
+  <circle class="art-ink" cx="37" cy="-21" r="2.1"/>
+  <path class="art-line" d="M31 -16.5q2 1.8 4 0"/>
+  <circle class="art-ink" cx="26.8" cy="-26.3" r="2.4"/>
+  <circle class="art-light" cx="27.6" cy="-27.2" r="0.9"/>
+  <ellipse class="art-blush" cx="25.5" cy="-20.5" rx="2.6" ry="1.6"/>
+  <path class="art-ear art-line" d="M20 -30 C14 -29 13 -18 17 -14 C21 -16 23 -22 20 -30 Z"/>
+  <path class="art-line" d="M38 -19V-29"/>
+  <rect class="art-sun art-line" x="31" y="-41" width="14" height="12" rx="3"/>
+  <polygon class="art-light" points="38,-38.5 38.9,-36.3 41.3,-36.1 39.5,-34.5 40.1,-32.2 38,-33.4 35.9,-32.2 36.5,-34.5 34.7,-36.1 37.1,-36.3"/>
+  <rect class="art-coat art-line" x="14" y="-10" width="6" height="10" rx="3"/>
+  <rect class="art-coat art-line" x="7" y="-10" width="6" height="10" rx="3"/>
+  </g>
+</svg>

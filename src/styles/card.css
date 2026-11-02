@@ -115,8 +115,19 @@
   stroke-linejoin: round;
 }
 
+/* The Dachshund deck's scene colours: the same in both palettes, as faces stay
+   cream. Only Dachshund drawings may use them (see art-format.ts). */
+.tarot-art .art-coat { fill: #c9834c; }
+.tarot-art .art-ear { fill: #7a4424; }
+.tarot-art .art-sun { fill: #f4c34f; }
+.tarot-art .art-sky { fill: #cfe7f5; }
+.tarot-art .art-leaf { fill: #93c47d; }
+.tarot-art .art-water { fill: #7db7e0; }
+.tarot-art .art-rose { fill: #ee8fa7; }
+.tarot-art .art-plum { fill: #a986d4; }
+
 /* A line-only shape (no fill class) is just a stroke. */
-.tarot-art .art-line:not(.art-fill, .art-deep, .art-light, .art-ink, .art-blush) {
+.tarot-art .art-line:not(.art-fill, .art-deep, .art-light, .art-ink, .art-blush, .art-coat, .art-ear, .art-sun, .art-sky, .art-leaf, .art-water, .art-rose, .art-plum) {
   fill: none;
 }
 
