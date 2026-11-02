@@ -62,7 +62,7 @@ test('share links and Copy for Claude', async ({ browser }, testInfo) => {
     const question = 'Should I take the new job offer? 🇹🇼'
     await drawReading(page, 'three-card', question)
     check('2.4 draw does not change the URL', (await page.evaluate(() => location.href)) === appUrl + '#/tarot', await page.evaluate(() => location.href))
-    check('own reading heading has no "Shared" label', (await readingSnapshot(page)).heading === 'Past, Present, Future')
+    check('own reading heading has no "Shared" label', (await readingSnapshot(page)).heading === 'Three cards')
 
     await clickButton(page, 'Share')
     check('3.1 Share opens the panel', (await page.$('.share-panel')) !== null)
@@ -112,7 +112,7 @@ test('share links and Copy for Claude', async ({ browser }, testInfo) => {
     // --- 2.1 open the link (with question) in a fresh tab ---
     const shared = await newPage(linkWithQ)
     const sharedSnapshot = await readingSnapshot(shared)
-    check('2.1 shared heading', sharedSnapshot.heading === 'Shared reading · Past, Present, Future', sharedSnapshot.heading)
+    check('2.1 shared heading', sharedSnapshot.heading === 'Shared reading · Three cards', sharedSnapshot.heading)
     check('2.1 same cards, orientations and meanings', JSON.stringify(sharedSnapshot.slots) === JSON.stringify(ownSnapshot.slots))
     check('2.1 shared question shown', sharedSnapshot.asked === `“${question}”`, sharedSnapshot.asked)
     check('shared reading is read-only', (await shared.$$('textarea, input[name=spread], button[type=submit]')).length === 0)

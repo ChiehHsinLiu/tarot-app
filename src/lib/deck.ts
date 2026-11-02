@@ -32,14 +32,7 @@ export type SpreadData = {
 
 export type SpreadText = {
   name: string
-  // What the spread is for, shown under its name in the spread choice.
-  description: string
   positions: Record<string, string>
-  // Optional: the question box hint, the note shown when a required question
-  // is missing, and a line telling Claude how to read the positions.
-  questionHint?: string
-  missingQuestion?: string
-  guide?: string
 }
 
 export type Card = {
@@ -56,13 +49,9 @@ export type Card = {
 export type Spread = {
   id: string
   name: string
-  description: string
   requiresQuestion: boolean
   showsVerdict: boolean
   positions: { id: string; label: string }[]
-  questionHint?: string
-  missingQuestion?: string
-  guide?: string
 }
 
 export { rawCards, rawSpreads } from './deck-ids.ts'
@@ -92,20 +81,10 @@ export function buildSpreads(data: SpreadData[], text: Record<string, SpreadText
   return data.map((spread) => ({
     id: spread.id,
     name: text[spread.id].name,
-    description: text[spread.id].description,
     requiresQuestion: spread.requiresQuestion,
     showsVerdict: spread.showsVerdict,
     positions: spread.positions.map((p) => ({ id: p.id, label: text[spread.id].positions[p.id] })),
-    ...pick(text[spread.id], ['questionHint', 'missingQuestion', 'guide']),
   }))
-}
-
-// Copies only the optional fields a spread's text sets, so spreads without
-// them stay exactly as they were.
-function pick<T extends object, K extends keyof T>(obj: T, keys: K[]): Partial<Pick<T, K>> {
-  const out: Partial<Pick<T, K>> = {}
-  for (const key of keys) if (obj[key] !== undefined) out[key] = obj[key]
-  return out
 }
 
 const ROMAN: [number, string][] = [

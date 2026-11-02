@@ -24,7 +24,7 @@ describe('guides', () => {
 
   test('tarot instructions cover spreads, questions, reversals, the answer and sharing', () => {
     const steps = guides.screens.tarot.howItWorks.join(' ')
-    for (const phrase of ['Yes / No', 'Past, Present, Future', 'Situation, Action, Outcome', 'Choice', 'two options', 'question', 'reversed', 'upside down', 'answer', 'Share']) {
+    for (const phrase of ['Yes / No', 'Three cards', 'question', 'reversed', 'upside down', 'answer', 'Share']) {
       expect(steps).toContain(phrase)
     }
   })

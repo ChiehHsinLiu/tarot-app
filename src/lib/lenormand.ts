@@ -21,8 +21,7 @@ export type LenormandCard = LenormandCardData & LenormandCardText
 // Lenormand uses the tarot spreads (same ids, names and question rules) with its
 // own positions, keyed by spread id.
 export type LenormandSpreadData = Record<string, { positions: { id: string }[] }>
-// A spread's description falls back to the tarot one unless Lenormand sets its own.
-export type LenormandSpreadText = Record<string, { positions: Record<string, string>; description?: string }>
+export type LenormandSpreadText = Record<string, { positions: Record<string, string> }>
 
 export const rawLenormandDeck = deckData as LenormandCardData[]
 export const rawLenormandText = cardTextEn as Record<string, LenormandCardText>
@@ -39,17 +38,14 @@ export function buildLenormandCards(
 }
 
 // A Lenormand reading never shows a written verdict: Claude gives the Yes / No.
-// Only the tarot spreads Lenormand has positions for are offered; the rest are
-// tarot only.
 export function buildLenormandSpreads(
   tarotSpreads: Spread[],
   data: LenormandSpreadData,
   text: LenormandSpreadText,
 ): Spread[] {
-  return tarotSpreads.filter((spread) => spread.id in data).map((spread) => ({
+  return tarotSpreads.map((spread) => ({
     id: spread.id,
     name: spread.name,
-    description: text[spread.id].description ?? spread.description,
     requiresQuestion: spread.requiresQuestion,
     showsVerdict: false,
     positions: data[spread.id].positions.map((p) => ({ id: p.id, label: text[spread.id].positions[p.id] })),

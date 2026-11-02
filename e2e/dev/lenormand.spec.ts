@@ -45,7 +45,7 @@ test('Lenormand (dev only)', async ({ browser }, testInfo) => {
       spread: document.querySelector<HTMLInputElement>('input[name=spread]:checked')?.value ?? null,
       question: document.querySelector<HTMLTextAreaElement>('#question')?.value ?? null,
       details: Object.fromEntries([...document.querySelectorAll('.spread-option')].filter((l) => l.querySelector('input[name=spread]'))
-        .map((l) => [l.querySelector('input').value, [...l.querySelectorAll('.spread-detail')].map((d) => d.textContent).join(' | ')])),
+        .map((l) => [l.querySelector('input').value, l.querySelector('.spread-detail')?.textContent ?? ''])),
       hint: document.querySelector('#draw-hint')?.textContent ?? '',
       drawDisabled: [...document.querySelectorAll<HTMLButtonElement>('button')].find((b) => b.textContent.trim() === 'Draw')?.disabled,
       pickerUnderHeading: (() => {
@@ -98,7 +98,7 @@ test('Lenormand (dev only)', async ({ browser }, testInfo) => {
     check('picker: "Tarot" and "Lenormand"', c.decks.join('|') === 'Tarot|Lenormand', c.decks.join('|'))
     check('picker: Tarot selected by default', c.deck === 'tarot')
     check('picker: under the heading, before the spreads', c.pickerUnderHeading)
-    check('tarot descriptions', c.details['yes-no'] === 'One card for a clear yes or no | Question required' && c.details['three-card'] === 'How things are unfolding', JSON.stringify(c.details))
+    check('tarot counts unchanged', c.details['yes-no'] === '1 card, question required' && c.details['three-card'] === '3 cards', JSON.stringify(c.details))
 
     await pick('spread', 'three-card')
     await typeQuestion('What should I know?')
@@ -108,23 +108,13 @@ test('Lenormand (dev only)', async ({ browser }, testInfo) => {
     await pick('deck', 'lenormand')
     c = await composer()
     check('switching to Lenormand keeps the spread and question', c.deck === 'lenormand' && c.spread === 'three-card' && c.question === 'What should I know?', JSON.stringify(c))
-    check('Lenormand descriptions', c.details['yes-no'] === 'Two cards read together for a yes or no | Question required' && c.details['three-card'] === 'How things are unfolding', JSON.stringify(c.details))
+    check('Lenormand counts', c.details['yes-no'] === '2 cards, question required' && c.details['three-card'] === '3 cards', JSON.stringify(c.details))
     check('open guide panel stays open and switches to Lenormand', c.guide.open && c.guide.text.includes('Marie Anne Lenormand') && !c.guide.text.includes('78-card'))
     check('About this deck ends with the reflection note', c.guide.text.includes('Readings are for reflection and fun, not professional advice.'))
     check('How it works switched to Lenormand', c.guide.text.includes('Yes / No draws two cards') && c.guide.text.includes("can't be shared"))
     check('focus stays on the deck choice after switching', await page.evaluate(() => (document.activeElement as HTMLInputElement)?.name === 'deck'))
     await page.click('.guide-close')
     await settle()
-
-    check('Lenormand offers only Yes / No and Past, Present, Future', Object.keys(c.details).join('|') === 'yes-no|three-card', Object.keys(c.details).join('|'))
-
-    // A tarot-only spread is cleared when switching to Lenormand; the question stays.
-    await pick('deck', 'tarot')
-    await pick('spread', 'choice')
-    await typeQuestion('Stay or move?')
-    await pick('deck', 'lenormand')
-    c = await composer()
-    check('switching to Lenormand clears a tarot-only spread', c.deck === 'lenormand' && c.spread === null && c.question === 'Stay or move?' && c.drawDisabled && c.hint === 'Choose a spread to begin.', JSON.stringify({ deck: c.deck, spread: c.spread, q: c.question, d: c.drawDisabled, h: c.hint }))
 
     // Question rule.
     await pick('spread', 'yes-no')
@@ -197,14 +187,14 @@ test('Lenormand (dev only)', async ({ browser }, testInfo) => {
     c = await composer()
     check('New reading: Lenormand and Yes / No kept, question empty', c.deck === 'lenormand' && c.spread === 'yes-no' && c.question === '', JSON.stringify(c))
 
-    // --- Past, Present, Future ---
+    // --- Three cards ---
     await pick('spread', 'three-card')
     await clickButton('Draw')
     r = await reading()
-    check('Past, Present, Future heading', r.heading === 'Lenormand · Past, Present, Future', r.heading)
-    check('Past, Present, Future labels', r.labels.join('|') === 'Past|Present|Future')
+    check('Three cards heading', r.heading === 'Lenormand · Three cards', r.heading)
+    check('Three cards labels Past, Present, Future', r.labels.join('|') === 'Past|Present|Future')
     check('three distinct cards, none reversed', new Set(r.faces).size === 3 && r.reversed === 0)
-    check('no Yes / No note on Past, Present, Future', r.note === null && !r.verdict)
+    check('no Yes / No note on Three cards', r.note === null && !r.verdict)
 
     // Two families give different drawing colours: draw until a sage and a sky card are both on screen.
     const seen: Record<string, any> = {}

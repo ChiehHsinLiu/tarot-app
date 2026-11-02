@@ -169,16 +169,13 @@ test('reading mat and spread preview', async ({ browser }, testInfo) => {
     check('fresh tarot screen: an empty mat just above Draw', s && s.backs === 0 && s.beforeDraw && s.cloth === 'rgb(31, 74, 76)', JSON.stringify(s))
     await pv.click('input[name=spread][value=three-card]')
     s = await preview()
-    check('Past, Present, Future: three backs labelled Past, Present, Future', s.backs === 3 && s.labels.join() === 'Past,Present,Future', JSON.stringify(s))
+    check('Three cards: three backs labelled Past, Present, Future', s.backs === 3 && s.labels.join() === 'Past,Present,Future', JSON.stringify(s))
     await pv.screenshot({ path: path.join(shotDir, 'table-preview.png'), fullPage: true })
     const pvSnap = await axSnapshot(pv)
     const pvNames = []
     const walkPv = (n) => { pvNames.push(`${n.role}:${n.name ?? ''}`); (n.children ?? []).forEach(walkPv) }
     walkPv(pvSnap)
-    // The preview's labels would appear as their own text; the spread choice's
-    // name "Past, Present, Future" is not one of them.
-    check('the preview is hidden from assistive technology and not focusable', s.hidden && !s.focusable &&
-      !pvNames.some((n) => /:(PAST|Past|PRESENT|Present|FUTURE|Future)$/.test(n) || /^(img|image)/.test(n)), pvNames.join(' | '))
+    check('the preview is hidden from assistive technology and not focusable', s.hidden && !s.focusable && !pvNames.some((n) => /Past|Present|Future/.test(n) || /^(img|image)/.test(n)), pvNames.join(' | '))
     await pv.click('input[name=spread][value=yes-no]')
     s = await preview()
     check('switching to Yes / No: one back, and nothing moves', s.backs === 1 && s.labels.length === 1 && s.anims === 0, JSON.stringify(s))

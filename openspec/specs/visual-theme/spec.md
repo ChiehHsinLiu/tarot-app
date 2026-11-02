@@ -220,11 +220,11 @@ The tarot screen SHALL show a mat just above the Draw button. With no spread cho
 - **THEN** an empty mat is shown above the Draw button, with no card backs
 
 #### Scenario: Three cards chosen
-- **WHEN** a user chooses the "Past, Present, Future" spread
+- **WHEN** a user chooses the "Three cards" spread
 - **THEN** the mat shows three card backs labelled Past, Present and Future
 
 #### Scenario: Spread changed
-- **WHEN** a user changes the spread from "Past, Present, Future" to "Yes / No"
+- **WHEN** a user changes the spread from "Three cards" to "Yes / No"
 - **THEN** the mat shows one card back labelled with the Yes / No position, and nothing moves
 
 #### Scenario: Lenormand deck
@@ -239,11 +239,11 @@ The tarot screen SHALL show a mat just above the Draw button. With no spread cho
 The spread preview SHALL be hidden from assistive technology and SHALL NOT be focusable, since the spread choice already states the same information. At 320 pixels wide, the preview of the largest spread SHALL fit without horizontal scrolling.
 
 #### Scenario: Screen reader on the tarot screen
-- **WHEN** a screen reader reads the tarot screen with "Past, Present, Future" chosen
+- **WHEN** a screen reader reads the tarot screen with "Three cards" chosen
 - **THEN** it announces the heading, the deck and spread choices, the question box and the Draw button, and nothing for the preview
 
 #### Scenario: Preview on a phone
-- **WHEN** the tarot screen is shown 320 pixels wide with "Past, Present, Future" chosen
+- **WHEN** the tarot screen is shown 320 pixels wide with "Three cards" chosen
 - **THEN** all three backs are side by side on the mat and the page has no horizontal scroll
 
 ### Requirement: Tarot suits have their own colours

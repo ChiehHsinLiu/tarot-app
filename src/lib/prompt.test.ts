@@ -6,6 +6,7 @@ import { buildPrompt, escapeQuestion } from './prompt.ts'
 
 const cardsById = new Map(buildCards(rawCards, rawCardText).map((c) => [c.id, c]))
 const spreads = buildSpreads(rawSpreads, rawSpreadText)
+const yesNo = spreads.find((s) => s.id === 'yes-no')!
 const threeCard = spreads.find((s) => s.id === 'three-card')!
 
 const threeCardReading: Reading = {
@@ -25,33 +26,13 @@ const yesNoReading: Reading = {
   cards: [{ cardId: 'major-07', positionId: 'answer', reversed: true }],
 }
 
-const saoReading: Reading = {
-  spreadId: 'situation-action-outcome',
-  question: '',
-  cards: [
-    { cardId: 'cups-07', positionId: 'situation', reversed: false },
-    { cardId: 'major-01', positionId: 'action', reversed: true },
-    { cardId: 'pentacles-10', positionId: 'outcome', reversed: false },
-  ],
-}
-
-const choiceReading: Reading = {
-  spreadId: 'choice',
-  question: 'Stay or move?',
-  cards: [
-    { cardId: 'wands-08', positionId: 'option-a', reversed: false },
-    { cardId: 'swords-04', positionId: 'option-b', reversed: true },
-    { cardId: 'major-17', positionId: 'advice', reversed: false },
-  ],
-}
-
 const prompt = (reading: Reading) =>
-  buildPrompt(template, reading, spreads.find((s) => s.id === reading.spreadId)!, cardsById)
+  buildPrompt(template, reading, reading.spreadId === 'yes-no' ? yesNo : threeCard, cardsById)
 
 describe('buildPrompt', () => {
   test('states the spread and lists cards in position order', () => {
     const text = prompt(threeCardReading)
-    expect(text).toContain('Spread: Past, Present, Future')
+    expect(text).toContain('Spread: Three cards')
     const past = text.indexOf('Past: Three of Swords (upright)')
     const present = text.indexOf('Present: Death (reversed)')
     const future = text.indexOf('Future: Ace of Cups (upright)')
@@ -108,26 +89,6 @@ describe('buildPrompt', () => {
     expect(() =>
       buildPrompt(template.replace('{{cards}}', ''), threeCardReading, threeCard, cardsById),
     ).toThrow('{{cards}}')
-    expect(() =>
-      buildPrompt(template.replace('{{guidance}}', ''), threeCardReading, threeCard, cardsById),
-    ).toThrow('{{guidance}}')
-  })
-
-  test.each([
-    [saoReading, ['Situation', 'Action', 'Outcome'], 'the Action card as the approach the cards advise'],
-    [choiceReading, ['Option A', 'Option B', 'Advice'], 'let the Advice card suggest which way to lean'],
-  ])('$spreadId prompt lists its positions in order with its guide and no verdict', (reading, labels, guide) => {
-    const text = prompt(reading)
-    const at = labels.map((l) => text.indexOf(`\n${l}: `))
-    expect(at.every((i) => i > 0)).toBe(true)
-    expect(at).toEqual([...at].sort((a, b) => a - b))
-    expect(text).toContain(guide)
-    expect(text.indexOf(guide)).toBeLessThan(text.indexOf('Cards:'))
-    expect(text).not.toMatch(/written answer|\*\*(Yes|No|Maybe)\*\*/)
-  })
-
-  test('spreads without a guide leave no blank gap', () => {
-    for (const reading of [yesNoReading, threeCardReading]) expect(prompt(reading)).not.toMatch(/\n\n\n/)
   })
 })
 
@@ -153,13 +114,5 @@ describe('full prompt snapshots', () => {
 
   test('three cards', () => {
     expect(prompt(threeCardReading)).toMatchSnapshot()
-  })
-
-  test('situation, action, outcome', () => {
-    expect(prompt(saoReading)).toMatchSnapshot()
-  })
-
-  test('choice', () => {
-    expect(prompt(choiceReading)).toMatchSnapshot()
   })
 })

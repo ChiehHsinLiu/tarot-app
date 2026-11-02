@@ -133,30 +133,6 @@ describe('pinned v1 links', () => {
         ],
       },
     ],
-    [
-      '#/r/v1/situation-action-outcome/cups-07.major-01r.pentacles-10',
-      {
-        spreadId: 'situation-action-outcome',
-        question: '',
-        cards: [
-          { cardId: 'cups-07', positionId: 'situation', reversed: false },
-          { cardId: 'major-01', positionId: 'action', reversed: true },
-          { cardId: 'pentacles-10', positionId: 'outcome', reversed: false },
-        ],
-      },
-    ],
-    [
-      '#/r/v1/choice/wands-08.swords-04r.major-17?q=Stay%20or%20move%3F',
-      {
-        spreadId: 'choice',
-        question: 'Stay or move?',
-        cards: [
-          { cardId: 'wands-08', positionId: 'option-a', reversed: false },
-          { cardId: 'swords-04', positionId: 'option-b', reversed: true },
-          { cardId: 'major-17', positionId: 'advice', reversed: false },
-        ],
-      },
-    ],
   ])('%s', (fragment, reading) => {
     expect(decode(fragment)).toEqual({ kind: 'reading', reading })
   })

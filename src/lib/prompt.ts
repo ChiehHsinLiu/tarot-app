@@ -3,8 +3,8 @@
 import type { Card, Spread, Verdict } from './deck.ts'
 import type { Reading } from './draw.ts'
 
-const PLACEHOLDER = /\{\{(spread|guidance|question|answer|cards)\}\}(\n*)/g
-const REQUIRED = ['spread', 'guidance', 'question', 'answer', 'cards'] as const
+const PLACEHOLDER = /\{\{(spread|question|answer|cards)\}\}(\n*)/g
+const REQUIRED = ['spread', 'question', 'answer', 'cards'] as const
 const VERDICT_WORDS: Record<Verdict, string> = { yes: 'Yes', no: 'No', maybe: 'Maybe' }
 
 // Angle brackets in the question become look-alike quotes so typed text such
@@ -49,8 +49,7 @@ export function buildPrompt(
     })
     .join('\n\n')
 
-  // Only themed spreads have a guide; without one the line and its blank lines go.
-  const values = { spread: spread.name, guidance: spread.guide ?? '', question, answer, cards }
+  const values = { spread: spread.name, question, answer, cards }
   // Single pass, so text inside the values is never treated as a placeholder.
   // An empty value also drops the blank lines after it.
   return template.replace(PLACEHOLDER, (_, name: keyof typeof values, newlines: string) =>
