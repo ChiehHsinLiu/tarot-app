@@ -38,12 +38,14 @@ export function buildLenormandCards(
 }
 
 // A Lenormand reading never shows a written verdict: Claude gives the Yes / No.
+// Only the tarot spreads Lenormand has positions for are offered; the rest are
+// tarot only.
 export function buildLenormandSpreads(
   tarotSpreads: Spread[],
   data: LenormandSpreadData,
   text: LenormandSpreadText,
 ): Spread[] {
-  return tarotSpreads.map((spread) => ({
+  return tarotSpreads.filter((spread) => spread.id in data).map((spread) => ({
     id: spread.id,
     name: spread.name,
     requiresQuestion: spread.requiresQuestion,

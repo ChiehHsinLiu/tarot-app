@@ -1,5 +1,6 @@
 import { describe, expect, test } from 'vitest'
-import { QUESTION_MAX_CHARS, countChars, truncateToLimit } from './question.ts'
+import { buildSpreads, rawSpreadText, rawSpreads } from './deck.ts'
+import { QUESTION_MAX_CHARS, countChars, missingQuestionNote, questionPlaceholder, truncateToLimit } from './question.ts'
 
 describe('countChars', () => {
   test.each([
@@ -41,5 +42,24 @@ describe('truncateToLimit', () => {
     const out = truncateToLimit(text)
     expect(out).toBe('a'.repeat(299) + '🇹🇼')
     expect(countChars(out)).toBe(300)
+  })
+})
+
+describe('spread question texts', () => {
+  const spreads = buildSpreads(rawSpreads, rawSpreadText)
+  const byId = (id: string) => spreads.find((s) => s.id === id)!
+
+  test('Choice has its own hint and missing-question note', () => {
+    expect(questionPlaceholder(byId('choice'))).toBe('Name your two options, e.g. Stay or move?')
+    expect(missingQuestionNote(byId('choice'))).toBe('A choice reading needs a question naming your two options.')
+  })
+
+  test('the other spreads keep the default hints', () => {
+    expect(questionPlaceholder(null)).toBe('What would you like to know?')
+    expect(questionPlaceholder(byId('yes-no'))).toBe('Ask a yes or no question')
+    expect(missingQuestionNote(byId('yes-no'))).toBe('A yes / no reading needs a question.')
+    for (const id of ['three-card', 'situation-action-outcome']) {
+      expect(questionPlaceholder(byId(id))).toBe('What would you like to know?')
+    }
   })
 })

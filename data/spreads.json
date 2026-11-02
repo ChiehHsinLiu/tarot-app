@@ -10,5 +10,17 @@
     "requiresQuestion": false,
     "showsVerdict": false,
     "positions": [{ "id": "past" }, { "id": "present" }, { "id": "future" }]
+  },
+  {
+    "id": "situation-action-outcome",
+    "requiresQuestion": false,
+    "showsVerdict": false,
+    "positions": [{ "id": "situation" }, { "id": "action" }, { "id": "outcome" }]
+  },
+  {
+    "id": "choice",
+    "requiresQuestion": true,
+    "showsVerdict": false,
+    "positions": [{ "id": "option-a" }, { "id": "option-b" }, { "id": "advice" }]
   }
 ]

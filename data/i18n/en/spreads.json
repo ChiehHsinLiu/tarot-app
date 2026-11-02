@@ -6,5 +6,17 @@
   "three-card": {
     "name": "Three cards",
     "positions": { "past": "Past", "present": "Present", "future": "Future" }
+  },
+  "situation-action-outcome": {
+    "name": "Situation, Action, Outcome",
+    "positions": { "situation": "Situation", "action": "Action", "outcome": "Outcome" },
+    "guide": "Read the Situation card as where the querent stands now, the Action card as the approach the cards advise, and the Outcome card as where that approach is likely to lead."
+  },
+  "choice": {
+    "name": "Choice",
+    "positions": { "option-a": "Option A", "option-b": "Option B", "advice": "Advice" },
+    "questionHint": "Name your two options, e.g. Stay or move?",
+    "missingQuestion": "A choice reading needs a question naming your two options.",
+    "guide": "The querent is choosing between two options, named in their question if they gave names. Read Option A and Option B as how each path is likely to unfold, and compare them fairly. Then let the Advice card suggest which way to lean, without making the decision for them."
   }
 }

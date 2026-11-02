@@ -3,8 +3,8 @@
   "screens": {
     "tarot": {
       "howItWorks": [
-        "Choose a spread. Yes / No draws one card to answer a question. Three cards draws three, for your past, present and future.",
-        "Type your question. Yes / No needs one; for Three cards it's optional.",
+        "Choose a spread. Yes / No draws one card to answer a question. Three cards draws three, for your past, present and future. Situation, Action, Outcome draws three, for where you stand, what to do and where it leads. Choice draws one card for each of two options and one for advice.",
+        "Type your question. Yes / No and Choice need one; for Choice, name your two options, like Stay or move? For Three cards and Situation, Action, Outcome it's optional.",
         "Press Draw. Each card comes out upright or reversed. A reversed card is shown upside down and read with its reversed meaning.",
         "In Yes / No, the answer (Yes, No or Maybe) comes from the card you drew and whether it's upright or reversed.",
         "Press Share to turn your reading into a link anyone can open. You choose whether the link includes your question."

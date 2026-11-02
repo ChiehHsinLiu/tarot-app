@@ -45,9 +45,11 @@ describe('Lenormand spreads', () => {
   const tarot = buildSpreads(rawSpreads, rawSpreadText)
   const spreads = buildLenormandSpreads(tarot, rawLenormandSpreads, rawLenormandSpreadText)
 
-  test('use exactly the tarot spread ids', () => {
-    expect(Object.keys(rawLenormandSpreads).sort()).toEqual(rawSpreads.map((s) => s.id).sort())
-    expect(Object.keys(rawLenormandSpreadText).sort()).toEqual(rawSpreads.map((s) => s.id).sort())
+  test('offer only Yes / No and Three cards; the other tarot spreads are tarot only', () => {
+    expect(spreads.map((s) => s.id)).toEqual(['yes-no', 'three-card'])
+    expect(Object.keys(rawLenormandSpreadText).sort()).toEqual(Object.keys(rawLenormandSpreads).sort())
+    const tarotIds = new Set(rawSpreads.map((s) => s.id))
+    for (const id of Object.keys(rawLenormandSpreads)) expect(tarotIds.has(id), id).toBe(true)
   })
 
   test('Yes / No draws a first and a second card; Three cards draws Past, Present and Future', () => {

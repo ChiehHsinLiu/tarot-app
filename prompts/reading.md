@@ -12,6 +12,8 @@ How to read:
 
 Spread: {{spread}}
 
+{{guidance}}
+
 {{question}}
 
 {{answer}}

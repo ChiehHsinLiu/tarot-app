@@ -4,6 +4,7 @@ import { deckIds, spreads } from '../lib/tarot-deck.ts'
 import { draw } from '../lib/draw.ts'
 import { guides } from '../lib/guides.ts'
 import { buildLenormandDeck } from '../lib/lenormand.ts'
+import { missingQuestionNote, questionPlaceholder } from '../lib/question.ts'
 import { cryptoRandomInt } from '../lib/random.ts'
 import { DeckPicker } from './DeckPicker.tsx'
 import type { DeckId } from './DeckPicker.tsx'
@@ -36,7 +37,7 @@ export function Composer({ deck, spreadId, question, invalidLink, onChange, onDr
   const blocker = !spread
     ? 'Choose a spread to begin.'
     : spread.requiresQuestion && !question.trim()
-      ? 'A yes / no reading needs a question.'
+      ? missingQuestionNote(spread)
       : null
 
   const headingRef = useRef<HTMLHeadingElement>(null)
@@ -65,7 +66,16 @@ export function Composer({ deck, spreadId, question, invalidLink, onChange, onDr
           This reading link isn't valid.
         </p>
       )}
-      {lenormand && <DeckPicker selected={deck} onSelect={(d) => onChange({ deck: d, spreadId, question })} />}
+      {lenormand && (
+        <DeckPicker
+          selected={deck}
+          onSelect={(d) => {
+            // A spread the new deck doesn't offer (a tarot-only one) is cleared.
+            const offered = (d === 'lenormand' ? lenormand.spreads : spreads).some((s) => s.id === spreadId)
+            onChange({ deck: d, spreadId: offered ? spreadId : null, question })
+          }}
+        />
+      )}
       <SpreadPicker
         spreads={deckSpreads}
         selectedId={spreadId}
@@ -74,6 +84,7 @@ export function Composer({ deck, spreadId, question, invalidLink, onChange, onDr
       <QuestionBox
         value={question}
         required={spread?.requiresQuestion ?? false}
+        placeholder={questionPlaceholder(spread)}
         onChange={(q) => onChange({ deck, spreadId, question: q })}
       />
       <SpreadPreview spread={spread} />

@@ -116,6 +116,16 @@ test('Lenormand (dev only)', async ({ browser }, testInfo) => {
     await page.click('.guide-close')
     await settle()
 
+    check('Lenormand offers only Yes / No and Three cards', Object.keys(c.details).join('|') === 'yes-no|three-card', Object.keys(c.details).join('|'))
+
+    // A tarot-only spread is cleared when switching to Lenormand; the question stays.
+    await pick('deck', 'tarot')
+    await pick('spread', 'choice')
+    await typeQuestion('Stay or move?')
+    await pick('deck', 'lenormand')
+    c = await composer()
+    check('switching to Lenormand clears a tarot-only spread', c.deck === 'lenormand' && c.spread === null && c.question === 'Stay or move?' && c.drawDisabled && c.hint === 'Choose a spread to begin.', JSON.stringify({ deck: c.deck, spread: c.spread, q: c.question, d: c.drawDisabled, h: c.hint }))
+
     // Question rule.
     await pick('spread', 'yes-no')
     await typeQuestion('')
