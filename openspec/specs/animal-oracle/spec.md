@@ -89,5 +89,5 @@ An oracle reading SHALL offer a "Draw again" action that replaces the shown card
 - **THEN** the home page is shown with the "Tarot reading" and "Animal oracle" choices
 
 #### Scenario: Tarot starts fresh after the oracle
-- **WHEN** a user selects "Three cards" on the tarot screen, goes Home, draws an oracle card, goes Home, and opens "Tarot reading"
+- **WHEN** a user selects "Past, Present, Future" on the tarot screen, goes Home, draws an oracle card, goes Home, and opens "Tarot reading"
 - **THEN** no spread is selected and the question box is empty

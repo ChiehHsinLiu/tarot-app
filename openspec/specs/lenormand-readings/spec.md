@@ -32,8 +32,8 @@ The deck choice SHALL appear on the tarot screen below its heading and before th
 - **THEN** "Tarot" is selected
 
 #### Scenario: Switching deck keeps the spread and question
-- **WHEN** the owner selects "Three cards", types a question, and then selects "Lenormand"
-- **THEN** "Three cards" is still selected and the question is unchanged
+- **WHEN** the owner selects "Past, Present, Future", types a question, and then selects "Lenormand"
+- **THEN** "Past, Present, Future" is still selected and the question is unchanged
 
 #### Scenario: Switching to Lenormand clears a tarot-only spread
 - **WHEN** the owner selects "Choice", types a question, and then selects "Lenormand"
@@ -48,7 +48,7 @@ The deck choice SHALL appear on the tarot screen below its heading and before th
 - **THEN** "Lenormand" is still selected
 
 ### Requirement: Lenormand spreads
-With Lenormand selected, the tarot screen SHALL offer only two spreads, "Yes / No" and "Three cards", under the same rules for choosing a spread and requiring a question as the tarot spreads of the same name. "Yes / No" SHALL draw exactly two cards into positions labeled "First card" and "Second card". "Three cards" SHALL draw exactly three cards into positions labeled "Past", "Present", and "Future". The spread choice SHALL show each spread's card count for the selected deck.
+With Lenormand selected, the tarot screen SHALL offer only two spreads, "Yes / No" and "Past, Present, Future", under the same rules for choosing a spread and requiring a question as the tarot spreads of the same name. "Yes / No" SHALL draw exactly two cards into positions labeled "First card" and "Second card". "Past, Present, Future" SHALL draw exactly three cards into positions labeled "Past", "Present", and "Future". The spread choice SHALL show each spread's description, with Lenormand's own for Yes / No.
 
 #### Scenario: Lenormand Yes / No
 - **WHEN** the owner draws "Yes / No" with Lenormand selected and a question typed
@@ -56,11 +56,11 @@ With Lenormand selected, the tarot screen SHALL offer only two spreads, "Yes / N
 
 #### Scenario: Card count in the spread choice
 - **WHEN** Lenormand is selected
-- **THEN** the "Yes / No" option says "2 cards, question required" and "Three cards" says "3 cards"
+- **THEN** no card count is shown; the "Yes / No" option says "Two cards read together for a yes or no" with "Question required" below it, and "Past, Present, Future" says "How things are unfolding"
 
 #### Scenario: Tarot-only spreads not offered
 - **WHEN** Lenormand is selected
-- **THEN** the spread choice lists only "Yes / No" and "Three cards"
+- **THEN** the spread choice lists only "Yes / No" and "Past, Present, Future"
 
 #### Scenario: Question still required
 - **WHEN** Lenormand and "Yes / No" are selected and the question is empty
@@ -119,7 +119,7 @@ For a Lenormand Yes / No reading, the prompt SHALL ask Claude to begin with a cl
 - **THEN** it lists First card: 3 Ship and Second card: 31 Sun, asks for a Yes, No, or Maybe first, and contains no written verdict
 
 ### Requirement: Lenormand instructions
-While Lenormand is selected, the tarot screen's "How it works" SHALL explain that Yes / No draws two cards and needs a question, that Three cards draws Past, Present, and Future, that cards are always upright and read together, that Ask Claude gives the Yes / No answer, and that Lenormand readings cannot be shared as links.
+While Lenormand is selected, the tarot screen's "How it works" SHALL explain that Yes / No draws two cards and needs a question, that Past, Present, Future draws three cards for the past, present, and future, that cards are always upright and read together, that Ask Claude gives the Yes / No answer, and that Lenormand readings cannot be shared as links.
 
 #### Scenario: Lenormand instructions
 - **WHEN** the owner selects Lenormand and opens "How it works"

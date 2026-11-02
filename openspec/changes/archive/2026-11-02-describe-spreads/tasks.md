@@ -31,7 +31,7 @@
 
 ## 4. Ship
 
-- [ ] 4.1 After the owner approves the push to `main`, verify:
+- [x] 4.1 After the owner approves the push to `main`, verify:
   - the deploy run succeeds with unit tests and e2e passing
   - on the live site, the spread list shows the descriptions, and an old `#/r/v1/three-card/...` link opens under "Shared reading · Past, Present, Future"
 
