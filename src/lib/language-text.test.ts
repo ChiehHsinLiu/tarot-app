@@ -125,7 +125,7 @@ describe('oracle text', () => {
   })
 
   test('animal names are distinct', () => {
-    expect(new Set(Object.values(animalsZh).map((t) => t.animal)).size).toBe(48)
+    expect(new Set(Object.values(animalsZh).map((t) => t.animal)).size).toBe(60)
   })
 
   test('the guide names the dachshund card as it is written', () => {

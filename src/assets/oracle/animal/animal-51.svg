@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" focusable="false">
+  <path class="art-line" d="M2 86 H98"/>
+  <path class="art-fill art-line" d="M4 86 C4 66 14 58 24 58 C34 58 42 66 42 86 Z"/>
+  <path class="art-deep art-line" d="M11 86 C11 72 17 66 24 66 C31 66 36 72 36 86 Z"/>
+  <path class="art-fill art-line" d="M32 86 C28 70 34 56 52 54 C66 52 76 56 80 64 C84 72 84 82 80 86 Z"/>
+  <rect class="art-fill art-line" x="38" y="78" width="10" height="9" rx="4"/>
+  <rect class="art-fill art-line" x="64" y="78" width="10" height="9" rx="4"/>
+  <circle class="art-fill art-line" cx="68" cy="46" r="4.5"/>
+  <circle class="art-fill art-line" cx="77" cy="44" r="4.5"/>
+  <circle class="art-deep" cx="68" cy="46" r="2"/>
+  <circle class="art-deep" cx="77" cy="44" r="2"/>
+  <rect class="art-fill art-line" x="62" y="47" width="32" height="25" rx="11"/>
+  <rect class="art-deep art-line" x="86" y="54" width="9" height="9" rx="4"/>
+  <circle class="art-ink" cx="77" cy="56" r="2.2"/>
+  <ellipse class="art-blush" cx="80" cy="64" rx="3" ry="1.8"/>
+  <path class="art-line" d="M85 67 q3 2 6 0"/>
+  <path class="art-line" d="M50 62 q4 -2 8 0 M44 70 q4 -2 8 0"/>
+</svg>

@@ -8,11 +8,11 @@ const BUGS = [
   'ladybug', 'mantis', 'mosquito', 'moth', 'scorpion', 'spider', 'tarantula', 'termite', 'wasp',
 ]
 
-test('48 cards with distinct ids and animals, in order', () => {
+test('60 cards with distinct ids and animals, in order', () => {
   const ids = rawAnimalDeck.map((c) => c.id)
-  expect(ids).toEqual(Array.from({ length: 48 }, (_, i) => `animal-${String(i + 1).padStart(2, '0')}`))
+  expect(ids).toEqual(Array.from({ length: 60 }, (_, i) => `animal-${String(i + 1).padStart(2, '0')}`))
   expect(Object.keys(rawAnimalText).sort()).toEqual(ids)
-  expect(new Set(ids.map((id) => rawAnimalText[id].animal)).size).toBe(48)
+  expect(new Set(ids.map((id) => rawAnimalText[id].animal)).size).toBe(60)
 })
 
 test.each(rawAnimalDeck.map((c) => c.id))('%s has complete text', (id) => {
@@ -40,6 +40,17 @@ test('includes the added animals with their themes', () => {
   )
 })
 
+test('includes the third set of animals with their themes', () => {
+  const cards = Object.values(rawAnimalText).map((t) => `${t.animal} · ${t.theme}`)
+  expect(cards).toEqual(
+    expect.arrayContaining([
+      'Lemur · Soak Up the Sun', 'Pika · Small Comforts', 'Wombat · Solid Ground', 'Okapi · Quiet Gifts',
+      'Manta Ray · Go with the Flow', 'Snow Leopard · Quiet Courage', 'Manatee · Be Gentle', 'Kiwi · Find Your Way',
+      'Camel · Pace Yourself', 'Platypus · All of You', 'Pufferfish · Let It Pass', 'Shoebill · Stillness',
+    ]),
+  )
+})
+
 test('no insects or spiders', () => {
   for (const { animal } of Object.values(rawAnimalText)) {
     const words = animal.toLowerCase().split(/\s+/)
@@ -47,9 +58,9 @@ test('no insects or spiders', () => {
   }
 })
 
-test('every card has a colour family, eight cards each', () => {
+test('every card has a colour family, ten cards each', () => {
   for (const card of rawAnimalDeck) expect(ORACLE_PALETTE_NAMES, card.id).toContain(card.palette)
   for (const name of ORACLE_PALETTE_NAMES) {
-    expect(rawAnimalDeck.filter((c) => c.palette === name).length, name).toBe(8)
+    expect(rawAnimalDeck.filter((c) => c.palette === name).length, name).toBe(10)
   }
 })

@@ -574,5 +574,149 @@
     "message": "The axolotl can regrow a lost leg, and even parts of its heart. Healing takes time, but you are always mending. Today, be gentle with whatever is still growing back.",
     "reflection": "What in you is quietly healing right now?",
     "affirmation": "I am healing, a little more each day."
+  },
+  "animal-49": {
+    "animal": "Lemur",
+    "theme": "Soak Up the Sun",
+    "keywords": [
+      "warmth",
+      "openness",
+      "renewal"
+    ],
+    "message": "Each morning the lemur sits with its arms open wide and lets the sun warm it through. You are allowed to stop and take in what is good. Today, find one warm moment and let it fill you up before you move on.",
+    "reflection": "What small warmth could you let in today?",
+    "affirmation": "I open up to what warms me."
+  },
+  "animal-50": {
+    "animal": "Pika",
+    "theme": "Small Comforts",
+    "keywords": [
+      "comfort",
+      "care",
+      "simplicity"
+    ],
+    "message": "The pika gathers flowers and grasses, one mouthful at a time, to make its home soft for winter. Comfort is built from little things. Today, add one small comfort to your day and let it count.",
+    "reflection": "What little thing always makes you feel at home?",
+    "affirmation": "Small comforts are enough to hold me."
+  },
+  "animal-51": {
+    "animal": "Wombat",
+    "theme": "Solid Ground",
+    "keywords": [
+      "stability",
+      "home",
+      "grounding"
+    ],
+    "message": "The wombat digs its burrow deep and keeps its feet firmly on the earth. When things feel shaky, come back to what is solid. Today, stand on what you know is true and let it steady you.",
+    "reflection": "What in your life feels like solid ground right now?",
+    "affirmation": "I stand steady on solid ground."
+  },
+  "animal-52": {
+    "animal": "Okapi",
+    "theme": "Quiet Gifts",
+    "keywords": [
+      "hidden strengths",
+      "modesty",
+      "discovery"
+    ],
+    "message": "The okapi lived quietly in the forest for a long time before the wider world even knew it was there. Your gifts do not need an audience to be real. Today, honor a strength of yours that few people see.",
+    "reflection": "Which of your gifts goes unnoticed, even by you?",
+    "affirmation": "My quiet gifts are real and they matter."
+  },
+  "animal-53": {
+    "animal": "Manta Ray",
+    "theme": "Go with the Flow",
+    "keywords": [
+      "ease",
+      "trust",
+      "grace"
+    ],
+    "message": "The manta ray glides on the current with wide, slow wings, never fighting the water. Not everything needs to be pushed. Today, notice where you are straining against the tide, and let it carry you a little.",
+    "reflection": "Where could you stop pushing and let things flow?",
+    "affirmation": "I move with ease, like water."
+  },
+  "animal-54": {
+    "animal": "Snow Leopard",
+    "theme": "Quiet Courage",
+    "keywords": [
+      "courage",
+      "calm",
+      "resilience"
+    ],
+    "message": "The snow leopard crosses steep, icy mountains without a sound. Courage does not have to be loud. Today, take one brave step quietly, in your own way, and let that be enough.",
+    "reflection": "What brave thing could you do quietly today?",
+    "affirmation": "My courage can be quiet and still be strong."
+  },
+  "animal-55": {
+    "animal": "Manatee",
+    "theme": "Be Gentle",
+    "keywords": [
+      "gentleness",
+      "kindness",
+      "softness"
+    ],
+    "message": "The manatee moves through warm water slowly and harms nothing on its way. Gentleness is a kind of strength. Today, speak to yourself and others as softly as you would to someone you love.",
+    "reflection": "Where could you be a little gentler, with yourself or someone else?",
+    "affirmation": "I am gentle with myself and with others."
+  },
+  "animal-56": {
+    "animal": "Kiwi",
+    "theme": "Find Your Way",
+    "keywords": [
+      "direction",
+      "inner sense",
+      "trust"
+    ],
+    "message": "The kiwi can't fly, so it finds its way through the dark night forest by sense and by feel. You don't need to see the whole path to keep going. Today, trust your own sense of direction, one step at a time.",
+    "reflection": "What is your inner sense telling you about where to go next?",
+    "affirmation": "I can find my way, even in the dark."
+  },
+  "animal-57": {
+    "animal": "Camel",
+    "theme": "Pace Yourself",
+    "keywords": [
+      "endurance",
+      "pacing",
+      "reserves"
+    ],
+    "message": "The camel crosses the desert by walking steadily and carrying what it needs. Long journeys are not won by rushing. Today, set a pace you could keep for a while, and save some energy for tomorrow.",
+    "reflection": "What pace could you keep up without wearing yourself out?",
+    "affirmation": "I pace myself and I go the distance."
+  },
+  "animal-58": {
+    "animal": "Platypus",
+    "theme": "All of You",
+    "keywords": [
+      "wholeness",
+      "self-acceptance",
+      "uniqueness"
+    ],
+    "message": "The platypus has a bill, a tail, fur and webbed feet, and every part belongs. You don't have to choose just one side of yourself. Today, welcome all your different parts, even the ones that don't seem to match.",
+    "reflection": "Which part of you have you been leaving out?",
+    "affirmation": "Every part of me belongs."
+  },
+  "animal-59": {
+    "animal": "Pufferfish",
+    "theme": "Let It Pass",
+    "keywords": [
+      "calm",
+      "release",
+      "perspective"
+    ],
+    "message": "When the pufferfish is startled it puffs up, and when the moment passes it softens again. Big feelings come, and they go. Today, if something puffs you up, breathe and give it time to pass.",
+    "reflection": "What feeling could you let pass instead of holding on?",
+    "affirmation": "This feeling will pass, and I will soften again."
+  },
+  "animal-60": {
+    "animal": "Shoebill",
+    "theme": "Stillness",
+    "keywords": [
+      "stillness",
+      "patience",
+      "focus"
+    ],
+    "message": "The shoebill stands perfectly still in the reeds for a long time, waiting for just the right moment. Stillness is not doing nothing. Today, pause and wait before you act, and you will see more clearly.",
+    "reflection": "What would you notice if you stood still for a while?",
+    "affirmation": "In stillness, I see clearly."
   }
 }

@@ -8,7 +8,7 @@ import type { Language } from './language.ts'
 import { escapeQuestion } from './prompt.ts'
 import type { RandomInt } from './random.ts'
 
-// The six pastel colour families; each holds eight cards of the animal deck.
+// The six pastel colour families; each holds ten cards of the animal deck.
 export const ORACLE_PALETTE_NAMES = ['peach', 'sage', 'sky', 'lavender', 'butter', 'rose'] as const
 export type OraclePalette = (typeof ORACLE_PALETTE_NAMES)[number]
 

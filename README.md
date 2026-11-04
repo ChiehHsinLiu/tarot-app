@@ -36,7 +36,7 @@ Each screen has a **Home** link, and the browser's Back button works too. Openin
 
 ## Animal oracle
 
-The animal oracle draws one card from an original deck of 48 animal cards, such as the Dachshund · Small but Mighty or the Alpaca · Gentle Boundaries. Each card has its own drawing of its animal and shows a message, a question to reflect on, and an affirmation. There's no question to type and no daily limit: use **Draw again** for a different card and **Home** to return.
+The animal oracle draws one card from an original deck of 60 animal cards, such as the Dachshund · Small but Mighty or the Alpaca · Gentle Boundaries. Each card has its own drawing of its animal and shows a message, a question to reflect on, and an affirmation. There's no question to type and no daily limit: use **Draw again** for a different card and **Home** to return.
 
 The deck lives in `data/oracle/animal.json` (card ids and colour families) and `data/i18n/en/oracle/animal.json` (the text).
 

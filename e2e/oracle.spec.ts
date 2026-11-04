@@ -17,8 +17,8 @@ test('animal oracle', async ({ browser }, testInfo) => {
 
 
     const page = await open()
-    // Fixed draws, so "reaches all 48 cards" sees the same sequence every run
-    // (all 48 by the 320th Draw again) instead of failing now and then by chance.
+    // Fixed draws, so "reaches all 60 cards" sees the same sequence every run
+    // (all 60 by the 182nd Draw again) instead of failing now and then by chance.
     await fixRandomness(page)
     const consoleErrors = []
     const badResponses = []
