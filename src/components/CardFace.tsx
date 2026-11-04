@@ -86,7 +86,7 @@ export function CardFace({ card, reversed, style = 'classic' }: Props) {
           // they may contain.
           <span className="tarot-art" aria-hidden="true" dangerouslySetInnerHTML={{ __html: picture.svg }} />
         )}
-        <span className="card-name" aria-hidden="true">
+        <span className="card-name" lang="en" aria-hidden="true">
           {card.name}
         </span>
       </div>

@@ -6,6 +6,8 @@ import uiZh from '../../data/i18n/zh-Hant/ui.json' with { type: 'json' }
 import cardsZhJson from '../../data/i18n/zh-Hant/cards.json' with { type: 'json' }
 import spreadsZh from '../../data/i18n/zh-Hant/spreads.json' with { type: 'json' }
 import guidesZhJson from '../../data/i18n/zh-Hant/guides.json' with { type: 'json' }
+import devEn from '../../data/i18n/en/ui-dev.json' with { type: 'json' }
+import devZh from '../../data/i18n/zh-Hant/ui-dev.json' with { type: 'json' }
 import animalsZhJson from '../../data/i18n/zh-Hant/oracle/animal.json' with { type: 'json' }
 import { rawCardText, rawSpreadText } from './deck.ts'
 import type { CardText } from './deck.ts'
@@ -60,6 +62,14 @@ describe('interface text', () => {
   })
 })
 
+test('dev: only the oracle question box is translated', () => {
+  expect(Object.keys(devZh).sort()).toEqual(['ask.optional', 'ask.oracleLabel', 'ask.oraclePlaceholder'])
+  for (const [key, text] of Object.entries(devZh)) {
+    expect(key in devEn, key).toBe(true)
+    expect(text, key).toMatch(/\p{Script=Han}/u)
+  }
+})
+
 describe('tarot text', () => {
   test('one Chinese entry for each card, and no extra', () => {
     expect(Object.keys(cardsZh).sort()).toEqual(Object.keys(rawCardText).sort())
@@ -67,9 +77,12 @@ describe('tarot text', () => {
 
   test.each(Object.keys(rawCardText))('%s: complete and within the limits', (id) => {
     const t = cardsZh[id]
-    expect(t.name).toMatch(/\p{Script=Han}/u)
     expect(t.keywords.length).toBeGreaterThan(0)
-    for (const k of t.keywords) expect(k.trim()).not.toBe('')
+    for (const k of t.keywords) expect(k).toMatch(/\p{Script=Han}/u)
+    for (const o of ['upright', 'reversed'] as const) {
+      expect(t[o]).toMatch(/\p{Script=Han}/u)
+      expect(t.yesNoNote[o]).toMatch(/\p{Script=Han}/u)
+    }
     for (const o of ['upright', 'reversed'] as const) {
       expect(t[o].trim()).not.toBe('')
       expect([...t[o]].length).toBeLessThanOrEqual(400)
@@ -78,8 +91,8 @@ describe('tarot text', () => {
     }
   })
 
-  test('card names are distinct', () => {
-    expect(new Set(Object.values(cardsZh).map((t) => t.name)).size).toBe(78)
+  test('card names stay English', () => {
+    for (const id of Object.keys(rawCardText)) expect(cardsZh[id].name, id).toBe(rawCardText[id].name)
   })
 
   test('spread names and position labels stay English', () => {
@@ -122,7 +135,7 @@ describe('oracle text', () => {
 })
 
 test('all Chinese text is Traditional', () => {
-  const all = strings([uiZh, cardsZh, guidesZh, animalsZh])
+  const all = strings([uiZh, cardsZh, guidesZh, animalsZh, devZh])
   const found = all.flatMap(simplifiedIn)
   expect(found).toEqual([])
 })

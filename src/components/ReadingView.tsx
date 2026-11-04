@@ -82,7 +82,8 @@ export function ReadingView({ reading, style, spread, cardsById, shared, onNewRe
                 </CardFlip>
               )}
               <h3 className="card-title">
-                {card.name}
+                {/* Card names are English in both languages. */}
+                <span lang="en">{card.name}</span>
                 {drawn.reversed && <span className="card-title-orientation">{t('reading.reversedSuffix')}</span>}
               </h3>
               <p className="card-keywords">{card.keywords.join(' · ')}</p>

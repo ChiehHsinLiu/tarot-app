@@ -13,10 +13,12 @@ import type { AxNode } from './helpers.ts'
 
 const read = (file: string) => fs.readFileSync(path.join(repo, file), 'utf8')
 // English words the Chinese app may show: the app name, spread names, position
-// labels and answer words, Copy for Claude, the switch itself, and "app" in the
-// guides. Roman numerals are allowed separately.
+// labels and answer words, Copy for Claude, the switch itself, "app" in the
+// guides, and the first and last card the tarot guide names. Card names are
+// marked lang="en" and are left out of the check. Roman numerals are allowed
+// separately.
 // Compared in lower case, since some labels are shown in capitals by CSS.
-const KEPT_ENGLISH = new Set(['little', 'oracle', 'yes', 'no', 'maybe', 'three', 'cards', 'answer', 'past', 'present', 'future', 'copy', 'for', 'claude', 'english', 'app'])
+const KEPT_ENGLISH = new Set(['little', 'oracle', 'yes', 'no', 'maybe', 'three', 'cards', 'answer', 'past', 'present', 'future', 'copy', 'for', 'claude', 'english', 'app', 'the', 'fool', 'world'])
 const ROMAN = /^[IVXL]+$/
 
 test('language switch', async ({ browser }, testInfo) => {
@@ -109,7 +111,16 @@ test('language switch', async ({ browser }, testInfo) => {
 
     // --- No English left on the public screens, beyond the words kept English ---
     const english = async (p: Page) => {
-      const words = (await p.evaluate(() => document.body.innerText)).match(/[A-Za-z]+/g) ?? []
+      // Text marked as English (card names) is hidden while the page is read.
+      const text = await p.evaluate(() => {
+        const marked = [...document.body.querySelectorAll<HTMLElement>('[lang="en"]')]
+        const before = marked.map((e) => e.style.display)
+        marked.forEach((e) => (e.style.display = 'none'))
+        const read = document.body.innerText
+        marked.forEach((e, i) => (e.style.display = before[i]))
+        return read
+      })
+      const words = text.match(/[A-Za-z]+/g) ?? []
       return [...new Set(words.filter((w) => !kept.has(w.toLowerCase()) && !ROMAN.test(w)))]
     }
     const zhPage = await open({ locale: 'zh-TW' })
@@ -144,6 +155,8 @@ test('language switch', async ({ browser }, testInfo) => {
     await zhPage.goto(appUrl + '#/r/v1/yes-no/major-17', { waitUntil: 'networkidle' })
     const star = await zhPage.evaluate(() => ({
       name: document.querySelector('.card-title')!.textContent,
+      nameLang: document.querySelector('.card-title [lang]')?.getAttribute('lang'),
+      faceName: document.querySelector('.card-name')!.textContent,
       numeral: document.querySelector('.card-numeral')!.textContent,
       verdict: document.querySelector('.verdict-word')!.textContent,
       note: document.querySelector('.verdict-note')!.textContent!,
@@ -151,7 +164,7 @@ test('language switch', async ({ browser }, testInfo) => {
       keywords: document.querySelector('.card-keywords')!.textContent!,
       label: document.querySelector('.spread-slot .position-label')!.textContent,
     }))
-    check('The Star in Chinese: name, numeral XVII', star.name === '星星' && star.numeral === 'XVII', JSON.stringify(star))
+    check('The Star in Chinese: English name, marked English, numeral XVII', star.name === 'The Star' && star.faceName === 'The Star' && star.nameLang === 'en' && star.numeral === 'XVII', JSON.stringify(star))
     check('The Star in Chinese: meaning, keywords and note in Chinese', [star.meaning, star.keywords, star.note].every((t) => /\p{Script=Han}/u.test(t) && !/[A-Za-z]{3}/.test(t)))
     check('The Star in Chinese: answer word and position label stay English', star.verdict === 'Yes' && star.label === 'Answer', `${star.verdict} / ${star.label}`)
 
@@ -163,7 +176,7 @@ test('language switch', async ({ browser }, testInfo) => {
       n.children.forEach(visit)
     }
     visit(await axSnapshot(zhPage))
-    check('screen reader: reversed Queen of Cups in Chinese', images[0] === '聖杯皇后，逆位', images.join(' | '))
+    check('screen reader: reversed Queen of Cups, English name and Chinese reversed', images[0] === 'Queen of Cups，逆位', images.join(' | '))
     check('screen reader: page language is zh-Hant', (await state(zhPage)).lang === 'zh-Hant')
 
     // --- Copy for Claude: English, and the same prompt in both languages ---
@@ -191,7 +204,8 @@ test('language switch', async ({ browser }, testInfo) => {
     await offline.click('button[type=submit]')
     await offline.waitForSelector('.reading .card-face', { state: 'attached' })
     const titles = await offline.$$eval('.card-title', (ts) => ts.map((t) => t.textContent!))
-    check('offline: switched to Chinese and drew, cards in Chinese', titles.length === 3 && titles.every((t) => /\p{Script=Han}/u.test(t)), titles.join(' | '))
+    const meanings = await offline.$$eval('.card-meaning', (ts) => ts.map((t) => t.textContent!))
+    check('offline: switched to Chinese and drew, card text in Chinese', titles.length === 3 && meanings.length === 3 && meanings.every((t) => /\p{Script=Han}/u.test(t)), meanings.join(' | ').slice(0, 120))
     // The dev server fetches each module on first use (Ask Claude's, here), so only the public build is offline-ready.
     if (publicBuild) check('offline: switching and drawing made no request', requests.length === 0, requests.join(' '))
     await offline.context().setOffline(false)

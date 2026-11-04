@@ -1,4 +1,5 @@
-// Covers app-language: Lenormand stays English (dev server only).
+// Covers app-language: Lenormand stays English, and the oracle question box
+// follows the language while Ask Claude stays English (dev server only).
 import { test } from '@playwright/test'
 import { setup } from '../helpers.ts'
 
@@ -23,6 +24,18 @@ test('Lenormand stays English in the Chinese app (dev only)', async ({ browser }
     }))
     check('Lenormand reading: heading in English', text.heading.startsWith('Lenormand'), text.heading)
     check('Lenormand reading: card text in English, no Chinese', /[A-Za-z]{4}/.test(text.meanings) && !/\p{Script=Han}/u.test(text.meanings + text.labels.join('')), text.meanings.slice(0, 120))
+
+    // The oracle's question box follows the language; the button stays English.
+    await page.goto(appUrl + '#/oracle', { waitUntil: 'networkidle' })
+    await page.evaluate(() => [...document.querySelectorAll<HTMLButtonElement>('.oracle-intro-screen button')].find((b) => b.textContent!.trim() === '抽牌')!.click())
+    await page.waitForSelector('#oracle-question', { state: 'attached' })
+    const box = await page.evaluate(() => ({
+      label: document.querySelector('label[for=oracle-question]')!.textContent!,
+      placeholder: document.querySelector<HTMLTextAreaElement>('#oracle-question')!.placeholder,
+      button: [...document.querySelectorAll('.oracle-ask button')].map((b) => b.textContent!.trim()).join('|'),
+    }))
+    check('oracle question box in Chinese', box.label === '問問這張牌 （選填）' && box.placeholder === '今天我該專注在什麼？', JSON.stringify(box))
+    check('Ask Claude button stays English', box.button.includes('Ask Claude'), box.button)
   } finally {
     await closeAll()
   }
