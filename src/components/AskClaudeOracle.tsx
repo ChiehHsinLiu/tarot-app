@@ -4,9 +4,11 @@ import { useState } from 'react'
 import { QUESTION_MAX_CHARS, countChars, truncateToLimit } from '../lib/question.ts'
 import { AskButtons } from './AskButtons.tsx'
 import { ClaudeAnswer } from './ClaudeAnswer.tsx'
+import { useDevText } from './dev-text.ts'
 import { useClaudeStream } from './useClaudeStream.ts'
 
 export function AskClaudeOracle({ cardId }: { cardId: string }) {
+  const t = useDevText()
   const claude = useClaudeStream()
   const [question, setQuestion] = useState('')
   const streaming = claude.status === 'streaming'
@@ -15,7 +17,7 @@ export function AskClaudeOracle({ cardId }: { cardId: string }) {
     <div className="oracle-ask">
       <div className="question-box">
         <label htmlFor="oracle-question">
-          Ask about this card <span className="question-hint">(optional)</span>
+          {t('ask.oracleLabel')} <span className="question-hint">{t('ask.optional')}</span>
         </label>
         <textarea
           id="oracle-question"
@@ -23,7 +25,7 @@ export function AskClaudeOracle({ cardId }: { cardId: string }) {
           value={question}
           disabled={streaming}
           aria-describedby="oracle-question-count"
-          placeholder="What should I focus on today?"
+          placeholder={t('ask.oraclePlaceholder')}
           onChange={(e) => setQuestion(truncateToLimit(e.target.value))}
         />
         <p id="oracle-question-count" className="question-count">

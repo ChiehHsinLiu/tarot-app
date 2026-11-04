@@ -3,7 +3,8 @@
 import { OracleCardView } from '../components/OracleCardView.tsx'
 import { OracleIntro } from '../components/OracleIntro.tsx'
 import { drawOracle } from '../lib/oracle.ts'
-import { oracleById, oracleIds } from '../lib/oracle-deck.ts'
+import { oracleByIdFor, oracleIds } from '../lib/oracle-deck.ts'
+import { useLanguage } from '../components/LanguageContext.tsx'
 import { cryptoRandomInt } from '../lib/random.ts'
 
 type Props = {
@@ -12,11 +13,12 @@ type Props = {
 }
 
 export default function OracleScreen({ cardId, onDraw }: Props) {
+  const { lang } = useLanguage()
   return cardId ? (
     <OracleCardView
       // Remount on every new card so focus and any Ask Claude state reset.
       key={cardId}
-      card={oracleById.get(cardId)!}
+      card={oracleByIdFor[lang].get(cardId)!}
       onDrawAgain={() => onDraw(drawOracle(oracleIds, cryptoRandomInt, cardId))}
     />
   ) : (

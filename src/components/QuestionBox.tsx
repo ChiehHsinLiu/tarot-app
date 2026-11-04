@@ -1,4 +1,5 @@
 import { QUESTION_MAX_CHARS, countChars, truncateToLimit } from '../lib/question.ts'
+import { useLanguage } from './LanguageContext.tsx'
 
 type Props = {
   value: string
@@ -7,10 +8,11 @@ type Props = {
 }
 
 export function QuestionBox({ value, required, onChange }: Props) {
+  const { t } = useLanguage()
   return (
     <div className="question-box">
       <label htmlFor="question">
-        Your question <span className="question-hint">{required ? '(required)' : '(optional)'}</span>
+        {t('question.label')} <span className="question-hint">{required ? t('question.required') : t('question.optional')}</span>
       </label>
       <textarea
         id="question"
@@ -18,7 +20,7 @@ export function QuestionBox({ value, required, onChange }: Props) {
         value={value}
         required={required}
         aria-describedby="question-count"
-        placeholder={required ? 'Ask a yes or no question' : 'What would you like to know?'}
+        placeholder={required ? t('question.placeholderYesNo') : t('question.placeholderOpen')}
         // Typing and pasting both arrive here; trim to whole characters at the limit.
         onChange={(e) => onChange(truncateToLimit(e.target.value))}
       />

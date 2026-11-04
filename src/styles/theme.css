@@ -42,6 +42,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Traditional Chinese uses the device's own fonts: nothing is downloaded, so the
+   CSP and the first load are unchanged. Latin letters and numerals keep
+   Fraunces; Chinese characters fall through to a Song (serif) face for the
+   storybook text and the system sans for the rest. */
+:root:lang(zh-Hant) {
+  --font-story: 'Fraunces Variable', 'Songti TC', 'Noto Serif TC', 'Noto Serif CJK TC', 'PMingLiU', serif;
+
+  font-family: system-ui, 'PingFang TC', 'Microsoft JhengHei', 'Noto Sans TC', 'Noto Sans CJK TC', sans-serif;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --text: #f5ecdf;

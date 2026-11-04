@@ -75,3 +75,40 @@ h1:focus {
   outline-offset: 2px;
   border-radius: 4px;
 }
+
+/* The language switch: top right on home, the right-hand column elsewhere. */
+.site-header:not(.compact) {
+  position: relative;
+  padding-top: 44px;
+}
+
+.language-switch {
+  border: none;
+  background: none;
+  color: var(--accent);
+  font: inherit;
+  font-weight: 600;
+  padding: 6px 2px;
+  cursor: pointer;
+}
+
+.site-header:not(.compact) .language-switch {
+  position: absolute;
+  top: 6px;
+  right: 0;
+}
+
+.site-header.compact .language-switch {
+  grid-column: 3;
+  justify-self: end;
+}
+
+.language-switch:hover {
+  text-decoration: underline;
+}
+
+.language-switch:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}

@@ -1,23 +1,23 @@
 import { Suspense, lazy, useEffect, useRef } from 'react'
 import type { CSSProperties } from 'react'
 import template from '../../prompts/reading.md?raw'
-import type { Card, Spread, Verdict } from '../lib/deck.ts'
+import type { Card, Spread } from '../lib/deck.ts'
 import type { Reading } from '../lib/draw.ts'
 import { buildPrompt } from '../lib/prompt.ts'
+import { tarotDecks } from '../lib/tarot-deck.ts'
 import { encodeReading } from '../lib/share.ts'
 import type { TarotStyle } from '../lib/tarot-style.ts'
 import { CardFace } from './CardFace.tsx'
 import { CardFlip } from './CardFlip.tsx'
 import { CopyForClaude } from './CopyForClaude.tsx'
 import { SharePanel } from './SharePanel.tsx'
+import { useLanguage } from './LanguageContext.tsx'
 
 // Dev-only. Vite replaces DEV with false in production builds, so this import()
 // and the component's code and styles never reach the public bundle.
 const AskClaude = import.meta.env.DEV
   ? lazy(() => import('./AskClaude.tsx').then((m) => ({ default: m.AskClaude })))
   : null
-
-const VERDICT_WORDS: Record<Verdict, string> = { yes: 'Yes', no: 'No', maybe: 'Maybe' }
 
 type Props = {
   reading: Reading
@@ -31,9 +31,11 @@ type Props = {
 }
 
 export function ReadingView({ reading, style, spread, cardsById, shared, onNewReading }: Props) {
+  const { t } = useLanguage()
   const headingRef = useRef<HTMLHeadingElement>(null)
   useEffect(() => headingRef.current?.focus(), [])
 
+  const englishSpread = tarotDecks.en.spreads.find((s) => s.id === spread.id)!
   const first = reading.cards[0]
   const verdict = spread.showsVerdict
     ? cardsById.get(first.cardId)!.yesNo[first.reversed ? 'reversed' : 'upright']
@@ -42,19 +44,19 @@ export function ReadingView({ reading, style, spread, cardsById, shared, onNewRe
   return (
     <section className="reading" aria-labelledby="reading-title">
       <h2 id="reading-title" ref={headingRef} tabIndex={-1}>
-        {shared ? `Shared reading · ${spread.name}` : spread.name}
+        {shared ? t('reading.shared', { spread: spread.name }) : spread.name}
       </h2>
       <div className="reading-top-actions">
         <button type="button" className="secondary" onClick={onNewReading}>
-          {shared ? 'Draw your own' : 'New reading'}
+          {shared ? t('reading.drawYourOwn') : t('reading.newReading')}
         </button>
       </div>
-      {reading.question && <p className="asked">“{reading.question}”</p>}
+      {reading.question && <p className="asked">{t('reading.quoted', { text: reading.question })}</p>}
 
       {verdict && (
         // Fades in with the first card; a shared reading shows it at once.
         <div className={`verdict verdict-${verdict.verdict}${shared ? '' : ' reveal'}`}>
-          <p className="verdict-word">{VERDICT_WORDS[verdict.verdict]}</p>
+          <p className="verdict-word">{t(`verdict.${verdict.verdict}`)}</p>
           <p className="verdict-note">{verdict.note}</p>
         </div>
       )}
@@ -81,7 +83,7 @@ export function ReadingView({ reading, style, spread, cardsById, shared, onNewRe
               )}
               <h3 className="card-title">
                 {card.name}
-                {drawn.reversed && <span className="card-title-orientation"> (reversed)</span>}
+                {drawn.reversed && <span className="card-title-orientation">{t('reading.reversedSuffix')}</span>}
               </h3>
               <p className="card-keywords">{card.keywords.join(' · ')}</p>
               <p className="card-meaning">{card.meaning[drawn.reversed ? 'reversed' : 'upright']}</p>
@@ -92,10 +94,11 @@ export function ReadingView({ reading, style, spread, cardsById, shared, onNewRe
 
       <div className="reading-actions">
         <button type="button" className="primary" onClick={onNewReading}>
-          {shared ? 'Draw your own' : 'New reading'}
+          {shared ? t('reading.drawYourOwn') : t('reading.newReading')}
         </button>
         <SharePanel reading={reading} style={style} />
-        <CopyForClaude prompt={buildPrompt(template, reading, spread, cardsById)} />
+        {/* Everything for Claude stays English, whatever the app's language. */}
+        <CopyForClaude prompt={buildPrompt(template, reading, englishSpread, tarotDecks.en.cardsById)} />
         {AskClaude && (
           <Suspense fallback={null}>
             <AskClaude body={{ fragment: encodeReading(reading, { includeQuestion: true }) }} />

@@ -1,7 +1,8 @@
 import { useId, useRef, useState } from 'react'
 import type { KeyboardEvent, ReactNode } from 'react'
-import { guides } from '../lib/guides.ts'
+import { guidesFor } from '../lib/guides.ts'
 import type { ScreenGuideText } from '../lib/guides.ts'
+import { useLanguage } from './LanguageContext.tsx'
 
 type Props = {
   // The screen's own text; the closing note is shared by every screen.
@@ -10,12 +11,11 @@ type Props = {
   children: ReactNode
 }
 
-const LABEL = 'How it works and about this deck'
-
 // A screen heading with a "How it works" disclosure link under it that opens
 // "How it works" and "About this deck" below. It starts closed each time the screen mounts, and
 // new text (another deck) leaves it open or closed as it was.
 export function GuidedHeading({ guide, children }: Props) {
+  const { lang, t } = useLanguage()
   const [open, setOpen] = useState(false)
   const buttonRef = useRef<HTMLButtonElement>(null)
   const panelId = useId()
@@ -41,29 +41,29 @@ export function GuidedHeading({ guide, children }: Props) {
         className="guide-toggle"
         aria-expanded={open}
         aria-controls={panelId}
-        aria-label={LABEL}
+        aria-label={t('guide.label')}
         onClick={() => setOpen((o) => !o)}
       >
-        How it works
+        {t('guide.toggle')}
         <svg className="guide-chevron" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true">
           <path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </button>
       {open && (
-        <section id={panelId} className="guide-panel" aria-label={LABEL}>
-          <h3>How it works</h3>
+        <section id={panelId} className="guide-panel" aria-label={t('guide.label')}>
+          <h3>{t('guide.howItWorks')}</h3>
           <ol className="guide-steps">
             {guide.howItWorks.map((step) => (
               <li key={step}>{step}</li>
             ))}
           </ol>
-          <h3>About this deck</h3>
+          <h3>{t('guide.about')}</h3>
           {guide.about.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
-          <p className="guide-note">{guides.note}</p>
+          <p className="guide-note">{guidesFor(lang).note}</p>
           <button type="button" className="secondary guide-close" onClick={close}>
-            Close
+            {t('guide.close')}
           </button>
         </section>
       )}

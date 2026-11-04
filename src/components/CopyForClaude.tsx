@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useLanguage } from './LanguageContext.tsx'
 
 // The finished prompt: each deck builds its own from its template.
 type Props = { prompt: string }
@@ -6,6 +7,7 @@ type Props = { prompt: string }
 type Status = 'idle' | 'copied' | 'manual'
 
 export function CopyForClaude({ prompt }: Props) {
+  const { t } = useLanguage()
   const [status, setStatus] = useState<Status>('idle')
 
   async function copy() {
@@ -20,13 +22,13 @@ export function CopyForClaude({ prompt }: Props) {
   return (
     <>
       <button type="button" className="secondary" onClick={copy}>
-        Copy for Claude
+        {t('copy.button')}
       </button>
       <div className="claude-copy" aria-live="polite">
-        {status === 'copied' && <p className="claude-status">Prompt copied</p>}
+        {status === 'copied' && <p className="claude-status">{t('copy.copied')}</p>}
         {status === 'manual' && (
           <>
-            <p className="claude-status">Press Ctrl+C (⌘C on Mac) to copy the selected prompt.</p>
+            <p className="claude-status">{t('copy.manual')}</p>
             <textarea
               // Focus and select on appearance so the prompt is ready to copy.
               ref={(el) => {
@@ -37,7 +39,7 @@ export function CopyForClaude({ prompt }: Props) {
               readOnly
               rows={10}
               value={prompt}
-              aria-label="Prompt for Claude"
+              aria-label={t('copy.fallbackLabel')}
               onFocus={(e) => e.target.select()}
             />
           </>

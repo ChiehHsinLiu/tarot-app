@@ -3,6 +3,8 @@
 // reuse this module; the prompt template is passed in.
 import animalDeckData from '../../data/oracle/animal.json' with { type: 'json' }
 import animalTextEn from '../../data/i18n/en/oracle/animal.json' with { type: 'json' }
+import animalTextZh from '../../data/i18n/zh-Hant/oracle/animal.json' with { type: 'json' }
+import type { Language } from './language.ts'
 import { escapeQuestion } from './prompt.ts'
 import type { RandomInt } from './random.ts'
 
@@ -25,6 +27,10 @@ export type OracleCard = OracleCardData & OracleCardText
 
 export const rawAnimalDeck = animalDeckData as OracleCardData[]
 export const rawAnimalText = animalTextEn as Record<string, OracleCardText>
+
+// Chinese text; deck-language.test.ts checks it covers exactly what the English does.
+const ANIMAL_TEXT: Record<Language, Record<string, OracleCardText>> = { en: rawAnimalText, 'zh-Hant': animalTextZh }
+export const animalTextFor = (lang: Language) => ANIMAL_TEXT[lang]
 
 export function buildOracleCards(data: OracleCardData[], text: Record<string, OracleCardText>): OracleCard[] {
   return data.map((card) => ({ ...text[card.id], id: card.id, palette: card.palette }))

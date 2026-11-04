@@ -1,4 +1,5 @@
 import type { Spread } from '../lib/deck.ts'
+import { useLanguage } from './LanguageContext.tsx'
 
 type Props = {
   spreads: Spread[]
@@ -7,9 +8,10 @@ type Props = {
 }
 
 export function SpreadPicker({ spreads, selectedId, onSelect }: Props) {
+  const { t } = useLanguage()
   return (
     <fieldset className="spread-picker">
-      <legend>Choose a spread</legend>
+      <legend>{t('spread.legend')}</legend>
       {spreads.map((spread) => (
         <label key={spread.id} className="spread-option">
           <input
@@ -21,8 +23,8 @@ export function SpreadPicker({ spreads, selectedId, onSelect }: Props) {
           />
           <span className="spread-name">{spread.name}</span>
           <span className="spread-detail">
-            {spread.positions.length === 1 ? '1 card' : `${spread.positions.length} cards`}
-            {spread.requiresQuestion ? ', question required' : ''}
+            {spread.positions.length === 1 ? t('spread.oneCard') : t('spread.cards', { count: spread.positions.length })}
+            {spread.requiresQuestion ? t('spread.questionRequired') : ''}
           </span>
         </label>
       ))}

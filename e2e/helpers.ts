@@ -3,7 +3,7 @@
 // the first.
 import path from 'node:path'
 import { expect } from '@playwright/test'
-import type { Browser, Page, TestInfo } from '@playwright/test'
+import type { Browser, BrowserContextOptions, Page, TestInfo } from '@playwright/test'
 import { journalDir, localDate } from '../vite/journal.ts'
 
 export const repo = path.resolve(import.meta.dirname, '..')
@@ -31,8 +31,8 @@ export function setup(browser: Browser, testInfo: TestInfo) {
       permissions = names
     },
     // A new page in a fresh context, like a new incognito tab. Closed by closeAll.
-    async open() {
-      const page = await browser.newPage()
+    async open(options?: BrowserContextOptions) {
+      const page = await browser.newPage(options)
       if (permissions.length) await page.context().grantPermissions(permissions, { origin: new URL(appUrl).origin })
       pages.push(page)
       return page

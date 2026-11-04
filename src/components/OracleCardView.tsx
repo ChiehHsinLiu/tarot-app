@@ -4,6 +4,7 @@ import type { OracleCard } from '../lib/oracle.ts'
 import { ORACLE_ART } from '../lib/oracle-art.ts'
 import { ORACLE_PALETTES } from '../lib/palette.ts'
 import { CardFlip } from './CardFlip.tsx'
+import { useLanguage } from './LanguageContext.tsx'
 
 // Dev-only, like Ask Claude on tarot readings: Vite replaces DEV with false in
 // production builds, so this import() and its code and styles never ship.
@@ -18,11 +19,12 @@ function familyStyle(card: OracleCard): CSSProperties {
 }
 
 export function OracleCardFace({ card }: { card: OracleCard }) {
+  const { t } = useLanguage()
   return (
     <div className="card">
       <div
         role="img"
-        aria-label={`${card.animal}, ${card.theme}`}
+        aria-label={t('oracle.cardLabel', { animal: card.animal, theme: card.theme })}
         className="card-face oracle-face"
         data-palette={card.palette}
         style={familyStyle(card)}
@@ -46,13 +48,14 @@ type Props = {
 }
 
 export function OracleCardView({ card, onDrawAgain }: Props) {
+  const { t } = useLanguage()
   const headingRef = useRef<HTMLHeadingElement>(null)
   useEffect(() => headingRef.current?.focus(), [])
 
   return (
     <section className="reading oracle-reading" aria-labelledby="oracle-title" style={familyStyle(card)}>
       <h2 id="oracle-title" ref={headingRef} tabIndex={-1}>
-        Today's animal oracle
+        {t('oracle.title')}
       </h2>
 
       {/* The card turns over as it opens, and on every Draw again, since the view
@@ -68,15 +71,15 @@ export function OracleCardView({ card, onDrawAgain }: Props) {
         <p className="card-keywords">{card.keywords.join(' · ')}</p>
         <p className="oracle-message">{card.message}</p>
         <div className="oracle-reflect">
-          <p className="position-label">Reflect</p>
+          <p className="position-label">{t('oracle.reflect')}</p>
           <p>{card.reflection}</p>
         </div>
-        <p className="oracle-affirmation">“{card.affirmation}”</p>
+        <p className="oracle-affirmation">{t('reading.quoted', { text: card.affirmation })}</p>
       </div>
 
       <div className="reading-actions">
         <button type="button" className="primary" onClick={onDrawAgain}>
-          Draw again
+          {t('oracle.drawAgain')}
         </button>
       </div>
 

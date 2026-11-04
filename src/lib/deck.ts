@@ -1,7 +1,10 @@
-// Deck and spread data joined with their English text. No React imports, so
-// Node scripts and Vite plugins can reuse this module.
+// Deck and spread data joined with their text in either language. No React
+// imports, so Node scripts and Vite plugins can reuse this module.
 import cardTextEn from '../../data/i18n/en/cards.json' with { type: 'json' }
 import spreadTextEn from '../../data/i18n/en/spreads.json' with { type: 'json' }
+import cardTextZh from '../../data/i18n/zh-Hant/cards.json' with { type: 'json' }
+import spreadTextZh from '../../data/i18n/zh-Hant/spreads.json' with { type: 'json' }
+import type { Language } from './language.ts'
 
 export type Orientation = 'upright' | 'reversed'
 export type Verdict = 'yes' | 'no' | 'maybe'
@@ -57,6 +60,12 @@ export type Spread = {
 export { rawCards, rawSpreads } from './deck-ids.ts'
 export const rawCardText = cardTextEn as Record<string, CardText>
 export const rawSpreadText = spreadTextEn as Record<string, SpreadText>
+
+// Chinese text; deck-language.test.ts checks it covers exactly what the English does.
+const CARD_TEXT: Record<Language, Record<string, CardText>> = { en: rawCardText, 'zh-Hant': cardTextZh }
+const SPREAD_TEXT: Record<Language, Record<string, SpreadText>> = { en: rawSpreadText, 'zh-Hant': spreadTextZh }
+export const cardTextFor = (lang: Language) => CARD_TEXT[lang]
+export const spreadTextFor = (lang: Language) => SPREAD_TEXT[lang]
 
 export function buildCards(data: CardData[], text: Record<string, CardText>): Card[] {
   return data.map((card) => {

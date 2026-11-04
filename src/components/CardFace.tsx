@@ -7,6 +7,7 @@ import { TAROT_ART } from '../lib/tarot-art.ts'
 import { cardPicture } from '../lib/card-picture.ts'
 import { DACHSHUND_ART } from '../lib/dachshund-art.ts'
 import type { TarotStyle } from '../lib/tarot-style.ts'
+import { useLanguage } from './LanguageContext.tsx'
 
 // The suit symbols the Ace to Ten repeat: soft line drawings in a 24x24 box,
 // with round caps and joins, drawn as strokes.
@@ -67,8 +68,9 @@ const ART = { classic: TAROT_ART, dachshund: DACHSHUND_ART }
 type Props = { card: Card; reversed: boolean; style?: TarotStyle }
 
 export function CardFace({ card, reversed, style = 'classic' }: Props) {
+  const { t } = useLanguage()
   const picture = cardPicture(card, style, ART)
-  const label = reversed ? `${card.name}, reversed` : card.name
+  const label = reversed ? t('card.reversedLabel', { name: card.name }) : card.name
   // The frame, corner dots and picture take the suit's colour; the outer border stays gold.
   const edge = { '--face-edge': TAROT_PALETTES[card.suit ?? 'major'].edge } as CSSProperties
   return (

@@ -2,20 +2,23 @@
 // private-readings Vite plugin. Used only by components that are themselves
 // lazy-loaded behind import.meta.env.DEV.
 import { useEffect, useRef, useState } from 'react'
+import { useDevText } from './dev-text.ts'
+import type { DevKey } from './dev-text.ts'
 
 type ErrorCode = 'not-installed' | 'not-logged-in' | 'timeout' | 'failed' | 'invalid'
 type StreamEvent = { type: 'text'; text: string } | { type: 'done' } | { type: 'error'; code: ErrorCode; message: string }
 export type ClaudeStatus = 'idle' | 'streaming' | 'done' | 'stopped' | 'error'
 
-const ERROR_MESSAGES: Record<ErrorCode, string> = {
-  'not-installed': 'Claude Code is not installed. Install it from https://claude.com/claude-code, then try again.',
-  'not-logged-in': 'Claude Code is not logged in. Run "claude" in a terminal, use /login, then try again.',
-  timeout: 'Claude took longer than 2 minutes, so the request was stopped. Try again.',
-  failed: 'Claude Code could not finish this reading.',
-  invalid: 'This reading could not be sent to Claude.',
+const ERROR_MESSAGES: Record<ErrorCode, DevKey> = {
+  'not-installed': 'ask.error.notInstalled',
+  'not-logged-in': 'ask.error.notLoggedIn',
+  timeout: 'ask.error.timeout',
+  failed: 'ask.error.failed',
+  invalid: 'ask.error.invalid',
 }
 
 export function useClaudeStream() {
+  const t = useDevText()
   const [status, setStatus] = useState<ClaudeStatus>('idle')
   const [answer, setAnswer] = useState('')
   const [error, setError] = useState('')
@@ -33,7 +36,7 @@ export function useClaudeStream() {
     setStatus('streaming')
 
     const fail = (code: ErrorCode, detail?: string) => {
-      setError(code === 'failed' && detail ? `${ERROR_MESSAGES.failed} ${detail}` : ERROR_MESSAGES[code])
+      setError(code === 'failed' && detail ? `${t(ERROR_MESSAGES.failed)} ${detail}` : t(ERROR_MESSAGES[code]))
       setStatus('error')
     }
 
@@ -63,7 +66,7 @@ export function useClaudeStream() {
           else return fail(event.code, event.message)
         }
       }
-      fail('failed', 'The connection ended before the reading finished.')
+      fail('failed', t('ask.error.connectionEnded'))
     } catch (err) {
       if (controller.signal.aborted) return
       fail('failed', err instanceof Error ? err.message : undefined)
@@ -77,11 +80,11 @@ export function useClaudeStream() {
 
   const statusText =
     status === 'streaming'
-      ? 'Claude is writing…'
+      ? t('ask.writing')
       : status === 'done'
-        ? 'Reading complete.'
+        ? t('ask.done')
         : status === 'stopped'
-          ? 'Stopped.'
+          ? t('ask.stopped')
           : status === 'error'
             ? error
             : ''

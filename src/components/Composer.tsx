@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react'
 import type { FormEvent } from 'react'
-import { deckIds, spreads } from '../lib/tarot-deck.ts'
+import { deckIds, spreads, tarotDecks } from '../lib/tarot-deck.ts'
 import { draw } from '../lib/draw.ts'
-import { guides } from '../lib/guides.ts'
+import { guidesFor } from '../lib/guides.ts'
 import { buildLenormandDeck } from '../lib/lenormand.ts'
 import { cryptoRandomInt } from '../lib/random.ts'
 import { DeckPicker } from './DeckPicker.tsx'
@@ -12,11 +12,12 @@ import { QuestionBox } from './QuestionBox.tsx'
 import { SpreadPicker } from './SpreadPicker.tsx'
 import { SpreadPreview } from './SpreadPreview.tsx'
 import type { TarotState } from '../screens/tarot-state.ts'
+import { useLanguage } from './LanguageContext.tsx'
 
 // Dev-only. Vite replaces DEV with false in production builds, so this folds to
 // null and the deck picker and every Lenormand text drop out of the bundle. It
 // must stay inline here (as in App.tsx): a null imported from another module is
-// not folded.
+// not folded. Lenormand stays English, so it is built from the English spreads.
 const lenormand = import.meta.env.DEV ? buildLenormandDeck(spreads) : null
 
 type ComposerChoice = { deck: DeckId; spreadId: string | null; question: string }
@@ -30,13 +31,14 @@ type ComposerProps = ComposerChoice & {
 export function Composer({ deck, spreadId, question, invalidLink, onChange, onDraw }: ComposerProps) {
   // Lenormand exists only in the dev build; everywhere else the deck is tarot.
   // The null check comes first so the production build folds this to false.
+  const { lang, t } = useLanguage()
   const useLenormand = lenormand !== null && deck === 'lenormand'
-  const deckSpreads = useLenormand ? lenormand.spreads : spreads
+  const deckSpreads = useLenormand ? lenormand.spreads : tarotDecks[lang].spreads
   const spread = deckSpreads.find((s) => s.id === spreadId) ?? null
   const blocker = !spread
-    ? 'Choose a spread to begin.'
+    ? t('composer.chooseSpread')
     : spread.requiresQuestion && !question.trim()
-      ? 'A yes / no reading needs a question.'
+      ? t('composer.needsQuestion')
       : null
 
   const headingRef = useRef<HTMLHeadingElement>(null)
@@ -56,14 +58,14 @@ export function Composer({ deck, spreadId, question, invalidLink, onChange, onDr
 
   return (
     <form className="composer" onSubmit={handleSubmit} aria-labelledby="tarot-title">
-      <GuidedHeading guide={useLenormand ? lenormand.guide : guides.screens.tarot}>
+      <GuidedHeading guide={useLenormand ? lenormand.guide : guidesFor(lang).screens.tarot}>
         <h2 id="tarot-title" ref={headingRef} tabIndex={-1}>
-          Tarot reading
+          {t('composer.title')}
         </h2>
       </GuidedHeading>
       {invalidLink && (
         <p className="notice" role="alert">
-          This reading link isn't valid.
+          {t('composer.invalidLink')}
         </p>
       )}
       <DeckPicker selected={deck} onSelect={(d) => onChange({ deck: d, spreadId, question })} />
@@ -80,7 +82,7 @@ export function Composer({ deck, spreadId, question, invalidLink, onChange, onDr
       <SpreadPreview spread={spread} />
       <div className="draw-row">
         <button type="submit" className="primary" disabled={blocker !== null} aria-describedby="draw-hint">
-          Draw
+          {t('composer.draw')}
         </button>
         <p id="draw-hint" className="draw-hint" aria-live="polite">
           {blocker}

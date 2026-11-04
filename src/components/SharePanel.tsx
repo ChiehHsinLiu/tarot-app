@@ -2,16 +2,18 @@ import { useId, useRef, useState } from 'react'
 import type { Reading } from '../lib/draw.ts'
 import { encodeReading, shareUrl } from '../lib/share.ts'
 import type { TarotStyle } from '../lib/tarot-style.ts'
+import type { UiKey } from '../lib/ui-text.ts'
+import { useLanguage } from './LanguageContext.tsx'
 
 type Status = 'idle' | 'copied' | 'manual'
 
-const STATUS_TEXT: Record<Status, string> = {
-  idle: '',
-  copied: 'Link copied',
-  manual: 'Press Ctrl+C (⌘C on Mac) to copy the selected link.',
+const STATUS_TEXT: Record<Exclude<Status, 'idle'>, UiKey> = {
+  copied: 'share.copied',
+  manual: 'share.manual',
 }
 
 export function SharePanel({ reading, style }: { reading: Reading; style: TarotStyle }) {
+  const { t } = useLanguage()
   const panelId = useId()
   const linkRef = useRef<HTMLInputElement>(null)
   const [open, setOpen] = useState(false)
@@ -41,7 +43,7 @@ export function SharePanel({ reading, style }: { reading: Reading; style: TarotS
   return (
     <div className="share">
       <button type="button" className="secondary" aria-expanded={open} aria-controls={panelId} onClick={toggle}>
-        Share
+        {t('share.button')}
       </button>
       {open && (
         <div id={panelId} className="share-panel">
@@ -55,7 +57,7 @@ export function SharePanel({ reading, style }: { reading: Reading; style: TarotS
                   setStatus('idle')
                 }}
               />
-              Include my question
+              {t('share.includeQuestion')}
             </label>
           )}
           <div className="share-link-row">
@@ -65,15 +67,15 @@ export function SharePanel({ reading, style }: { reading: Reading; style: TarotS
               type="text"
               readOnly
               value={url}
-              aria-label="Share link"
+              aria-label={t('share.linkLabel')}
               onFocus={(e) => e.target.select()}
             />
             <button type="button" className="primary" onClick={copy}>
-              Copy link
+              {t('share.copy')}
             </button>
           </div>
           <p className="share-status" aria-live="polite">
-            {STATUS_TEXT[status]}
+            {status === 'idle' ? '' : t(STATUS_TEXT[status])}
           </p>
         </div>
       )}

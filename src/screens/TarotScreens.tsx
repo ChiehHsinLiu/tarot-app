@@ -6,7 +6,8 @@ import { Composer } from '../components/Composer.tsx'
 import { ReadingView } from '../components/ReadingView.tsx'
 import type { Reading } from '../lib/draw.ts'
 import { buildLenormandDeck } from '../lib/lenormand.ts'
-import { cardsById, spreads } from '../lib/tarot-deck.ts'
+import { spreads, tarotDecks } from '../lib/tarot-deck.ts'
+import { useLanguage } from '../components/LanguageContext.tsx'
 import type { TarotStyle } from '../lib/tarot-style.ts'
 import type { TarotState } from './tarot-state.ts'
 
@@ -30,6 +31,9 @@ type Props = {
 }
 
 export default function TarotScreens({ tarot, shared, onChange, onLeaveShared }: Props) {
+  // Readings hold only ids, so switching language shows the same cards in the other text.
+  const { lang } = useLanguage()
+  const { cardsById, spreads: langSpreads } = tarotDecks[lang]
   if (shared) {
     return (
       <ReadingView
@@ -37,7 +41,7 @@ export default function TarotScreens({ tarot, shared, onChange, onLeaveShared }:
         key={JSON.stringify(shared)}
         reading={shared.reading}
         style={shared.style}
-        spread={spreads.find((s) => s.id === shared.reading.spreadId)!}
+        spread={langSpreads.find((s) => s.id === shared.reading.spreadId)!}
         cardsById={cardsById}
         shared
         onNewReading={onLeaveShared}
@@ -50,7 +54,7 @@ export default function TarotScreens({ tarot, shared, onChange, onLeaveShared }:
         key={JSON.stringify(tarot.reading)}
         reading={tarot.reading}
         style={tarot.style}
-        spread={spreads.find((s) => s.id === tarot.reading.spreadId)!}
+        spread={langSpreads.find((s) => s.id === tarot.reading.spreadId)!}
         cardsById={cardsById}
         shared={false}
         onNewReading={() =>
