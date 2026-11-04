@@ -1,136 +1,64 @@
 # Little Oracle
 
-Tarot and animal oracle cards for today: a card-drawing web app built with React, Vite, and TypeScript.
+Tarot and animal oracle cards for today, in English or Traditional Chinese. A web app built with React, Vite and TypeScript.
 
 Live site: https://chiehhsinliu.github.io/tarot-app/
 
-## Development
+## Run it
 
 ```sh
 npm install
 npm run dev       # http://localhost:5173/tarot-app/
+npm test          # unit tests
 npm run build     # type-check and build into dist/
-npm run preview   # serve dist/ at http://localhost:4173/tarot-app/
 ```
 
-The app is served under `/tarot-app/` because GitHub Pages hosts it as a project site. If the repository is renamed, update `base` in `vite.config.ts` to match.
+The app lives under `/tarot-app/` because it's a GitHub Pages project site. If the repo is renamed, update `base` in `vite.config.ts`.
 
-## Using the app
+## What's in it
 
-The home page offers two choices, each drawn as an arched window (a fanned tarot deck on one sill, a cat on the other) with its own screen and address. The windows show a day sky in light mode and a night sky in dark mode; the drawings are in `src/assets/home/`.
+- **Tarot reading:** two decks (Classic and Dachshund) with the same 78 cards, two spreads (Yes / No and Three cards), and share links.
+- **Animal oracle:** one card from 60 original animal cards, each with a message, a question to reflect on and an affirmation.
+- **Languages:** a 中文 / English switch on every screen. Card names, spread names and everything for Claude stay English.
 
-- **Tarot reading** (`#/tarot`): choose a deck (**Classic** or **Dachshund**), choose the Yes / No or Three cards spread, optionally ask a question, and draw. **Share** turns a reading into a link (`#/r/v1/...`) that anyone can open; a Dachshund reading's link adds `d=dachshund` so it opens with the same pictures. Both decks have the same 78 cards and meanings, so the Copy for Claude prompt is the same for either.
-- **Animal oracle** (`#/oracle`): draw one card for a little guidance today.
+The detailed behaviour of each part is in `openspec/specs/`.
 
-Drawn cards land face down, showing a night-sky back, and turn over one after another, each card's meaning appearing as it lands. A shared link opens with its cards already face up, and if your system asks for reduced motion, cards appear face up at once.
+## Where things are
 
-Each tarot face is a cream card with its name, a Roman numeral on the major arcana, and a picture: its own drawing for the 22 major arcana and the 16 court cards, or, from Ace to Ten, its count of suit symbols. The inner frame and picture take the card's colour (gold for the major arcana, terracotta for wands, blue for cups, lavender for swords and green for pentacles), so a spread can be read at a glance.
+| What | Where |
+|---|---|
+| Text, in both languages | `data/i18n/en/` and `data/i18n/zh-Hant/` (same files in each) |
+| Animal oracle deck | `data/oracle/animal.json`, drawings in `src/assets/oracle/animal/` |
+| Classic tarot drawings | `src/assets/tarot/`, made by `npm run draw:tarot` from `scripts/tarot-art/` |
+| Dachshund drawings | `src/assets/dachshund/`, made by `npm run draw:dachshund` from `scripts/dachshund-art/` |
+| Drawing rules (shapes, colour classes, size) | `src/lib/art-format.ts` |
 
-Cards lie on a teal reading mat, one mat across the row on wider screens and one per card on a phone, with their names and meanings below it. Above **Draw**, the tarot screen shows the mat with your chosen spread laid out face down, one back for each position.
+The draw scripts overwrite their files, so change a generated drawing in the script, not in the SVG. Run `npm test` after any change to text or drawings, because the tests check that both languages match and every card has exactly one valid drawing.
 
-The **How it works** link under each screen's heading opens **How it works**, with steps for that screen, and **About this deck**. Close it with **Close** or Escape. The text lives in `data/i18n/en/guides.json` and `data/i18n/zh-Hant/guides.json`, one entry per screen.
+## Dev-only features
 
-A tarot reading or a shared one has its start-over button both under the heading and at the bottom: **New reading** for a tarot reading and **Draw your own** for a shared one. **New reading** keeps your spread. An oracle card is short, so it has one **Draw again**, at the bottom.
+These run only with `npm run dev`. The public site doesn't include them.
 
-Each screen has a **Home** link, and the browser's Back button works too. Opening a screen from elsewhere always starts it fresh, with no reading or card, no spread selected and an empty question. That includes Home, a home choice, Back or Forward, and a typed address.
+- **Ask Claude:** sends a reading to your own [Claude Code](https://claude.com/claude-code) and shows its answer. It needs Claude Code installed and logged in, and uses your Claude plan. Answers are saved to a private journal in `~/.tarot/journal/` (or `TAROT_JOURNAL_DIR`).
+- **Lenormand:** a third deck, in `data/lenormand/`, answered by Ask Claude.
 
-## Animal oracle
-
-The animal oracle draws one card from an original deck of 60 animal cards, such as the Dachshund · Small but Mighty or the Alpaca · Gentle Boundaries. Each card has its own drawing of its animal and shows a message, a question to reflect on, and an affirmation. There's no question to type and no daily limit: use **Draw again** for a different card and **Home** to return.
-
-The deck lives in `data/oracle/animal.json` (card ids and colour families) and `data/i18n/en/oracle/animal.json` (the text).
-
-Each card's drawing is a hand-written SVG in `src/assets/oracle/animal/<card-id>.svg`, for example `animal-01.svg` for the Dachshund. To redraw a card, edit or replace its file, keeping to the format that `src/lib/oracle-art.test.ts` checks:
-
-- The root is `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" focusable="false">`.
-- Only simple shapes are allowed (`g`, `path`, `circle`, `ellipse`, `rect`, `line`, `polyline`, `polygon`). There's no text, and no scripts, links or styles.
-- Colours come only from the classes `art-fill`, `art-deep`, `art-light`, `art-ink` (eyes and noses, required), `art-blush` and `art-line` (outlines). These follow the card's colour family, so never write a colour into the file.
-- Each file is at most 3 KB, and every card needs exactly one drawing.
-
-## Tarot art
-
-The 22 major arcana and the 16 court cards each have an original drawing in `src/assets/tarot/<card-id>.svg`, for example `major-16.svg` for The Tower or `cups-13.svg` for the Queen of Cups. They use each card's traditional symbols in compositions of their own, and the courts follow one pose per rank so they read as a set: the Page stands holding the suit's symbol up, the Knight rides, and the Queen and King sit enthroned. Each suit has a small scene behind its courts: a hill for wands, waves for cups, clouds for swords and a garden for pentacles.
-
-The drawings are generated by `npm run draw:tarot` from `scripts/tarot-art/`: `shapes.ts` has the shared pieces (heads and faces, hands, rounded limbs and bodies, stars, crowns), `courts.ts` the court poses, suit symbols and scenes, and `majors.ts` the major arcana. The script rewrites all 38 files and overwrites any edit made to them by hand, so redraw a card either in the scripts and rerun it, or in its file only. Run `npm test` afterwards.
-
-The drawings follow the same format as the animal oracle's (see above), which `src/lib/tarot-art.test.ts` checks, along with exactly one drawing per major and court card and none for any other card. Their colours come from the card's colour family, set in `TAROT_PALETTES` in `src/lib/palette.ts`: one edge colour each for the major arcana and the four suits, all at least 3:1 against the cream face in both palettes (`palette.test.ts`). The face itself stays cream, and the outer border stays gold on every card.
-
-The Ace to Ten have no files. Their suit symbols are laid out by code in `src/lib/pips.ts`, one fixed arrangement per number that is the same in every suit, after the Marseille decks: one large symbol for the Ace, one column for the Two and Three, and two columns from the Four, with any odd symbol between them. `pips.test.ts` checks each number's count, spacing and symmetry, and `e2e/tarot-art.spec.ts` checks that every pip is at least 9px wide on a phone.
-
-## Languages
-
-The app is in English or Traditional Chinese. The switch at the top right of every screen reads **中文** in English and **English** in Chinese. The choice is remembered on the device (`localStorage` key `little-oracle.lang`), and a first visit starts in Chinese when the browser prefers Traditional Chinese (zh-TW, zh-HK, zh-MO or zh-Hant). The page's `lang` follows the choice. Chinese uses the device's own fonts, so nothing extra is downloaded. Share links carry no language: they open in the viewer's.
-
-Some things stay English in both languages, at the owner's choice: the name Little Oracle, the spread names (Yes / No, Three cards) and their position labels (Answer, Past, Present, Future), the answer words Yes, No and Maybe, and everything for Claude: the **Copy for Claude** button, its messages and the prompt it copies, which is built from the English text in either language. Ask Claude and Lenormand (dev only) stay English too.
-
-The text lives in `data/i18n/en/` and `data/i18n/zh-Hant/`, with the same files in each:
-- `ui.json`: buttons, headings and notices, keyed by short names such as `composer.draw`, with `{name}` placeholders.
-- `cards.json`, `spreads.json`, `guides.json` and `oracle/animal.json`: the decks and guides.
-- `en/ui-dev.json` holds the dev-only Ask Claude text, English only.
-
-To add a string, add its key to both `ui.json` files and use `t('the.key')` from `useLanguage()` (`src/components/LanguageContext.tsx`). The build fails if the Chinese file misses a key, and `src/lib/language-text.test.ts` checks that every Chinese file has exactly the English entries, the same placeholders and length limits, and no Simplified characters. `e2e/language.spec.ts` checks every public screen in Chinese for English beyond the words kept above.
-
-## Dachshund deck
-
-The Dachshund deck redraws all 78 cards, the Ace to Ten included, as scenes starring dachshunds, in `src/assets/dachshund/<card-id>.svg`. The whole deck is kept gentle: Death is a sunrise with a butterfly, The Hanged Man rolls on its back in the grass, and the hard Swords cards show rest and mending rather than harm. Each Ace to Ten shows its suit's symbol exactly as many times as its number.
-
-The drawings are generated by `npm run draw:dachshund` from `scripts/dachshund-art/`: `shapes.ts` has the dog (`dog()`, one helper with stand, sit, beg, run and sleep poses, so every card shows the same dachshund), the suit symbols (`symbol()`) and shared scenery; `majors.ts`, `courts.ts` and `numbers.ts` hold the cards. As with the Classic art, the script overwrites hand edits, so redraw in the scripts and rerun it, then run `npm test`.
-
-Besides the card's suit colour family, Dachshund drawings may use eight fixed scene colours (`art-coat`, `art-ear`, `art-sun`, `art-sky`, `art-leaf`, `art-water`, `art-rose` and `art-plum` in `src/styles/card.css`), so the dogs are brown and the scenes colourful while the frame and suit symbols keep the suit's colour. `src/lib/dachshund-art.test.ts` checks one drawing per card, the format (`dachshundProblems` in `art-format.ts`, with a 5 KB limit) and every number card's symbol count; `e2e/dachshund-art.spec.ts` checks that every symbol is at least 9px wide on a phone. Number cards draw symbols no smaller than `MIN_SIZE` in `numbers.ts` for that reason.
-
-To review drawings, `node scripts/dachshund-art/contact-sheet.ts <out.html> <card-id>...` writes a page showing those cards at real size in light and dark, upright and reversed, and at 2x, followed by every other drawing for comparison. Write it outside the repo.
-
-## Private readings
-
-When you run the app locally with `npm run dev`, each reading also has an **Ask Claude** button. It sends the reading to your own [Claude Code](https://claude.com/claude-code) on this computer and streams Claude's interpretation into the page. This feature exists only in `npm run dev`; the public site and `npm run build` don't include it.
-
-Requirements:
-
-- Claude Code installed and logged in. Check with `claude --version`, and run `claude` then `/login` if needed. Each reading uses your Claude plan.
-
-Use it:
-
-1. Run `npm run dev` and open http://localhost:5173/tarot-app/.
-2. Choose **Tarot reading** and draw, or open a share link, then click **Ask Claude**. Use **Stop** to end an answer early and **Ask again** for a new interpretation of the same cards.
-3. On the **Animal oracle** screen, draw a card. You can also type a question in **Ask about this card**, such as "What should I focus on today?", before clicking **Ask Claude**. Leave it empty for a fuller explanation of the card. The box stays editable, so you can change the question and use **Ask again** on the same card.
-
-Claude Code runs with all tools turned off and without saving the session, from a temporary directory.
-
-### Lenormand (dev only)
-
-In `npm run dev`, the tarot screen's **Choose a deck** also offers Lenormand, after Classic and Dachshund. Lenormand is a 36-card deck read by combining neighbouring cards, and it uses the same spreads:
-
-- **Yes / No** draws two cards ("First card" and "Second card") and needs a question. There's no written verdict: click **Ask Claude**, and Claude answers Yes, No or Maybe from how the two cards combine.
-- **Three cards** draws Past, Present and Future. Lenormand cards are never reversed.
-
-Lenormand readings have **New reading**, **Copy for Claude** and **Ask Claude**, but no **Share**, since the public site doesn't include the deck. The deck lives in `data/lenormand/` (ids, numbers and spread positions) and `data/i18n/en/lenormand/` (card text, position labels and the screen guide), and Claude's instructions are in `prompts/lenormand.md`. None of it is part of `npm run build`.
-
-Each Lenormand card has its own original drawing of its traditional picture in `src/assets/lenormand/<card-id>.svg`, for example `lenormand-02.svg` for the Clover. Each card also has one of the animal oracle's six pastel colour families, set as `palette` in `data/lenormand/deck.json`. The drawings follow the same format rules as the animal oracle's, which `src/lib/art-format.ts` defines and the tests check for both decks. Lenormand answers are saved to the journal with `"deck": "lenormand"`, the spread, the card ids in order and the question.
-
-Each finished or stopped answer, tarot or oracle, is saved to your private journal in `~/.tarot/journal/`, one `YYYY-MM-DD.jsonl` file per day. The journal is outside this repository and readable only by you. Set `TAROT_JOURNAL_DIR` to store it somewhere else.
-
-Don't start the dev server with `--host`. The Ask Claude endpoint only answers requests from this computer, but there's no reason to expose it on your network.
+Don't start the dev server with `--host`.
 
 ## Browser checks
 
-The checks in `e2e/` drive the app in Chromium with [Playwright](https://playwright.dev) and check each spec screen by screen, in light and dark and at desktop and phone widths. Each file is one test that reports every failing check by name. Install the browser once with `npx playwright install chromium`.
+The end-to-end checks in `e2e/` drive the real app in a browser with [Playwright](https://playwright.dev). Install the browser once with `npx playwright install chromium`.
 
 ```sh
-npm run e2e                  # build, then check the public site on npm run preview
-npm run e2e:dev              # check the dev server, with Lenormand and the other dev-only parts
-ASK_CLAUDE=1 npm run e2e:dev # also ask Claude for real answers (uses your Claude plan)
-npm run e2e:same -- main     # compare screenshots with a build of main, for refactors
+npm run e2e                  # the public site (what the deploy runs)
+npm run e2e:dev              # the dev app, including Lenormand
+ASK_CLAUDE=1 npm run e2e:dev # also ask Claude for real answers
+npm run e2e:same -- main     # compare screenshots with main, for refactors
 ```
-
-- **`npm run e2e`** is what the deploy workflow runs before publishing.
-- **`npm run e2e:same -- <git-ref>`** builds that commit in a temporary worktree and reports every screen that isn't pixel-identical. It keeps the pairs in `test-results/same/`. It isn't run in CI, because intended visual changes would fail it.
 
 ## Deployment
 
-Every push to `main` runs `.github/workflows/deploy.yml`, which builds the app, runs the unit tests and the browser checks (`npm run e2e`), and publishes `dist/` to GitHub Pages. If a check fails, nothing is published, and the run keeps a `playwright-report` artifact showing what failed. It can also be run manually from the Actions tab; on a branch other than `main` it only builds and checks.
+Every push to `main` runs `.github/workflows/deploy.yml`. It builds the app, runs the unit tests and `npm run e2e`, and publishes to GitHub Pages only if everything passes.
 
-The first page load fetches only home and the app shell (239 kB, 74 kB gzipped, down from 349 kB and 104 kB when everything was one file); the tarot screens with their card text and drawings (131 kB, 30 kB gzipped; 49 kB and 17 kB before the tarot art) and the oracle screen with its card text and drawings (81 kB, 19 kB gzipped; 60 kB and 15 kB before the 12 added animals) each load as their own file, fetched in the background once home has shown, and `e2e/split.spec.ts` checks that no card text or drawing creeps back into the first file.
+The build runs in Playwright's Docker image. Its version must match `@playwright/test` in `package.json`, so update both together.
 
-The built page carries a Content Security Policy that lets it load only its own files (added by `vite/csp.ts`, on `npm run build` only), and the workflow's actions are pinned to commit SHAs, with their versions in comments. The build runs in Playwright's own image (`mcr.microsoft.com/playwright`), which already has Chromium and its system libraries; it is pinned by digest, and its version must match `@playwright/test` in `package.json`, so bump both together.
-
-One-time setup: in the repository's **Settings → Pages**, set **Source** to **GitHub Actions**.
+One-time setup: in **Settings → Pages**, set **Source** to **GitHub Actions**.
