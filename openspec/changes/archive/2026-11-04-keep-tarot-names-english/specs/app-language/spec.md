@@ -25,7 +25,7 @@ The app name "Little Oracle", the tarot card names, the tarot Roman numerals, th
 - **THEN** each card's name is the same English name the English app shows
 
 ### Requirement: Everything for Claude stays English
-In both languages, the "Copy for Claude" button, its messages, and the prompt it copies SHALL be in English, exactly as for the English app, built from the English card and spread text. In the local dev app, the Ask Claude buttons, their messages and the prompts they send SHALL likewise stay English. The one exception is the oracle's question box in the dev app: its label ("Ask about this card"), its "(optional)" hint and its placeholder ("What should I focus on today?") SHALL follow the language.
+In both languages, the "Copy for Claude" button, its messages, and the prompt it copies SHALL be in English, built from the English card and spread text. In the local dev app, the Ask Claude buttons, messages and prompts SHALL stay English, except that the oracle question box's label, "(optional)" hint and placeholder SHALL follow the language.
 
 #### Scenario: Copy for Claude in the Chinese app
 - **WHEN** a Yes / No reading is copied for Claude with the app in Chinese

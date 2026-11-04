@@ -40,22 +40,26 @@ In Chinese, every visible text and every accessible name SHALL be in Traditional
 - **THEN** its heading, How it works link, deck and spread choice labels, question label and Draw button are in Traditional Chinese, while the spread names stay "Yes / No" and "Three cards"
 
 ### Requirement: Card and animal text follows the language
-In Chinese, the tarot card names, keywords, meanings and yes/no notes, and the oracle animal names, themes, keywords, messages, reflections and affirmations SHALL be shown in Traditional Chinese.
+In Chinese, the tarot card keywords, meanings and yes/no notes, and the oracle animal names, themes, keywords, messages, reflections and affirmations SHALL be shown in Traditional Chinese. Tarot card names SHALL stay in English (see "Some things stay the same in both languages").
 
 #### Scenario: Card text in Chinese
 - **WHEN** The Star is drawn upright with the app in Chinese
-- **THEN** the card's name, keywords, meaning, and in Yes / No its note, are shown in Traditional Chinese, its answer word stays "Yes", "No" or "Maybe", and its numeral is XVII
+- **THEN** the card's name is "The Star", its keywords, meaning, and in Yes / No its note, are shown in Traditional Chinese, its answer word stays "Yes", "No" or "Maybe", and its numeral is XVII
 
 #### Scenario: Screen reader in Chinese
 - **WHEN** a screen reader reaches a reversed Queen of Cups with the app in Chinese
-- **THEN** it announces the card's Chinese name and the Chinese word for reversed, and the page's language is `zh-Hant`
+- **THEN** it announces "Queen of Cups" followed by the Chinese word for reversed, the card name shown on the card and in the reading is marked as English, and the page's language is `zh-Hant`
 
 ### Requirement: Some things stay the same in both languages
-The app name "Little Oracle", the tarot Roman numerals, the card drawings, the tarot spread names ("Yes / No", "Three cards"), their position labels ("Answer", "Past", "Present", "Future") and the Yes / No answer words ("Yes", "No", "Maybe") SHALL be the same, in English, in both languages.
+The app name "Little Oracle", the tarot card names, the tarot Roman numerals, the card drawings, the tarot spread names ("Yes / No", "Three cards"), their position labels ("Answer", "Past", "Present", "Future") and the Yes / No answer words ("Yes", "No", "Maybe") SHALL be the same, in English, in both languages. This holds for both tarot decks (Classic and Dachshund). Where the Chinese tarot guide names a card, it SHALL use the card's English name.
 
 #### Scenario: No English left
 - **WHEN** each public screen (home, tarot composer, a Yes / No and a Three cards reading, a shared reading, the oracle) is shown in Chinese
-- **THEN** the only English shown is "Little Oracle", Roman numerals, the spread names, position labels and answer words, and "Copy for Claude" with its messages
+- **THEN** the only English shown is "Little Oracle", tarot card names, Roman numerals, the spread names, position labels and answer words, and "Copy for Claude" with its messages
+
+#### Scenario: Card names in the Dachshund deck
+- **WHEN** a Dachshund deck reading is shown in Chinese
+- **THEN** each card's name is the same English name the English app shows
 
 ### Requirement: Chinese text follows the same rules as English
 The Traditional Chinese text SHALL cover exactly the same interface text, tarot cards, guides and oracle animals as the English text, with nothing missing and nothing extra. It SHALL follow the same length limits: tarot meanings at most 400 characters and yes/no notes at most 140 characters. It SHALL keep each card's yes/no verdict, use Traditional characters (not Simplified), be original to this project, and keep the deck's gentle tone.
@@ -65,11 +69,15 @@ The Traditional Chinese text SHALL cover exactly the same interface text, tarot 
 - **THEN** every key in English has non-empty Chinese text, no extra keys exist, and every limit holds
 
 ### Requirement: Everything for Claude stays English
-In both languages, the "Copy for Claude" button, its messages, and the prompt it copies SHALL be in English, exactly as for the English app, built from the English card and spread text. In the local dev app, Ask Claude, its messages and the prompts it sends SHALL likewise stay English.
+In both languages, the "Copy for Claude" button, its messages, and the prompt it copies SHALL be in English, built from the English card and spread text. In the local dev app, the Ask Claude buttons, messages and prompts SHALL stay English, except that the oracle question box's label, "(optional)" hint and placeholder SHALL follow the language.
 
 #### Scenario: Copy for Claude in the Chinese app
 - **WHEN** a Yes / No reading is copied for Claude with the app in Chinese
 - **THEN** the button reads "Copy for Claude", it confirms with "Prompt copied", and the copied prompt is identical to the one the English app copies for the same reading
+
+#### Scenario: Oracle question box in the Chinese dev app
+- **WHEN** the owner opens the oracle in the dev app with the app in Chinese
+- **THEN** the question box's label, hint and placeholder are in Traditional Chinese, and the button still reads "Ask Claude"
 
 ### Requirement: Share links open in the viewer's language
 A share link SHALL NOT carry a language. Opening any share link SHALL show the reading in the viewer's current language, and links shared before this change SHALL keep working.
