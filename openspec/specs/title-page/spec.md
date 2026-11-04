@@ -28,11 +28,15 @@ The landing page SHALL load with all of its script and style assets resolving su
 - **THEN** no script or stylesheet request returns a 404 and the console shows no uncaught errors
 
 ### Requirement: Home page subtitle
-The home page SHALL show the subtitle "tarot & animal cards for today" directly below the main heading. Other screens SHALL NOT show the subtitle.
+The home page SHALL show a subtitle directly below the main heading: "tarot & animal cards for today" in English, and its Traditional Chinese version in Chinese. Other screens SHALL NOT show the subtitle.
 
 #### Scenario: Subtitle on home
-- **WHEN** a user opens the app's root URL
+- **WHEN** a user opens the app's root URL in English
 - **THEN** the text "tarot & animal cards for today" appears below the "Little Oracle" heading
+
+#### Scenario: Subtitle in Chinese
+- **WHEN** a user opens the app's root URL in Chinese
+- **THEN** the Chinese subtitle appears below the "Little Oracle" heading
 
 #### Scenario: No subtitle elsewhere
 - **WHEN** a user opens the tarot screen
