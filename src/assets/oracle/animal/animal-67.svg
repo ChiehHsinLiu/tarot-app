@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" focusable="false">
+  <path class="art-fill art-line" d="M20 56 C15 56 13 60 15 64 C17 62 19 62 21 62 Z"/>
+  <rect class="art-fill art-line" x="28" y="66" width="9" height="23" rx="4.5"/>
+  <rect class="art-fill art-line" x="39" y="68" width="9" height="21" rx="4.5"/>
+  <rect class="art-fill art-line" x="55" y="68" width="9" height="21" rx="4.5"/>
+  <rect class="art-fill art-line" x="66" y="66" width="9" height="23" rx="4.5"/>
+  <ellipse class="art-fill" cx="46" cy="58" rx="27" ry="17"/>
+  <path class="art-light" d="M36 42 C44 40 54 41 60 44 C63 52 62 64 58 73 C50 75 42 75 34 73 C31 64 32 50 36 42 Z"/>
+  <ellipse class="art-line" cx="46" cy="58" rx="27" ry="17"/>
+  <circle class="art-fill art-line" cx="67" cy="38" r="5.5"/>
+  <circle class="art-light" cx="67" cy="38" r="2.4"/>
+  <ellipse class="art-fill art-line" cx="74" cy="50" rx="14" ry="12"/>
+  <path class="art-fill art-line" d="M84 46 C93 46 98 52 96 60 C94 63 90 62 90 58 C88 57 85 58 83 58 Z"/>
+  <circle class="art-ink" cx="76" cy="46" r="2.4"/>
+  <ellipse class="art-blush" cx="74" cy="54" rx="3.2" ry="2"/>
+  <path class="art-line" d="M84 57 q-3 2 -6 0"/>
+</svg>

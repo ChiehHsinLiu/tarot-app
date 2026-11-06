@@ -18,7 +18,7 @@ The app lives under `/tarot-app/` because it's a GitHub Pages project site. If t
 ## What's in it
 
 - **Tarot reading:** two decks (Classic and Dachshund) with the same 78 cards, two spreads (Yes / No and Three cards), and share links.
-- **Animal oracle:** one card from 60 original animal cards, each with a message, a question to reflect on and an affirmation.
+- **Animal oracle:** one card from 78 original cards of real and legendary animals, each with a message, a question to reflect on and an affirmation.
 - **Languages:** a 中文 / English switch on every screen. Card names, spread names and everything for Claude stay English.
 
 The detailed behaviour of each part is in `openspec/specs/`.

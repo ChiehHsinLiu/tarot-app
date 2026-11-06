@@ -718,5 +718,221 @@
     "message": "The shoebill stands perfectly still in the reeds for a long time, waiting for just the right moment. Stillness is not doing nothing. Today, pause and wait before you act, and you will see more clearly.",
     "reflection": "What would you notice if you stood still for a while?",
     "affirmation": "In stillness, I see clearly."
+  },
+  "animal-61": {
+    "animal": "Binturong",
+    "theme": "Your Own Charm",
+    "keywords": [
+      "charm",
+      "quirks",
+      "warmth"
+    ],
+    "message": "The binturong smells like warm popcorn, and it makes no apology for it. The odd little things about you are often what people love most. Today, stop tidying them away and let them show.",
+    "reflection": "Which of your quirks might someone secretly love?",
+    "affirmation": "My quirks are part of my charm."
+  },
+  "animal-62": {
+    "animal": "Orangutan",
+    "theme": "Find Shelter",
+    "keywords": [
+      "shelter",
+      "self-care",
+      "resourcefulness"
+    ],
+    "message": "When the rain starts, the orangutan picks a big leaf and holds it over its head. It doesn't wait for the weather to change. Today, if things feel stormy, find one simple thing that keeps you dry.",
+    "reflection": "What small shelter could you make for yourself today?",
+    "affirmation": "I can look after myself, even in the rain."
+  },
+  "animal-63": {
+    "animal": "Phoenix",
+    "theme": "Rise Again",
+    "keywords": [
+      "renewal",
+      "resilience",
+      "hope"
+    ],
+    "message": "In the old stories, the phoenix burns down to ash and rises from it, bright and new. What you've been through hasn't ended you. Today, notice the small warm part of you that is already getting back up.",
+    "reflection": "What has a hard time shown you about your strength?",
+    "affirmation": "After every hard time, I rise."
+  },
+  "animal-64": {
+    "animal": "Yak",
+    "theme": "Weather the Storm",
+    "keywords": [
+      "endurance",
+      "warmth",
+      "steadiness"
+    ],
+    "message": "Wrapped in its long, shaggy coat, the yak stands calmly through cold mountain winds. Rough weather doesn't last forever, and you are better built for it than you think. Today, wrap up warm and stand your ground.",
+    "reflection": "What has helped you through rough weather before?",
+    "affirmation": "I am built to get through this."
+  },
+  "animal-65": {
+    "animal": "Griffin",
+    "theme": "Guard What Matters",
+    "keywords": [
+      "courage",
+      "devotion",
+      "care"
+    ],
+    "message": "In old tales, the griffin, part eagle and part lion, watches over treasure with a brave and careful eye. You have treasures too, and most of them aren't gold. Today, stand up for something you hold dear.",
+    "reflection": "What matters enough for you to guard it?",
+    "affirmation": "I bravely protect what I love."
+  },
+  "animal-66": {
+    "animal": "Tanuki",
+    "theme": "Lighten Up",
+    "keywords": [
+      "humour",
+      "play",
+      "ease"
+    ],
+    "message": "In Japanese folklore, the tanuki puts a leaf on its head, changes its shape, and gets up to harmless mischief. Not everything needs to be so serious. Today, find something to smile about, even if it's your own mistake.",
+    "reflection": "What could you stop taking so seriously?",
+    "affirmation": "I can laugh and take things lightly."
+  },
+  "animal-67": {
+    "animal": "Tapir",
+    "theme": "Follow Your Nose",
+    "keywords": [
+      "instinct",
+      "exploring",
+      "trust"
+    ],
+    "message": "The tapir wanders through the forest with its bendy little nose leading the way. It doesn't need a map to find what's good. Today, go where your interest pulls you, and see what turns up.",
+    "reflection": "Where is your interest pulling you lately?",
+    "affirmation": "I follow what interests me."
+  },
+  "animal-68": {
+    "animal": "Tree Kangaroo",
+    "theme": "Try Something New",
+    "keywords": [
+      "newness",
+      "daring",
+      "surprise"
+    ],
+    "message": "Most kangaroos stay on the ground, but the tree kangaroo climbed up and made its home in the branches. You don't have to do things the way they've always been done. Today, try one thing differently.",
+    "reflection": "What would you try if nobody expected anything else of you?",
+    "affirmation": "I am free to try something new."
+  },
+  "animal-69": {
+    "animal": "Tsuchinoko",
+    "theme": "Happy Surprises",
+    "keywords": [
+      "surprise",
+      "delight",
+      "wonder"
+    ],
+    "message": "In Japanese folklore, the tsuchinoko is a chubby little snake that people hardly ever see, and everyone is delighted when they do. Good things can turn up when you aren't looking. Today, leave a little room to be surprised.",
+    "reflection": "When did something good last catch you by surprise?",
+    "affirmation": "I welcome happy surprises."
+  },
+  "animal-70": {
+    "animal": "Jellyfish",
+    "theme": "Your Own Glow",
+    "keywords": [
+      "light",
+      "softness",
+      "inner strength"
+    ],
+    "message": "Deep in the dark sea, far from the sun, some jellyfish make their own soft light. You don't need perfect conditions to shine. Today, bring a little of your own light into wherever you are.",
+    "reflection": "What brings out your glow, even on dark days?",
+    "affirmation": "I carry my own light."
+  },
+  "animal-71": {
+    "animal": "Harp Seal",
+    "theme": "Let Others Care",
+    "keywords": [
+      "softness",
+      "receiving",
+      "trust"
+    ],
+    "message": "A harp seal pup lies on the ice in its fluffy white coat and lets its mother feed and look after it. There's nothing weak about being cared for. Today, when someone offers you help or kindness, let yourself say yes.",
+    "reflection": "Whose care could you let in today?",
+    "affirmation": "I deserve to be looked after."
+  },
+  "animal-72": {
+    "animal": "Komainu",
+    "theme": "You Are Safe",
+    "keywords": [
+      "safety",
+      "comfort",
+      "protection"
+    ],
+    "message": "In Japan, a pair of komainu, part lion and part dog, sit at the shrine gate and watch over everyone who passes. You are allowed to feel safe. Today, go somewhere you feel at ease, and let your shoulders drop.",
+    "reflection": "Where do you feel most at ease?",
+    "affirmation": "I am safe here, right now."
+  },
+  "animal-73": {
+    "animal": "Kookaburra",
+    "theme": "Laugh Out Loud",
+    "keywords": [
+      "laughter",
+      "joy",
+      "openness"
+    ],
+    "message": "The kookaburra's call rings through the trees like a big, loud laugh, and it never tries to keep it down. Laughter clears the air. Today, let yourself really laugh, and share it with someone.",
+    "reflection": "Who or what always makes you laugh?",
+    "affirmation": "I let my laughter out."
+  },
+  "animal-74": {
+    "animal": "Crane",
+    "theme": "Keep Hoping",
+    "keywords": [
+      "hope",
+      "wishes",
+      "devotion"
+    ],
+    "message": "In Japan, people fold a thousand paper cranes to send a wish out into the world, one small fold at a time. Hope is something you can keep doing with your hands. Today, do one small thing for what you're wishing for.",
+    "reflection": "What wish are you still holding on to?",
+    "affirmation": "I keep my hope alive, one fold at a time."
+  },
+  "animal-75": {
+    "animal": "Unicorn",
+    "theme": "Let It Come to You",
+    "keywords": [
+      "gentleness",
+      "trust",
+      "openness"
+    ],
+    "message": "Old stories say that no hunter could catch a unicorn by chasing it, yet it would come close to someone sitting quietly. Some things can't be forced. Today, stop chasing for a moment and leave the door open.",
+    "reflection": "What are you chasing that might come to you if you paused?",
+    "affirmation": "What is meant for me can find me."
+  },
+  "animal-76": {
+    "animal": "Bat",
+    "theme": "Trust the Dark",
+    "keywords": [
+      "trust",
+      "listening",
+      "night"
+    ],
+    "message": "The bat flies through the night by listening for echoes. It doesn't need to see the whole way to know where it's going. Today, if the path looks dark, listen carefully and take the next turn.",
+    "reflection": "What can you sense even though you can't see it yet?",
+    "affirmation": "I can find my way in the dark."
+  },
+  "animal-77": {
+    "animal": "Raccoon",
+    "theme": "Clean Slate",
+    "keywords": [
+      "fresh start",
+      "clearing",
+      "care"
+    ],
+    "message": "The raccoon dips its food in the water and turns it over and over in its small hands. Sometimes a thing just needs a good rinse. Today, wash away one old worry or grudge, and carry on lighter.",
+    "reflection": "What could you rinse off and leave behind today?",
+    "affirmation": "I let the old things wash away."
+  },
+  "animal-78": {
+    "animal": "Kitsune",
+    "theme": "See Beyond",
+    "keywords": [
+      "wisdom",
+      "insight",
+      "mystery"
+    ],
+    "message": "In Japanese folklore, the kitsune grows another tail as it grows wiser, until it has nine. It knows that things aren't always what they first seem. Today, look a little longer before you decide what you're seeing.",
+    "reflection": "What might be different from how it first looked?",
+    "affirmation": "I look beyond the surface."
   }
 }

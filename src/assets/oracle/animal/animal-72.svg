@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" focusable="false">
+  <path class="art-line" d="M14 91 H86"/>
+  <path class="art-light art-line" d="M63 87 C74 92 84 85 81 75 C80 68 70 67 66 72 Z"/>
+  <path class="art-line" d="M70 80 C69 75 76 74 76 78"/>
+  <path class="art-fill art-line" d="M34 90 C32 77 39 68 50 68 C61 68 68 77 66 90 Z"/>
+  <ellipse class="art-light art-line" cx="43" cy="89" rx="6" ry="3.2"/>
+  <ellipse class="art-light art-line" cx="57" cy="89" rx="6" ry="3.2"/>
+  <circle class="art-light art-line" cx="26" cy="38" r="9"/>
+  <circle class="art-light art-line" cx="74" cy="38" r="9"/>
+  <circle class="art-light art-line" cx="36" cy="25" r="9"/>
+  <circle class="art-light art-line" cx="64" cy="25" r="9"/>
+  <circle class="art-light art-line" cx="50" cy="20" r="9"/>
+  <circle class="art-light art-line" cx="23" cy="52" r="9"/>
+  <circle class="art-light art-line" cx="77" cy="52" r="9"/>
+  <circle class="art-light art-line" cx="32" cy="65" r="8"/>
+  <circle class="art-light art-line" cx="68" cy="65" r="8"/>
+  <path class="art-line" d="M47 19 c0 -4 6 -4 6 -0.5 c0 2.5 -3.5 2.5 -3.5 0.5 M22 38 c0 -4 6 -4 6 -0.5 c0 2.5 -3.5 2.5 -3.5 0.5 M78 38 c0 -4 -6 -4 -6 -0.5 c0 2.5 3.5 2.5 3.5 0.5"/>
+  <ellipse class="art-fill art-line" cx="50" cy="45" rx="22" ry="20"/>
+  <path class="art-line" d="M38 70 q12 6 24 0"/>
+  <circle class="art-light art-line" cx="50" cy="76" r="4.2"/>
+  <path class="art-line" d="M50 76 v2"/>
+  <ellipse class="art-light art-line" cx="50" cy="54" rx="10" ry="8"/>
+  <circle class="art-ink" cx="40" cy="42" r="2.6"/>
+  <circle class="art-ink" cx="60" cy="42" r="2.6"/>
+  <ellipse class="art-ink" cx="50" cy="49.5" rx="2.6" ry="1.9"/>
+  <path class="art-blush art-line" d="M45 53 q5 2 10 0 q0 7 -5 7 q-5 0 -5 -7 Z"/>
+  <ellipse class="art-blush" cx="34" cy="51" rx="3.4" ry="2.1"/>
+  <ellipse class="art-blush" cx="66" cy="51" rx="3.4" ry="2.1"/>
+  <circle class="art-blush" cx="12" cy="24" r="2.4"/>
+  <circle class="art-blush" cx="90" cy="18" r="1.8"/>
+  <circle class="art-blush" cx="14" cy="78" r="1.8"/>
+</svg>

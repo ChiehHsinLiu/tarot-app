@@ -8,11 +8,11 @@ const BUGS = [
   'ladybug', 'mantis', 'mosquito', 'moth', 'scorpion', 'spider', 'tarantula', 'termite', 'wasp',
 ]
 
-test('60 cards with distinct ids and animals, in order', () => {
+test('78 cards with distinct ids and animals, in order', () => {
   const ids = rawAnimalDeck.map((c) => c.id)
-  expect(ids).toEqual(Array.from({ length: 60 }, (_, i) => `animal-${String(i + 1).padStart(2, '0')}`))
+  expect(ids).toEqual(Array.from({ length: 78 }, (_, i) => `animal-${String(i + 1).padStart(2, '0')}`))
   expect(Object.keys(rawAnimalText).sort()).toEqual(ids)
-  expect(new Set(ids.map((id) => rawAnimalText[id].animal)).size).toBe(60)
+  expect(new Set(ids.map((id) => rawAnimalText[id].animal)).size).toBe(78)
 })
 
 test.each(rawAnimalDeck.map((c) => c.id))('%s has complete text', (id) => {
@@ -51,6 +51,27 @@ test('includes the third set of animals with their themes', () => {
   )
 })
 
+test('includes the fourth set of animals with their themes', () => {
+  const cards = Object.values(rawAnimalText).map((t) => `${t.animal} · ${t.theme}`)
+  expect(cards).toEqual(
+    expect.arrayContaining([
+      'Binturong · Your Own Charm', 'Orangutan · Find Shelter', 'Yak · Weather the Storm', 'Tapir · Follow Your Nose',
+      'Tree Kangaroo · Try Something New', 'Jellyfish · Your Own Glow', 'Harp Seal · Let Others Care',
+      'Kookaburra · Laugh Out Loud', 'Crane · Keep Hoping', 'Bat · Trust the Dark', 'Raccoon · Clean Slate',
+    ]),
+  )
+})
+
+test('includes the legendary animals with their themes', () => {
+  const cards = Object.values(rawAnimalText).map((t) => `${t.animal} · ${t.theme}`)
+  expect(cards).toEqual(
+    expect.arrayContaining([
+      'Phoenix · Rise Again', 'Griffin · Guard What Matters', 'Tanuki · Lighten Up', 'Tsuchinoko · Happy Surprises',
+      'Komainu · You Are Safe', 'Unicorn · Let It Come to You', 'Kitsune · See Beyond',
+    ]),
+  )
+})
+
 test('no insects or spiders', () => {
   for (const { animal } of Object.values(rawAnimalText)) {
     const words = animal.toLowerCase().split(/\s+/)
@@ -58,9 +79,9 @@ test('no insects or spiders', () => {
   }
 })
 
-test('every card has a colour family, ten cards each', () => {
+test('every card has a colour family, 13 cards each', () => {
   for (const card of rawAnimalDeck) expect(ORACLE_PALETTE_NAMES, card.id).toContain(card.palette)
   for (const name of ORACLE_PALETTE_NAMES) {
-    expect(rawAnimalDeck.filter((c) => c.palette === name).length, name).toBe(10)
+    expect(rawAnimalDeck.filter((c) => c.palette === name).length, name).toBe(13)
   }
 })
